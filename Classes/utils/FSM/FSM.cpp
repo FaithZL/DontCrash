@@ -1,7 +1,7 @@
 //create by zhuling
-#include "FSM/FSM.h"
+#include "FSM.h"
 
-#include "FSM/FSMState.h"
+#include "FSMState.h"
 
 FSM::~FSM(void)
 {

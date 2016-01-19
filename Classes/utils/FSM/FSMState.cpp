@@ -1,4 +1,4 @@
-#include "FSM/FSMState.h"
+#include "FSMState.h"
 
 FSMState::FSMState(void) :
 _stateName(-1),
