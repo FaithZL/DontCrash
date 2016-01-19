@@ -39,7 +39,7 @@ public:
     
     CC_SYNTHESIZE(int , _direction , Direction);
     
-    virtual bool init(float originVelo , cocos2d::Vec2 originPos , int direction);
+    virtual bool init(std::string fileName , float originVelo , cocos2d::Vec2 originPos , int direction);
     
     virtual void start();
     

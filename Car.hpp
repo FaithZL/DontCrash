@@ -22,6 +22,7 @@ public:
     virtual void update(float d);
     
     virtual void changeTrack();
+    
 };
 
 #endif /* Car_hpp */

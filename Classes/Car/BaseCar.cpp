@@ -11,7 +11,6 @@
 USING_NS_CC;
 
 BaseCar::BaseCar():
-_blastRes(nullptr),
 _velo(0),
 _curTrack(TrackId::outer),
 _direction(-1)
@@ -24,17 +23,15 @@ BaseCar::~BaseCar()
     
 }
 
-bool BaseCar::init(float originVelo, cocos2d::Vec2 originPos , int direction)
+bool BaseCar::init(std::string fileName , float originVelo, cocos2d::Vec2 originPos , int direction)
 {
-    if (Sprite::init()) {
-        _direction = direction;
-        _originVelo = originVelo;
-        _originPos = originPos;
-        setVelo(originVelo);
-        setPosition(originPos);
-        return true;
-    }
-    return false;
+    this->initWithFile(fileName);
+    _direction = direction;
+    _originVelo = originVelo;
+    _originPos = originPos;
+    setVelo(originVelo);
+    setPosition(originPos);
+    return true;
 }
 
 void BaseCar::start()
