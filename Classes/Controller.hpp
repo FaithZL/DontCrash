@@ -11,6 +11,9 @@
 
 #include "cocos2d.h"
 
+class Car;
+class Enemy;
+
 enum GameState
 {
     Pause,
@@ -27,18 +30,26 @@ public:
     
     virtual bool init();
     
-    CC_SYNTHESIZE_READONLY(int , _GameState , GameState);
+    CC_SYNTHESIZE_READONLY(int , _GameState , CurGameState);
+    
+    CC_SYNTHESIZE(Car * , _car , UserCar);
+    
+    void addEnemy(Enemy * enemy);
+    
+    cocos2d::Vector<Enemy *> * getEnemies();
     
     void start();
     
-    void stop();
-    
     void pause();
+    
+    void reset();
     
 protected:
     Controller();
     
     static Controller * s_pController;
+    
+    cocos2d::Vector<Enemy *> _enemies;
     
 };
 

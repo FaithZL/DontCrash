@@ -26,8 +26,6 @@ private:
     
     cocos2d::Sprite * _bg2;
     
-//    cocos2d::Sprite * _car;
-    
     cocos2d::Sprite * _track;
 };
 

@@ -55,6 +55,9 @@
 		D6B0611B1803AB670077942B /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6B0611A1803AB670077942B /* CoreMotion.framework */; };
 		ED545A7C1B68A1F400C3958E /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = ED545A7B1B68A1F400C3958E /* libiconv.dylib */; };
 		ED545A7E1B68A1FA00C3958E /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = ED545A7D1B68A1FA00C3958E /* libiconv.dylib */; };
+		F6CE4FB01C4E4F5F004CB6BC /* Car.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F6CE4FAE1C4E4F5F004CB6BC /* Car.cpp */; };
+		F6CE4FB31C4E4FAD004CB6BC /* Enemy.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F6CE4FB11C4E4FAD004CB6BC /* Enemy.cpp */; };
+		F6CE4FB41C4E4FAD004CB6BC /* Enemy.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F6CE4FB11C4E4FAD004CB6BC /* Enemy.cpp */; };
 		F6E04DFB1C4E001B00214F89 /* AppDelegate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F6E04DD81C4E001B00214F89 /* AppDelegate.cpp */; };
 		F6E04DFC1C4E001B00214F89 /* AppDelegate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F6E04DD81C4E001B00214F89 /* AppDelegate.cpp */; };
 		F6E04DFF1C4E001B00214F89 /* GameLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F6E04DDD1C4E001B00214F89 /* GameLayer.cpp */; };
@@ -81,8 +84,8 @@
 		F6E04E141C4E001B00214F89 /* json_writer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F6E04DF61C4E001B00214F89 /* json_writer.cpp */; };
 		F6E04E151C4E001B00214F89 /* sconscript in Resources */ = {isa = PBXBuildFile; fileRef = F6E04DF71C4E001B00214F89 /* sconscript */; };
 		F6E04E161C4E001B00214F89 /* sconscript in Resources */ = {isa = PBXBuildFile; fileRef = F6E04DF71C4E001B00214F89 /* sconscript */; };
-		F6E04E1B1C4E024C00214F89 /* Car.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F6E04E191C4E024C00214F89 /* Car.cpp */; };
-		F6E04E1C1C4E024C00214F89 /* Car.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F6E04E191C4E024C00214F89 /* Car.cpp */; };
+		F6E04E1B1C4E024C00214F89 /* BaseCar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F6E04E191C4E024C00214F89 /* BaseCar.cpp */; };
+		F6E04E1C1C4E024C00214F89 /* BaseCar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F6E04E191C4E024C00214F89 /* BaseCar.cpp */; };
 		F6E04F671C4E172300214F89 /* android_sound in Resources */ = {isa = PBXBuildFile; fileRef = F6E04F601C4E172300214F89 /* android_sound */; };
 		F6E04F681C4E172300214F89 /* android_sound in Resources */ = {isa = PBXBuildFile; fileRef = F6E04F601C4E172300214F89 /* android_sound */; };
 		F6E04F691C4E172300214F89 /* CloseNormal.png in Resources */ = {isa = PBXBuildFile; fileRef = F6E04F611C4E172300214F89 /* CloseNormal.png */; };
@@ -184,6 +187,11 @@
 		D6B0611A1803AB670077942B /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.0.sdk/System/Library/Frameworks/CoreMotion.framework; sourceTree = DEVELOPER_DIR; };
 		ED545A7B1B68A1F400C3958E /* libiconv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.dylib; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.4.sdk/usr/lib/libiconv.dylib; sourceTree = DEVELOPER_DIR; };
 		ED545A7D1B68A1FA00C3958E /* libiconv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.dylib; path = usr/lib/libiconv.dylib; sourceTree = SDKROOT; };
+		F6CE4FAE1C4E4F5F004CB6BC /* Car.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Car.cpp; sourceTree = "<group>"; };
+		F6CE4FAF1C4E4F5F004CB6BC /* Car.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Car.hpp; sourceTree = "<group>"; };
+		F6CE4FB11C4E4FAD004CB6BC /* Enemy.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Enemy.cpp; sourceTree = "<group>"; };
+		F6CE4FB21C4E4FAD004CB6BC /* Enemy.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Enemy.hpp; sourceTree = "<group>"; };
+		F6CE4FB51C4E6E4C004CB6BC /* constant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = constant.h; sourceTree = "<group>"; };
 		F6E04DD81C4E001B00214F89 /* AppDelegate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AppDelegate.cpp; sourceTree = "<group>"; };
 		F6E04DD91C4E001B00214F89 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		F6E04DDD1C4E001B00214F89 /* GameLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameLayer.cpp; sourceTree = "<group>"; };
@@ -212,8 +220,8 @@
 		F6E04DF81C4E001B00214F89 /* reader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = reader.h; sourceTree = "<group>"; };
 		F6E04DF91C4E001B00214F89 /* value.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = value.h; sourceTree = "<group>"; };
 		F6E04DFA1C4E001B00214F89 /* writer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = writer.h; sourceTree = "<group>"; };
-		F6E04E191C4E024C00214F89 /* Car.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Car.cpp; sourceTree = "<group>"; };
-		F6E04E1A1C4E024C00214F89 /* Car.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Car.hpp; sourceTree = "<group>"; };
+		F6E04E191C4E024C00214F89 /* BaseCar.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BaseCar.cpp; sourceTree = "<group>"; };
+		F6E04E1A1C4E024C00214F89 /* BaseCar.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = BaseCar.hpp; sourceTree = "<group>"; };
 		F6E04F601C4E172300214F89 /* android_sound */ = {isa = PBXFileReference; lastKnownFileType = folder; path = android_sound; sourceTree = "<group>"; };
 		F6E04F611C4E172300214F89 /* CloseNormal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CloseNormal.png; sourceTree = "<group>"; };
 		F6E04F621C4E172300214F89 /* CloseSelected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CloseSelected.png; sourceTree = "<group>"; };
@@ -413,6 +421,7 @@
 				F6E04DE31C4E001B00214F89 /* utils */,
 				F6E04F791C4E3EE500214F89 /* Controller.cpp */,
 				F6E04F7A1C4E3EE500214F89 /* Controller.hpp */,
+				F6CE4FB51C4E6E4C004CB6BC /* constant.h */,
 			);
 			name = Classes;
 			path = ../Classes;
@@ -485,8 +494,12 @@
 		F6E04E181C4E024C00214F89 /* Car */ = {
 			isa = PBXGroup;
 			children = (
-				F6E04E191C4E024C00214F89 /* Car.cpp */,
-				F6E04E1A1C4E024C00214F89 /* Car.hpp */,
+				F6E04E191C4E024C00214F89 /* BaseCar.cpp */,
+				F6E04E1A1C4E024C00214F89 /* BaseCar.hpp */,
+				F6CE4FAE1C4E4F5F004CB6BC /* Car.cpp */,
+				F6CE4FAF1C4E4F5F004CB6BC /* Car.hpp */,
+				F6CE4FB11C4E4FAD004CB6BC /* Enemy.cpp */,
+				F6CE4FB21C4E4FAD004CB6BC /* Enemy.hpp */,
 			);
 			path = Car;
 			sourceTree = "<group>";
@@ -644,7 +657,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F6E04E1B1C4E024C00214F89 /* Car.cpp in Sources */,
+				F6E04E1B1C4E024C00214F89 /* BaseCar.cpp in Sources */,
 				F6E04E071C4E001B00214F89 /* FSMState.cpp in Sources */,
 				F6E04E0F1C4E001B00214F89 /* json_value.cpp in Sources */,
 				F6E04E051C4E001B00214F89 /* FSM.cpp in Sources */,
@@ -652,7 +665,9 @@
 				503AE10017EB989F00D1A890 /* AppController.mm in Sources */,
 				503AE10217EB989F00D1A890 /* RootViewController.mm in Sources */,
 				F6E04F7B1C4E3EE500214F89 /* Controller.cpp in Sources */,
+				F6CE4FB31C4E4FAD004CB6BC /* Enemy.cpp in Sources */,
 				503AE10117EB989F00D1A890 /* main.m in Sources */,
+				F6CE4FB01C4E4F5F004CB6BC /* Car.cpp in Sources */,
 				F6E04E131C4E001B00214F89 /* json_writer.cpp in Sources */,
 				F6E04E011C4E001B00214F89 /* GameScene.cpp in Sources */,
 				F6E04DFF1C4E001B00214F89 /* GameLayer.cpp in Sources */,
@@ -665,13 +680,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F6E04E1C1C4E024C00214F89 /* Car.cpp in Sources */,
+				F6E04E1C1C4E024C00214F89 /* BaseCar.cpp in Sources */,
 				F6E04E141C4E001B00214F89 /* json_writer.cpp in Sources */,
 				F6E04E021C4E001B00214F89 /* GameScene.cpp in Sources */,
 				F6E04E0E1C4E001B00214F89 /* json_reader.cpp in Sources */,
 				F6E04DFC1C4E001B00214F89 /* AppDelegate.cpp in Sources */,
 				F6E04E001C4E001B00214F89 /* GameLayer.cpp in Sources */,
 				F6E04E081C4E001B00214F89 /* FSMState.cpp in Sources */,
+				F6CE4FB41C4E4FAD004CB6BC /* Enemy.cpp in Sources */,
 				503AE10517EB98FF00D1A890 /* main.cpp in Sources */,
 				F6E04E101C4E001B00214F89 /* json_value.cpp in Sources */,
 				F6E04E061C4E001B00214F89 /* FSM.cpp in Sources */,
