@@ -27,6 +27,7 @@ bool GameScene::init()
         
         addChild(_gameLayer);
         addChild(_uiLayer);
+        return true;
     }
     return false;
 }
