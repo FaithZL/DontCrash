@@ -19,6 +19,12 @@ enum TrackId{
     outer
 };
 
+enum CarState
+{
+    Circle,
+    Line
+};
+
 enum Direction{
     CW,
     CCW
@@ -39,6 +45,8 @@ public:
     
     CC_SYNTHESIZE(int , _direction , Direction);
     
+    virtual void initFSM();
+    
     virtual bool init(std::string fileName , float originVelo , cocos2d::Vec2 originPos , int direction);
     
     virtual void start();
@@ -46,6 +54,14 @@ public:
     virtual void pause();
     
     virtual void reset();
+    
+    virtual void lineUpdate(float d);
+    
+    virtual void enterLineCallBack();
+    
+    virtual void circleUpdate(float d);
+    
+    virtual void enterCircleCallBack();
     
     virtual void update(float delta);
     
@@ -58,6 +74,7 @@ protected:
     
     float _originVelo;
     
+    float _radius[2];
 };
 
 #endif /* BaseCar_hpp */

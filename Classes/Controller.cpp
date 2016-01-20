@@ -53,7 +53,9 @@ cocos2d::Vector<Enemy *> * Controller::getEnemies()
 
 void Controller::start()
 {
-    _car->start();
+    if (_car) {
+        _car->start();
+    }
     for(auto &it : _enemies)
     {
         it->start();
@@ -62,7 +64,9 @@ void Controller::start()
 
 void Controller::reset()
 {
-    _car->reset();
+    if (_car) {
+        _car->reset();
+    }
     for(auto &it : _enemies)
     {
         it->reset();
@@ -71,7 +75,9 @@ void Controller::reset()
 
 void Controller::pause()
 {
-    _car->pause();
+    if (_car) {
+        _car->pause();
+    }
     for(auto &it : _enemies)
     {
         it->pause();

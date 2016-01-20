@@ -11,12 +11,15 @@
 
 #include "cocos2d.h"
 
+USING_NS_CC;
 class UILayer : public cocos2d::Layer
 {
 public:
     UILayer();
     ~UILayer();
     CREATE_FUNC(UILayer);
+    
+    virtual bool onTouchBegan(Touch *touch, Event *unused_event);
     
     virtual bool init();
     

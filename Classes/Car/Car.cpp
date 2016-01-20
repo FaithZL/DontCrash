@@ -7,6 +7,8 @@
 //
 
 #include "Car.hpp"
+#include "constant.h"
+USING_NS_CC;
 
 Car::Car()
 {
@@ -35,5 +37,17 @@ void Car::update(float d)
 
 void Car::changeTrack()
 {
+    BaseCar::changeTrack();
+    auto pos = getPosition();
+    auto winSize = Director::getInstance()->getWinSize();
+    auto centerPos = Vec2(winSize.width / 2 , winSize.height / 2);
+    if (getCurrentStateName() == CarState::Line) {
+        if (pos.y > centerPos.y) {
+            setPositionY(POS_R.y + _radius[_curTrack]);
+        }
+        else{
+            setPositionY(POS_R.y - _radius[_curTrack]);
+        }
+    }
     
 }
