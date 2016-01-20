@@ -63,17 +63,39 @@ void BaseCar::enterLineCallBack()
     auto pos = getPosition();
     auto centerX = winSize.width / 2;
     auto centerY = winSize.height / 2;
+    
+    double angle;
+    
+    double deltaX;
+    
     if (pos.x > centerX) {
-        
+        angle = getAngle(POS_R , pos);
+        if (pos.y > centerY) {
+            angle = angle - PI / 2;
+            setPositionY(POS_L.y + _radius[_curTrack]);
+            setRotation3D(Vec3(0 , 0 , 0));
+        }else{
+            angle = PI * 3 / 2 - angle;
+            setPositionY(POS_L.y - _radius[_curTrack]);
+            setRotation3D(Vec3(0 , 0 , - 180));
+        }
+        deltaX = _radius[_curTrack] * angle;
+        setPositionX(POS_R.x - deltaX);
     }else{
-        
+        angle = getAngle(POS_L , pos);
+        if (pos.y > centerY) {
+            angle = PI / 2 - angle;
+            setPositionY(POS_L.y + _radius[_curTrack]);
+            setRotation3D(Vec3(0 , 0 , 0));
+        } else {
+            angle = angle - PI * 3 / 2;
+            setPositionY(POS_L.y - _radius[_curTrack]);
+            setRotation3D(Vec3(0 , 0 , - 180));
+        }
+        deltaX = _radius[_curTrack] * angle;
+        setPositionX(POS_L.x + deltaX);
     }
     
-    if (pos.y > centerY) {
-
-    }else{
-
-    }
 }
 
 void BaseCar::enterCircleCallBack()
@@ -82,16 +104,34 @@ void BaseCar::enterCircleCallBack()
     auto pos = getPosition();
     auto centerX = winSize.width / 2;
     auto centerY = winSize.height / 2;
-    if (pos.x > centerX) {
-        setPositionX(POS_R.x);
-    }else{
-        setPositionX(POS_L.x);
-    }
+    auto radius = _radius[_curTrack];
     
-    if (pos.y > centerY) {
-        setPositionY(POS_L.y + _radius[_curTrack]);
+    double deltaX;
+    
+    double angle;
+    
+    if (pos.x > centerX) {
+        deltaX = pos.x - POS_R.x;
+        angle = deltaX / radius;
+        if (pos.y > centerY) {
+            angle = PI / 2 - angle;
+        } else {
+            angle = PI * 3 / 2 + angle;
+        }
+        setPositionX(POS_R.x + cos(angle) * radius);
+        setPositionY(POS_R.y + sin(angle) * radius);
+        setRotation3D(Vec3(0 , 0 , - convertTo180(angle - PI / 2)));
     }else{
-        setPositionY(POS_L.y - _radius[_curTrack]);
+        deltaX = POS_L.x - pos.x;
+        angle = deltaX / radius;
+        if (pos.y > centerY) {
+            angle = PI / 2 + angle;
+        } else {
+            angle = PI * 3 / 2 - angle;
+        }
+        setPositionX(POS_L.x + cos(angle) * radius);
+        setPositionY(POS_L.y + sin(angle) * radius);
+        setRotation3D(Vec3(0 , 0 , - convertTo180(angle - PI / 2)));
     }
 }
 
