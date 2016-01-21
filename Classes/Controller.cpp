@@ -77,7 +77,7 @@ cocos2d::Scene * Controller::createScene()
     return ret;
 }
 
-bool Controller::isCollision(cocos2d::Node * node1, cocos2d::Node * node2){
+bool Controller::isCollision(cocos2d::Sprite * node1, cocos2d::Sprite * node2){
     auto size1 = node1->getContentSize();
     auto pos1 = node1->getPosition();
     auto rect1 = Rect(pos1.x - size1.width / 2 , pos1.y - size1.height / 2 , size1.width, size1.height);

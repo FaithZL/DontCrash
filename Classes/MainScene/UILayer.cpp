@@ -42,6 +42,7 @@ bool UILayer::onTouchBegan(cocos2d::Touch *touch, cocos2d::Event * unused_event)
 }
 
 void UILayer::initOverLayer(){
+    _over = Layer::create();
     
 }
 
@@ -51,6 +52,14 @@ void UILayer::initPauseLayer(){
 
 void UILayer::initRunningLayer(){
     
+}
+
+void UILayer::setCurLayer(int state){
+    if (_preState != -1) {
+        _layers[_preState]->setVisible(false);
+    }
+    _layers[state]->setVisible(true);
+    _preState = state;
 }
 
 void UILayer::initReadyLayer(){
@@ -63,10 +72,6 @@ void UILayer::initReadyLayer(){
     startBtn->cocos2d::Node::setPosition(winSize.width / 2 , winSize.height / 2);
     startBtn->addClickEventListener(CC_CALLBACK_1(UILayer::onStartClick, this));
     _ready->addChild(startBtn);
-}
-
-void UILayer::setCurLayer(int state){
-    
 }
 
 bool UILayer::init(){

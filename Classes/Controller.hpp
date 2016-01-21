@@ -48,7 +48,7 @@ public:
     //Collision Detection , scoring ...
     void doPerFrame(float d);
     
-    bool isCollision(cocos2d::Node * node1 , cocos2d::Node * node2);
+    bool isCollision(cocos2d::Sprite * node1 , cocos2d::Sprite * node2);
     
     void scheduleUpdate();
     
