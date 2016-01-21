@@ -43,10 +43,10 @@ void Car::changeTrack()
     auto centerPos = Vec2(winSize.width / 2 , winSize.height / 2);
     if (getCurrentStateName() == CarState::Line) {
         if (pos.y > centerPos.y) {
-            setPositionY(POS_R.y + _radius[_curTrack]);
+            setPositionY(POS_R.y + _curRadius);
         }
         else{
-            setPositionY(POS_R.y - _radius[_curTrack]);
+            setPositionY(POS_R.y - _curRadius);
         }
     }
     

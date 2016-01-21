@@ -10,6 +10,7 @@
 #define UILayer_hpp
 
 #include "cocos2d.h"
+#include "UIButton.h"
 
 USING_NS_CC;
 class UILayer : public cocos2d::Layer
@@ -21,8 +22,12 @@ public:
     
     virtual bool onTouchBegan(Touch *touch, Event *unused_event);
     
-    virtual bool init();
+    void onStartClick(Ref * ref);
     
+    virtual bool init();
+protected:
+    
+    ui::Button * _startBtn;
 };
 
 #endif /* UILayer_hpp */

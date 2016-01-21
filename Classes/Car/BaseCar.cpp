@@ -14,11 +14,9 @@ USING_NS_CC;
 
 BaseCar::BaseCar():
 _velo(0),
-_curTrack(TrackId::outer),
 _direction(-1)
 {
-    _radius[TrackId::inner] = R_INNER;
-    _radius[TrackId::outer] = R_OUTER;
+    _curRadius = R_OUTER;
 }
 
 BaseCar::~BaseCar()
@@ -72,27 +70,27 @@ void BaseCar::enterLineCallBack()
         angle = getAngle(POS_R , pos);
         if (pos.y > centerY) {
             angle = angle - PI / 2;
-            setPositionY(POS_L.y + _radius[_curTrack]);
+            setPositionY(POS_L.y + _curRadius);
             setRotation3D(Vec3(0 , 0 , 0));
         }else{
             angle = PI * 3 / 2 - angle;
-            setPositionY(POS_L.y - _radius[_curTrack]);
+            setPositionY(POS_L.y - _curRadius);
             setRotation3D(Vec3(0 , 0 , - 180));
         }
-        deltaX = _radius[_curTrack] * angle;
+        deltaX = _curRadius * angle;
         setPositionX(POS_R.x - deltaX);
     }else{
         angle = getAngle(POS_L , pos);
         if (pos.y > centerY) {
             angle = PI / 2 - angle;
-            setPositionY(POS_L.y + _radius[_curTrack]);
+            setPositionY(POS_L.y + _curRadius);
             setRotation3D(Vec3(0 , 0 , 0));
         } else {
             angle = angle - PI * 3 / 2;
-            setPositionY(POS_L.y - _radius[_curTrack]);
+            setPositionY(POS_L.y - _curRadius);
             setRotation3D(Vec3(0 , 0 , - 180));
         }
-        deltaX = _radius[_curTrack] * angle;
+        deltaX = _curRadius * angle;
         setPositionX(POS_L.x + deltaX);
     }
     
@@ -104,7 +102,7 @@ void BaseCar::enterCircleCallBack()
     auto pos = getPosition();
     auto centerX = winSize.width / 2;
     auto centerY = winSize.height / 2;
-    auto radius = _radius[_curTrack];
+//    auto _curRadius = __curRadius[_curTrack];
     
     double deltaX;
     
@@ -112,25 +110,25 @@ void BaseCar::enterCircleCallBack()
     
     if (pos.x > centerX) {
         deltaX = pos.x - POS_R.x;
-        angle = deltaX / radius;
+        angle = deltaX / _curRadius;
         if (pos.y > centerY) {
             angle = PI / 2 - angle;
         } else {
             angle = PI * 3 / 2 + angle;
         }
-        setPositionX(POS_R.x + cos(angle) * radius);
-        setPositionY(POS_R.y + sin(angle) * radius);
+        setPositionX(POS_R.x + cos(angle) * _curRadius);
+        setPositionY(POS_R.y + sin(angle) * _curRadius);
         setRotation3D(Vec3(0 , 0 , - convertTo180(angle - PI / 2)));
     }else{
         deltaX = POS_L.x - pos.x;
-        angle = deltaX / radius;
+        angle = deltaX / _curRadius;
         if (pos.y > centerY) {
             angle = PI / 2 + angle;
         } else {
             angle = PI * 3 / 2 - angle;
         }
-        setPositionX(POS_L.x + cos(angle) * radius);
-        setPositionY(POS_L.y + sin(angle) * radius);
+        setPositionX(POS_L.x + cos(angle) * _curRadius);
+        setPositionY(POS_L.y + sin(angle) * _curRadius);
         setRotation3D(Vec3(0 , 0 , - convertTo180(angle - PI / 2)));
     }
 }
@@ -171,9 +169,8 @@ void BaseCar::circleUpdate(float d)
         return;
     }
     
-    auto radius = _radius[_curTrack];
     //base of PI
-    auto angleVelo = _velo / radius;
+    auto angleVelo = _velo / _curRadius;
     //base of 180°
     auto rotateZ = getRotation3D().z;
 
@@ -185,24 +182,24 @@ void BaseCar::circleUpdate(float d)
         case Direction::CCW:
             newAngle = curAngle + angleVelo * d;
             if (posX < centerX){
-                setPositionX(POS_L.x + cos(newAngle) * radius);
-                setPositionY(POS_L.y + sin(newAngle) * radius);
+                setPositionX(POS_L.x + cos(newAngle) * _curRadius);
+                setPositionY(POS_L.y + sin(newAngle) * _curRadius);
             }
             else{
-                setPositionX(POS_R.x + cos(newAngle) * radius);
-                setPositionY(POS_R.y + sin(newAngle) * radius);
+                setPositionX(POS_R.x + cos(newAngle) * _curRadius);
+                setPositionY(POS_R.y + sin(newAngle) * _curRadius);
             }
             break;
             
         case Direction::CW:
             newAngle = curAngle - angleVelo * d;
             if (posX < centerX) {
-                setPositionX(POS_L.x + cos(newAngle) * radius);
-                setPositionY(POS_L.y + sin(newAngle) * radius);
+                setPositionX(POS_L.x + cos(newAngle) * _curRadius);
+                setPositionY(POS_L.y + sin(newAngle) * _curRadius);
             }
             else{
-                setPositionX(POS_R.x + cos(newAngle) * radius);
-                setPositionY(POS_R.y + sin(newAngle) * radius);
+                setPositionX(POS_R.x + cos(newAngle) * _curRadius);
+                setPositionY(POS_R.y + sin(newAngle) * _curRadius);
             }
             break;
             
@@ -231,10 +228,10 @@ void BaseCar::reset()
 
 void BaseCar::changeTrack()
 {
-    if (_curTrack == TrackId::inner) {
-        _curTrack = TrackId::outer;
+    if (_curRadius == R_OUTER) {
+        _curRadius = R_INNER;
     } else {
-        _curTrack = TrackId::inner;
+        _curRadius = R_OUTER;
     }
 }
 

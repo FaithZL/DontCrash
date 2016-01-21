@@ -7,9 +7,10 @@
 //
 
 #include "Enemy.hpp"
+#include "constant.h"
 
-
-Enemy::Enemy()
+Enemy::Enemy():
+_changeState(ChangeState::Normal)
 {
     
 }
@@ -34,7 +35,48 @@ Enemy * Enemy::create(std::string fileName, float originVelo, cocos2d::Vec2 orig
     return nullptr;
 }
 
+void Enemy::circleUpdate(float d)
+{
+    updateRadius(d);
+    BaseCar::circleUpdate(d);
+}
+
+void Enemy::updateRadius(float d)
+{
+    auto v = 100;
+    if (_changeState == ChangeState::ToInner) {
+        _curRadius = _curRadius - d * v;
+        if (_curRadius <= R_INNER) {
+            _curRadius = R_INNER;
+            _changeState = ChangeState::Normal;
+        }
+    } else if(_changeState == ChangeState::ToOuter){
+        _curRadius = _curRadius + d * v;
+        if (_curRadius >= R_OUTER) {
+            _curRadius = R_OUTER;
+            _changeState = ChangeState::Normal;
+        }
+    }
+}
+
 void Enemy::changeTrack()
 {
-    BaseCar::changeTrack();
+    if (_changeState != ChangeState::Normal) {
+        return;
+    }
+    if (_curRadius == R_OUTER) {
+        _changeState = ChangeState::ToInner;
+    } else {
+        _changeState = ChangeState::ToOuter;
+    }
+    
 }
+
+
+
+
+
+
+
+
+

@@ -14,11 +14,6 @@
 
 class FSM;
 
-enum TrackId{
-    inner,
-    outer
-};
-
 enum CarState
 {
     Circle,
@@ -37,7 +32,7 @@ public:
     BaseCar();
     ~BaseCar();
     
-    CC_SYNTHESIZE(int , _curTrack , CurTrack);
+    CC_SYNTHESIZE(float , _curRadius , CurRadius);
     
     CC_SYNTHESIZE(std::string , _blastRes , BlastRes);
     
@@ -74,7 +69,6 @@ protected:
     
     float _originVelo;
     
-    float _radius[2];
 };
 
 #endif /* BaseCar_hpp */

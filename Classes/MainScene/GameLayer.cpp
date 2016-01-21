@@ -49,7 +49,7 @@ bool GameLayer::init()
         car->setBlastRes("img/zha.png");
         addChild(car , 100);
         
-//        Controller::getInstance()->setUserCar(car);
+        Controller::getInstance()->setUserCar(car);
         for (int i = 0 ; i < 3; i++) {
             int l = 80;
             auto enemy = Enemy::create("img/car2.png", 750, Vec2(winSize.width / 2 + d + l * i, POS_R.y + R_OUTER), Direction::CW);
@@ -58,8 +58,6 @@ bool GameLayer::init()
             addChild(enemy);
         }
         
-        
-        Controller::getInstance()->start();
         
         return true;
     }
