@@ -24,10 +24,31 @@ public:
     
     void onStartClick(Ref * ref);
     
+    CC_SYNTHESIZE_READONLY(cocos2d::Layer * , _running , RunningLayer);
+    
+    CC_SYNTHESIZE_READONLY(cocos2d::Layer * , _pause , PauseLayer);
+    
+    CC_SYNTHESIZE_READONLY(cocos2d::Layer * , _ready , readyLayer);
+    
+    CC_SYNTHESIZE_READONLY(cocos2d::Layer * , _over , RunniLayer);
+    
+    void initReadyLayer();
+    
+    void initRunningLayer();
+    
+    void initPauseLayer();
+    
+    void initOverLayer();
+    
+    void setCurLayer(int state);
+
     virtual bool init();
+    
 protected:
     
-    ui::Button * _startBtn;
+    cocos2d::Layer * _layers[4];
+    
+    int _preState;
 };
 
 #endif /* UILayer_hpp */

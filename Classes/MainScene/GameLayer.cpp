@@ -41,6 +41,8 @@ bool GameLayer::init()
         addChild(_bg);
         addChild(_bg2);
         addChild(_track);
+        
+        srand(time(NULL));
 
         int d = 38;
         

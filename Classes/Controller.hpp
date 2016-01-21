@@ -13,6 +13,8 @@
 
 class Car;
 class Enemy;
+class UILayer;
+class GameLayer;
 
 enum GameState
 {
@@ -34,11 +36,23 @@ public:
     
     CC_SYNTHESIZE(Car * , _car , UserCar);
     
+    cocos2d::Scene * createScene();
+    
     void addEnemy(Enemy * enemy);
     
     cocos2d::Vector<Enemy *> * getEnemies();
     
     void start();
+    
+    void update(float d);
+    //Collision Detection , scoring ...
+    void doPerFrame(float d);
+    
+    bool isCollision(cocos2d::Node * node1 , cocos2d::Node * node2);
+    
+    void scheduleUpdate();
+    
+    void unscheduleUpdate();
     
     void pause();
     
@@ -50,6 +64,14 @@ protected:
     static Controller * s_pController;
     
     cocos2d::Vector<Enemy *> _enemies;
+    
+    UILayer * _uiLayer;
+    
+    GameLayer * _gameLayer;
+    
+    cocos2d::Scheduler * _scheduler;
+    
+    int _score;
     
 };
 

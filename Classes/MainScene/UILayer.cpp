@@ -13,7 +13,11 @@
 USING_NS_CC;
 
 UILayer::UILayer():
-_startBtn(nullptr)
+_over(nullptr),
+_ready(nullptr),
+_running(nullptr),
+_pause(nullptr),
+_preState(-1)
 {
     
 }
@@ -26,39 +30,52 @@ UILayer::~UILayer()
 void UILayer::onStartClick(cocos2d::Ref * ref)
 {
     Controller::getInstance()->start();
-    _startBtn->setVisible(false);
+    
+    (static_cast<Node *>(ref))->setVisible(false);
 }
 
 bool UILayer::onTouchBegan(cocos2d::Touch *touch, cocos2d::Event * unused_event)
 {
-    CCLOG("ontouch");
-    
     Controller::getInstance()->getUserCar()->changeTrack();
-    
-    auto es = Controller::getInstance()->getEnemies();
-    
-    for(auto &it : *es)
-    {
-        it->changeTrack();
-    }
     
     return true;
 }
 
-bool UILayer::init()
-{
+void UILayer::initOverLayer(){
+    
+}
+
+void UILayer::initPauseLayer(){
+    
+}
+
+void UILayer::initRunningLayer(){
+    
+}
+
+void UILayer::initReadyLayer(){
+    
+    auto startBtn = ui::Button::create();
+    startBtn->loadTextureNormal("img/play.png");
+    _ready = Layer::create();
+    addChild(_ready);
+    auto winSize = Director::getInstance()->getWinSize();
+    startBtn->cocos2d::Node::setPosition(winSize.width / 2 , winSize.height / 2);
+    startBtn->addClickEventListener(CC_CALLBACK_1(UILayer::onStartClick, this));
+    _ready->addChild(startBtn);
+}
+
+void UILayer::setCurLayer(int state){
+    
+}
+
+bool UILayer::init(){
     if (Layer::init()) {
         
-        _startBtn = ui::Button::create();
-        
-        _startBtn->loadTextureNormal("img/play.png");
-        
-        auto winSize = Director::getInstance()->getWinSize();
-        _startBtn->cocos2d::Node::setPosition(winSize.width / 2 , winSize.height / 2);
-        
-        _startBtn->addClickEventListener(CC_CALLBACK_1(UILayer::onStartClick, this));
-        
-        addChild(_startBtn);
+        initOverLayer();
+        initPauseLayer();
+        initReadyLayer();
+        initRunningLayer();
         
         auto touchListener = EventListenerTouchOneByOne::create();
         touchListener->setSwallowTouches(true);

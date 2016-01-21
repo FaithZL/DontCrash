@@ -15,7 +15,8 @@
 enum ChangeState{
     ToOuter,
     ToInner,
-    Normal
+    Normal,
+    Disabled
 };
 
 class Enemy : public BaseCar
@@ -24,19 +25,19 @@ public:
     Enemy();
     ~Enemy();
     
+    CC_SYNTHESIZE(int , _changeState , ChangeTrackState);
     
     static Enemy * create(std::string fileName , float originVelo , cocos2d::Vec2 originPos , int direction);
     
     virtual void update(float d);
+    
+    virtual void enterCircleCallBack();
     
     virtual void updateRadius(float d);
     
     virtual void changeTrack();
     
     virtual void circleUpdate(float d);
-    
-protected:
-    int _changeState;
     
 };
 

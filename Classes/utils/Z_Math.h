@@ -28,16 +28,6 @@ double convertTo180(double angle)
     return angle * 180 / PI;
 }
 
-//inline double convertToCC(double angle)
-//{
-//    
-//}
-//
-//inline double convertToMath(double angle)
-//{
-//    
-//}
-
 inline double getAngle(cocos2d::Vec2 center , cocos2d::Vec2 pos)
 {
     double angle;

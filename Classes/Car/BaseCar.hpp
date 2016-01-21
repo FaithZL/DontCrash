@@ -36,18 +36,14 @@ public:
     
     CC_SYNTHESIZE(std::string , _blastRes , BlastRes);
     
-    CC_SYNTHESIZE(float , _velo , Velo);
+    CC_SYNTHESIZE(float , _curVelo , Velo);
     
     CC_SYNTHESIZE(int , _direction , Direction);
     
     virtual void initFSM();
     
     virtual bool init(std::string fileName , float originVelo , cocos2d::Vec2 originPos , int direction);
-    
-    virtual void start();
-    
-    virtual void pause();
-    
+        
     virtual void reset();
     
     virtual void lineUpdate(float d);

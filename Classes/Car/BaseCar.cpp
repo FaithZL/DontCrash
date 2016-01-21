@@ -13,7 +13,7 @@
 USING_NS_CC;
 
 BaseCar::BaseCar():
-_velo(0),
+_curVelo(0),
 _direction(-1)
 {
     _curRadius = R_OUTER;
@@ -30,6 +30,7 @@ bool BaseCar::init(std::string fileName , float originVelo, cocos2d::Vec2 origin
     initFSM();
     _direction = direction;
     _originVelo = originVelo;
+    _curVelo = originVelo;
     _originPos = originPos;
     setVelo(originVelo);
     setPosition(originPos);
@@ -102,7 +103,6 @@ void BaseCar::enterCircleCallBack()
     auto pos = getPosition();
     auto centerX = winSize.width / 2;
     auto centerY = winSize.height / 2;
-//    auto _curRadius = __curRadius[_curTrack];
     
     double deltaX;
     
@@ -147,12 +147,12 @@ void BaseCar::lineUpdate(float d)
     }
     
     if ((_direction == Direction::CCW && posY > centerY) || (_direction == Direction::CW && posY < centerY)) {
-        auto newX = posX - d * _velo;
+        auto newX = posX - d * _curVelo;
         setPositionX(newX);
     }
     else
     {
-        auto newX = posX + d * _velo;
+        auto newX = posX + d * _curVelo;
         setPositionX(newX);
     }
     
@@ -170,7 +170,7 @@ void BaseCar::circleUpdate(float d)
     }
     
     //base of PI
-    auto angleVelo = _velo / _curRadius;
+    auto angleVelo = _curVelo / _curRadius;
     //base of 180°
     auto rotateZ = getRotation3D().z;
 
@@ -208,17 +208,6 @@ void BaseCar::circleUpdate(float d)
     }
     setRotation3D(Vec3(0 , 0 , - convertTo180(newAngle - PI / 2)));
 }
-
-void BaseCar::start()
-{
-    scheduleUpdate();
-}
-
-void BaseCar::pause()
-{
-    unscheduleUpdate();
-}
-
 
 void BaseCar::reset()
 {

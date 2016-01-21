@@ -10,7 +10,7 @@
 #include "constant.h"
 
 Enemy::Enemy():
-_changeState(ChangeState::Normal)
+_changeState(ChangeState::Disabled)
 {
     
 }
@@ -41,6 +41,14 @@ void Enemy::circleUpdate(float d)
     BaseCar::circleUpdate(d);
 }
 
+void Enemy::enterCircleCallBack()
+{
+    BaseCar::enterCircleCallBack();
+    if (rand() % 100 < 30 && _changeState == ChangeState::Normal) {
+        changeTrack();
+    }
+}
+
 void Enemy::updateRadius(float d)
 {
     auto v = 100;
@@ -61,15 +69,11 @@ void Enemy::updateRadius(float d)
 
 void Enemy::changeTrack()
 {
-    if (_changeState != ChangeState::Normal) {
-        return;
-    }
     if (_curRadius == R_OUTER) {
         _changeState = ChangeState::ToInner;
     } else {
         _changeState = ChangeState::ToOuter;
     }
-    
 }
 
 
