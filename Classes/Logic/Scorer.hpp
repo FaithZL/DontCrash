@@ -1,5 +1,5 @@
 //
-//  Scoring.hpp
+//  Scorer.hpp
 //  DontCrash
 //
 //  Created by SATAN_Z on 16/1/22.
@@ -32,6 +32,12 @@ public:
     CREATE_FUNC(Scorer);
     
     virtual void update(float d);
+    
+    bool isCollision();
+    
+    void scoring(float d);
+    
+    bool isIntersect(cocos2d::Node * node1 , cocos2d::Node * node2);
     
     virtual bool init();
     

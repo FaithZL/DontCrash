@@ -36,6 +36,7 @@ Controller::~Controller()
     }
     CC_SAFE_DELETE(_gameLayer);
     CC_SAFE_DELETE(_uiLayer);
+    CC_SAFE_DELETE(_scorer);
 }
 
 Controller * Controller::getInstance()
@@ -51,6 +52,7 @@ bool Controller::init()
 {
     _scheduler = Director::getInstance()->getScheduler();
     _scorer = Scorer::create();
+    _scorer->retain();
     return true;
 }
 
@@ -83,36 +85,6 @@ cocos2d::Scene * Controller::createScene()
     return ret;
 }
 
-bool Controller::isCollision(cocos2d::Sprite * node1, cocos2d::Sprite * node2){
-    auto size1 = node1->getContentSize();
-    auto pos1 = node1->getPosition();
-    auto rect1 = Rect(pos1.x - size1.width / 2 , pos1.y - size1.height / 2 , size1.width, size1.height);
-    auto size2 = node2->getContentSize();
-    auto pos2 = node2->getPosition();
-    auto rect2 = Rect(pos2.x - size2.width / 2 , pos2.y - size2.height / 2 , size2.width, size2.height);
-
-    if (rect2.intersectsRect(rect1)) {
-        return true;
-    }
-    return false;
-}
-
-void Controller::doPerFrame(float d)
-{
-//    _scorer->update(d);
-    for(auto &it : _enemies){
-        if (it->getCurRadius() == _car->getCurRadius() || it->getTrackState() == TrackState::ToInner || it->getTrackState() == TrackState::ToOuter) {
-            if (isCollision(_car, it)) {
-                _car->blast();
-                it->blast();
-                pause();
-                over();
-                break;
-            }
-        }
-    }
-}
-
 void Controller::over(){
     _uiLayer->translateToState(GameState::GOver);
 }
@@ -126,7 +98,12 @@ void Controller::update(float d)
     {
         it->update(d);
     }
-    doPerFrame(d);
+    
+    if (_scorer->isCollision()) {
+        pause();
+        over();
+    }
+    
 }
 
 void Controller::scheduleUpdate()
