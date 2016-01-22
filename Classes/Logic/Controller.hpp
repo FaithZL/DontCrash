@@ -10,11 +10,13 @@
 #define Controller_hpp
 
 #include "cocos2d.h"
+#include "Car.hpp"
 
 class Car;
 class Enemy;
 class UILayer;
 class GameLayer;
+class Scorer;
 
 enum GameState
 {
@@ -60,6 +62,8 @@ public:
     
     void reset();
     
+    void initScorer();
+    
 protected:
     Controller();
     
@@ -73,7 +77,7 @@ protected:
     
     cocos2d::Scheduler * _scheduler;
     
-    int _score;
+    Scorer * _scorer;
     
 };
 

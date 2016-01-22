@@ -55,8 +55,8 @@
 		D6B0611B1803AB670077942B /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6B0611A1803AB670077942B /* CoreMotion.framework */; };
 		ED545A7C1B68A1F400C3958E /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = ED545A7B1B68A1F400C3958E /* libiconv.dylib */; };
 		ED545A7E1B68A1FA00C3958E /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = ED545A7D1B68A1FA00C3958E /* libiconv.dylib */; };
-		F6AA42ED1C52480100553300 /* Scoring.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F6AA42EB1C52480100553300 /* Scoring.cpp */; };
-		F6AA42EE1C52480100553300 /* Scoring.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F6AA42EB1C52480100553300 /* Scoring.cpp */; };
+		F6AA42ED1C52480100553300 /* Scorer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F6AA42EB1C52480100553300 /* Scorer.cpp */; };
+		F6AA42EE1C52480100553300 /* Scorer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F6AA42EB1C52480100553300 /* Scorer.cpp */; };
 		F6AA42F11C5248A100553300 /* Controller.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F6AA42EF1C5248A100553300 /* Controller.cpp */; };
 		F6AA42F21C5248A100553300 /* Controller.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F6AA42EF1C5248A100553300 /* Controller.cpp */; };
 		F6CE4FB31C4E4FAD004CB6BC /* Enemy.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F6CE4FB11C4E4FAD004CB6BC /* Enemy.cpp */; };
@@ -175,8 +175,8 @@
 		ED545A7B1B68A1F400C3958E /* libiconv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.dylib; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.4.sdk/usr/lib/libiconv.dylib; sourceTree = DEVELOPER_DIR; };
 		ED545A7D1B68A1FA00C3958E /* libiconv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.dylib; path = usr/lib/libiconv.dylib; sourceTree = SDKROOT; };
 		F6153B9D1C4FC00200CE9BF3 /* Z_Math.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Z_Math.h; sourceTree = "<group>"; };
-		F6AA42EB1C52480100553300 /* Scoring.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Scoring.cpp; sourceTree = "<group>"; };
-		F6AA42EC1C52480100553300 /* Scoring.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Scoring.hpp; sourceTree = "<group>"; };
+		F6AA42EB1C52480100553300 /* Scorer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Scorer.cpp; sourceTree = "<group>"; };
+		F6AA42EC1C52480100553300 /* Scorer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Scorer.hpp; sourceTree = "<group>"; };
 		F6AA42EF1C5248A100553300 /* Controller.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Controller.cpp; sourceTree = "<group>"; };
 		F6AA42F01C5248A100553300 /* Controller.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Controller.hpp; sourceTree = "<group>"; };
 		F6CE4FB11C4E4FAD004CB6BC /* Enemy.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Enemy.cpp; sourceTree = "<group>"; };
@@ -388,8 +388,8 @@
 			children = (
 				F6AA42EF1C5248A100553300 /* Controller.cpp */,
 				F6AA42F01C5248A100553300 /* Controller.hpp */,
-				F6AA42EB1C52480100553300 /* Scoring.cpp */,
-				F6AA42EC1C52480100553300 /* Scoring.hpp */,
+				F6AA42EB1C52480100553300 /* Scorer.cpp */,
+				F6AA42EC1C52480100553300 /* Scorer.hpp */,
 			);
 			path = Logic;
 			sourceTree = "<group>";
@@ -601,7 +601,7 @@
 				F6E04E1B1C4E024C00214F89 /* BaseCar.cpp in Sources */,
 				F6E04E071C4E001B00214F89 /* FSMState.cpp in Sources */,
 				F6E04E051C4E001B00214F89 /* FSM.cpp in Sources */,
-				F6AA42ED1C52480100553300 /* Scoring.cpp in Sources */,
+				F6AA42ED1C52480100553300 /* Scorer.cpp in Sources */,
 				F6E04DFB1C4E001B00214F89 /* AppDelegate.cpp in Sources */,
 				503AE10017EB989F00D1A890 /* AppController.mm in Sources */,
 				503AE10217EB989F00D1A890 /* RootViewController.mm in Sources */,
@@ -621,7 +621,7 @@
 				F6E04E1C1C4E024C00214F89 /* BaseCar.cpp in Sources */,
 				F6E04DFC1C4E001B00214F89 /* AppDelegate.cpp in Sources */,
 				F6E04E001C4E001B00214F89 /* GameLayer.cpp in Sources */,
-				F6AA42EE1C52480100553300 /* Scoring.cpp in Sources */,
+				F6AA42EE1C52480100553300 /* Scorer.cpp in Sources */,
 				F6E04E081C4E001B00214F89 /* FSMState.cpp in Sources */,
 				F6CE4FB41C4E4FAD004CB6BC /* Enemy.cpp in Sources */,
 				F6CE4FBD1C4E8DDB004CB6BC /* Car.cpp in Sources */,

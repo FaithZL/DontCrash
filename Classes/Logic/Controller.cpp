@@ -11,6 +11,7 @@
 #include "Enemy.hpp"
 #include "GameLayer.hpp"
 #include "UILayer.hpp"
+#include "Scorer.hpp"
 
 USING_NS_CC;
 
@@ -21,7 +22,7 @@ _car(nullptr),
 _scheduler(nullptr),
 _uiLayer(nullptr),
 _gameLayer(nullptr),
-_score(0)
+_scorer(nullptr)
 {
     
 }
@@ -49,12 +50,17 @@ Controller * Controller::getInstance()
 bool Controller::init()
 {
     _scheduler = Director::getInstance()->getScheduler();
+    _scorer = Scorer::create();
     return true;
 }
 
 void Controller::addEnemy(Enemy * enemy)
 {
     _enemies.pushBack(enemy);
+}
+
+void Controller::initScorer(){
+    _scorer->setCars(_car, &_enemies);
 }
 
 cocos2d::Vector<Enemy *> * Controller::getEnemies()
@@ -84,7 +90,7 @@ bool Controller::isCollision(cocos2d::Sprite * node1, cocos2d::Sprite * node2){
     auto size2 = node2->getContentSize();
     auto pos2 = node2->getPosition();
     auto rect2 = Rect(pos2.x - size2.width / 2 , pos2.y - size2.height / 2 , size2.width, size2.height);
-
+    
     if (rect2.intersectsRect(rect1)) {
         return true;
     }
@@ -93,6 +99,7 @@ bool Controller::isCollision(cocos2d::Sprite * node1, cocos2d::Sprite * node2){
 
 void Controller::doPerFrame(float d)
 {
+    _scorer->update(d);
     for(auto &it : _enemies){
         if (it->getCurRadius() == _car->getCurRadius() || it->getTrackState() == TrackState::ToInner || it->getTrackState() == TrackState::ToOuter) {
             if (isCollision(_car, it)) {
