@@ -36,7 +36,7 @@ public:
     virtual bool init();
     
     void setCars(Car * car , cocos2d::Vector<Enemy *> * enemies);
-    
+
 protected:
     
     Car * _car;

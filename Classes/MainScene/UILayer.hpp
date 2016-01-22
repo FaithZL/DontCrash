@@ -47,6 +47,8 @@ public:
     
     void initOverLayer();
     
+    void initScore();
+    
     void createCB();
 
     virtual bool init();
@@ -56,6 +58,8 @@ protected:
     cocos2d::Layer * _layers[2];
     
     ui::Button * _startBtn;
+    
+    cocos2d::Label * _score;
     
     std::function<void(Ref *)> _callBack[CB::length];
     

@@ -17,6 +17,7 @@ USING_NS_CC;
 UILayer::UILayer():
 _over(nullptr),
 _normal(nullptr),
+_score(nullptr),
 _preState(-1)
 {
 }
@@ -28,9 +29,10 @@ UILayer::~UILayer()
 
 void UILayer::createCB(){
     
-    _callBack[CB::Start] = [](Ref * ref){
+    _callBack[CB::Start] = [this](Ref * ref){
         Controller::getInstance()->start();
         (static_cast<ui::Button *>(ref)->setVisible(false));
+        _score->setVisible(true);
     };
     
     _callBack[CB::Reset] = [](Ref * ref){
@@ -110,7 +112,10 @@ void UILayer::initNormalLayer(){
     _normal = Layer::create();
     auto startBtn = ui::Button::create("img/play.png");
     auto winSize = Director::getInstance()->getWinSize();
-    startBtn->setPosition(Vec2(winSize.width / 2 , winSize.height / 2));
+    
+    auto centerPos = Vec2(winSize.width / 2 , winSize.height / 2);
+    
+    startBtn->setPosition(centerPos);
     startBtn->addClickEventListener(_callBack[CB::Start]);
     _normal->addChild(startBtn);
     _normal->setVisible(false);
@@ -125,6 +130,7 @@ void UILayer::initFSM(){
     normal.setName(GameState::GNormal);
     normal.enterCallback = [this](){
         _startBtn->setVisible(true);
+        _score->setVisible(false);
         _normal->setVisible(true);
     };
     normal.exitCallback = [this](){
@@ -147,11 +153,20 @@ void UILayer::initFSM(){
     FSM::update(0);
 }
 
+void UILayer::initScore(){
+    _score = Label::createWithTTF("0" , "fonts/Marker Felt.ttf" , 150);
+    auto winSize = Director::getInstance()->getWinSize();
+    _score->setPosition(Vec2(winSize.width / 2 , winSize.height / 2));
+    addChild(_score);
+}
+
 bool UILayer::init(){
     if (Layer::init()) {
         createCB();
         initOverLayer();
         initNormalLayer();
+        
+        initScore();
         
         initFSM();
         

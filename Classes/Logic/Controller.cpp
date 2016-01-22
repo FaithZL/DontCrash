@@ -90,7 +90,7 @@ bool Controller::isCollision(cocos2d::Sprite * node1, cocos2d::Sprite * node2){
     auto size2 = node2->getContentSize();
     auto pos2 = node2->getPosition();
     auto rect2 = Rect(pos2.x - size2.width / 2 , pos2.y - size2.height / 2 , size2.width, size2.height);
-    
+
     if (rect2.intersectsRect(rect1)) {
         return true;
     }
@@ -99,7 +99,7 @@ bool Controller::isCollision(cocos2d::Sprite * node1, cocos2d::Sprite * node2){
 
 void Controller::doPerFrame(float d)
 {
-    _scorer->update(d);
+//    _scorer->update(d);
     for(auto &it : _enemies){
         if (it->getCurRadius() == _car->getCurRadius() || it->getTrackState() == TrackState::ToInner || it->getTrackState() == TrackState::ToOuter) {
             if (isCollision(_car, it)) {
