@@ -10,6 +10,7 @@
 #define Controller_hpp
 
 #include "cocos2d.h"
+#include "FSM.h"
 
 class Car;
 class Enemy;
@@ -18,12 +19,13 @@ class GameLayer;
 
 enum GameState
 {
-    GNormal,
+    GReady,
+    GRunning,
     GOver,
     length
 };
 
-class Controller : public cocos2d::Ref
+class Controller : public cocos2d::Ref , public FSM
 {
 public:
     ~Controller();
@@ -31,6 +33,8 @@ public:
     static Controller * getInstance();
     
     virtual bool init();
+    
+    bool initFSM();
     
     CC_SYNTHESIZE_READONLY(int , _GameState , CurGameState);
     
@@ -53,6 +57,8 @@ public:
     void scheduleUpdate();
     
     void unscheduleUpdate();
+    
+    void ready();
     
     void pause();
     

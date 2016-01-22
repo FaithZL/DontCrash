@@ -60,6 +60,7 @@ bool GameLayer::init()
             addChild(enemy);
         }
         
+        Controller::getInstance()->ready();
         
         return true;
     }

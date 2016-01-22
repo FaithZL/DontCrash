@@ -11,6 +11,7 @@
 #include "Enemy.hpp"
 #include "GameLayer.hpp"
 #include "UILayer.hpp"
+#include "FSMState.h"
 
 USING_NS_CC;
 
@@ -46,6 +47,38 @@ Controller * Controller::getInstance()
     return s_pController;
 }
 
+bool Controller::initFSM(){
+    FSMState ready;
+    
+    ready.setName(GameState::GReady);
+    ready.enterCallback = [this](){
+        _uiLayer->getStartButton()->setVisible(true);
+        _uiLayer->getNormalLayer()->setVisible(true);
+    };
+    ready.exitCallback = [this](){
+        _uiLayer->getNormalLayer()->setVisible(false);
+    };
+    addState(ready);
+    
+    FSMState running;
+    
+    running.setName(GameState::GRunning);
+    addState(running);
+    
+    FSMState over;
+    over.setName(GameState::GOver);
+    over.enterCallback = [this](){
+        _uiLayer->getOverLayer()->setVisible(true);
+    };
+    over.exitCallback = [this](){
+        _uiLayer->getOverLayer()->setVisible(false);
+    };
+    
+    addState(over);
+    
+    return true;
+}
+
 bool Controller::init()
 {
     _scheduler = Director::getInstance()->getScheduler();
@@ -65,6 +98,10 @@ cocos2d::Vector<Enemy *> * Controller::getEnemies()
 void Controller::start()
 {
     scheduleUpdate();
+}
+
+void Controller::ready(){
+//    _uiLayer->getNormalLayer()->setVisible(true);
 }
 
 cocos2d::Scene * Controller::createScene()
@@ -94,7 +131,7 @@ bool Controller::isCollision(cocos2d::Sprite * node1, cocos2d::Sprite * node2){
 void Controller::doPerFrame(float d)
 {
     for(auto &it : _enemies){
-        if (it->getCurRadius() == _car->getCurRadius() || it->getChangeTrackState() == ChangeState::ToInner || it->getChangeTrackState() == ChangeState::ToOuter) {
+        if (it->getCurRadius() == _car->getCurRadius() || it->getTrackState() == TrackState::ToInner || it->getTrackState() == TrackState::ToOuter) {
             if (isCollision(_car, it)) {
                 _car->blast();
                 it->blast();
@@ -107,11 +144,13 @@ void Controller::doPerFrame(float d)
 }
 
 void Controller::over(){
-    _uiLayer->setCurLayer(GameState::GOver);
+    setNextState(GameState::GOver);
+//    _uiLayer->setCurLayer(GameState::GOver);
 }
 
 void Controller::update(float d)
 {
+    FSM::update(d);
     if (_car) {
         _car->update(d);
     }
@@ -141,12 +180,11 @@ void Controller::reset()
     {
         it->reset();
     }
-    _uiLayer->setCurLayer(GameState::GNormal);
 }
 
 void Controller::pause()
 {
-    unscheduleUpdate();
+//    unscheduleUpdate();
 }
 
 

@@ -12,7 +12,7 @@
 #include "cocos2d.h"
 #include "BaseCar.hpp"
 
-enum ChangeState{
+enum TrackState{
     ToOuter,
     ToInner,
     Normal,
@@ -25,7 +25,7 @@ public:
     Enemy();
     ~Enemy();
     
-    CC_SYNTHESIZE(int , _changeState , ChangeTrackState);
+    CC_SYNTHESIZE(int , _trackState , TrackState);
     
     static Enemy * create(std::string fileName , float originVelo , cocos2d::Vec2 originPos , int direction);
     

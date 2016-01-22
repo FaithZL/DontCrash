@@ -11,6 +11,7 @@
 
 #include "cocos2d.h"
 #include "UIButton.h"
+#include "Controller.hpp"
 
 USING_NS_CC;
 
@@ -40,12 +41,14 @@ public:
     CC_SYNTHESIZE_READONLY(cocos2d::Layer * , _normal , NormalLayer);
     
     CC_SYNTHESIZE_READONLY(cocos2d::Layer * , _over , OverLayer);
+
+    CC_SYNTHESIZE_READONLY(ui::Button * , _startBtn , StartButton);
     
-    void initRunningLayer();
+    void initNormalLayer();
     
     void initOverLayer();
     
-    void setCurLayer(int newState);
+//    void setCurLayer(int newState);
     
     void createCB();
 
@@ -53,9 +56,7 @@ public:
     
 protected:
     
-    cocos2d::Layer * _layers[2];
-    
-    ui::Button * _startBtn;
+    cocos2d::Layer * _layers[GameState::length];
     
     std::function<void(Ref *)> _callBack[CB::length];
     

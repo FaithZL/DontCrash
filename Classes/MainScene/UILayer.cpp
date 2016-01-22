@@ -11,6 +11,7 @@
 #include "Car.hpp"
 #include "Enemy.hpp"
 #include "constant.h"
+
 USING_NS_CC;
 
 UILayer::UILayer():
@@ -51,10 +52,10 @@ void UILayer::createCB(){
     _callBack[CB::Rank] = [](Ref * ref){
         CCLOG("rank");
     };
-
-    _onStateEnter[GameState::GNormal] = [this](){
-        _startBtn->setVisible(true);
-    };
+//
+//    _onStateEnter[GameState::GNormal] = [this](){
+//        _startBtn->setVisible(true);
+//    };
 }
 
 bool UILayer::onTouchBegan(cocos2d::Touch *touch, cocos2d::Event * unused_event)
@@ -102,41 +103,33 @@ void UILayer::initOverLayer(){
 }
 
 
-void UILayer::initRunningLayer(){
+void UILayer::initNormalLayer(){
     _normal = Layer::create();
     auto startBtn = ui::Button::create("img/play.png");
     auto winSize = Director::getInstance()->getWinSize();
     startBtn->setPosition(Vec2(winSize.width / 2 , winSize.height / 2));
     startBtn->addClickEventListener(_callBack[CB::Start]);
     _normal->addChild(startBtn);
-    _normal->setVisible(false);
+//    _normal->setVisible(false);
     addChild(_normal);
     _startBtn = startBtn;
-    _layers[GameState::GNormal] = _normal;
+    _layers[GameState::GReady] = _normal;
 }
 
-void UILayer::setCurLayer(int newState){
-    if (_preState != -1) {
-        _layers[_preState]->setVisible(false);
-        if (_onStateExit[_preState]) {
-            _onStateExit[_preState]();
-        }
-    }
-    _layers[newState]->setVisible(true);
-    if (_onStateEnter[newState]) {
-        _onStateEnter[newState]();
-    }
-    _preState = newState;
-}
+//void UILayer::setCurLayer(int newState){
+//    if (_preState != -1) {
+//        _layers[_preState]->setVisible(false);
+//    }
+//    _layers[newState]->setVisible(true);
+//    _preState = newState;
+//}
 
 
 bool UILayer::init(){
     if (Layer::init()) {
         createCB();
         initOverLayer();
-        initRunningLayer();
-        
-        setCurLayer(GameState::GNormal);
+        initNormalLayer();
         
         auto touchListener = EventListenerTouchOneByOne::create();
         touchListener->setSwallowTouches(true);
