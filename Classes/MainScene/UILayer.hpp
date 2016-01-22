@@ -11,12 +11,12 @@
 
 #include "cocos2d.h"
 #include "UIButton.h"
-
+#include "FSM.h"
 USING_NS_CC;
 
 class Controller;
 
-class UILayer : public cocos2d::Layer
+class UILayer : public cocos2d::Layer , public FSM
 {
 public:
     
@@ -41,11 +41,11 @@ public:
     
     CC_SYNTHESIZE_READONLY(cocos2d::Layer * , _over , OverLayer);
     
-    void initRunningLayer();
+    void initFSM();
+    
+    void initNormalLayer();
     
     void initOverLayer();
-    
-    void setCurLayer(int newState);
     
     void createCB();
 

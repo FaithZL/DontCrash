@@ -11,6 +11,7 @@
 #include "Car.hpp"
 #include "Enemy.hpp"
 #include "constant.h"
+#include "FSMState.h"
 USING_NS_CC;
 
 UILayer::UILayer():
@@ -59,6 +60,9 @@ void UILayer::createCB(){
 
 bool UILayer::onTouchBegan(cocos2d::Touch *touch, cocos2d::Event * unused_event)
 {
+    if (getCurrentStateName() != GameState::GNormal) {
+        return false;
+    }
     Controller::getInstance()->getUserCar()->changeTrack();
     
     return true;
@@ -102,7 +106,7 @@ void UILayer::initOverLayer(){
 }
 
 
-void UILayer::initRunningLayer(){
+void UILayer::initNormalLayer(){
     _normal = Layer::create();
     auto startBtn = ui::Button::create("img/play.png");
     auto winSize = Director::getInstance()->getWinSize();
@@ -115,28 +119,41 @@ void UILayer::initRunningLayer(){
     _layers[GameState::GNormal] = _normal;
 }
 
-void UILayer::setCurLayer(int newState){
-    if (_preState != -1) {
-        _layers[_preState]->setVisible(false);
-        if (_onStateExit[_preState]) {
-            _onStateExit[_preState]();
-        }
-    }
-    _layers[newState]->setVisible(true);
-    if (_onStateEnter[newState]) {
-        _onStateEnter[newState]();
-    }
-    _preState = newState;
+void UILayer::initFSM(){
+    FSMState normal;
+    
+    normal.setName(GameState::GNormal);
+    normal.enterCallback = [this](){
+        _startBtn->setVisible(true);
+        _normal->setVisible(true);
+    };
+    normal.exitCallback = [this](){
+        _normal->setVisible(false);
+    };
+    addState(normal);
+    
+    FSMState over;
+    
+    over.setName(GameState::GOver);
+    over.enterCallback = [this](){
+        _over->setVisible(true);
+    };
+    over.exitCallback = [this](){
+        _over->setVisible(false);
+    };
+    addState(over);
+    
+    setNextState(GameState::GNormal);
+    FSM::update(0);
 }
-
 
 bool UILayer::init(){
     if (Layer::init()) {
         createCB();
         initOverLayer();
-        initRunningLayer();
+        initNormalLayer();
         
-        setCurLayer(GameState::GNormal);
+        initFSM();
         
         auto touchListener = EventListenerTouchOneByOne::create();
         touchListener->setSwallowTouches(true);

@@ -7,7 +7,7 @@
 //
 
 #include "Controller.hpp"
-#include "Car/Car.hpp"
+#include "Car.hpp"
 #include "Enemy.hpp"
 #include "GameLayer.hpp"
 #include "UILayer.hpp"
@@ -94,7 +94,7 @@ bool Controller::isCollision(cocos2d::Sprite * node1, cocos2d::Sprite * node2){
 void Controller::doPerFrame(float d)
 {
     for(auto &it : _enemies){
-        if (it->getCurRadius() == _car->getCurRadius() || it->getChangeTrackState() == ChangeState::ToInner || it->getChangeTrackState() == ChangeState::ToOuter) {
+        if (it->getCurRadius() == _car->getCurRadius() || it->getTrackState() == TrackState::ToInner || it->getTrackState() == TrackState::ToOuter) {
             if (isCollision(_car, it)) {
                 _car->blast();
                 it->blast();
@@ -107,7 +107,7 @@ void Controller::doPerFrame(float d)
 }
 
 void Controller::over(){
-    _uiLayer->setCurLayer(GameState::GOver);
+    _uiLayer->translateToState(GameState::GOver);
 }
 
 void Controller::update(float d)
@@ -141,7 +141,7 @@ void Controller::reset()
     {
         it->reset();
     }
-    _uiLayer->setCurLayer(GameState::GNormal);
+    _uiLayer->translateToState(GameState::GNormal);
 }
 
 void Controller::pause()

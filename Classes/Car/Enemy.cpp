@@ -10,7 +10,7 @@
 #include "constant.h"
 
 Enemy::Enemy():
-_changeState(ChangeState::Disabled)
+_trackState(TrackState::Disabled)
 {
     
 }
@@ -44,7 +44,7 @@ void Enemy::circleUpdate(float d)
 void Enemy::enterCircleCallBack()
 {
     BaseCar::enterCircleCallBack();
-    if (rand() % 100 < 30 && _changeState == ChangeState::Normal) {
+    if (rand() % 100 < 30 && _trackState == TrackState::Normal) {
         changeTrack();
     }
 }
@@ -52,17 +52,17 @@ void Enemy::enterCircleCallBack()
 void Enemy::updateRadius(float d)
 {
     auto v = 100;
-    if (_changeState == ChangeState::ToInner) {
+    if (_trackState == TrackState::ToInner) {
         _curRadius = _curRadius - d * v;
         if (_curRadius <= R_INNER) {
             _curRadius = R_INNER;
-            _changeState = ChangeState::Normal;
+            _trackState = TrackState::Normal;
         }
-    } else if(_changeState == ChangeState::ToOuter){
+    } else if(_trackState == TrackState::ToOuter){
         _curRadius = _curRadius + d * v;
         if (_curRadius >= R_OUTER) {
             _curRadius = R_OUTER;
-            _changeState = ChangeState::Normal;
+            _trackState = TrackState::Normal;
         }
     }
 }
@@ -70,9 +70,9 @@ void Enemy::updateRadius(float d)
 void Enemy::changeTrack()
 {
     if (_curRadius == R_OUTER) {
-        _changeState = ChangeState::ToInner;
+        _trackState = TrackState::ToInner;
     } else {
-        _changeState = ChangeState::ToOuter;
+        _trackState = TrackState::ToOuter;
     }
 }
 

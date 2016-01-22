@@ -41,16 +41,17 @@ bool BaseCar::init(std::string fileName , float originVelo, cocos2d::Vec2 origin
 
 void BaseCar::initFSM()
 {
-    FSMState state;
-    state.setName(CarState::Line);
-    state.enterCallback = CC_CALLBACK_0(BaseCar::enterLineCallBack, this);
-    state.updateCallback = CC_CALLBACK_1(BaseCar::lineUpdate, this);
-    addState(state);
+    FSMState line;
+    line.setName(CarState::Line);
+    line.enterCallback = CC_CALLBACK_0(BaseCar::enterLineCallBack, this);
+    line.updateCallback = CC_CALLBACK_1(BaseCar::lineUpdate, this);
+    addState(line);
     
-    state.setName(CarState::Circle);
-    state.enterCallback = CC_CALLBACK_0(BaseCar::enterCircleCallBack, this);
-    state.updateCallback = CC_CALLBACK_1(BaseCar::circleUpdate, this);
-    addState(state);
+    FSMState circle;
+    circle.setName(CarState::Circle);
+    circle.enterCallback = CC_CALLBACK_0(BaseCar::enterCircleCallBack, this);
+    circle.updateCallback = CC_CALLBACK_1(BaseCar::circleUpdate, this);
+    addState(circle);
     
     setNextState(CarState::Line);
 }
