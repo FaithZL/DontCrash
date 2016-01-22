@@ -13,40 +13,55 @@
 #include "UIButton.h"
 
 USING_NS_CC;
+
+class Controller;
+
 class UILayer : public cocos2d::Layer
 {
 public:
+    
+    enum CB{
+        Start,
+        Pause,
+        Share,
+        More,
+        Rank,
+        Fav,
+        Reset,
+        length
+    };
+    
     UILayer();
     ~UILayer();
     CREATE_FUNC(UILayer);
     
     virtual bool onTouchBegan(Touch *touch, Event *unused_event);
     
-    void onStartClick(Ref * ref);
+    CC_SYNTHESIZE_READONLY(cocos2d::Layer * , _normal , NormalLayer);
     
-    CC_SYNTHESIZE_READONLY(cocos2d::Layer * , _running , RunningLayer);
-    
-    CC_SYNTHESIZE_READONLY(cocos2d::Layer * , _pause , PauseLayer);
-    
-    CC_SYNTHESIZE_READONLY(cocos2d::Layer * , _ready , readyLayer);
-    
-    CC_SYNTHESIZE_READONLY(cocos2d::Layer * , _over , RunniLayer);
-    
-    void initReadyLayer();
+    CC_SYNTHESIZE_READONLY(cocos2d::Layer * , _over , OverLayer);
     
     void initRunningLayer();
     
-    void initPauseLayer();
-    
     void initOverLayer();
     
-    void setCurLayer(int state);
+    void setCurLayer(int newState);
+    
+    void createCB();
 
     virtual bool init();
     
 protected:
     
-    cocos2d::Layer * _layers[4];
+    cocos2d::Layer * _layers[2];
+    
+    ui::Button * _startBtn;
+    
+    std::function<void(Ref *)> _callBack[CB::length];
+    
+    std::function<void()> _onStateEnter[2];
+    
+    std::function<void()> _onStateExit[2];
     
     int _preState;
 };

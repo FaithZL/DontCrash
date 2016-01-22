@@ -10,7 +10,7 @@
 #define BaseCar_hpp
 
 #include "cocos2d.h"
-#include "../utils/FSM/FSM.h"
+#include "FSM.h"
 
 class FSM;
 
@@ -65,6 +65,9 @@ protected:
     
     float _originVelo;
     
+    float _originAngle;
+    
+    std::string _normalRes;
 };
 
 #endif /* BaseCar_hpp */

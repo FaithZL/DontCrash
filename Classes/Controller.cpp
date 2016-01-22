@@ -99,10 +99,15 @@ void Controller::doPerFrame(float d)
                 _car->blast();
                 it->blast();
                 pause();
+                over();
                 break;
             }
         }
     }
+}
+
+void Controller::over(){
+    _uiLayer->setCurLayer(GameState::GOver);
 }
 
 void Controller::update(float d)
@@ -136,6 +141,7 @@ void Controller::reset()
     {
         it->reset();
     }
+    _uiLayer->setCurLayer(GameState::GNormal);
 }
 
 void Controller::pause()

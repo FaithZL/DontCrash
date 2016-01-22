@@ -18,9 +18,9 @@ class GameLayer;
 
 enum GameState
 {
-    Pause,
-    Run,
-    Stop
+    GNormal,
+    GOver,
+    length
 };
 
 class Controller : public cocos2d::Ref
@@ -55,6 +55,8 @@ public:
     void unscheduleUpdate();
     
     void pause();
+    
+    void over();
     
     void reset();
     

@@ -27,13 +27,15 @@ BaseCar::~BaseCar()
 bool BaseCar::init(std::string fileName , float originVelo, cocos2d::Vec2 originPos , int direction)
 {
     this->initWithFile(fileName);
-    initFSM();
+    _normalRes = fileName;
+    _originAngle = getRotation3D().z;
     _direction = direction;
     _originVelo = originVelo;
     _curVelo = originVelo;
     _originPos = originPos;
     setVelo(originVelo);
     setPosition(originPos);
+    initFSM();
     return true;
 }
 
@@ -213,6 +215,8 @@ void BaseCar::reset()
 {
     setVelo(_originVelo);
     setPosition(_originPos);
+    setTexture(_normalRes);
+    setRotation3D(Vec3(0 , 0 , _originAngle));
 }
 
 void BaseCar::changeTrack()
