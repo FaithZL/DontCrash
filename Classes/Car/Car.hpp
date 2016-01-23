@@ -11,6 +11,7 @@
 
 #include "BaseCar.hpp"
 
+
 class Car : public BaseCar
 {
 public:
@@ -18,9 +19,13 @@ public:
     
     ~Car();
     
-    void setExtraScoreByTag(int tag);
+    void setExtraScoreByTag(int enemyTag);
     
-    int getExtraScoreByTag(int tag);
+    float getExtraScoreByTag(int enemyTag);
+    
+    void setDistance(int enemyTag , float distance);
+    
+    float getPreDistance(int enemyTag);
     
     static Car * create(std::string fileName , float originVelo , cocos2d::Vec2 originPos , int direction);
     
@@ -29,7 +34,10 @@ public:
     virtual void changeTrack();
     
 protected:
-    int _extraScore[3];
+    
+    float _extraScore[3];
+    
+    float _preDis[3];
 };
 
 #endif /* Car_hpp */

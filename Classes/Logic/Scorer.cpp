@@ -29,12 +29,7 @@ bool Scorer::init(){
 }
 
 void Scorer::addScore(){
-    if (_car->getExtraScore() > 0) {
-        addExtraScore();
-    }else{
-        _score ++;
-    }
-    //play effect and refesh UI
+       //play effect and refesh UI
 }
 
 void Scorer::addExtraScore(){
@@ -60,13 +55,29 @@ void Scorer::checkMeet(Car *car, Enemy *enemy){
                 break;
         }
     }
-    
+    if (car->getExtraScoreByTag(enemy->getTag()) > 0) {
+        //extra score
+    }
+}
+
+void Scorer::checkSameTrack(){
+    for (int i = 0 ; i < _enemies->size() ; i ++) {
+        auto enemy = _enemies->at(i);
+        if (_car->getCurRadius() == enemy->getCurRadius()) {
+            _car->setExtraScoreByTag(enemy->getTag());
+        }
+    }
 }
 
 bool Scorer::isMeet(Car *car, Enemy *enemy){
     bool ret = true;
     
     return ret;
+}
+
+void Scorer::update(float d){
+    scoring(d);
+    checkSameTrack();
 }
 
 void Scorer::scoring(float d){

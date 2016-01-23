@@ -37,6 +37,11 @@ public:
     
     void scoring(float d);
     
+    void update(float d);
+    
+    //if the same track then add a extra score buff
+    void checkSameTrack();
+    
     void checkMeet(Car * car , Enemy * enemy);
     
     bool isMeet(Car * car , Enemy * enemy);

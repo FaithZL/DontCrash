@@ -14,6 +14,7 @@ Car::Car()
 {
     for (int i = 0 ; i < 3 ; i ++) {
         _extraScore[i] = 0;
+        _preDis[i] = 0;
     }
 }
 
@@ -36,19 +37,27 @@ void Car::update(float d)
 {
     BaseCar::update(d);
     for (int i = 0 ; i < 3 ; i ++) {
-        _extraScore[i] --;
+        _extraScore[i] = _extraScore[i] - d * 60;
         if (_extraScore[i] <= 0) {
             _extraScore[i] = 0;
         }
     }
 }
 
-void Car::setExtraScoreByTag(int tag){
-    _extraScore[tag] = 30;
+float Car::getPreDistance(int enemyTag){
+    return _preDis[enemyTag];
 }
 
-int Car::getExtraScoreByTag(int tag){
-    return _extraScore[tag];
+void Car::setDistance(int enemyTag, float distance){
+    _preDis[enemyTag] = distance;
+}
+
+void Car::setExtraScoreByTag(int enemyTag){
+    _extraScore[enemyTag] = 30;
+}
+
+float Car::getExtraScoreByTag(int enemyTag){
+    return _extraScore[enemyTag];
 }
 
 void Car::changeTrack()

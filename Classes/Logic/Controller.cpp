@@ -104,7 +104,7 @@ void Controller::update(float d)
         over();
         return;
     }
-    _scorer->scoring(d);
+    _scorer->update(d);
 }
 
 void Controller::scheduleUpdate()
