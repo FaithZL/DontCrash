@@ -15,7 +15,8 @@ USING_NS_CC;
 Scorer::Scorer():
 _car(nullptr),
 _score(0),
-_enemies(nullptr){
+_enemies(nullptr),
+_enemyState(EnemyState::g3){
     
 }
 
@@ -25,6 +26,70 @@ Scorer::~Scorer(){
 
 bool Scorer::init(){
     return true;
+}
+
+void Scorer::addScore(){
+    if (_car->getExtraScore() > 0) {
+        addExtraScore();
+    }else{
+        _score ++;
+    }
+    //play effect and refesh UI
+}
+
+void Scorer::addExtraScore(){
+    
+}
+
+void Scorer::checkMeet(Car *car, Enemy *enemy){
+    
+    if (isMeet(car , enemy)) {
+        switch (enemy->getTag()) {
+            case 0:
+                
+                break;
+                
+            case 1:
+                
+                break;
+                
+            case 2:
+                
+                break;
+            default:
+                break;
+        }
+    }
+    
+}
+
+bool Scorer::isMeet(Car *car, Enemy *enemy){
+    bool ret = true;
+    
+    return ret;
+}
+
+void Scorer::scoring(float d){
+    
+    
+    switch (_enemyState) {
+        case EnemyState::g3:
+            checkMeet(_car , _enemies->at(0));
+            break;
+            
+        case EnemyState::g12:
+            checkMeet(_car , _enemies->at(0));
+            checkMeet(_car , _enemies->at(1));
+            break;
+            
+        case EnemyState::g111:
+            for (auto i = 0; i < _enemies->size(); i ++) {
+                checkMeet(_car, _enemies->at(i));
+            }
+            break;
+        default:
+            break;
+    }
 }
 
 bool Scorer::isCollision(){
@@ -60,7 +125,5 @@ void Scorer::setCars(Car * car, cocos2d::Vector<Enemy *> * enemies){
     _enemies->swap(0, 2);
 }
 
-void Scorer::update(float d){
-    
-}
+
 

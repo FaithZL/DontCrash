@@ -12,7 +12,9 @@ USING_NS_CC;
 
 Car::Car()
 {
-    
+    for (int i = 0 ; i < 3 ; i ++) {
+        _extraScore[i] = 0;
+    }
 }
 
 Car::~Car()
@@ -22,7 +24,7 @@ Car::~Car()
 
 Car * Car::create(std::string fileName, float originVelo, cocos2d::Vec2 originPos, int direction)
 {
-    auto ret = new (std::nothrow)Car();
+    auto ret = new (std::nothrow) Car();
     if (ret) {
         ret->init(fileName, originVelo, originPos, direction);
         return ret;
@@ -33,6 +35,20 @@ Car * Car::create(std::string fileName, float originVelo, cocos2d::Vec2 originPo
 void Car::update(float d)
 {
     BaseCar::update(d);
+    for (int i = 0 ; i < 3 ; i ++) {
+        _extraScore[i] --;
+        if (_extraScore[i] <= 0) {
+            _extraScore[i] = 0;
+        }
+    }
+}
+
+void Car::setExtraScoreByTag(int tag){
+    _extraScore[tag] = 30;
+}
+
+int Car::getExtraScoreByTag(int tag){
+    return _extraScore[tag];
 }
 
 void Car::changeTrack()

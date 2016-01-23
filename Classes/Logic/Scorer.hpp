@@ -31,11 +31,17 @@ public:
     
     CREATE_FUNC(Scorer);
     
-    virtual void update(float d);
+    void addExtraScore();
     
     bool isCollision();
     
     void scoring(float d);
+    
+    void checkMeet(Car * car , Enemy * enemy);
+    
+    bool isMeet(Car * car , Enemy * enemy);
+    
+    void addScore();
     
     bool isIntersect(cocos2d::Node * node1 , cocos2d::Node * node2);
     

@@ -15,13 +15,21 @@ class Car : public BaseCar
 {
 public:
     Car();
+    
     ~Car();
+    
+    void setExtraScoreByTag(int tag);
+    
+    int getExtraScoreByTag(int tag);
     
     static Car * create(std::string fileName , float originVelo , cocos2d::Vec2 originPos , int direction);
     
     virtual void update(float d);
     
     virtual void changeTrack();
+    
+protected:
+    int _extraScore[3];
 };
 
 #endif /* Car_hpp */

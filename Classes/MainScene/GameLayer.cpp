@@ -44,9 +44,11 @@ bool GameLayer::init()
         
         srand(time(NULL));
 
-        int d = 38;
+        int d = 50;
         
-        Vec2 pos = Vec2(winSize.width / 2 - d , POS_R.y + R_OUTER);
+        float X = winSize.width / 2 - 50;
+        
+        Vec2 pos = Vec2(X - d , POS_R.y + R_OUTER);
         auto car = Car::create("img/car.png", 750, pos, Direction::CCW);
         car->setBlastRes("img/zha.png");
         addChild(car , 100);
@@ -54,7 +56,8 @@ bool GameLayer::init()
         Controller::getInstance()->setUserCar(car);
         for (int i = 0 ; i < 3; i++) {
             int l = 80;
-            auto enemy = Enemy::create("img/car2.png", 750, Vec2(winSize.width / 2 + d + l * i, POS_R.y + R_OUTER), Direction::CW);
+            auto enemy = Enemy::create("img/car2.png", 750, Vec2(X + d + l * i, POS_R.y + R_OUTER), Direction::CW);
+            enemy->setTag(i);
             enemy->setBlastRes("img/zha2.png");
             Controller::getInstance()->addEnemy(enemy);
             addChild(enemy);

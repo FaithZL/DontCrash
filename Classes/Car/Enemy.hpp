@@ -27,9 +27,9 @@ public:
     
     CC_SYNTHESIZE(int , _trackState , TrackState);
     
-    static Enemy * create(std::string fileName , float originVelo , cocos2d::Vec2 originPos , int direction);
+    CC_SYNTHESIZE(bool , _bAttempToChange , AttempToChange);
     
-    virtual void update(float d);
+    static Enemy * create(std::string fileName , float originVelo , cocos2d::Vec2 originPos , int direction);
     
     virtual void enterCircleCallBack();
     

@@ -102,8 +102,9 @@ void Controller::update(float d)
     if (_scorer->isCollision()) {
         pause();
         over();
+        return;
     }
-    
+    _scorer->scoring(d);
 }
 
 void Controller::scheduleUpdate()

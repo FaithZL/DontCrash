@@ -10,7 +10,8 @@
 #include "constant.h"
 
 Enemy::Enemy():
-_trackState(TrackState::Disabled)
+_trackState(TrackState::Disabled),
+_bAttempToChange(false)
 {
     
 }
@@ -18,11 +19,6 @@ _trackState(TrackState::Disabled)
 Enemy::~Enemy()
 {
     
-}
-
-void Enemy::update(float d)
-{
-    BaseCar::update(d);
 }
 
 Enemy * Enemy::create(std::string fileName, float originVelo, cocos2d::Vec2 originPos, int direction)
@@ -44,14 +40,15 @@ void Enemy::circleUpdate(float d)
 void Enemy::enterCircleCallBack()
 {
     BaseCar::enterCircleCallBack();
-    if (rand() % 100 < 30 && _trackState == TrackState::Normal) {
+    if (_bAttempToChange) {
         changeTrack();
+        _bAttempToChange = false;
     }
 }
 
 void Enemy::updateRadius(float d)
 {
-    auto v = 100;
+    auto v = _curVelo / 7;
     if (_trackState == TrackState::ToInner) {
         _curRadius = _curRadius - d * v;
         if (_curRadius <= R_INNER) {
