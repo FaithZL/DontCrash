@@ -27,6 +27,10 @@ public:
     
     float getPreDistance(int enemyTag);
     
+    void setFarthestFlagbyTag(int enemyTag , bool flag);
+    
+    bool getFarthestFlagbyTag(int enemyTag);
+    
     static Car * create(std::string fileName , float originVelo , cocos2d::Vec2 originPos , int direction);
     
     virtual void update(float d);
@@ -38,6 +42,8 @@ protected:
     float _extraScore[3];
     
     float _preDis[3];
+    //present whether arrive at farthest distance by enemy tag
+    bool _bFarthestFlag[3];
 };
 
 #endif /* Car_hpp */

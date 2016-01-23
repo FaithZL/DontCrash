@@ -9,6 +9,7 @@
 #include "Scorer.hpp"
 #include "Enemy.hpp"
 #include "Car.hpp"
+#include "constant.h"
 
 USING_NS_CC;
 
@@ -70,7 +71,16 @@ void Scorer::checkSameTrack(){
 }
 
 bool Scorer::isMeet(Car *car, Enemy *enemy){
-    bool ret = true;
+    auto ret = false;
+    
+    auto carPos = car->getPosition();
+    auto enemyPos = enemy->getPosition();
+    auto distance = (carPos - enemyPos).length();
+    auto preDis = car->getPreDistance(enemy->getTag());
+    if (distance > preDis && preDis >= R_OUTER - R_INNER) {
+        ret = true;
+    }
+    car->setDistance(enemy->getTag(), distance);
     
     return ret;
 }

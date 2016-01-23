@@ -15,6 +15,7 @@ Car::Car()
     for (int i = 0 ; i < 3 ; i ++) {
         _extraScore[i] = 0;
         _preDis[i] = 0;
+        _bFarthestFlag[i] = false;
     }
 }
 
@@ -46,6 +47,14 @@ void Car::update(float d)
 
 float Car::getPreDistance(int enemyTag){
     return _preDis[enemyTag];
+}
+
+void Car::setFarthestFlagbyTag(int enemyTag , bool flag){
+    _bFarthestFlag[enemyTag] = flag;
+}
+
+bool Car::getFarthestFlagbyTag(int enemyTag){
+    return _bFarthestFlag[enemyTag];
 }
 
 void Car::setDistance(int enemyTag, float distance){
