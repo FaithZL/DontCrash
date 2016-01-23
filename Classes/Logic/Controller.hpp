@@ -10,7 +10,6 @@
 #define Controller_hpp
 
 #include "cocos2d.h"
-#include "Car.hpp"
 
 class Car;
 class Enemy;

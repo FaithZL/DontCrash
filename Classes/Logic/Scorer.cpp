@@ -29,11 +29,12 @@ bool Scorer::init(){
     return true;
 }
 
-void Scorer::addScore(){
-       //play effect and refesh UI
+void Scorer::refreshScore(){
+    
+    
 }
 
-void Scorer::addExtraScore(){
+void Scorer::playRewardEff(){
     
 }
 
@@ -55,10 +56,14 @@ void Scorer::checkMeet(Car *car, Enemy *enemy){
             default:
                 break;
         }
+        CCLOG("%d" , enemy->getTag());
+        _score ++;
     }
     if (car->getExtraScoreByTag(enemy->getTag()) > 0) {
-        //extra score
+        _score ++;
+        playRewardEff();
     }
+    refreshScore();
 }
 
 void Scorer::checkSameTrack(){
@@ -76,11 +81,17 @@ bool Scorer::isMeet(Car *car, Enemy *enemy){
     auto carPos = car->getPosition();
     auto enemyPos = enemy->getPosition();
     auto distance = (carPos - enemyPos).length();
-    auto preDis = car->getPreDistance(enemy->getTag());
-    if (distance > preDis && preDis >= R_OUTER - R_INNER) {
+    auto tag = enemy->getTag();
+    auto preDis = car->getPreDistance(tag);
+    
+    if (distance > preDis && preDis >= R_OUTER - R_INNER && preDis < R_INNER * 2 && car->getFarthestFlagbyTag(tag)) {
+        car->setFarthestFlagbyTag(tag , false);
         ret = true;
     }
-    car->setDistance(enemy->getTag(), distance);
+    if (distance < preDis) {
+        car->setFarthestFlagbyTag(tag, true);
+    }
+    car->setDistance(tag , distance);
     
     return ret;
 }
@@ -143,7 +154,6 @@ bool Scorer::isIntersect(cocos2d::Node * node1, cocos2d::Node * node2){
 void Scorer::setCars(Car * car, cocos2d::Vector<Enemy *> * enemies){
     _car = car;
     _enemies = enemies;
-    _enemies->swap(0, 2);
 }
 
 

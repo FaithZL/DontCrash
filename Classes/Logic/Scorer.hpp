@@ -31,7 +31,7 @@ public:
     
     CREATE_FUNC(Scorer);
     
-    void addExtraScore();
+    void playRewardEff();
     
     bool isCollision();
     
@@ -46,7 +46,7 @@ public:
     
     bool isMeet(Car * car , Enemy * enemy);
     
-    void addScore();
+    void refreshScore();
     
     bool isIntersect(cocos2d::Node * node1 , cocos2d::Node * node2);
     
