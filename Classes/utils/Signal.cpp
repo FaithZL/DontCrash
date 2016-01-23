@@ -7,3 +7,16 @@
 //
 
 #include "Signal.hpp"
+
+Signal::Signal(){
+    
+}
+
+Signal::~Signal(){
+    clear();
+}
+
+bool Signal::init(){
+    
+    return true;
+}
