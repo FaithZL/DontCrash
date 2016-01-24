@@ -55,6 +55,8 @@ public:
 
     virtual bool init();
     
+    bool refreshScore(std::string &arg , va_list args);
+    
 protected:
     
     cocos2d::Layer * _layers[2];

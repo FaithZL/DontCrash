@@ -74,7 +74,10 @@ void UILayer::createCB(){
     _onStateEnter[GameState::GNormal] = [this](){
         _startBtn->setVisible(true);
     };
-    std::map<int , int, int> m;
+    
+    Controller::getInstance()->getSignal()->registerEvent("onScoreChange", this, TO_SIG_SEL(UILayer::refreshScore) , 0);
+    
+//    Controller::getInstance()->getSignal()->removeEvent("onScoreChange", this, TO_SIG_SEL(UILayer::refreshScore));
     
 }
 
@@ -176,6 +179,18 @@ void UILayer::initScore(){
     auto winSize = Director::getInstance()->getWinSize();
     _score->setPosition(Vec2(winSize.width / 2 , winSize.height / 2));
     addChild(_score);
+}
+
+bool UILayer::refreshScore(std::string &arg, va_list args){
+   
+    int score = va_arg(args,int);
+    
+    CCLOG("%d  fuck" , score);
+    
+    va_end(args);
+    
+    _score->setString("" + score);
+    return true;
 }
 
 bool UILayer::init(){

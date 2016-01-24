@@ -54,7 +54,7 @@ void Signal::registerEvent(std::string eventName , Sig_Target pTarget , Sig_SEL 
     
 }
 
-void Signal::dispatchEvent(std::string eventName , ...){
+void Signal::dispatchEvent(std::string &eventName , ...){
     
     va_list args;
     va_start(args, eventName);
@@ -68,10 +68,13 @@ void Signal::dispatchEvent(std::string eventName , ...){
         bool bContinue = true;
         while (iter_v != v_struct.end()) {
             if (bContinue) {
-                
+                Sig_Target pTarget = iter_v->pTarget;
+                Sig_SEL pSelector = iter_v->pSelector;
+                bContinue = (pTarget->*pSelector)(eventName , args);
             }else{
                 break;
             }
+            iter_v ++;
         }
     }
     va_end(args);

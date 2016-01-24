@@ -32,8 +32,8 @@ bool Scorer::init(){
 }
 
 void Scorer::refreshScore(){
-    
-    Controller::getInstance()->getSignal()->dispatchEvent("onScoreChange");
+    std::string on = "onScoreChange";
+    Controller::getInstance()->getSignal()->dispatchEvent(on , _score);
 }
 
 void Scorer::playRewardEff(){
