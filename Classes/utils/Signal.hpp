@@ -13,10 +13,21 @@
 
 //typedef bool (* type_cb)();
 
-typedef std::function<bool()> * type_cb;
+//typedef std::function<bool()> * type_cb;
 
-typedef bool (cocos2d::Ref::*Signal_cb)(int arg , ...);
+typedef bool (cocos2d::Ref::*Sig_SEL)(int arg , ...);
 
+typedef cocos2d::Ref * Sig_Target;
+
+typedef struct{
+    
+    Sig_Target pTarget;
+    
+    Sig_SEL pSelector;
+    
+    int priority;
+    
+} Sig_struct;
 
 class Signal :public cocos2d::Ref{
     
@@ -27,11 +38,11 @@ public:
     
     virtual bool init();
     
-    void registerEvent(std::string eventName , Signal_cb callback, int priority);
+    void registerEvent(std::string eventName , Sig_Target pTarget , Sig_SEL pSelector ,int priority);
     
-    void dispatchEvent(std::string eventName);
+    void dispatchEvent(std::string eventName , ...);
     
-    void removeEvent(std::string eventName , Signal_cb callback);
+    void removeEvent(std::string eventName , Sig_Target pTarget , Sig_SEL pSelector);
     
     void clearEvent(std::string eventName);
     
@@ -41,11 +52,8 @@ public:
     
 protected:
     
-    std::map<std::string , std::vector<Signal_cb>> _callbackMap;
+    std::map<std::string , std::vector<Sig_struct>> _structMap;
     
-    std::map<std::string , std::vector<Ref *>> _targetMap;
-    
-    std::map<std::string, std::vector<int>> _priorityMap;
 };
 
 #endif /* Signal_hpp */

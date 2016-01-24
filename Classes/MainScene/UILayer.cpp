@@ -74,6 +74,7 @@ void UILayer::createCB(){
     _onStateEnter[GameState::GNormal] = [this](){
         _startBtn->setVisible(true);
     };
+    std::map<int , int, int> m;
     
 }
 

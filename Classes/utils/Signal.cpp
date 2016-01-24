@@ -21,88 +21,80 @@ bool Signal::init(){
     return true;
 }
 
-void Signal::registerEvent(std::string eventName, Signal_cb callback, int priority){
+void Signal::registerEvent(std::string eventName , Sig_Target pTarget , Sig_SEL pSelector, int priority){
     
-    std::map<std::string, std::vector<Signal_cb>>::iterator iter = _callbackMap.find(eventName);
+    std::map<std::string, std::vector<Sig_struct>>::iterator iter_m = _structMap.find(eventName);
     
-    if (iter == _callbackMap.end()) {
+    if (iter_m == _structMap.end()) {
         //new
-        std::vector<Signal_cb> v_callback;
-        _callbackMap.insert(std::make_pair(eventName , v_callback));
-        
-        std::vector<int> v_priority;
-        _priorityMap.insert(std::make_pair(eventName, v_priority));
+        std::vector<Sig_struct> v_struct;
+        _structMap.insert(std::make_pair(eventName, v_struct));
     }
     
-    std::vector<Signal_cb> &v_callback = _callbackMap[eventName];
-    std::vector<int> &v_priority = _priorityMap[eventName];
+    Sig_struct sig_struct = {
+        .priority = priority,
+        .pTarget = pTarget,
+        .pSelector = pSelector
+    };
     
-    std::vector<Signal_cb>::iterator iter_v_c = v_callback.begin();
-    std::vector<int>::iterator iter_v_p= v_priority.begin();
+    std::vector<Sig_struct> &v_struct = _structMap[eventName];
+    std::vector<Sig_struct>::iterator iter_v = v_struct.begin();
     
-    while (iter_v_p != v_priority.end()) {
-    
-        if (priority < * iter_v_p) {
-            v_priority.insert(iter_v_p, priority);
-            v_callback.insert(iter_v_c, callback);
+    while (iter_v != v_struct.end()) {
+        if (iter_v->priority < priority) {
+            v_struct.insert(iter_v, sig_struct);
             break;
         }
-        iter_v_c ++;
-        iter_v_p ++;
+        iter_v ++;
     }
-    if (iter_v_p == v_priority.end()) {
-        v_priority.push_back(priority);
-        v_callback.push_back(callback);
+    
+    if (iter_v == v_struct.end()) {
+        v_struct.push_back(sig_struct);
     }
+    
 }
 
-void Signal::dispatchEvent(std::string eventName){
+void Signal::dispatchEvent(std::string eventName , ...){
     
-    std::map<std::string, std::vector<Signal_cb>>::iterator iter_m_c = _callbackMap.find(eventName);
+    va_list args;
+    va_start(args, eventName);
     
-    if (iter_m_c != _callbackMap.end()) {
+    std::map<std::string, std::vector<Sig_struct>>::iterator iter_m = _structMap.find(eventName);
+    
+    if (iter_m != _structMap.end()) {
         
-        std::vector<Signal_cb> v_callback = _callbackMap[eventName];
+        std::vector<Sig_struct> &v_struct = _structMap[eventName];
+        std::vector<Sig_struct>::iterator iter_v = v_struct.begin();
         bool bContinue = true;
-        for (std::vector<Signal_cb>::iterator iter = v_callback.begin() ; iter != v_callback.end() ; iter ++) {
+        while (iter_v != v_struct.end()) {
             if (bContinue) {
-                Signal_cb pfun = static_cast<Signal_cb>(*iter);
-//                bContinue = (*pfun)();
+                
             }else{
                 break;
             }
         }
     }
+    va_end(args);
 }
 
-void Signal::removeEvent(std::string eventName, Signal_cb callback){
+void Signal::removeEvent(std::string eventName, Sig_Target pTarget , Sig_SEL pSelector){
     
-    std::vector<Signal_cb> &v_callback = _callbackMap[eventName];
-    std::vector<int> &v_priority = _priorityMap[eventName];
-
-    std::vector<int>::iterator iter_v_p = v_priority.begin();
-    std::vector<Signal_cb>::iterator iter_v_c;
-    for (iter_v_c = v_callback.begin() ; iter_v_c != v_callback.end() ; iter_v_c++ , iter_v_p ++ ) {
-        if (*iter_v_c == callback) {
-            v_priority.erase(iter_v_p);
-            v_callback.erase(iter_v_c);
+    std::vector<Sig_struct> &v_struct = _structMap[eventName];
+    std::vector<Sig_struct>::iterator iter;
+    for (iter = v_struct.begin() ; iter != v_struct.end() ; iter ++) {
+        if (pTarget == iter->pTarget && pSelector == iter->pSelector) {
+            v_struct.erase(iter);
             break;
         }
     }
 }
 
 void Signal::clearEvent(std::string eventName){
-    _callbackMap[eventName].clear();
-    
-    _targetMap[eventName].clear();
-    
-    _priorityMap[eventName].clear();
+    _structMap[eventName].clear();
 }
 
 void Signal::clear(){
-    _priorityMap.clear();
-    _callbackMap.clear();
-    _targetMap.clear();
+    _structMap.clear();
 }
 
 
