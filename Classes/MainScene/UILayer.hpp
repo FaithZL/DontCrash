@@ -50,6 +50,8 @@ public:
     void initScore();
     
     void createCB();
+    
+    bool test();
 
     virtual bool init();
     

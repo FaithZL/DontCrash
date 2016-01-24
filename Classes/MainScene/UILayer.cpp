@@ -12,6 +12,7 @@
 #include "Enemy.hpp"
 #include "constant.h"
 #include "FSMState.h"
+#include "Signal.hpp"
 USING_NS_CC;
 
 UILayer::UILayer():
@@ -25,6 +26,21 @@ _preState(-1)
 UILayer::~UILayer()
 {
     
+}
+
+int sum(int count, ...)
+{
+    int sum_value=0;
+    
+    va_list args;
+    va_start(args,count);
+    while(count--)
+    {
+        sum_value+=va_arg(args,int);
+    }
+    va_end(args);
+    
+    return sum_value;
 }
 
 void UILayer::createCB(){
@@ -58,6 +74,7 @@ void UILayer::createCB(){
     _onStateEnter[GameState::GNormal] = [this](){
         _startBtn->setVisible(true);
     };
+    
 }
 
 bool UILayer::onTouchBegan(cocos2d::Touch *touch, cocos2d::Event * unused_event)

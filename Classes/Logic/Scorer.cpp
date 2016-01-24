@@ -10,6 +10,8 @@
 #include "Enemy.hpp"
 #include "Car.hpp"
 #include "constant.h"
+#include "Controller.hpp"
+#include "Signal.hpp"
 
 USING_NS_CC;
 
@@ -31,7 +33,7 @@ bool Scorer::init(){
 
 void Scorer::refreshScore(){
     
-    
+    Controller::getInstance()->getSignal()->dispatchEvent("onScoreChange");
 }
 
 void Scorer::playRewardEff(){
@@ -58,6 +60,8 @@ void Scorer::checkMeet(Car *car, Enemy *enemy){
         }
         CCLOG("%d" , enemy->getTag());
         _score ++;
+    }else{
+        return;
     }
     if (car->getExtraScoreByTag(enemy->getTag()) > 0) {
         _score ++;

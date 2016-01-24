@@ -12,6 +12,7 @@
 #include "GameLayer.hpp"
 #include "UILayer.hpp"
 #include "Scorer.hpp"
+#include "Signal.hpp"
 
 USING_NS_CC;
 
@@ -22,7 +23,8 @@ _car(nullptr),
 _scheduler(nullptr),
 _uiLayer(nullptr),
 _gameLayer(nullptr),
-_scorer(nullptr)
+_scorer(nullptr),
+_signal(nullptr)
 {
     
 }
@@ -53,6 +55,8 @@ bool Controller::init()
     _scheduler = Director::getInstance()->getScheduler();
     _scorer = Scorer::create();
     _scorer->retain();
+    _signal = Signal::create();
+    _signal->retain();
     return true;
 }
 

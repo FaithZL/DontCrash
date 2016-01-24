@@ -16,6 +16,7 @@ class Enemy;
 class UILayer;
 class GameLayer;
 class Scorer;
+class Signal;
 
 enum GameState
 {
@@ -36,6 +37,8 @@ public:
     CC_SYNTHESIZE_READONLY(int , _GameState , CurGameState);
     
     CC_SYNTHESIZE(Car * , _car , UserCar);
+    
+    CC_SYNTHESIZE_READONLY(Signal * , _signal, Signal);
     
     cocos2d::Scene * createScene();
     
