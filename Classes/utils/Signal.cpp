@@ -23,30 +23,47 @@ bool Signal::init(){
 
 void Signal::registerEvent(std::string eventName, std::function<bool ()> callback, int priority){
     
-    auto iter = _callbackMap.find(eventName);
+    std::map<std::string, std::vector<type_cb>>::iterator iter = _callbackMap.find(eventName);
     
     if (iter == _callbackMap.end()) {
         //new
-        std::vector<type_cb> v;
-        _callbackMap.insert(std::make_pair(eventName , v));
+        std::vector<type_cb> v_callback;
+        _callbackMap.insert(std::make_pair(eventName , v_callback));
         
-        std::vector<int> v2;
-        _priorityMap.insert(std::make_pair(eventName, v2));
+        std::vector<int> v_priority;
+        _priorityMap.insert(std::make_pair(eventName, v_priority));
     }
     
-    auto v_callback = _callbackMap[eventName];
-    auto v_priority = _priorityMap[eventName];
+    std::vector<type_cb> v_callback = _callbackMap[eventName];
+    std::vector<int> v_priority = _priorityMap[eventName];
+    
+    std::vector<type_cb>::iterator iter_v_c = v_callback.begin();
+    std::vector<int>::iterator iter_v_p= v_priority.begin();
+    
+    while (iter_v_p != v_priority.end()) {
+        if (priority > * iter_v_p) {
+            v_priority.insert(iter_v_p, priority);
+            v_callback.insert(iter_v_c, callback);
+            break;
+        }
+        iter_v_c ++;
+        iter_v_p ++;
+    }
+    if (iter_v_p == v_priority.end()) {
+        v_priority.push_back(priority);
+        v_callback.push_back(callback);
+    }
     
 }
 
 void Signal::dispatchEvent(std::string eventName){
     
-    auto iter = _callbackMap.find(eventName);
+    std::map<std::string, std::vector<type_cb>>::iterator iter = _callbackMap.find(eventName);
     
     if (iter != _callbackMap.end()) {
-        auto v_callback = _callbackMap[eventName];
+        std::vector<type_cb> v_callback = _callbackMap[eventName];
         bool bContinue = true;
-        for (auto iter = v_callback.begin() ; iter != v_callback.end() ; iter ++) {
+        for (std::vector<type_cb>::iterator iter = v_callback.begin() ; iter != v_callback.end() ; iter ++) {
             if (bContinue) {
                 bContinue = (*iter)();
             }else{
@@ -57,25 +74,25 @@ void Signal::dispatchEvent(std::string eventName){
 }
 
 void Signal::removeEvent(std::string eventName, std::function<bool ()> * callback){
-    auto v_callback = _callbackMap[eventName];
-    auto v_priority = _priorityMap[eventName];
+    std::vector<type_cb> v_callback = _callbackMap[eventName];
+    std::vector<int> v_priority = _priorityMap[eventName];
     
-    std::vector<int>::iterator iter2 = v_priority.begin();
-    
-    for (auto iter = v_callback.begin() ; iter != v_callback.end() ; iter++ , iter2 ++ ) {
-        if (&(*iter) == callback) {
-            v_priority.erase(iter2);
-            v_callback.erase(iter);
+    std::vector<int>::iterator iter_v_p = v_priority.begin();
+    std::vector<type_cb>::iterator iter_v_c;
+    for (iter_v_c = v_callback.begin() ; iter_v_c != v_callback.end() ; iter_v_c++ , iter_v_p ++ ) {
+        if (&(*iter_v_c) == callback) {
+            v_priority.erase(iter_v_p);
+            v_callback.erase(iter_v_c);
             break;
         }
     }
 }
 
 void Signal::clearEvent(std::string eventName){
-    auto v_callback = _callbackMap[eventName];
+    std::vector<type_cb> v_callback = _callbackMap[eventName];
     v_callback.clear();
     
-    auto v_priority = _priorityMap[eventName];
+    std::vector<int> v_priority = _priorityMap[eventName];
     v_priority.clear();
 }
 
