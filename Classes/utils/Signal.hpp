@@ -11,6 +11,8 @@
 
 #include "cocos2d.h"
 
+typedef bool (* p)();
+
 class Signal :public cocos2d::Ref{
     
 public:
@@ -18,13 +20,15 @@ public:
     
     ~Signal();
     
+    typedef std::function<bool()> type_cb;
+    
     virtual bool init();
     
-    void registerEvent(std::string eventName , std::function<bool()> callback, int priority);
+    void registerEvent(std::string eventName , type_cb callback, int priority);
     
     void dispatchEvent(std::string eventName);
     
-    void removeEvent(std::string eventName , std::function<bool()> callback);
+    void removeEvent(std::string eventName , type_cb * callback);
     
     void clearEvent(std::string eventName);
     
@@ -34,7 +38,7 @@ public:
     
 protected:
     
-    std::map<std::string , std::vector<std::function<bool()>>> _callbackMap;
+    std::map<std::string , std::vector<type_cb>> _callbackMap;
     
     std::map<std::string, std::vector<int>> _priorityMap;
 };
