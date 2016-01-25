@@ -12,6 +12,7 @@
 #include "Controller.hpp"
 #include "Enemy.hpp"
 #include "Scorer.hpp"
+#include "Group.hpp"
 
 USING_NS_CC;
 
@@ -60,7 +61,7 @@ bool GameLayer::init()
             auto enemy = Enemy::create("img/car2.png", 700, Vec2(POS_R.x - 50 - l * i, POS_R.y + R_OUTER), Direction::CW);
             enemy->setTag(i);
             enemy->setBlastRes("img/zha2.png");
-            Controller::getInstance()->getScorer()->addEnemy(enemy);
+            Controller::getInstance()->getScorer()->getGroup()->addEnemy(enemy);
             addChild(enemy);
         }
         

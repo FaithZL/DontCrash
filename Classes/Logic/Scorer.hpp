@@ -13,6 +13,7 @@
 
 class Car;
 class Enemy;
+class Group;
 
 enum EnemyState {
     g3,
@@ -24,14 +25,14 @@ class Scorer : public cocos2d::Ref {
     
 public:
     
-    
-    
     Scorer();
     ~Scorer();
     
     CC_SYNTHESIZE_READONLY(int , _score , Score);
     
     CC_SYNTHESIZE(Car * , _car , UserCar);
+    
+    CC_SYNTHESIZE_READONLY(Group * , _group, Group);
     
     CREATE_FUNC(Scorer);
     
@@ -55,18 +56,10 @@ public:
     bool isIntersect(cocos2d::Node * node1 , cocos2d::Node * node2);
     
     virtual bool init();
-    
-    void addEnemy(Enemy * enemy);
-    
-    void controlEnemyState(float d);
-    
-    void randonChangeTrack(float d);
 
 protected:
     
-    int _enemyState;
-    
-    cocos2d::Vector<Enemy *>  _enemies;
+    cocos2d::Vector<Enemy *>  * _enemies;
 };
 
 #endif /* Scorer_hpp */

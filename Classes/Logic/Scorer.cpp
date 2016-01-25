@@ -9,7 +9,7 @@
 #include "Scorer.hpp"
 
 #include "Enemy.hpp"
-
+#include "Group.hpp"
 #include "Car.hpp"
 #include "constant.h"
 #include "Controller.hpp"
@@ -20,7 +20,8 @@ USING_NS_CC;
 Scorer::Scorer():
 _car(nullptr),
 _score(0),
-_enemyState(EnemyState::g3){
+_enemies(nullptr),
+_group(nullptr){
     
 }
 
@@ -29,6 +30,9 @@ Scorer::~Scorer(){
 }
 
 bool Scorer::init(){
+    _group = Group::create();
+    CC_SAFE_RETAIN(_group);
+    _enemies = _group->getEnemies();
     return true;
 }
 
@@ -41,51 +45,11 @@ void Scorer::reset(){
     if (_car) {
         _car->reset();
     }
-    for(auto &it : _enemies)
-    {
-        it->reset();
-    }
+    _group->reset();
     _score = 0;
     Controller::getInstance()->getSignal()->dispatchEvent("onScoreChange",_score);
 }
 
-void Scorer::randonChangeTrack(float d){
-    switch (_enemyState) {
-        case EnemyState::g3:
-            int i;
-            for (i = 0; i < _enemies.size(); i++) {
-                if (_enemies.at(i)->getAttempToChange() != AttempTochange::CanSet) {
-                    break;
-                }
-            }
-            if (i == _enemies.size()) {
-                float num = rand_0_1();
-                for (i = 0 ; i < _enemies.size(); i++) {
-                    int var = num < 0.5 ? AttempTochange::True : AttempTochange::False;
-                    _enemies.at(i)->setAttempToChange(var);
-                }
-            }
-            break;
-            
-        case EnemyState::g12:
-            
-            break;
-            
-        case EnemyState::g111:
-            
-            break;
-            
-        default:
-            break;
-    }
-    
-}
-
-void Scorer::controlEnemyState(float d){
-    int div = _score / 40;
-    int mod = _score % 40;
-    randonChangeTrack(d);
-}
 
 void Scorer::checkMeet(Car *car, Enemy *enemy){
     
@@ -118,17 +82,15 @@ void Scorer::checkMeet(Car *car, Enemy *enemy){
 }
 
 void Scorer::checkSameTrack(){
-    for (int i = 0 ; i < _enemies.size() ; i ++) {
-        auto enemy = _enemies.at(i);
+    for (int i = 0 ; i < _enemies->size() ; i ++) {
+        auto enemy = _enemies->at(i);
         if (_car->getCurRadius() == enemy->getCurRadius()) {
             _car->setExtraScoreByTag(enemy->getTag());
         }
     }
 }
 
-void Scorer::addEnemy(Enemy *enemy){
-    _enemies.pushBack(enemy);
-}
+
 
 bool Scorer::isMeet(Car *car, Enemy *enemy){
     auto ret = false;
@@ -156,32 +118,29 @@ void Scorer::update(float d){
     if (_car) {
         _car->update(d);
     }
-    for(auto &it : _enemies)
-    {
-        it->update(d);
-    }
-
+    _group->update(d);
+    _group->controlEnemyState(d, _score);
+    _group->randonChangeTrack(d);
     scoring(d);
     checkSameTrack();
-    controlEnemyState(d);
 }
 
 void Scorer::scoring(float d){
     
     
-    switch (_enemyState) {
+    switch (_group->getEnemyState()) {
         case EnemyState::g3:
-            checkMeet(_car , _enemies.at(0));
+            checkMeet(_car , _enemies->at(0));
             break;
             
         case EnemyState::g12:
-            checkMeet(_car , _enemies.at(0));
-            checkMeet(_car , _enemies.at(1));
+            checkMeet(_car , _enemies->at(0));
+            checkMeet(_car , _enemies->at(1));
             break;
             
         case EnemyState::g111:
-            for (auto i = 0; i < _enemies.size(); i ++) {
-                checkMeet(_car, _enemies.at(i));
+            for (auto i = 0; i < _enemies->size(); i ++) {
+                checkMeet(_car, _enemies->at(i));
             }
             break;
         default:
@@ -190,7 +149,7 @@ void Scorer::scoring(float d){
 }
 
 bool Scorer::isCollision(){
-    for(auto &it :  _enemies){
+    for(auto &it : * _enemies){
         if (it->getCurRadius() == _car->getCurRadius() || it->getTrackState() == TrackState::ToInner || it->getTrackState() == TrackState::ToOuter) {
             if (isIntersect(_car, it)) {
                 _car->blast();

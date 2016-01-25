@@ -43,11 +43,15 @@ public:
 	void update(float dt);
 
 protected:
-	FSMState* _currentState;
-	FSMState* _previousState;
-	float _stateLastTime;
-	int _delayedStateName;
-	std::map<int, FSMState> _states;
+	FSMState * _currentState;
+	
+    FSMState * _previousState;
+	
+    float _stateLastTime;
+	
+    int _delayedStateName;
+	
+    std::map<int, FSMState> _states;
 
 };
 
