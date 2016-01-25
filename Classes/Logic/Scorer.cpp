@@ -120,7 +120,6 @@ void Scorer::update(float d){
     }
     _group->update(d);
     _group->controlEnemyState(d, _score);
-    _group->randonChangeTrack(d);
     scoring(d);
     checkSameTrack();
 }
@@ -128,7 +127,7 @@ void Scorer::update(float d){
 void Scorer::scoring(float d){
     
     
-    switch (_group->getEnemyState()) {
+    switch (_group->getCurrentStateName()) {
         case EnemyState::g3:
             checkMeet(_car , _enemies->at(0));
             break;

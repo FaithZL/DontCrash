@@ -13,6 +13,7 @@
 #include "FSM.h"
 
 class Enemy;
+class Scorer;
 
 class Group : public cocos2d::Ref , public FSM{
 public:
@@ -21,17 +22,27 @@ public:
     
     virtual bool init();
     
-    CC_SYNTHESIZE(int , _enemyState, EnemyState);
+//    CC_SYNTHESIZE(int , _enemyState, EnemyState);
     
     CREATE_FUNC(Group);
     
     void initFSM();
     
+    void g3enter();
+    
+    void g3update(float d);
+    
+    void g12enter();
+    
+    void g12update(float d);
+    
+    void g111enter();
+    
+    void g111update(float d);
+    
     void addEnemy(Enemy * enemy);
     
     void controlEnemyState(float d , int score);
-    
-    void randonChangeTrack(float d);
     
     virtual void update(float d);
     
@@ -42,6 +53,8 @@ public:
 protected:
     
     bool _bCanSwitch;
+    
+    
     
     cocos2d::Vector<Enemy *> _enemies;
 };

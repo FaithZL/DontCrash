@@ -13,9 +13,9 @@ public:
 	~FSM();
 
 	// add FSM states
-	FSMState& addState(FSMState state);
-	FSMState& addState(int stateName);
-	FSMState& addState(
+	FSMState addState(FSMState state);
+	FSMState addState(int stateName);
+	FSMState addState(
 		int stateName,
 		const std::function<void()>& enterFunc,
 		const std::function<void(float)>& updateFunc = nullptr,
