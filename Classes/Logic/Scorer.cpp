@@ -36,6 +36,11 @@ void Scorer::playRewardEff(){
     
 }
 
+void Scorer::reset(){
+    _score = 0;
+    Controller::getInstance()->getSignal()->dispatchEvent("onScoreChange",_score);
+}
+
 void Scorer::checkMeet(Car *car, Enemy *enemy){
     
     if (isMeet(car , enemy)) {
@@ -59,10 +64,10 @@ void Scorer::checkMeet(Car *car, Enemy *enemy){
     }else{
         return;
     }
-//    if (car->getExtraScoreByTag(enemy->getTag()) > 0) {
-//        _score ++;
-//        playRewardEff();
-//    }
+    if (car->getExtraScoreByTag(enemy->getTag()) > 0) {
+        _score ++;
+        playRewardEff();
+    }
     Controller::getInstance()->getSignal()->dispatchEvent("onScoreChange" , _score);
 }
 

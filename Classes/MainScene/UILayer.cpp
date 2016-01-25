@@ -164,11 +164,13 @@ void UILayer::initScore(){
     addChild(_score);
 }
 
+void UILayer::reset(){
+    translateToState(GameState::GNormal);
+}
+
 bool UILayer::refreshScore(va_list args){
    
     int score = va_arg(args,int);
-    
-    va_end(args);
     
     char str[10];
     

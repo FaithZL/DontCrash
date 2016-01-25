@@ -54,9 +54,9 @@ bool Controller::init()
 {
     _scheduler = Director::getInstance()->getScheduler();
     _scorer = Scorer::create();
-    _scorer->retain();
+    CC_SAFE_RETAIN(_scorer);
     _signal = Signal::create();
-    _signal->retain();
+    CC_SAFE_RETAIN(_signal);
     return true;
 }
 
@@ -130,9 +130,8 @@ void Controller::reset()
     {
         it->reset();
     }
-    _scorer->setScore(0);
-    _signal->dispatchEvent("onScoreChange",0);
-    _uiLayer->translateToState(GameState::GNormal);
+    _scorer->reset();
+    _uiLayer->reset();
 }
 
 void Controller::pause()

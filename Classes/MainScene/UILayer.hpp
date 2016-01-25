@@ -50,10 +50,10 @@ public:
     void initScore();
     
     void createCB();
-    
-    bool test();
 
     virtual bool init();
+    
+    void reset();
     
     bool refreshScore(va_list args);
     

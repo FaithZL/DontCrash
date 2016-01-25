@@ -27,9 +27,11 @@ public:
     Scorer();
     ~Scorer();
     
-    CC_SYNTHESIZE(int , _score, Score);
+    CC_SYNTHESIZE_READONLY(int , _score, Score);
     
     CREATE_FUNC(Scorer);
+    
+    void reset();
     
     void playRewardEff();
     
