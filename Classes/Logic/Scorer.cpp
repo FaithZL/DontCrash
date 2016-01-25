@@ -119,7 +119,6 @@ void Scorer::update(float d){
         _car->update(d);
     }
     _group->update(d);
-    _group->controlEnemyState(d, _score);
     scoring(d);
     checkSameTrack();
 }

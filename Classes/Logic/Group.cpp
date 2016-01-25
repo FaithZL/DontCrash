@@ -14,7 +14,8 @@
 USING_NS_CC;
 
 Group::Group():
-_bCanSwitch(false){
+_bCanSwitch(false),
+_scorer(nullptr){
     
 }
 
@@ -69,9 +70,13 @@ void Group::g3update(float d){
             _enemies.at(i)->setAttempToChange(var);
         }
     }
+    if (_scorer->getScore() >= 7) {
+        _delayedStateName = EnemyState::g12;
+    }
 }
 
 void Group::g12enter(){
+    int velo = _enemies.at(1)->getVelo();
     
 }
 
@@ -89,26 +94,6 @@ void Group::g111update(float d){
 
 cocos2d::Vector<Enemy *> * Group::getEnemies(){
     return &_enemies;
-}
-
-
-void Group::controlEnemyState(float d , int score){
-    int div = score / 40;
-    int mod = score % 40;
-    if (mod < 8 && _bCanSwitch) {
-        //switch to 3 formation
-        _bCanSwitch = false;
-        
-    }else if (mod < 19 && _bCanSwitch) {
-        //switch to 1 and 2 formation
-        _bCanSwitch = false;
-        
-    }else if (_bCanSwitch){
-        //switch to 1 and 1 and 1 formation
-        _bCanSwitch = false;
-        
-    }
-    
 }
 
 void Group::update(float d){

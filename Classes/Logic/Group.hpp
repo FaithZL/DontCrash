@@ -22,8 +22,6 @@ public:
     
     virtual bool init();
     
-//    CC_SYNTHESIZE(int , _enemyState, EnemyState);
-    
     CREATE_FUNC(Group);
     
     void initFSM();
@@ -42,7 +40,9 @@ public:
     
     void addEnemy(Enemy * enemy);
     
-    void controlEnemyState(float d , int score);
+    inline void setScorer(Scorer * scorer){
+        _scorer = scorer;
+    }
     
     virtual void update(float d);
     
@@ -54,7 +54,7 @@ protected:
     
     bool _bCanSwitch;
     
-    
+    Scorer * _scorer;
     
     cocos2d::Vector<Enemy *> _enemies;
 };
