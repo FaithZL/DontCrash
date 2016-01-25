@@ -18,7 +18,6 @@ USING_NS_CC;
 Scorer::Scorer():
 _car(nullptr),
 _score(0),
-_enemies(nullptr),
 _enemyState(EnemyState::g3){
     
 }
@@ -37,6 +36,13 @@ void Scorer::playRewardEff(){
 }
 
 void Scorer::reset(){
+    if (_car) {
+        _car->reset();
+    }
+    for(auto &it : _enemies)
+    {
+        it->reset();
+    }
     _score = 0;
     Controller::getInstance()->getSignal()->dispatchEvent("onScoreChange",_score);
 }
@@ -72,12 +78,16 @@ void Scorer::checkMeet(Car *car, Enemy *enemy){
 }
 
 void Scorer::checkSameTrack(){
-    for (int i = 0 ; i < _enemies->size() ; i ++) {
-        auto enemy = _enemies->at(i);
+    for (int i = 0 ; i < _enemies.size() ; i ++) {
+        auto enemy = _enemies.at(i);
         if (_car->getCurRadius() == enemy->getCurRadius()) {
             _car->setExtraScoreByTag(enemy->getTag());
         }
     }
+}
+
+void Scorer::addEnemy(Enemy *enemy){
+    _enemies.pushBack(enemy);
 }
 
 bool Scorer::isMeet(Car *car, Enemy *enemy){
@@ -102,6 +112,14 @@ bool Scorer::isMeet(Car *car, Enemy *enemy){
 }
 
 void Scorer::update(float d){
+    if (_car) {
+        _car->update(d);
+    }
+    for(auto &it : _enemies)
+    {
+        it->update(d);
+    }
+
     scoring(d);
     checkSameTrack();
 }
@@ -111,17 +129,17 @@ void Scorer::scoring(float d){
     
     switch (_enemyState) {
         case EnemyState::g3:
-            checkMeet(_car , _enemies->at(0));
+            checkMeet(_car , _enemies.at(0));
             break;
             
         case EnemyState::g12:
-            checkMeet(_car , _enemies->at(0));
-            checkMeet(_car , _enemies->at(1));
+            checkMeet(_car , _enemies.at(0));
+            checkMeet(_car , _enemies.at(1));
             break;
             
         case EnemyState::g111:
-            for (auto i = 0; i < _enemies->size(); i ++) {
-                checkMeet(_car, _enemies->at(i));
+            for (auto i = 0; i < _enemies.size(); i ++) {
+                checkMeet(_car, _enemies.at(i));
             }
             break;
         default:
@@ -130,7 +148,7 @@ void Scorer::scoring(float d){
 }
 
 bool Scorer::isCollision(){
-    for(auto &it : * _enemies){
+    for(auto &it :  _enemies){
         if (it->getCurRadius() == _car->getCurRadius() || it->getTrackState() == TrackState::ToInner || it->getTrackState() == TrackState::ToOuter) {
             if (isIntersect(_car, it)) {
                 _car->blast();
@@ -156,10 +174,10 @@ bool Scorer::isIntersect(cocos2d::Node * node1, cocos2d::Node * node2){
     return false;
 }
 
-void Scorer::setCars(Car * car, cocos2d::Vector<Enemy *> * enemies){
-    _car = car;
-    _enemies = enemies;
-}
+//void Scorer::setCars(Car * car, cocos2d::Vector<Enemy *> * enemies){
+//    _car = car;
+//    _enemies = enemies;
+//}
 
 
 

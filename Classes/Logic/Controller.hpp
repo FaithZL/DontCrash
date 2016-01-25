@@ -36,13 +36,11 @@ public:
     
     CC_SYNTHESIZE_READONLY(int , _GameState , CurGameState);
     
-    CC_SYNTHESIZE(Car * , _car , UserCar);
-    
     CC_SYNTHESIZE_READONLY(Signal * , _signal, Signal);
     
-    cocos2d::Scene * createScene();
+    CC_SYNTHESIZE_READONLY(Scorer * , _scorer, Scorer);
     
-    void addEnemy(Enemy * enemy);
+    cocos2d::Scene * createScene();
     
     cocos2d::Vector<Enemy *> * getEnemies();
     
@@ -60,22 +58,16 @@ public:
     
     void reset();
     
-    void initScorer();
-    
 protected:
     Controller();
     
     static Controller * s_pController;
-    
-    cocos2d::Vector<Enemy *> _enemies;
     
     UILayer * _uiLayer;
     
     GameLayer * _gameLayer;
     
     cocos2d::Scheduler * _scheduler;
-    
-    Scorer * _scorer;
     
 };
 

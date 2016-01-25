@@ -19,7 +19,6 @@ USING_NS_CC;
 Controller * Controller::s_pController = nullptr;
 
 Controller::Controller():
-_car(nullptr),
 _scheduler(nullptr),
 _uiLayer(nullptr),
 _gameLayer(nullptr),
@@ -31,11 +30,6 @@ _signal(nullptr)
 
 Controller::~Controller()
 {
-    CC_SAFE_DELETE(_car);
-    for(auto &it : _enemies)
-    {
-        CC_SAFE_DELETE(it);
-    }
     CC_SAFE_DELETE(_gameLayer);
     CC_SAFE_DELETE(_uiLayer);
     CC_SAFE_DELETE(_scorer);
@@ -60,19 +54,6 @@ bool Controller::init()
     return true;
 }
 
-void Controller::addEnemy(Enemy * enemy)
-{
-    _enemies.pushBack(enemy);
-}
-
-void Controller::initScorer(){
-    _scorer->setCars(_car, &_enemies);
-}
-
-cocos2d::Vector<Enemy *> * Controller::getEnemies()
-{
-    return &_enemies;
-}
 
 void Controller::start()
 {
@@ -95,14 +76,6 @@ void Controller::over(){
 
 void Controller::update(float d)
 {
-    if (_car) {
-        _car->update(d);
-    }
-    for(auto &it : _enemies)
-    {
-        it->update(d);
-    }
-    
     if (_scorer->isCollision()) {
         pause();
         over();
@@ -123,13 +96,6 @@ void Controller::unscheduleUpdate()
 
 void Controller::reset()
 {
-    if (_car) {
-        _car->reset();
-    }
-    for(auto &it : _enemies)
-    {
-        it->reset();
-    }
     _scorer->reset();
     _uiLayer->reset();
 }

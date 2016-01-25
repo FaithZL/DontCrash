@@ -29,6 +29,8 @@ public:
     
     CC_SYNTHESIZE_READONLY(int , _score, Score);
     
+    CC_SYNTHESIZE(Car * , _car , UserCar);
+    
     CREATE_FUNC(Scorer);
     
     void reset();
@@ -52,15 +54,13 @@ public:
     
     virtual bool init();
     
-    void setCars(Car * car , cocos2d::Vector<Enemy *> * enemies);
+    void addEnemy(Enemy * enemy);
 
 protected:
     
-    Car * _car;
-    
     int _enemyState;
     
-    cocos2d::Vector<Enemy *> * _enemies;
+    cocos2d::Vector<Enemy *>  _enemies;
 };
 
 #endif /* Scorer_hpp */

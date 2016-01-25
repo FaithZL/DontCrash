@@ -11,6 +11,7 @@
 #include "constant.h"
 #include "Controller.hpp"
 #include "Enemy.hpp"
+#include "Scorer.hpp"
 
 USING_NS_CC;
 
@@ -52,18 +53,16 @@ bool GameLayer::init()
         auto car = Car::create("img/car.png", 750, pos, Direction::CCW);
         car->setBlastRes("img/zha.png");
         addChild(car , 100);
-        Controller::getInstance()->setUserCar(car);
+        Controller::getInstance()->getScorer()->setUserCar(car);
         
         for (int i = 0 ; i < 3; i++) {
             int l = 80;
             auto enemy = Enemy::create("img/car2.png", 750, Vec2(POS_R.x - 50 - l * i, POS_R.y + R_OUTER), Direction::CW);
             enemy->setTag(i);
             enemy->setBlastRes("img/zha2.png");
-            Controller::getInstance()->addEnemy(enemy);
+            Controller::getInstance()->getScorer()->addEnemy(enemy);
             addChild(enemy);
         }
-        
-        Controller::getInstance()->initScorer();
         
         return true;
     }

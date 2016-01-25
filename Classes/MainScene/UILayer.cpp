@@ -13,6 +13,7 @@
 #include "constant.h"
 #include "FSMState.h"
 #include "Signal.hpp"
+#include "Scorer.hpp"
 USING_NS_CC;
 
 UILayer::UILayer():
@@ -69,7 +70,7 @@ bool UILayer::onTouchBegan(cocos2d::Touch *touch, cocos2d::Event * unused_event)
     if (getCurrentStateName() != GameState::GNormal) {
         return false;
     }
-    Controller::getInstance()->getUserCar()->changeTrack();
+    Controller::getInstance()->getScorer()->getUserCar()->changeTrack();
     
     return true;
 }
