@@ -7,7 +7,9 @@
 //
 
 #include "Scorer.hpp"
+
 #include "Enemy.hpp"
+
 #include "Car.hpp"
 #include "constant.h"
 #include "Controller.hpp"
@@ -51,17 +53,17 @@ void Scorer::reset(){
 void Scorer::randonChangeTrack(float d){
     switch (_enemyState) {
         case EnemyState::g3:
-            if (_enemies.at(0)->getAttempToChange() == AttempTochange::CanSet) {
-                float num = rand_0_1();
-                if (num > 0.5) {
-                    for (auto iter : _enemies) {
-                        iter->setAttempToChange(AttempTochange::True);
-                    }
+            int i;
+            for (i = 0; i < _enemies.size(); i++) {
+                if (_enemies.at(i)->getAttempToChange() != AttempTochange::CanSet) {
+                    break;
                 }
-                else{
-                    for (auto iter : _enemies) {
-                        iter->setAttempToChange(AttempTochange::False);
-                    }
+            }
+            if (i == _enemies.size()) {
+                float num = rand_0_1();
+                for (i = 0 ; i < _enemies.size(); i++) {
+                    int var = num < 0.9 ? AttempTochange::True : AttempTochange::False;
+                    _enemies.at(i)->setAttempToChange(var);
                 }
             }
             break;
@@ -142,7 +144,8 @@ bool Scorer::isMeet(Car *car, Enemy *enemy){
         car->setFarthestFlagbyTag(tag , false);
         ret = true;
     }
-    if (distance < preDis) {
+    
+    if (distance < preDis && preDis >= 2 * R_INNER) {
         car->setFarthestFlagbyTag(tag, true);
     }
     car->setDistance(tag , distance);

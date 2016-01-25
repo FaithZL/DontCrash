@@ -120,6 +120,19 @@ void UILayer::initNormalLayer(){
     
     auto centerPos = Vec2(winSize.width / 2 , winSize.height / 2);
     
+    auto pauseBtn = ui::Button::create("CloseNormal.png");
+    pauseBtn->setPosition(Vec2(winSize.width * 0.93, winSize.height * 0.93));
+    pauseBtn->setScale(3);
+    auto cb = [](Ref * ref){
+        if (Director::getInstance()->isPaused()) {
+            Director::getInstance()->resume();
+            return ;
+        }
+        Director::getInstance()->pause();
+    };
+    pauseBtn->addClickEventListener(cb);
+    addChild(pauseBtn);
+    
     startBtn->setPosition(centerPos);
     startBtn->addClickEventListener(_callBack[CB::Start]);
     _normal->addChild(startBtn);
@@ -188,6 +201,8 @@ bool UILayer::init(){
         initNormalLayer();
         
         initScore();
+        
+        
         
         initFSM();
         

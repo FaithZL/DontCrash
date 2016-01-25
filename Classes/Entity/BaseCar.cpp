@@ -14,9 +14,9 @@ USING_NS_CC;
 
 BaseCar::BaseCar():
 _curVelo(0),
-_direction(-1)
+_direction(-1),
+_curRadius(R_OUTER)
 {
-    _curRadius = R_OUTER;
 }
 
 BaseCar::~BaseCar()
@@ -217,6 +217,7 @@ void BaseCar::reset()
     setVelo(_originVelo);
     setPosition(_originPos);
     setTexture(_normalRes);
+    _curRadius = R_OUTER;
     setRotation3D(Vec3(0 , 0 , _originAngle));
 }
 

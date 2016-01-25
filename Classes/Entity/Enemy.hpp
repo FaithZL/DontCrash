@@ -51,6 +51,8 @@ public:
     
     virtual void reset();
     
+    virtual void update(float d);
+    
     virtual void circleUpdate(float d);
     
 };
