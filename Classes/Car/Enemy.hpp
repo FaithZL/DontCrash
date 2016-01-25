@@ -37,6 +37,8 @@ public:
     
     virtual void changeTrack();
     
+    virtual void reset();
+    
     virtual void circleUpdate(float d);
     
 };

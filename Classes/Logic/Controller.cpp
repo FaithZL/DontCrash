@@ -130,6 +130,8 @@ void Controller::reset()
     {
         it->reset();
     }
+    _scorer->setScore(0);
+    _signal->dispatchEvent("onScoreChange",0);
     _uiLayer->translateToState(GameState::GNormal);
 }
 

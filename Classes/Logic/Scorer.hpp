@@ -27,7 +27,7 @@ public:
     Scorer();
     ~Scorer();
     
-    CC_SYNTHESIZE_READONLY(int , _score, Score);
+    CC_SYNTHESIZE(int , _score, Score);
     
     CREATE_FUNC(Scorer);
     
@@ -45,8 +45,6 @@ public:
     void checkMeet(Car * car , Enemy * enemy);
     
     bool isMeet(Car * car , Enemy * enemy);
-    
-    void refreshScore();
     
     bool isIntersect(cocos2d::Node * node1 , cocos2d::Node * node2);
     

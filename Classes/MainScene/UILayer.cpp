@@ -28,21 +28,6 @@ UILayer::~UILayer()
     
 }
 
-int sum(int count, ...)
-{
-    int sum_value=0;
-    
-    va_list args;
-    va_start(args,count);
-    while(count--)
-    {
-        sum_value+=va_arg(args,int);
-    }
-    va_end(args);
-    
-    return sum_value;
-}
-
 void UILayer::createCB(){
     
     _callBack[CB::Start] = [this](Ref * ref){
@@ -76,8 +61,6 @@ void UILayer::createCB(){
     };
     
     Controller::getInstance()->getSignal()->registerEvent("onScoreChange", this, TO_SIG_SEL(UILayer::refreshScore) , 0);
-    
-//    Controller::getInstance()->getSignal()->removeEvent("onScoreChange", this, TO_SIG_SEL(UILayer::refreshScore));
     
 }
 
@@ -185,11 +168,13 @@ bool UILayer::refreshScore(va_list args){
    
     int score = va_arg(args,int);
     
-    CCLOG("%d  fuck" , score);
-    
     va_end(args);
     
-//    _score->setString("" + score);
+    char str[10];
+    
+    sprintf(str, "%d" , score);
+    
+    _score->setString(str);
     return true;
 }
 

@@ -31,10 +31,6 @@ bool Scorer::init(){
     return true;
 }
 
-void Scorer::refreshScore(){
-    std::string on = "onScoreChange";
-    Controller::getInstance()->getSignal()->dispatchEvent(on , _score);
-}
 
 void Scorer::playRewardEff(){
     
@@ -58,16 +54,16 @@ void Scorer::checkMeet(Car *car, Enemy *enemy){
             default:
                 break;
         }
-        CCLOG("%d" , enemy->getTag());
+//        CCLOG("%d" , enemy->getTag());
         _score ++;
     }else{
         return;
     }
-    if (car->getExtraScoreByTag(enemy->getTag()) > 0) {
-        _score ++;
-        playRewardEff();
-    }
-    refreshScore();
+//    if (car->getExtraScoreByTag(enemy->getTag()) > 0) {
+//        _score ++;
+//        playRewardEff();
+//    }
+    Controller::getInstance()->getSignal()->dispatchEvent("onScoreChange" , _score);
 }
 
 void Scorer::checkSameTrack(){

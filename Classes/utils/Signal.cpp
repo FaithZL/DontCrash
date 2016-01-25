@@ -83,12 +83,15 @@ void Signal::dispatchEvent(std::string eventName , ...){
 void Signal::removeEvent(std::string eventName, Sig_Target pTarget , Sig_SEL pSelector){
     
     std::vector<Sig_struct> &v_struct = _structMap[eventName];
-    std::vector<Sig_struct>::iterator iter;
-    for (iter = v_struct.begin() ; iter != v_struct.end() ; iter ++) {
-        if (pTarget == iter->pTarget && pSelector == iter->pSelector) {
-            v_struct.erase(iter);
+    std::vector<Sig_struct>::iterator iter_v;
+    for (iter_v = v_struct.begin() ; iter_v != v_struct.end() ; iter_v ++) {
+        if (pTarget == iter_v->pTarget && pSelector == iter_v->pSelector) {
+            v_struct.erase(iter_v);
             break;
         }
+    }
+    if (v_struct.size() == 0) {
+        _structMap.erase(eventName);
     }
 }
 

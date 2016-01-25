@@ -46,6 +46,12 @@ void Enemy::enterCircleCallBack()
     }
 }
 
+void Enemy::reset(){
+    BaseCar::reset();
+    _bAttempToChange = false;
+    _trackState = TrackState::Disabled;
+}
+
 void Enemy::updateRadius(float d)
 {
     auto v = _curVelo / 7;

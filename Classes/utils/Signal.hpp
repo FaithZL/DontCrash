@@ -22,7 +22,7 @@ typedef struct{
     Sig_Target pTarget;
     
     Sig_SEL pSelector;
-    
+    //the smaller the number is, the higher the priority level is.
     int priority;
     
 } Sig_struct;

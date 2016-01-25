@@ -35,6 +35,8 @@ public:
     
     virtual void update(float d);
     
+    virtual void reset();
+    
     virtual void changeTrack();
     
 protected:
