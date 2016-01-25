@@ -20,8 +20,7 @@ USING_NS_CC;
 Scorer::Scorer():
 _car(nullptr),
 _score(0),
-_enemyState(EnemyState::g3),
-_bCanChangeEnemyChange(true){
+_enemyState(EnemyState::g3){
     
 }
 
@@ -62,7 +61,7 @@ void Scorer::randonChangeTrack(float d){
             if (i == _enemies.size()) {
                 float num = rand_0_1();
                 for (i = 0 ; i < _enemies.size(); i++) {
-                    int var = num < 0.9 ? AttempTochange::True : AttempTochange::False;
+                    int var = num < 0.5 ? AttempTochange::True : AttempTochange::False;
                     _enemies.at(i)->setAttempToChange(var);
                 }
             }

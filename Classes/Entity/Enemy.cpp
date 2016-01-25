@@ -38,9 +38,7 @@ void Enemy::circleUpdate(float d)
 }
 
 void Enemy::update(float d){
-    if (_curRadius <= R_INNER + 5) {
-        int i = 0;
-    }
+   
     BaseCar::update(d);
     
 }

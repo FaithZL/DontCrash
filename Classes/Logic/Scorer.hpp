@@ -14,15 +14,17 @@
 class Car;
 class Enemy;
 
+enum EnemyState {
+    g3,
+    g12,
+    g111
+};
+
 class Scorer : public cocos2d::Ref {
     
 public:
     
-    enum EnemyState {
-        g3,
-        g12,
-        g111
-    };
+    
     
     Scorer();
     ~Scorer();
@@ -63,8 +65,6 @@ public:
 protected:
     
     int _enemyState;
-    
-    bool _bCanChangeEnemyChange;
     
     cocos2d::Vector<Enemy *>  _enemies;
 };
