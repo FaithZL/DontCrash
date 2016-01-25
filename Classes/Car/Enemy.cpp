@@ -11,7 +11,7 @@
 
 Enemy::Enemy():
 _trackState(TrackState::Disabled),
-_bAttempToChange(false)
+_attempToChange(AttempTochange::CanSet)
 {
     
 }
@@ -40,15 +40,17 @@ void Enemy::circleUpdate(float d)
 void Enemy::enterCircleCallBack()
 {
     BaseCar::enterCircleCallBack();
-    if (_bAttempToChange) {
+    if (_attempToChange == AttempTochange::True) {
         changeTrack();
-        _bAttempToChange = false;
+        _attempToChange = AttempTochange::CanSet;
+    }else if (_attempToChange == AttempTochange::False){
+        _attempToChange = AttempTochange::CanSet;
     }
 }
 
 void Enemy::reset(){
     BaseCar::reset();
-    _bAttempToChange = false;
+    _attempToChange = AttempTochange::CanSet;
     _trackState = TrackState::Disabled;
 }
 
@@ -74,7 +76,7 @@ void Enemy::changeTrack()
 {
     if (_curRadius == R_OUTER) {
         _trackState = TrackState::ToInner;
-    } else {
+    } else if(_curRadius == R_INNER){
         _trackState = TrackState::ToOuter;
     }
 }

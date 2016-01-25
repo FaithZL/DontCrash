@@ -19,6 +19,12 @@ enum TrackState{
     Disabled
 };
 
+enum AttempTochange{
+    False,
+    True,
+    CanSet
+};
+
 class Enemy : public BaseCar
 {
 public:
@@ -27,7 +33,13 @@ public:
     
     CC_SYNTHESIZE(int , _trackState , TrackState);
     
-    CC_SYNTHESIZE(bool , _bAttempToChange , AttempToChange);
+    CC_SYNTHESIZE_READONLY(int , _attempToChange , AttempToChange);
+    
+    inline void setAttempToChange(int var){
+        if (_attempToChange == AttempTochange::CanSet) {
+            _attempToChange = var;
+        }
+    }
     
     static Enemy * create(std::string fileName , float originVelo , cocos2d::Vec2 originPos , int direction);
     

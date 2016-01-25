@@ -27,7 +27,7 @@ public:
     Scorer();
     ~Scorer();
     
-    CC_SYNTHESIZE_READONLY(int , _score, Score);
+    CC_SYNTHESIZE_READONLY(int , _score , Score);
     
     CC_SYNTHESIZE(Car * , _car , UserCar);
     
@@ -55,10 +55,16 @@ public:
     virtual bool init();
     
     void addEnemy(Enemy * enemy);
+    
+    void controlEnemyState(float d);
+    
+    void randonChangeTrack(float d);
 
 protected:
     
     int _enemyState;
+    
+    bool _bCanChangeEnemyChange;
     
     cocos2d::Vector<Enemy *>  _enemies;
 };

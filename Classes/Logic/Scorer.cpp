@@ -18,7 +18,8 @@ USING_NS_CC;
 Scorer::Scorer():
 _car(nullptr),
 _score(0),
-_enemyState(EnemyState::g3){
+_enemyState(EnemyState::g3),
+_bCanChangeEnemyChange(true){
     
 }
 
@@ -45,6 +46,44 @@ void Scorer::reset(){
     }
     _score = 0;
     Controller::getInstance()->getSignal()->dispatchEvent("onScoreChange",_score);
+}
+
+void Scorer::randonChangeTrack(float d){
+    switch (_enemyState) {
+        case EnemyState::g3:
+            if (_enemies.at(0)->getAttempToChange() == AttempTochange::CanSet) {
+                float num = rand_0_1();
+                if (num > 0.5) {
+                    for (auto iter : _enemies) {
+                        iter->setAttempToChange(AttempTochange::True);
+                    }
+                }
+                else{
+                    for (auto iter : _enemies) {
+                        iter->setAttempToChange(AttempTochange::False);
+                    }
+                }
+            }
+            break;
+            
+        case EnemyState::g12:
+            
+            break;
+            
+        case EnemyState::g111:
+            
+            break;
+            
+        default:
+            break;
+    }
+    
+}
+
+void Scorer::controlEnemyState(float d){
+    int div = _score / 40;
+    int mod = _score % 40;
+    randonChangeTrack(d);
 }
 
 void Scorer::checkMeet(Car *car, Enemy *enemy){
@@ -122,6 +161,7 @@ void Scorer::update(float d){
 
     scoring(d);
     checkSameTrack();
+    controlEnemyState(d);
 }
 
 void Scorer::scoring(float d){
@@ -173,11 +213,5 @@ bool Scorer::isIntersect(cocos2d::Node * node1, cocos2d::Node * node2){
     }
     return false;
 }
-
-//void Scorer::setCars(Car * car, cocos2d::Vector<Enemy *> * enemies){
-//    _car = car;
-//    _enemies = enemies;
-//}
-
 
 
