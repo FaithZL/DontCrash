@@ -55,7 +55,7 @@ public:
 
     virtual bool init();
     
-    bool refreshScore(std::string &arg , va_list args);
+    bool refreshScore(va_list args);
     
 protected:
     

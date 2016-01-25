@@ -11,11 +11,7 @@
 
 #include "cocos2d.h"
 
-//typedef bool (* type_cb)();
-
-//typedef std::function<bool()> * type_cb;
-
-typedef bool (cocos2d::Ref::*Sig_SEL)(std::string &arg , va_list args);
+typedef bool (cocos2d::Ref::*Sig_SEL)(va_list args);
 
 #define TO_SIG_SEL(_SELECTOR) static_cast<Sig_SEL>(&_SELECTOR)
 
@@ -42,7 +38,7 @@ public:
     
     void registerEvent(std::string eventName , Sig_Target pTarget , Sig_SEL pSelector ,int priority);
     
-    void dispatchEvent(std::string &eventName , ...);
+    void dispatchEvent(std::string eventName , ...);
     
     void removeEvent(std::string eventName , Sig_Target pTarget , Sig_SEL pSelector);
     

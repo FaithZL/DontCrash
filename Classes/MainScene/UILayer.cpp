@@ -181,7 +181,7 @@ void UILayer::initScore(){
     addChild(_score);
 }
 
-bool UILayer::refreshScore(std::string &arg, va_list args){
+bool UILayer::refreshScore(va_list args){
    
     int score = va_arg(args,int);
     
@@ -189,7 +189,7 @@ bool UILayer::refreshScore(std::string &arg, va_list args){
     
     va_end(args);
     
-    _score->setString("" + score);
+//    _score->setString("" + score);
     return true;
 }
 
