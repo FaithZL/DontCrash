@@ -25,6 +25,13 @@ enum Direction{
     CCW
 };
 
+enum UDLR{
+    up,
+    down,
+    left,
+    right
+};
+
 class BaseCar : public cocos2d::Sprite , public FSM
 {
     
@@ -44,6 +51,8 @@ public:
         }
         _curVelo = newVelo;
     }
+    
+    int getUDLR();
     
     CC_SYNTHESIZE_READONLY(float , _curVelo , Velo);
     

@@ -56,7 +56,22 @@ void BaseCar::initFSM()
     setNextState(CarState::Line);
 }
 
-
+int BaseCar::getUDLR(){
+    auto pos = getPosition();
+    if (pos.x >=  POS_L.x && pos.x <= POS_R.x) {
+        if (pos.y > POS_L.y) {
+            return up;
+        }else{
+            return down;
+        }
+    }else{
+        if (pos.x > POS_L.x) {
+            return right;
+        } else {
+            return left;
+        }
+    }
+}
 
 void BaseCar::enterLineCallBack()
 {
