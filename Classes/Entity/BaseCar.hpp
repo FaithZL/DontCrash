@@ -52,7 +52,7 @@ public:
         _curVelo = newVelo;
     }
     
-    int getUDLR();
+    virtual int getUDLR();
     
     CC_SYNTHESIZE_READONLY(float , _curVelo , Velo);
     

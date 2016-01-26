@@ -10,6 +10,7 @@
 #include "Scorer.hpp"
 #include "Enemy.hpp"
 #include "FSMState.h"
+#include "Z_Math.h"
 
 USING_NS_CC;
 
@@ -52,8 +53,64 @@ void Group::initFSM(){
     
 }
 
-float Group::distanceInTrack(Enemy *enemy1, Enemy *enemy2){
+float Group::distanceInTrack(Enemy * front , Enemy * back){
+    auto fPos = front->getPosition();
+    auto bPos = back->getPosition();
+    auto radius = front->getCurRadius();
     
+    if (front->getUDLR() == left) {
+        
+        auto fAngle = getAngle(fPos , POS_L);
+        auto fArc = radius * (fAngle - PI / 2);
+        
+        if (back->getUDLR() == up) {
+            
+            return fArc + (bPos.x - POS_L.x);
+            
+        }else if (back->getUDLR() == left){
+            
+            return (fAngle - getAngle(POS_L, bPos)) * radius;
+        
+        }else if (back->getUDLR() == down){
+        
+            return (fArc + (POS_R.x - POS_L.x) + PI * radius + (POS_R.x - bPos.x));
+            
+        }else if (back->getUDLR() == right){
+            
+            auto bAngle = getAngle(POS_R, bPos);
+            
+            bAngle = 2.5 * PI - bAngle;
+            
+            auto bArc = bAngle * radius;
+            
+            return fArc + bArc + (POS_R.x - POS_L.x);
+            
+        }
+    }else if (front->getUDLR() == right){
+        auto fAngle = getAngle(fPos , POS_R);
+        fAngle = 2.5 * PI - fAngle;
+        
+        if (back->getUDLR() == left) {
+            
+            auto circumference = 2 * (POS_R.x - POS_L.x) + 2 * PI * radius;
+            
+            return circumference - distanceInTrack(back, front);
+        
+        }else if (back->getUDLR() == right){
+            
+            auto bAngle = getAngle(POS_R, bPos);
+            
+            bAngle = 2.5 * PI - bAngle;
+            
+            return fabsf(bAngle - fAngle) * radius;
+            
+        }else if (back->getUDLR() == up){
+            
+            
+            
+        }
+        
+    }
 }
 
 void Group::g3enter(){

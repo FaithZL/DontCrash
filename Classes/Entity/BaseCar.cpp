@@ -155,18 +155,15 @@ void BaseCar::enterCircleCallBack()
 
 void BaseCar::lineUpdate(float d)
 {
-    auto winSize = Director::getInstance()->getWinSize();
-    auto centerY = winSize.height / 2;
-    auto posY = getPositionY();
-    
+    auto UDLR = getUDLR();
     auto posX = getPositionX();
     
-    if (posX < POS_L.x || posX > POS_R.x) {
+    if (UDLR == right || UDLR == left) {
         _delayedStateName = CarState::Circle;
         return;
     }
     
-    if ((_direction == Direction::CCW && posY > centerY) || (_direction == Direction::CW && posY < centerY)) {
+    if ((_direction == Direction::CCW && UDLR == up) || (_direction == Direction::CW && UDLR == down)) {
         auto newX = posX - d * _curVelo;
         setPositionX(newX);
     }
@@ -180,11 +177,9 @@ void BaseCar::lineUpdate(float d)
 
 void BaseCar::circleUpdate(float d)
 {
-    auto winSize = Director::getInstance()->getWinSize();
-    auto centerX = winSize.width / 2;
-    auto posX = getPositionX();
+    auto UDLR = getUDLR();
     
-    if (posX > POS_L.x && posX < POS_R.x) {
+    if (UDLR == up || UDLR == down) {
         _delayedStateName = CarState::Line;
         return;
     }
@@ -201,7 +196,7 @@ void BaseCar::circleUpdate(float d)
     switch (_direction) {
         case Direction::CCW:
             newAngle = curAngle + angleVelo * d;
-            if (posX < centerX){
+            if (UDLR == left){
                 setPositionX(POS_L.x + cos(newAngle) * _curRadius);
                 setPositionY(POS_L.y + sin(newAngle) * _curRadius);
             }
@@ -213,7 +208,7 @@ void BaseCar::circleUpdate(float d)
             
         case Direction::CW:
             newAngle = curAngle - angleVelo * d;
-            if (posX < centerX) {
+            if (UDLR == left) {
                 setPositionX(POS_L.x + cos(newAngle) * _curRadius);
                 setPositionY(POS_L.y + sin(newAngle) * _curRadius);
             }
