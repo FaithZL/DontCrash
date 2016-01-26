@@ -55,6 +55,12 @@
 		D6B0611B1803AB670077942B /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6B0611A1803AB670077942B /* CoreMotion.framework */; };
 		ED545A7C1B68A1F400C3958E /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = ED545A7B1B68A1F400C3958E /* libiconv.dylib */; };
 		ED545A7E1B68A1FA00C3958E /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = ED545A7D1B68A1FA00C3958E /* libiconv.dylib */; };
+		F600ADF01C57314400106B9D /* BaseCar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F600ADEA1C57314400106B9D /* BaseCar.cpp */; };
+		F600ADF11C57314400106B9D /* BaseCar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F600ADEA1C57314400106B9D /* BaseCar.cpp */; };
+		F600ADF21C57314400106B9D /* Car.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F600ADEC1C57314400106B9D /* Car.cpp */; };
+		F600ADF31C57314400106B9D /* Car.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F600ADEC1C57314400106B9D /* Car.cpp */; };
+		F600ADF41C57314400106B9D /* Enemy.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F600ADEE1C57314400106B9D /* Enemy.cpp */; };
+		F600ADF51C57314400106B9D /* Enemy.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F600ADEE1C57314400106B9D /* Enemy.cpp */; };
 		F6AA42ED1C52480100553300 /* Scorer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F6AA42EB1C52480100553300 /* Scorer.cpp */; };
 		F6AA42EE1C52480100553300 /* Scorer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F6AA42EB1C52480100553300 /* Scorer.cpp */; };
 		F6AA42F11C5248A100553300 /* Controller.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F6AA42EF1C5248A100553300 /* Controller.cpp */; };
@@ -81,12 +87,6 @@
 		F6E04F721C4E172300214F89 /* img in Resources */ = {isa = PBXBuildFile; fileRef = F6E04F651C4E172300214F89 /* img */; };
 		F6E04F731C4E172300214F89 /* res in Resources */ = {isa = PBXBuildFile; fileRef = F6E04F661C4E172300214F89 /* res */; };
 		F6E04F741C4E172300214F89 /* res in Resources */ = {isa = PBXBuildFile; fileRef = F6E04F661C4E172300214F89 /* res */; };
-		F6E097F11C56296F00B179B0 /* BaseCar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F6E097EB1C56296F00B179B0 /* BaseCar.cpp */; };
-		F6E097F21C56296F00B179B0 /* BaseCar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F6E097EB1C56296F00B179B0 /* BaseCar.cpp */; };
-		F6E097F31C56296F00B179B0 /* Car.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F6E097ED1C56296F00B179B0 /* Car.cpp */; };
-		F6E097F41C56296F00B179B0 /* Car.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F6E097ED1C56296F00B179B0 /* Car.cpp */; };
-		F6E097F51C56296F00B179B0 /* Enemy.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F6E097EF1C56296F00B179B0 /* Enemy.cpp */; };
-		F6E097F61C56296F00B179B0 /* Enemy.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F6E097EF1C56296F00B179B0 /* Enemy.cpp */; };
 		F6E097F91C565B3700B179B0 /* Group.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F6E097F71C565B3700B179B0 /* Group.cpp */; };
 		F6E097FA1C565B3700B179B0 /* Group.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F6E097F71C565B3700B179B0 /* Group.cpp */; };
 		F6E097FF1C565B6A00B179B0 /* GameLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F6E097FB1C565B6A00B179B0 /* GameLayer.cpp */; };
@@ -178,6 +178,12 @@
 		D6B0611A1803AB670077942B /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.0.sdk/System/Library/Frameworks/CoreMotion.framework; sourceTree = DEVELOPER_DIR; };
 		ED545A7B1B68A1F400C3958E /* libiconv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.dylib; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.4.sdk/usr/lib/libiconv.dylib; sourceTree = DEVELOPER_DIR; };
 		ED545A7D1B68A1FA00C3958E /* libiconv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.dylib; path = usr/lib/libiconv.dylib; sourceTree = SDKROOT; };
+		F600ADEA1C57314400106B9D /* BaseCar.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BaseCar.cpp; sourceTree = "<group>"; };
+		F600ADEB1C57314400106B9D /* BaseCar.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = BaseCar.hpp; sourceTree = "<group>"; };
+		F600ADEC1C57314400106B9D /* Car.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Car.cpp; sourceTree = "<group>"; };
+		F600ADED1C57314400106B9D /* Car.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Car.hpp; sourceTree = "<group>"; };
+		F600ADEE1C57314400106B9D /* Enemy.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Enemy.cpp; sourceTree = "<group>"; };
+		F600ADEF1C57314400106B9D /* Enemy.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Enemy.hpp; sourceTree = "<group>"; };
 		F6153B9D1C4FC00200CE9BF3 /* Z_Math.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Z_Math.h; sourceTree = "<group>"; };
 		F6AA42EB1C52480100553300 /* Scorer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Scorer.cpp; sourceTree = "<group>"; };
 		F6AA42EC1C52480100553300 /* Scorer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Scorer.hpp; sourceTree = "<group>"; };
@@ -199,12 +205,6 @@
 		F6E04F641C4E172300214F89 /* HelloWorld.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HelloWorld.png; sourceTree = "<group>"; };
 		F6E04F651C4E172300214F89 /* img */ = {isa = PBXFileReference; lastKnownFileType = folder; path = img; sourceTree = "<group>"; };
 		F6E04F661C4E172300214F89 /* res */ = {isa = PBXFileReference; lastKnownFileType = folder; path = res; sourceTree = "<group>"; };
-		F6E097EB1C56296F00B179B0 /* BaseCar.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = BaseCar.cpp; path = ../Entity/BaseCar.cpp; sourceTree = "<group>"; };
-		F6E097EC1C56296F00B179B0 /* BaseCar.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = BaseCar.hpp; path = ../Entity/BaseCar.hpp; sourceTree = "<group>"; };
-		F6E097ED1C56296F00B179B0 /* Car.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Car.cpp; path = ../Entity/Car.cpp; sourceTree = "<group>"; };
-		F6E097EE1C56296F00B179B0 /* Car.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = Car.hpp; path = ../Entity/Car.hpp; sourceTree = "<group>"; };
-		F6E097EF1C56296F00B179B0 /* Enemy.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Enemy.cpp; path = ../Entity/Enemy.cpp; sourceTree = "<group>"; };
-		F6E097F01C56296F00B179B0 /* Enemy.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = Enemy.hpp; path = ../Entity/Enemy.hpp; sourceTree = "<group>"; };
 		F6E097F71C565B3700B179B0 /* Group.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Group.cpp; sourceTree = "<group>"; };
 		F6E097F81C565B3700B179B0 /* Group.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Group.hpp; sourceTree = "<group>"; };
 		F6E097FB1C565B6A00B179B0 /* GameLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GameLayer.cpp; path = ../View/GameLayer.cpp; sourceTree = "<group>"; };
@@ -427,8 +427,7 @@
 				F6E097FD1C565B6A00B179B0 /* UILayer.cpp */,
 				F6E097FE1C565B6A00B179B0 /* UILayer.hpp */,
 			);
-			name = View;
-			path = MainScene;
+			path = View;
 			sourceTree = "<group>";
 		};
 		F6E04DE31C4E001B00214F89 /* utils */ = {
@@ -456,15 +455,14 @@
 		F6E04E181C4E024C00214F89 /* Entity */ = {
 			isa = PBXGroup;
 			children = (
-				F6E097EB1C56296F00B179B0 /* BaseCar.cpp */,
-				F6E097EC1C56296F00B179B0 /* BaseCar.hpp */,
-				F6E097ED1C56296F00B179B0 /* Car.cpp */,
-				F6E097EE1C56296F00B179B0 /* Car.hpp */,
-				F6E097EF1C56296F00B179B0 /* Enemy.cpp */,
-				F6E097F01C56296F00B179B0 /* Enemy.hpp */,
+				F600ADEA1C57314400106B9D /* BaseCar.cpp */,
+				F600ADEB1C57314400106B9D /* BaseCar.hpp */,
+				F600ADEC1C57314400106B9D /* Car.cpp */,
+				F600ADED1C57314400106B9D /* Car.hpp */,
+				F600ADEE1C57314400106B9D /* Enemy.cpp */,
+				F600ADEF1C57314400106B9D /* Enemy.hpp */,
 			);
-			name = Entity;
-			path = Car;
+			path = Entity;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -612,19 +610,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F600ADF01C57314400106B9D /* BaseCar.cpp in Sources */,
 				F6E04E071C4E001B00214F89 /* FSMState.cpp in Sources */,
-				F6E097F11C56296F00B179B0 /* BaseCar.cpp in Sources */,
-				F6E097F51C56296F00B179B0 /* Enemy.cpp in Sources */,
 				F6E04E051C4E001B00214F89 /* FSM.cpp in Sources */,
 				F6AA42ED1C52480100553300 /* Scorer.cpp in Sources */,
 				F6E097FF1C565B6A00B179B0 /* GameLayer.cpp in Sources */,
 				F6E04DFB1C4E001B00214F89 /* AppDelegate.cpp in Sources */,
 				503AE10017EB989F00D1A890 /* AppController.mm in Sources */,
 				503AE10217EB989F00D1A890 /* RootViewController.mm in Sources */,
+				F600ADF21C57314400106B9D /* Car.cpp in Sources */,
 				503AE10117EB989F00D1A890 /* main.m in Sources */,
-				F6E097F31C56296F00B179B0 /* Car.cpp in Sources */,
 				F6E098011C565B6A00B179B0 /* UILayer.cpp in Sources */,
 				F6DA52EF1C535CC300854EF9 /* Signal.cpp in Sources */,
+				F600ADF41C57314400106B9D /* Enemy.cpp in Sources */,
 				F6E097F91C565B3700B179B0 /* Group.cpp in Sources */,
 				F6AA42F11C5248A100553300 /* Controller.cpp in Sources */,
 			);
@@ -634,19 +632,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F6E097F61C56296F00B179B0 /* Enemy.cpp in Sources */,
+				F600ADF11C57314400106B9D /* BaseCar.cpp in Sources */,
 				F6E098021C565B6A00B179B0 /* UILayer.cpp in Sources */,
 				F6DA52F01C535CC300854EF9 /* Signal.cpp in Sources */,
 				F6E04DFC1C4E001B00214F89 /* AppDelegate.cpp in Sources */,
 				F6AA42EE1C52480100553300 /* Scorer.cpp in Sources */,
 				F6E04E081C4E001B00214F89 /* FSMState.cpp in Sources */,
+				F600ADF31C57314400106B9D /* Car.cpp in Sources */,
+				F600ADF51C57314400106B9D /* Enemy.cpp in Sources */,
 				F6E098001C565B6A00B179B0 /* GameLayer.cpp in Sources */,
 				503AE10517EB98FF00D1A890 /* main.cpp in Sources */,
 				F6E04E061C4E001B00214F89 /* FSM.cpp in Sources */,
-				F6E097F41C56296F00B179B0 /* Car.cpp in Sources */,
 				F6AA42F21C5248A100553300 /* Controller.cpp in Sources */,
 				F6E097FA1C565B3700B179B0 /* Group.cpp in Sources */,
-				F6E097F21C56296F00B179B0 /* BaseCar.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

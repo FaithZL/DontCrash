@@ -70,9 +70,9 @@ void Group::g3update(float d){
             _enemies.at(i)->setAttempToChange(var);
         }
     }
-    if (_scorer->getScore() >= 7) {
-        _delayedStateName = EnemyState::g12;
-    }
+//    if (_scorer->getScore() >= 7) {
+//        _delayedStateName = EnemyState::g12;
+//    }
 }
 
 void Group::g12enter(){
