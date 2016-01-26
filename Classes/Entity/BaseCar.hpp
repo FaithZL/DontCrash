@@ -36,7 +36,16 @@ public:
     
     CC_SYNTHESIZE(std::string , _blastRes , BlastRes);
     
-    CC_SYNTHESIZE(float , _curVelo , Velo);
+    CC_SYNTHESIZE_READONLY(cocos2d::Vec2 , _originPos, OriginPos);
+    
+    inline void setVelo(float newVelo , bool isAlways){
+        if (isAlways) {
+            _normalVelo = newVelo;
+        }
+        _curVelo = newVelo;
+    }
+    
+    CC_SYNTHESIZE_READONLY(float , _curVelo , Velo);
     
     CC_SYNTHESIZE(int , _direction , Direction);
     
@@ -60,8 +69,23 @@ public:
     
     virtual void changeTrack();
     
+    inline bool isChangeToCircle(){
+        if (getCurrentStateName() == CarState::Circle && getPreviousStateName() == CarState::Line) {
+            return true;
+        }
+        return false;
+    }
+    
+    inline bool isChangeToLine(){
+        if (getPreviousStateName() == CarState::Line && getPreviousStateName() == CarState::Circle) {
+            return true;
+        }
+        return false;
+    }
+    
 protected:
-    cocos2d::Vec2 _originPos;
+    
+    float _normalVelo;
     
     float _originVelo;
     

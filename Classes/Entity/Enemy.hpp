@@ -25,6 +25,20 @@ enum AttempTochange{
     CanSet
 };
 
+//enum VeloState{
+//    vCut = -1,
+//    vNormal,
+//    vAdd
+//};
+
+//enum AttempVeloState{
+//    aCut = -1,
+//    aNormal,
+//    aAdd
+//};
+
+class Group;
+
 class Enemy : public BaseCar
 {
 public:
@@ -35,10 +49,24 @@ public:
     
     CC_SYNTHESIZE_READONLY(int , _attempToChange , AttempToChange);
     
+    CC_SYNTHESIZE(Group *, _group, Group);
+    
     inline void setAttempToChange(int var){
         if (_attempToChange == AttempTochange::CanSet) {
             _attempToChange = var;
         }
+    }
+    
+    inline void speedUp(){
+        _curVelo = _normalVelo * 1.5;
+    }
+    
+    inline void speedDown(){
+        _curVelo = _normalVelo / 2;
+    }
+    
+    inline void speedResume(){
+        _curVelo = _normalVelo;
     }
     
     static Enemy * create(std::string fileName , float originVelo , cocos2d::Vec2 originPos , int direction);

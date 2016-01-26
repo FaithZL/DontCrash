@@ -52,11 +52,17 @@ void Group::initFSM(){
     
 }
 
+float Group::distanceInTrack(Enemy *enemy1, Enemy *enemy2){
+    
+}
+
 void Group::g3enter(){
     
 }
 
 void Group::g3update(float d){
+    
+    
     int i;
     for (i = 0; i < _enemies.size(); i++) {
         if (_enemies.at(i)->getAttempToChange() != AttempTochange::CanSet) {
@@ -70,13 +76,17 @@ void Group::g3update(float d){
             _enemies.at(i)->setAttempToChange(var);
         }
     }
-//    if (_scorer->getScore() >= 7) {
-//        _delayedStateName = EnemyState::g12;
-//    }
+    
+    if (_scorer->getCircleCount() >= 1 && _enemies.at(1)->isChangeToCircle()) {
+        
+        _delayedStateName = EnemyState::g12;
+        
+    }
 }
 
 void Group::g12enter(){
-    int velo = _enemies.at(1)->getVelo();
+    _enemies.at(1)->speedDown();
+    _enemies.at(2)->speedDown();
     
 }
 
@@ -104,12 +114,14 @@ void Group::update(float d){
 }
 
 void Group::reset(){
+    _delayedStateName = EnemyState::g3;
     for(auto iter : _enemies){
         iter->reset();
     }
 }
 
 void Group::addEnemy(Enemy *enemy){
+    enemy->setGroup(this);
     _enemies.pushBack(enemy);
 }
 

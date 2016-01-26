@@ -33,7 +33,7 @@ bool BaseCar::init(std::string fileName , float originVelo, cocos2d::Vec2 origin
     _originVelo = originVelo;
     _curVelo = originVelo;
     _originPos = originPos;
-    setVelo(originVelo);
+    setVelo(originVelo , true);
     setPosition(originPos);
     initFSM();
     return true;
@@ -55,6 +55,8 @@ void BaseCar::initFSM()
     
     setNextState(CarState::Line);
 }
+
+
 
 void BaseCar::enterLineCallBack()
 {
@@ -214,7 +216,7 @@ void BaseCar::circleUpdate(float d)
 
 void BaseCar::reset()
 {
-    setVelo(_originVelo);
+    setVelo(_originVelo , true);
     setPosition(_originPos);
     setTexture(_normalRes);
     _curRadius = R_OUTER;

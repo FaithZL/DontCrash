@@ -19,17 +19,31 @@ public:
     
     ~Car();
     
-    void setExtraScoreByTag(int enemyTag);
+    CC_SYNTHESIZE_READONLY(cocos2d::Vec2 , _prePos, PrePos);
     
-    float getExtraScoreByTag(int enemyTag);
+    inline void setFarthestFlagbyTag(int enemyTag , bool flag){
+        _bFarthestFlag[enemyTag] = flag;
+    }
     
-    void setDistance(int enemyTag , float distance);
+    inline bool getFarthestFlagbyTag(int enemyTag){
+        return _bFarthestFlag[enemyTag];
+    }
     
-    float getPreDistance(int enemyTag);
+    inline void setDistance(int enemyTag, float distance){
+        _preDis[enemyTag] = distance;
+    }
     
-    void setFarthestFlagbyTag(int enemyTag , bool flag);
+    inline void setExtraScoreByTag(int enemyTag){
+        _extraScore[enemyTag] = 30;
+    }
     
-    bool getFarthestFlagbyTag(int enemyTag);
+    inline float getExtraScoreByTag(int enemyTag){
+        return _extraScore[enemyTag];
+    }
+    
+    inline float getPreDistance(int enemyTag){
+        return _preDis[enemyTag];
+    }
     
     static Car * create(std::string fileName , float originVelo , cocos2d::Vec2 originPos , int direction);
     

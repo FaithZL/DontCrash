@@ -34,6 +34,8 @@ public:
     
     CC_SYNTHESIZE_READONLY(Group * , _group, Group);
     
+    CC_SYNTHESIZE_READONLY(int , _circleCount, CircleCount);
+    
     CREATE_FUNC(Scorer);
     
     void reset();
@@ -56,6 +58,8 @@ public:
     bool isIntersect(cocos2d::Node * node1 , cocos2d::Node * node2);
     
     virtual bool init();
+    
+    void recordCircleCount(float d);
 
 protected:
     

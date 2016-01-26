@@ -36,6 +36,7 @@ Car * Car::create(std::string fileName, float originVelo, cocos2d::Vec2 originPo
 
 void Car::update(float d)
 {
+    _prePos = getPosition();
     BaseCar::update(d);
     for (int i = 0 ; i < 3 ; i ++) {
         _extraScore[i] = _extraScore[i] - d * 60;
@@ -43,10 +44,6 @@ void Car::update(float d)
             _extraScore[i] = 0;
         }
     }
-}
-
-float Car::getPreDistance(int enemyTag){
-    return _preDis[enemyTag];
 }
 
 void Car::reset(){
@@ -57,26 +54,6 @@ void Car::reset(){
         _preDis[i] = 0;
         _bFarthestFlag[i] = false;
     }
-}
-
-void Car::setFarthestFlagbyTag(int enemyTag , bool flag){
-    _bFarthestFlag[enemyTag] = flag;
-}
-
-bool Car::getFarthestFlagbyTag(int enemyTag){
-    return _bFarthestFlag[enemyTag];
-}
-
-void Car::setDistance(int enemyTag, float distance){
-    _preDis[enemyTag] = distance;
-}
-
-void Car::setExtraScoreByTag(int enemyTag){
-    _extraScore[enemyTag] = 30;
-}
-
-float Car::getExtraScoreByTag(int enemyTag){
-    return _extraScore[enemyTag];
 }
 
 void Car::changeTrack()
@@ -93,5 +70,4 @@ void Car::changeTrack()
             setPositionY(POS_R.y - _curRadius);
         }
     }
-    
 }

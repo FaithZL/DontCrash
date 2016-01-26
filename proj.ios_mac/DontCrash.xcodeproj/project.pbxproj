@@ -65,11 +65,12 @@
 		F600AE031C573E8500106B9D /* GameLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F600ADFE1C573E8500106B9D /* GameLayer.cpp */; };
 		F600AE041C573E8500106B9D /* UILayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F600AE001C573E8500106B9D /* UILayer.cpp */; };
 		F600AE051C573E8500106B9D /* UILayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F600AE001C573E8500106B9D /* UILayer.cpp */; };
+		F600AE081C57528700106B9D /* Signal.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F600AE061C57528700106B9D /* Signal.cpp */; };
+		F600AE091C57528700106B9D /* Signal.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F600AE061C57528700106B9D /* Signal.cpp */; };
 		F6AA42ED1C52480100553300 /* Scorer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F6AA42EB1C52480100553300 /* Scorer.cpp */; };
 		F6AA42EE1C52480100553300 /* Scorer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F6AA42EB1C52480100553300 /* Scorer.cpp */; };
 		F6AA42F11C5248A100553300 /* Controller.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F6AA42EF1C5248A100553300 /* Controller.cpp */; };
 		F6AA42F21C5248A100553300 /* Controller.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F6AA42EF1C5248A100553300 /* Controller.cpp */; };
-		F6DA52F01C535CC300854EF9 /* Signal.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F6DA52ED1C535CC300854EF9 /* Signal.cpp */; };
 		F6E04DFB1C4E001B00214F89 /* AppDelegate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F6E04DD81C4E001B00214F89 /* AppDelegate.cpp */; };
 		F6E04DFC1C4E001B00214F89 /* AppDelegate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F6E04DD81C4E001B00214F89 /* AppDelegate.cpp */; };
 		F6E04E051C4E001B00214F89 /* FSM.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F6E04DE51C4E001B00214F89 /* FSM.cpp */; };
@@ -187,14 +188,14 @@
 		F600ADFF1C573E8500106B9D /* GameLayer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = GameLayer.hpp; sourceTree = "<group>"; };
 		F600AE001C573E8500106B9D /* UILayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UILayer.cpp; sourceTree = "<group>"; };
 		F600AE011C573E8500106B9D /* UILayer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = UILayer.hpp; sourceTree = "<group>"; };
+		F600AE061C57528700106B9D /* Signal.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Signal.cpp; sourceTree = "<group>"; };
+		F600AE071C57528700106B9D /* Signal.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Signal.hpp; sourceTree = "<group>"; };
 		F6153B9D1C4FC00200CE9BF3 /* Z_Math.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Z_Math.h; sourceTree = "<group>"; };
 		F6AA42EB1C52480100553300 /* Scorer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Scorer.cpp; sourceTree = "<group>"; };
 		F6AA42EC1C52480100553300 /* Scorer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Scorer.hpp; sourceTree = "<group>"; };
 		F6AA42EF1C5248A100553300 /* Controller.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Controller.cpp; sourceTree = "<group>"; };
 		F6AA42F01C5248A100553300 /* Controller.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Controller.hpp; sourceTree = "<group>"; };
 		F6CE4FB51C4E6E4C004CB6BC /* constant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = constant.h; sourceTree = "<group>"; };
-		F6DA52ED1C535CC300854EF9 /* Signal.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Signal.cpp; sourceTree = "<group>"; };
-		F6DA52EE1C535CC300854EF9 /* Signal.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Signal.hpp; sourceTree = "<group>"; };
 		F6E04DD81C4E001B00214F89 /* AppDelegate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AppDelegate.cpp; sourceTree = "<group>"; };
 		F6E04DD91C4E001B00214F89 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		F6E04DE51C4E001B00214F89 /* FSM.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FSM.cpp; sourceTree = "<group>"; };
@@ -432,10 +433,10 @@
 		F6E04DE31C4E001B00214F89 /* utils */ = {
 			isa = PBXGroup;
 			children = (
+				F600AE061C57528700106B9D /* Signal.cpp */,
+				F600AE071C57528700106B9D /* Signal.hpp */,
 				F6E04DE41C4E001B00214F89 /* FSM */,
 				F6153B9D1C4FC00200CE9BF3 /* Z_Math.h */,
-				F6DA52ED1C535CC300854EF9 /* Signal.cpp */,
-				F6DA52EE1C535CC300854EF9 /* Signal.hpp */,
 			);
 			path = utils;
 			sourceTree = "<group>";
@@ -616,6 +617,7 @@
 				F6E04DFB1C4E001B00214F89 /* AppDelegate.cpp in Sources */,
 				503AE10017EB989F00D1A890 /* AppController.mm in Sources */,
 				503AE10217EB989F00D1A890 /* RootViewController.mm in Sources */,
+				F600AE081C57528700106B9D /* Signal.cpp in Sources */,
 				F600AE041C573E8500106B9D /* UILayer.cpp in Sources */,
 				F600AE021C573E8500106B9D /* GameLayer.cpp in Sources */,
 				F600ADF21C57314400106B9D /* Car.cpp in Sources */,
@@ -632,13 +634,13 @@
 			files = (
 				F600ADF11C57314400106B9D /* BaseCar.cpp in Sources */,
 				F600AE051C573E8500106B9D /* UILayer.cpp in Sources */,
-				F6DA52F01C535CC300854EF9 /* Signal.cpp in Sources */,
 				F6E04DFC1C4E001B00214F89 /* AppDelegate.cpp in Sources */,
 				F6AA42EE1C52480100553300 /* Scorer.cpp in Sources */,
 				F6E04E081C4E001B00214F89 /* FSMState.cpp in Sources */,
 				F600AE031C573E8500106B9D /* GameLayer.cpp in Sources */,
 				F600ADF31C57314400106B9D /* Car.cpp in Sources */,
 				F600ADF51C57314400106B9D /* Enemy.cpp in Sources */,
+				F600AE091C57528700106B9D /* Signal.cpp in Sources */,
 				503AE10517EB98FF00D1A890 /* main.cpp in Sources */,
 				F6E04E061C4E001B00214F89 /* FSM.cpp in Sources */,
 				F6AA42F21C5248A100553300 /* Controller.cpp in Sources */,

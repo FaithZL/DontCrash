@@ -20,6 +20,7 @@ USING_NS_CC;
 Scorer::Scorer():
 _car(nullptr),
 _score(0),
+_circleCount(0),
 _enemies(nullptr),
 _group(nullptr){
     
@@ -32,6 +33,7 @@ Scorer::~Scorer(){
 bool Scorer::init(){
     _group = Group::create();
     CC_SAFE_RETAIN(_group);
+    _group->setScorer(this);
     _enemies = _group->getEnemies();
     return true;
 }
@@ -47,6 +49,7 @@ void Scorer::reset(){
     }
     _group->reset();
     _score = 0;
+    _circleCount = 0;
     Controller::getInstance()->getSignal()->dispatchEvent("onScoreChange",_score);
 }
 
@@ -120,7 +123,9 @@ void Scorer::update(float d){
     }
     _group->update(d);
     scoring(d);
+    recordCircleCount(d);
     checkSameTrack();
+    
 }
 
 void Scorer::scoring(float d){
@@ -144,6 +149,16 @@ void Scorer::scoring(float d){
         default:
             break;
     }
+}
+
+void Scorer::recordCircleCount(float d){
+    
+    float originX = _car->getOriginPos().x;
+    
+    if (originX < _car->getPrePos().x && originX >= _car->getPositionX()) {
+        _circleCount ++;
+    }
+    
 }
 
 bool Scorer::isCollision(){
