@@ -36,7 +36,6 @@ Car * Car::create(std::string fileName, float originVelo, cocos2d::Vec2 originPo
 
 void Car::update(float d)
 {
-    _prePos = getPosition();
     BaseCar::update(d);
     for (int i = 0 ; i < 3 ; i ++) {
         _extraScore[i] = _extraScore[i] - d * 60;

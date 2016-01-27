@@ -39,6 +39,8 @@ public:
     BaseCar();
     ~BaseCar();
     
+    CC_SYNTHESIZE_READONLY(cocos2d::Vec2 , _prePos, PrePos);
+    
     CC_SYNTHESIZE(float , _curRadius , CurRadius);
     
     CC_SYNTHESIZE(std::string , _blastRes , BlastRes);

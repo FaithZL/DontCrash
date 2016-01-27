@@ -122,9 +122,9 @@ void Scorer::update(float d){
         _car->update(d);
     }
     _group->update(d);
-    scoring(d);
-    recordCircleCount(d);
-    checkSameTrack();
+//    scoring(d);
+//    recordCircleCount(d);
+//    checkSameTrack();
     
 }
 

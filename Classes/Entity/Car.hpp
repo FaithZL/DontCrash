@@ -19,7 +19,7 @@ public:
     
     ~Car();
     
-    CC_SYNTHESIZE_READONLY(cocos2d::Vec2 , _prePos, PrePos);
+//    CC_SYNTHESIZE_READONLY(cocos2d::Vec2 , _prePos, PrePos);
     
     inline void setFarthestFlagbyTag(int enemyTag , bool flag){
         _bFarthestFlag[enemyTag] = flag;

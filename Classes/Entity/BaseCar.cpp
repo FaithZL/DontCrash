@@ -114,7 +114,10 @@ void BaseCar::enterLineCallBack()
         deltaX = _curRadius * angle;
         setPositionX(POS_L.x + deltaX);
     }
-    
+    CCLOG("enterline");
+    if (getTag() == 0) {
+        CCLOG("enterline  %f , %f" , getPositionX() , getPositionY());
+    }
 }
 
 void BaseCar::enterCircleCallBack()
@@ -151,6 +154,11 @@ void BaseCar::enterCircleCallBack()
         setPositionY(POS_L.y + sin(angle) * _curRadius);
         setRotation3D(Vec3(0 , 0 , - convertTo180(angle - PI / 2)));
     }
+    
+    if (getTag() == 0) {
+        CCLOG("enterCircle  %f , %f" , getPositionX() , getPositionY());
+    }
+    
 }
 
 void BaseCar::lineUpdate(float d)
@@ -160,10 +168,12 @@ void BaseCar::lineUpdate(float d)
     
     if (UDLR == right || UDLR == left) {
         _delayedStateName = CarState::Circle;
-        return;
     }
+    auto winSize = Director::getInstance()->getWinSize();
+    auto centerPos = Vec2(winSize.width / 2 , winSize.height / 2);
+    auto pos = getPosition();
     
-    if ((_direction == Direction::CCW && UDLR == up) || (_direction == Direction::CW && UDLR == down)) {
+    if ((_direction == Direction::CCW && pos.y > centerPos.y) || (_direction == Direction::CW && pos.y < centerPos.y)) {
         auto newX = posX - d * _curVelo;
         setPositionX(newX);
     }
@@ -172,7 +182,9 @@ void BaseCar::lineUpdate(float d)
         auto newX = posX + d * _curVelo;
         setPositionX(newX);
     }
-    
+    if (getTag() == 0) {
+        CCLOG("updateLine  %f , %f" , getPositionX() , getPositionY());
+    }
 }
 
 void BaseCar::circleUpdate(float d)
@@ -181,8 +193,12 @@ void BaseCar::circleUpdate(float d)
     
     if (UDLR == up || UDLR == down) {
         _delayedStateName = CarState::Line;
-        return;
+//        return;
     }
+    
+    auto winSize = Director::getInstance()->getWinSize();
+    auto centerPos = Vec2(winSize.width / 2 , winSize.height / 2);
+    auto pos = getPosition();
     
     //base of PI
     auto angleVelo = _curVelo / _curRadius;
@@ -196,7 +212,7 @@ void BaseCar::circleUpdate(float d)
     switch (_direction) {
         case Direction::CCW:
             newAngle = curAngle + angleVelo * d;
-            if (UDLR == left){
+            if (pos.x < centerPos.x){
                 setPositionX(POS_L.x + cos(newAngle) * _curRadius);
                 setPositionY(POS_L.y + sin(newAngle) * _curRadius);
             }
@@ -208,7 +224,7 @@ void BaseCar::circleUpdate(float d)
             
         case Direction::CW:
             newAngle = curAngle - angleVelo * d;
-            if (UDLR == left) {
+            if (pos.x < centerPos.x) {
                 setPositionX(POS_L.x + cos(newAngle) * _curRadius);
                 setPositionY(POS_L.y + sin(newAngle) * _curRadius);
             }
@@ -222,6 +238,10 @@ void BaseCar::circleUpdate(float d)
             break;
     }
     setRotation3D(Vec3(0 , 0 , - convertTo180(newAngle - PI / 2)));
+    if (getTag() == 0) {
+        CCLOG("updateCircle  %f , %f" , getPositionX() , getPositionY());
+    }
+
 }
 
 void BaseCar::reset()
@@ -244,8 +264,19 @@ void BaseCar::changeTrack()
 
 void BaseCar::update(float delta)
 {
+    
+    _prePos = getPosition();
     Sprite::update(delta);
     FSM::update(delta);
+    if (getTag() == 0) {
+        CCLOG("out   %f , %f  \n" ,getPositionX(), getPositionY());
+    }
+    if (getPositionX() < 900 && getTag() == 0) {
+        int j = 8;        
+    }
+    if (getPosition() == _prePos && getTag() == 0) {
+        int i = 9;
+    }
 }
 
 void BaseCar::blast()
