@@ -53,64 +53,140 @@ void Group::initFSM(){
     
 }
 
-float Group::distanceInTrack(Enemy * front , Enemy * back){
+float Group::getDistanceInTrack(Enemy * front , Enemy * back){
     auto fPos = front->getPosition();
     auto bPos = back->getPosition();
     auto radius = front->getCurRadius();
+    auto circumference = 2 * (POS_R.x - POS_L.x) + 2 * PI * radius;
     
     if (front->getUDLR() == left) {
         
-        auto fAngle = getAngle(fPos , POS_L);
-        auto fArc = radius * (fAngle - PI / 2);
+        auto fAngle = getAngle(POS_L , fPos);
         
         if (back->getUDLR() == up) {
             
-            return fArc + (bPos.x - POS_L.x);
+            return circumference - (radius * (fAngle - PI / 2) + (bPos.x - POS_L.x));
             
         }else if (back->getUDLR() == left){
             
-            return (fAngle - getAngle(POS_L, bPos)) * radius;
+            auto arc = fabs((fAngle - getAngle(POS_L, bPos)) * radius);
+            
+            return (fPos.y > bPos.y) ? arc : circumference - arc;
         
         }else if (back->getUDLR() == down){
         
-            return (fArc + (POS_R.x - POS_L.x) + PI * radius + (POS_R.x - bPos.x));
+            return (bPos.x - POS_L.x) + radius * (1.5 * PI - fAngle);
             
         }else if (back->getUDLR() == right){
             
             auto bAngle = getAngle(POS_R, bPos);
             
-            bAngle = 2.5 * PI - bAngle;
+            if (bAngle < PI / 2) {
+                bAngle = bAngle + PI / 2;
+            }else{
+                bAngle = bAngle - 1.5 * PI;
+            }
             
-            auto bArc = bAngle * radius;
-            
-            return fArc + bArc + (POS_R.x - POS_L.x);
+            return (1.5 * PI - fAngle + bAngle) * radius + (POS_R.x - POS_L.x);
             
         }
+        
     }else if (front->getUDLR() == right){
-        auto fAngle = getAngle(fPos , POS_R);
-        fAngle = 2.5 * PI - fAngle;
+        
+        auto fAngle = getAngle(POS_R , fPos);
         
         if (back->getUDLR() == left) {
             
-            auto circumference = 2 * (POS_R.x - POS_L.x) + 2 * PI * radius;
-            
-            return circumference - distanceInTrack(back, front);
+            return circumference - getDistanceInTrack(back, front);
         
         }else if (back->getUDLR() == right){
             
-            auto bAngle = getAngle(POS_R, bPos);
+            auto bAngle = getAngle(POS_R , bPos);
             
-            bAngle = 2.5 * PI - bAngle;
+            if (bAngle > 1.5 * PI) {
+                bAngle = bAngle - 1.5 * PI;
+            }else{
+                bAngle = bAngle + PI / 2;
+            }
             
-            return fabsf(bAngle - fAngle) * radius;
+            if (fAngle > 1.5 * PI) {
+                fAngle = fAngle - 1.5 * PI;
+            }else{
+                fAngle = fAngle + PI / 2;
+            }
+            
+            auto arc = fabs(radius * (bAngle - fAngle));
+            
+            return (fPos.y < bPos.y) ? arc : circumference - arc;
             
         }else if (back->getUDLR() == up){
             
+            if (fAngle > 1.5 * PI) {
+                fAngle = PI * 2.5 - fAngle;
+            }else{
+                fAngle = PI / 2 - fAngle;
+            }
             
+            return (POS_R.x - bPos.x) + fAngle * radius;
+            
+        }else if (back->getUDLR() == down){
+            
+            if (fAngle > 1.5 * PI) {
+                fAngle = fAngle - 1.5 * PI;
+            }else{
+                fAngle = fAngle + PI / 2;
+            }
+            
+            return circumference - ((POS_R.x - bPos.x) + fAngle * radius);
+            
+        }
+        
+    }else if (front->getUDLR() == up){
+        
+        if (back->getUDLR() == up) {
+            
+            auto d = fabs(fPos.x - bPos.x);
+            
+            return (fPos.x > bPos.x) ? d : circumference - d;
+            
+        }else if (back->getUDLR() == down){
+            
+            return (fPos.x - POS_L.x) + (bPos.x - POS_L.x) + PI * radius;
+            
+        }else if (back->getUDLR() == left){
+            
+            return circumference - getDistanceInTrack(back, front);
+            
+        }else if (back->getUDLR() == right){
+            
+            return circumference - getDistanceInTrack(back, front);
+            
+        }
+        
+    }else if (front->getUDLR() == down){
+        
+        if (back->getUDLR() == down) {
+            
+            auto d = fabs(fPos.x - bPos.x);
+            
+            return (fPos.x < bPos.x) ? d : circumference - d;
+        
+        }else if (back->getUDLR() == up){
+            
+            return circumference - getDistanceInTrack(back , front);
+            
+        }else if (back->getUDLR() == left){
+            
+            return circumference - getDistanceInTrack(back , front);
+            
+        }else if (back->getUDLR() == right){
+            
+            return circumference - getDistanceInTrack(back , front);
             
         }
         
     }
+    return -1;
 }
 
 void Group::g3enter(){
@@ -148,6 +224,13 @@ void Group::g12enter(){
 }
 
 void Group::g12update(float d){
+    
+//    if (getDistanceInTrack(_enemies.at(0), _enemies.at(1)) >= 390) {
+//        _enemies.at(1)->speedResume();
+//        _enemies.at(2)->speedResume();
+//        
+//    }
+    CCLOG("%f" , getDistanceInTrack(_enemies.at(0), _enemies.at(1)));
     
 }
 

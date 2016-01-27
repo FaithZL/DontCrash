@@ -40,7 +40,7 @@ public:
     
     void addEnemy(Enemy * enemy);
     
-    float distanceInTrack(Enemy * front , Enemy * back);
+    float getDistanceInTrack(Enemy * front , Enemy * back);
     
     inline void setScorer(Scorer * scorer){
         _scorer = scorer;
