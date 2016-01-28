@@ -13,7 +13,7 @@
 #include "UILayer.hpp"
 #include "Scorer.hpp"
 #include "Signal.hpp"
-#include "Group.hpp"
+#include "EnemyGroup.hpp"
 
 USING_NS_CC;
 

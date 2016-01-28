@@ -13,7 +13,7 @@
 
 class Car;
 class Enemy;
-class Group;
+class EnemyGroup;
 
 //enum EnemyState {
 //    g3,
@@ -32,7 +32,7 @@ public:
     
     CC_SYNTHESIZE(Car * , _car , UserCar);
     
-    CC_SYNTHESIZE_READONLY(Group * , _group, Group);
+    CC_SYNTHESIZE_READONLY(EnemyGroup * , _enemyGroup, Group);
     
     CC_SYNTHESIZE_READONLY(int , _circleCount, CircleCount);
     

@@ -21,10 +21,10 @@ enum GroupState {
 class Enemy;
 class Scorer;
 
-class Group : public cocos2d::Ref , public FSM{
+class EnemyGroup : public cocos2d::Ref , public FSM{
 public:
-    Group();
-    ~Group();
+    EnemyGroup();
+    ~EnemyGroup();
     
     enum RandSwitch{
         Off,
@@ -33,7 +33,7 @@ public:
     
     virtual bool init();
     
-    CREATE_FUNC(Group);
+    CREATE_FUNC(EnemyGroup);
     
     void initFSM();
     

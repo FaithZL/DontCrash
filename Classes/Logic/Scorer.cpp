@@ -9,7 +9,7 @@
 #include "Scorer.hpp"
 
 #include "Enemy.hpp"
-#include "Group.hpp"
+#include "EnemyGroup.hpp"
 #include "Car.hpp"
 #include "constant.h"
 #include "Controller.hpp"
@@ -22,7 +22,7 @@ _car(nullptr),
 _score(0),
 _circleCount(0),
 _enemies(nullptr),
-_group(nullptr){
+_enemyGroup(nullptr){
     
 }
 
@@ -31,10 +31,10 @@ Scorer::~Scorer(){
 }
 
 bool Scorer::init(){
-    _group = Group::create();
-    CC_SAFE_RETAIN(_group);
-    _group->setScorer(this);
-    _enemies = _group->getEnemies();
+    _enemyGroup = EnemyGroup::create();
+    CC_SAFE_RETAIN(_enemyGroup);
+    _enemyGroup->setScorer(this);
+    _enemies = _enemyGroup->getEnemies();
     return true;
 }
 
@@ -47,7 +47,7 @@ void Scorer::reset(){
     if (_car) {
         _car->reset();
     }
-    _group->reset();
+    _enemyGroup->reset();
     _score = 0;
     _circleCount = 0;
     Controller::getInstance()->getSignal()->dispatchEvent("onScoreChange",_score);
@@ -121,7 +121,7 @@ void Scorer::update(float d){
     if (_car) {
         _car->update(d);
     }
-    _group->update(d);
+    _enemyGroup->update(d);
     scoring(d);
     recordCircleCount(d);
     checkSameTrack();
@@ -131,7 +131,7 @@ void Scorer::update(float d){
 void Scorer::scoring(float d){
     
     
-    switch (_group->getCurrentStateName()) {
+    switch (_enemyGroup->getCurrentStateName()) {
         case GroupState::g3:
             checkMeet(_car , _enemies->at(0));
             break;

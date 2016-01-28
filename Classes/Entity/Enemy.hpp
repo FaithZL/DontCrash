@@ -33,7 +33,7 @@ enum AttempTochange{
 //    aAdd
 //};
 
-class Group;
+class EnemyGroup;
 
 class Enemy : public BaseCar
 {
@@ -43,7 +43,7 @@ public:
     
     CC_SYNTHESIZE_READONLY(int , _attempToChange , AttempToChange);
     
-    CC_SYNTHESIZE(Group *, _group, Group);
+    CC_SYNTHESIZE(EnemyGroup *, _group, Group);
     
     inline void setAttempToChange(int var){
         if (var == AttempTochange::Disable || var == AttempTochange::CanSet) {

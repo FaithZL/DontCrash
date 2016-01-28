@@ -6,7 +6,7 @@
 //
 //
 
-#include "Group.hpp"
+#include "EnemyGroup.hpp"
 #include "Scorer.hpp"
 #include "Enemy.hpp"
 #include "FSMState.h"
@@ -14,37 +14,37 @@
 
 USING_NS_CC;
 
-Group::Group():
+EnemyGroup::EnemyGroup():
 _timer(0),
 _scorer(nullptr),
 _randSwitch(RandSwitch::Off){
     
 }
 
-Group::~Group(){
+EnemyGroup::~EnemyGroup(){
     
 }
 
-bool Group::init(){
+bool EnemyGroup::init(){
     initFSM();
     return true;
 }
 
-void Group::initFSM(){
+void EnemyGroup::initFSM(){
     FSMState g3;
     g3.setName(GroupState::g3);
-    g3.enterCallback = CC_CALLBACK_0(Group::g3enter, this);
-    g3.updateCallback = CC_CALLBACK_1(Group::g3update, this);
+    g3.enterCallback = CC_CALLBACK_0(EnemyGroup::g3enter, this);
+    g3.updateCallback = CC_CALLBACK_1(EnemyGroup::g3update, this);
     
     FSMState g12;
     g12.setName(GroupState::g12);
-    g12.enterCallback = CC_CALLBACK_0(Group::g12enter, this);
-    g12.updateCallback = CC_CALLBACK_1(Group::g12update, this);
+    g12.enterCallback = CC_CALLBACK_0(EnemyGroup::g12enter, this);
+    g12.updateCallback = CC_CALLBACK_1(EnemyGroup::g12update, this);
     
     FSMState g111;
     g111.setName(GroupState::g111);
-    g111.enterCallback = CC_CALLBACK_0(Group::g111enter, this);
-    g111.updateCallback = CC_CALLBACK_1(Group::g111update, this);
+    g111.enterCallback = CC_CALLBACK_0(EnemyGroup::g111enter, this);
+    g111.updateCallback = CC_CALLBACK_1(EnemyGroup::g111update, this);
     
     addState(g3);
     addState(g12);
@@ -54,7 +54,7 @@ void Group::initFSM(){
     
 }
 
-float Group::getDistanceInTrack(Enemy * front , Enemy * back){
+float EnemyGroup::getDistanceInTrack(Enemy * front , Enemy * back){
     auto fPos = front->getPosition();
     auto bPos = back->getPosition();
     auto radius = front->getCurRadius();
@@ -190,11 +190,11 @@ float Group::getDistanceInTrack(Enemy * front , Enemy * back){
     return -1;
 }
 
-void Group::g3enter(){
+void EnemyGroup::g3enter(){
     _randSwitch = On;
 }
 
-void Group::g3update(float d){
+void EnemyGroup::g3update(float d){
     
     int i;
     for (i = 0; i < _enemies.size(); i++) {
@@ -233,14 +233,14 @@ void Group::g3update(float d){
 
 }
 
-void Group::g12enter(){
+void EnemyGroup::g12enter(){
     _randSwitch = Off;
     _enemies.at(1)->speedDown();
     _enemies.at(2)->speedDown();
-    
+    _timer = 0;
 }
 
-void Group::g12update(float d){
+void EnemyGroup::g12update(float d){
     
     if (_randSwitch == On) {
         
@@ -255,33 +255,33 @@ void Group::g12update(float d){
     
 }
 
-void Group::g111enter(){
+void EnemyGroup::g111enter(){
     
 }
 
-void Group::g111update(float d){
+void EnemyGroup::g111update(float d){
     
 }
 
-cocos2d::Vector<Enemy *> * Group::getEnemies(){
+cocos2d::Vector<Enemy *> * EnemyGroup::getEnemies(){
     return &_enemies;
 }
 
-void Group::update(float d){
+void EnemyGroup::update(float d){
     FSM::update(d);
     for (auto iter : _enemies) {
         iter->update(d);
     }
 }
 
-void Group::reset(){
+void EnemyGroup::reset(){
     resetFSM();
     for(auto iter : _enemies){
         iter->reset();
     }
 }
 
-void Group::addEnemy(Enemy *enemy){
+void EnemyGroup::addEnemy(Enemy *enemy){
     enemy->setGroup(this);
     _enemies.pushBack(enemy);
 }

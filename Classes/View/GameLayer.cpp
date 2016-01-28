@@ -12,7 +12,7 @@
 #include "Controller.hpp"
 #include "Enemy.hpp"
 #include "Scorer.hpp"
-#include "Group.hpp"
+#include "EnemyGroup.hpp"
 
 USING_NS_CC;
 
