@@ -20,6 +20,11 @@ public:
     Group();
     ~Group();
     
+    enum RandSwitch{
+        Off,
+        On
+    };
+    
     virtual bool init();
     
     CREATE_FUNC(Group);
@@ -54,7 +59,7 @@ public:
     
 protected:
     
-    bool _bCanSwitch;
+    int _randSwitch;
     
     Scorer * _scorer;
     

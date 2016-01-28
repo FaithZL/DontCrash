@@ -37,12 +37,32 @@ Car * Car::create(std::string fileName, float originVelo, cocos2d::Vec2 originPo
 void Car::update(float d)
 {
     BaseCar::update(d);
+    updateRadius(d);
     for (int i = 0 ; i < 3 ; i ++) {
         _extraScore[i] = _extraScore[i] - d * 60;
         if (_extraScore[i] <= 0) {
             _extraScore[i] = 0;
         }
     }
+}
+
+void Car::updateRadius(float d){
+    
+    auto v = _curVelo * 2;
+    if (_trackState == TrackState::ToInner) {
+        _curRadius = _curRadius - d * v;
+        if (_curRadius <= R_INNER) {
+            _curRadius = R_INNER;
+            _trackState = TrackState::Normal;
+        }
+    } else if(_trackState == TrackState::ToOuter){
+        _curRadius = _curRadius + d * v;
+        if (_curRadius >= R_OUTER) {
+            _curRadius = R_OUTER;
+            _trackState = TrackState::Normal;
+        }
+    }
+    
 }
 
 void Car::reset(){
@@ -57,16 +77,14 @@ void Car::reset(){
 
 void Car::changeTrack()
 {
-    BaseCar::changeTrack();
-    auto pos = getPosition();
-    auto winSize = Director::getInstance()->getWinSize();
-    auto centerPos = Vec2(winSize.width / 2 , winSize.height / 2);
-    if (getCurrentStateName() == CarState::Line) {
-        if (pos.y > centerPos.y) {
-            setPositionY(POS_R.y + _curRadius);
-        }
-        else{
-            setPositionY(POS_R.y - _curRadius);
-        }
+    if (_curRadius == R_OUTER) {
+        _trackState = TrackState::ToInner;
+    } else if(_curRadius == R_INNER){
+        _trackState = TrackState::ToOuter;
     }
 }
+
+
+
+
+

@@ -11,6 +11,7 @@
 
 #include "cocos2d.h"
 #include "FSM.h"
+#include "constant.h"
 
 class FSM;
 
@@ -18,6 +19,13 @@ enum CarState
 {
     Circle,
     Line
+};
+
+enum TrackState{
+    ToOuter,
+    ToInner,
+    Normal
+    //    Disabled
 };
 
 enum Direction{
@@ -38,6 +46,8 @@ class BaseCar : public cocos2d::Sprite , public FSM
 public:
     BaseCar();
     ~BaseCar();
+    
+    CC_SYNTHESIZE_READONLY(int , _trackState , TrackState);
     
     CC_SYNTHESIZE_READONLY(cocos2d::Vec2 , _prePos, PrePos);
     
@@ -78,23 +88,34 @@ public:
     
     virtual void blast();
     
-    virtual void changeTrack();
+    inline void resetFSM(){
+        _currentState = nullptr;
+        _previousState = nullptr;
+    }
     
     inline bool isChangeToCircle(){
-        if (getCurrentStateName() == CarState::Circle && getPreviousStateName() == CarState::Line) {
+        if (_prePos.x <= POS_R.x && getPositionX() > POS_R.x) {
+            return true;
+        }
+        if (_prePos.x >= POS_L.x && getPositionX() < POS_L.x) {
             return true;
         }
         return false;
     }
     
     inline bool isChangeToLine(){
-        if (getPreviousStateName() == CarState::Line && getPreviousStateName() == CarState::Circle) {
+        if (_prePos.x < POS_L.x && getPositionX() >= POS_L.x) {
+            return true;
+        }
+        if (_prePos.x > POS_R.x && getPositionX() <= POS_R.x) {
             return true;
         }
         return false;
     }
     
 protected:
+    
+    float _factorForVR;
     
     float _normalVelo;
     

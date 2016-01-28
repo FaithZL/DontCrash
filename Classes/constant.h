@@ -14,9 +14,11 @@
 
 #define PI 3.141592653
 
-#define POS_L Vec2(380 , 365)
-#define POS_R Vec2(900 , 365)
+#define POS_L cocos2d::Vec2(380 , 365)
+#define POS_R cocos2d::Vec2(900 , 365)
 
+#define MAX_DIS 390
+#define MIN_DIS 95
 
 
 #endif /* constant_h */

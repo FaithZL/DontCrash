@@ -15,8 +15,8 @@
 USING_NS_CC;
 
 Group::Group():
-_bCanSwitch(false),
-_scorer(nullptr){
+_scorer(nullptr),
+_randSwitch(RandSwitch::Off){
     
 }
 
@@ -190,60 +190,68 @@ float Group::getDistanceInTrack(Enemy * front , Enemy * back){
 }
 
 void Group::g3enter(){
-    
+    _randSwitch = On;
 }
 
 void Group::g3update(float d){
     
+    int i;
+    for (i = 0; i < _enemies.size(); i++) {
+        if (_enemies.at(i)->getAttempToChange() != AttempTochange::CanSet) {
+            break;
+        }
+    }
+    if (i == _enemies.size()) {
+        float num = rand_0_1();
+        for (i = 0 ; i < _enemies.size(); i++) {
+            int var = num < 1.5 ? AttempTochange::True : AttempTochange::False;
+            _enemies.at(i)->setAttempToChange(var);
+        }
+    }
     
-//    int i;
-//    for (i = 0; i < _enemies.size(); i++) {
-//        if (_enemies.at(i)->getAttempToChange() != AttempTochange::CanSet) {
-//            break;
-//        }
-//    }
-//    if (i == _enemies.size()) {
-//        float num = rand_0_1();
-//        for (i = 0 ; i < _enemies.size(); i++) {
-//            int var = num < 0.5 ? AttempTochange::True : AttempTochange::False;
-//            _enemies.at(i)->setAttempToChange(var);
-//        }
-//    }
-    
-//    if (_scorer->getCircleCount() >= 0 && _enemies.at(1)->isChangeToCircle()) {
-//        
-//        _delayedStateName = EnemyState::g12;
-//        
-//    }
+    if (_scorer->getCircleCount() >= 1) {
+        bool equal = true;
+        float r = _enemies.at(0)->getCurRadius();
+        for (int i = 1 ; i < _enemies.size() ; i ++) {
+            if (_enemies.at(i)->getCurRadius() != r) {
+                equal = false;
+                break;
+            }
+        }
+        
+        if (_enemies.at(0)->getAttempToChange() != AttempTochange::Disable && equal) {
+            for (auto iter : _enemies) {
+                iter->setAttempToChange(AttempTochange::Disable);
+            }
+        }
+        if (_enemies.at(1)->isChangeToCircle() && _enemies.at(0)->getAttempToChange() == AttempTochange::Disable) {
+            _delayedStateName = EnemyState::g12;
+        }
+        
+    }
+
 }
 
 void Group::g12enter(){
-//    _enemies.at(1)->speedDown();
-//    _enemies.at(2)->speedDown();
+    _randSwitch = Off;
+    _enemies.at(1)->speedDown();
+    _enemies.at(2)->speedDown();
     
 }
-static float testCount = 0;
+
 void Group::g12update(float d){
     
-//    if (getDistanceInTrack(_enemies.at(0), _enemies.at(1)) >= 390) {
-//        _enemies.at(1)->speedResume();
-//        _enemies.at(2)->speedResume();
-//        
-//    }
-    if (_enemies.at(1)->getUDLR() == right) {
-        _enemies.at(1)->setVelo(0 , true);
+    if (_randSwitch == On) {
+        
+        
+        
+    }else if (getDistanceInTrack(_enemies.at(0), _enemies.at(1)) >= 390){
+        _enemies.at(1)->speedResume();
+        _enemies.at(2)->speedResume();
+        //turn on the random change track
+        _randSwitch = On;
     }
     
-    
-//    auto nowd = getDistanceInTrack(_enemies.at(0), _enemies.at(1));
-//    CCLOG("%f" , nowd);
-//    if (nowd == testCount) {
-//        CCLOG("prePos : %f , %f" , _enemies.at(0)->getPrePos().x , _enemies.at(1)->getPrePos().y);
-//        CCLOG("curPos : %f , %f" , _enemies.at(0)->getPositionX() , _enemies.at(1)->getPositionY());
-////        Director::getInstance()->pause();
-//    }
-//
-//    testCount = nowd;
 }
 
 void Group::g111enter(){

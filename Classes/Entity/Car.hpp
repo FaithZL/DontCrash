@@ -19,8 +19,6 @@ public:
     
     ~Car();
     
-//    CC_SYNTHESIZE_READONLY(cocos2d::Vec2 , _prePos, PrePos);
-    
     inline void setFarthestFlagbyTag(int enemyTag , bool flag){
         _bFarthestFlag[enemyTag] = flag;
     }
@@ -48,6 +46,8 @@ public:
     static Car * create(std::string fileName , float originVelo , cocos2d::Vec2 originPos , int direction);
     
     virtual void update(float d);
+    
+    void updateRadius(float d);
     
     virtual void reset();
     

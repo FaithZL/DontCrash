@@ -122,9 +122,9 @@ void Scorer::update(float d){
         _car->update(d);
     }
     _group->update(d);
-//    scoring(d);
-//    recordCircleCount(d);
-//    checkSameTrack();
+    scoring(d);
+    recordCircleCount(d);
+    checkSameTrack();
     
 }
 
@@ -162,15 +162,15 @@ void Scorer::recordCircleCount(float d){
 }
 
 bool Scorer::isCollision(){
-//    for(auto &it : * _enemies){
-//        if (it->getCurRadius() == _car->getCurRadius() || it->getTrackState() == TrackState::ToInner || it->getTrackState() == TrackState::ToOuter) {
-//            if (isIntersect(_car, it)) {
-//                _car->blast();
-//                it->blast();
-//                return true;
-//            }
-//        }
-//    }
+    for(auto &it : * _enemies){
+        if (it->getCurRadius() == _car->getCurRadius() || it->getTrackState() == TrackState::ToInner || it->getTrackState() == TrackState::ToOuter) {
+            if (isIntersect(_car, it)) {
+                _car->blast();
+                it->blast();
+                return true;
+            }
+        }
+    }
     return false;
 }
 

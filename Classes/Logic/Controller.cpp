@@ -13,6 +13,7 @@
 #include "UILayer.hpp"
 #include "Scorer.hpp"
 #include "Signal.hpp"
+#include "Group.hpp"
 
 USING_NS_CC;
 
@@ -57,6 +58,11 @@ bool Controller::init()
 
 void Controller::start()
 {
+    auto group = _scorer->getGroup();
+    auto _enemies = group->getEnemies();
+    for(auto iter : * _enemies){
+        CCLOG("%d , %f , %f" , iter->getTag() , iter->getPositionX() , iter->getPositionY());
+    }
     scheduleUpdate();
 }
 

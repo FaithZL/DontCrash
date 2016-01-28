@@ -12,17 +12,13 @@
 #include "cocos2d.h"
 #include "BaseCar.hpp"
 
-enum TrackState{
-    ToOuter,
-    ToInner,
-    Normal,
-    Disabled
-};
+
 
 enum AttempTochange{
     False,
     True,
-    CanSet
+    CanSet,
+    Disable
 };
 
 //enum VeloState{
@@ -45,24 +41,26 @@ public:
     Enemy();
     ~Enemy();
     
-    CC_SYNTHESIZE(int , _trackState , TrackState);
-    
     CC_SYNTHESIZE_READONLY(int , _attempToChange , AttempToChange);
     
     CC_SYNTHESIZE(Group *, _group, Group);
     
     inline void setAttempToChange(int var){
+        if (var == AttempTochange::Disable || var == AttempTochange::CanSet) {
+            _attempToChange = var;
+            return;
+        }
         if (_attempToChange == AttempTochange::CanSet) {
             _attempToChange = var;
         }
     }
     
     inline void speedUp(){
-        _curVelo = _normalVelo * 1.5;
+        _curVelo = _normalVelo * 1.25;
     }
     
     inline void speedDown(){
-        _curVelo = _normalVelo / 2;
+        _curVelo = _normalVelo * 0.75;
     }
     
     inline void speedResume(){
@@ -81,7 +79,7 @@ public:
     
     virtual void update(float d);
     
-    virtual void circleUpdate(float d);
+//    virtual void circleUpdate(float d);
     
 };
 

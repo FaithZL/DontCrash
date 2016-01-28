@@ -10,7 +10,6 @@
 #include "constant.h"
 
 Enemy::Enemy():
-_trackState(TrackState::Disabled),
 _attempToChange(AttempTochange::CanSet)
 {
     
@@ -31,16 +30,21 @@ Enemy * Enemy::create(std::string fileName, float originVelo, cocos2d::Vec2 orig
     return nullptr;
 }
 
-void Enemy::circleUpdate(float d)
-{
-    updateRadius(d);
-    BaseCar::circleUpdate(d);
-}
+//void Enemy::circleUpdate(float d)
+//{
+//    updateRadius(d);
+//    BaseCar::circleUpdate(d);
+//}
 
 void Enemy::update(float d){
    
+    updateRadius(d);
     BaseCar::update(d);
-    
+    if (getTag() == 2) {
+        CCLOG("%d  : %f , %f  ,  %f , state : %d\n" , getTag() , getPositionX() , getPositionY() , d , getCurrentStateName());
+    }else{
+        CCLOG("%d  : %f , %f  ,state : %d" , getTag() , getPositionX() , getPositionY() , getCurrentStateName());
+    }
 }
 
 void Enemy::enterCircleCallBack()
@@ -57,7 +61,7 @@ void Enemy::enterCircleCallBack()
 void Enemy::reset(){
     BaseCar::reset();
     _attempToChange = AttempTochange::CanSet;
-    _trackState = TrackState::Disabled;
+    _trackState = TrackState::Normal;
 }
 
 void Enemy::updateRadius(float d)
