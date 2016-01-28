@@ -218,7 +218,7 @@ void Group::g3update(float d){
                 break;
             }
         }
-        
+        //if enemies radius is all equal then can not change track in order to change team state
         if (_enemies.at(0)->getAttempToChange() != AttempTochange::Disable && equal) {
             for (auto iter : _enemies) {
                 iter->setAttempToChange(AttempTochange::Disable);
