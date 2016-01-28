@@ -48,7 +48,7 @@ void Car::update(float d)
 
 void Car::updateRadius(float d){
     
-    auto v = _curVelo * 2;
+    auto v = _curVelo * CAR_R_CHANGE_FACTOR;
     if (_trackState == TrackState::ToInner) {
         _curRadius = _curRadius - d * v;
         if (_curRadius <= R_INNER) {

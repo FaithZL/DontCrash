@@ -66,7 +66,7 @@ void Enemy::reset(){
 
 void Enemy::updateRadius(float d)
 {
-    auto v = _curVelo / 7;
+    auto v = _curVelo * ENEMY_R_CHANGE_FACTOR;
     if (_trackState == TrackState::ToInner) {
         _curRadius = _curRadius - d * v;
         if (_curRadius <= R_INNER) {

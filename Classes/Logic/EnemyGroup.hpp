@@ -51,7 +51,7 @@ public:
     
     void addEnemy(Enemy * enemy);
     
-    float getDistanceInTrack(Enemy * front , Enemy * back);
+    bool isAllTheSame(int from , int to , std::string fieldName...);
     
     inline void setScorer(Scorer * scorer){
         _scorer = scorer;

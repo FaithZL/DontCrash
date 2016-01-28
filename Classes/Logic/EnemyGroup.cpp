@@ -54,140 +54,26 @@ void EnemyGroup::initFSM(){
     
 }
 
-float EnemyGroup::getDistanceInTrack(Enemy * front , Enemy * back){
-    auto fPos = front->getPosition();
-    auto bPos = back->getPosition();
-    auto radius = front->getCurRadius();
-    auto circumference = 2 * (POS_R.x - POS_L.x) + 2 * PI * radius;
+bool EnemyGroup::isAllTheSame(int from , int to , std::string fieldName ...){
     
-    if (front->getUDLR() == left) {
-        
-        auto fAngle = getAngle(POS_L , fPos);
-        
-        if (back->getUDLR() == up) {
-            
-            return circumference - (radius * (fAngle - PI / 2) + (bPos.x - POS_L.x));
-            
-        }else if (back->getUDLR() == left){
-            
-            auto arc = fabs((fAngle - getAngle(POS_L, bPos)) * radius);
-            
-            return (fPos.y > bPos.y) ? arc : circumference - arc;
-        
-        }else if (back->getUDLR() == down){
-        
-            return (bPos.x - POS_L.x) + radius * (1.5 * PI - fAngle);
-            
-        }else if (back->getUDLR() == right){
-            
-            auto bAngle = getAngle(POS_R, bPos);
-            
-            if (bAngle < PI / 2) {
-                bAngle = bAngle + PI / 2;
-            }else{
-                bAngle = bAngle - 1.5 * PI;
+    if (fieldName == "radius") {
+        float r = _enemies.at(from)->getCurRadius();
+        for (int i = from + 1 ; i <= to ; i ++) {
+            if (_enemies.at(i)->getCurRadius() != r) {
+                return false;
             }
-            
-            return (1.5 * PI - fAngle + bAngle) * radius + (POS_R.x - POS_L.x);
-            
         }
-        
-    }else if (front->getUDLR() == right){
-        
-        auto fAngle = getAngle(POS_R , fPos);
-        
-        if (back->getUDLR() == left) {
-            
-            return circumference - getDistanceInTrack(back, front);
-        
-        }else if (back->getUDLR() == right){
-            
-            auto bAngle = getAngle(POS_R , bPos);
-            
-            if (bAngle > 1.5 * PI) {
-                bAngle = bAngle - 1.5 * PI;
-            }else{
-                bAngle = bAngle + PI / 2;
+        return true;
+    }else if (fieldName == "AttempToChange"){
+        int attempToChange = _enemies.at(from)->getAttempToChange();
+        for (int i = from + 1 ; i <= to ; i ++) {
+            if (_enemies.at(i)->getAttempToChange() != attempToChange) {
+                return false;
             }
-            
-            if (fAngle > 1.5 * PI) {
-                fAngle = fAngle - 1.5 * PI;
-            }else{
-                fAngle = fAngle + PI / 2;
-            }
-            
-            auto arc = fabs(radius * (bAngle - fAngle));
-            
-            return (fPos.y < bPos.y) ? arc : circumference - arc;
-            
-        }else if (back->getUDLR() == up){
-            
-            if (fAngle > 1.5 * PI) {
-                fAngle = PI * 2.5 - fAngle;
-            }else{
-                fAngle = PI / 2 - fAngle;
-            }
-            
-            return (POS_R.x - bPos.x) + fAngle * radius;
-            
-        }else if (back->getUDLR() == down){
-            
-            if (fAngle > 1.5 * PI) {
-                fAngle = fAngle - 1.5 * PI;
-            }else{
-                fAngle = fAngle + PI / 2;
-            }
-            
-            return circumference - ((POS_R.x - bPos.x) + fAngle * radius);
-            
         }
-        
-    }else if (front->getUDLR() == up){
-        
-        if (back->getUDLR() == up) {
-            
-            auto d = fabs(fPos.x - bPos.x);
-            
-            return (fPos.x > bPos.x) ? d : circumference - d;
-            
-        }else if (back->getUDLR() == down){
-            
-            return (fPos.x - POS_L.x) + (bPos.x - POS_L.x) + PI * radius;
-            
-        }else if (back->getUDLR() == left){
-            
-            return circumference - getDistanceInTrack(back, front);
-            
-        }else if (back->getUDLR() == right){
-            
-            return circumference - getDistanceInTrack(back, front);
-            
-        }
-        
-    }else if (front->getUDLR() == down){
-        
-        if (back->getUDLR() == down) {
-            
-            auto d = fabs(fPos.x - bPos.x);
-            
-            return (fPos.x < bPos.x) ? d : circumference - d;
-        
-        }else if (back->getUDLR() == up){
-            
-            return circumference - getDistanceInTrack(back , front);
-            
-        }else if (back->getUDLR() == left){
-            
-            return circumference - getDistanceInTrack(back , front);
-            
-        }else if (back->getUDLR() == right){
-            
-            return circumference - getDistanceInTrack(back , front);
-            
-        }
-        
+        return true;
     }
-    return -1;
+    return false;
 }
 
 void EnemyGroup::g3enter(){
@@ -210,26 +96,26 @@ void EnemyGroup::g3update(float d){
         }
     }
     
-//    if (_scorer->getCircleCount() >= 1) {
-//        bool equal = true;
-//        float r = _enemies.at(0)->getCurRadius();
-//        for (int i = 1 ; i < _enemies.size() ; i ++) {
-//            if (_enemies.at(i)->getCurRadius() != r) {
-//                equal = false;
-//                break;
-//            }
-//        }
-//        //if enemies radius is all equal then can not change track in order to change team state
-//        if (_enemies.at(0)->getAttempToChange() != AttempTochange::Disable && equal) {
-//            for (auto iter : _enemies) {
-//                iter->setAttempToChange(AttempTochange::Disable);
-//            }
-//        }
-//        if (_enemies.at(1)->isChangeToCircle() && _enemies.at(0)->getAttempToChange() == AttempTochange::Disable) {
-//            _delayedStateName = GroupState::g12;
-//        }
-//        
-//    }
+    if (_scorer->getCircleCount() >= 1) {
+        bool equal = true;
+        float r = _enemies.at(0)->getCurRadius();
+        for (int i = 1 ; i < _enemies.size() ; i ++) {
+            if (_enemies.at(i)->getCurRadius() != r) {
+                equal = false;
+                break;
+            }
+        }
+        //if enemies radius is all equal then can not change track in order to change team state
+        if (_enemies.at(0)->getAttempToChange() != AttempTochange::Disable && equal) {
+            for (auto iter : _enemies) {
+                iter->setAttempToChange(AttempTochange::Disable);
+            }
+        }
+        if (_enemies.at(1)->isChangeToCircle() && _enemies.at(0)->getAttempToChange() == AttempTochange::Disable) {
+            _delayedStateName = GroupState::g12;
+        }
+        
+    }
 
 }
 
@@ -244,9 +130,14 @@ void EnemyGroup::g12update(float d){
     
     if (_randSwitch == On) {
         
+        int i;
+        for (i = 0; i < _enemies.size(); i++) {
+            if (_enemies.at(i)->getAttempToChange() != AttempTochange::CanSet) {
+                break;
+            }
+        }
         
-        
-    }else if (getDistanceInTrack(_enemies.at(0), _enemies.at(1)) >= 390){
+    }else if ((_timer += d) >= TIME_FACTOR / _enemies.at(0)->getVelo()){
         _enemies.at(1)->speedResume();
         _enemies.at(2)->speedResume();
         //turn on the random change track

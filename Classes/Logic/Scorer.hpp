@@ -32,7 +32,7 @@ public:
     
     CC_SYNTHESIZE(Car * , _car , UserCar);
     
-    CC_SYNTHESIZE_READONLY(EnemyGroup * , _enemyGroup, Group);
+    CC_SYNTHESIZE_READONLY(EnemyGroup * , _enemyGroup, EnemyGroup);
     
     CC_SYNTHESIZE_READONLY(int , _circleCount, CircleCount);
     
