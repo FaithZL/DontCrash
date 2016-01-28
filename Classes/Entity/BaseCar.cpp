@@ -165,13 +165,7 @@ void BaseCar::lineUpdate(float d)
     auto winSize = Director::getInstance()->getWinSize();
     auto centerPos = Vec2(winSize.width / 2 , winSize.height / 2);
     auto pos = getPosition();
-    
-    if (_direction == CW) {
-        CCLOG("pre: %d , %f , %f , state : %d" , getTag() , getPositionX() , getPositionY() , _currentState->getName());
-    }
-    
-    
-    
+
     if ((_direction == Direction::CCW && pos.y > centerPos.y) || (_direction == Direction::CW && pos.y < centerPos.y)) {
         auto newX = pos.x - d * _curVelo;
         setPositionX(newX);
@@ -190,9 +184,6 @@ void BaseCar::lineUpdate(float d)
         }else{
             setPositionY(POS_L.y - _curRadius);
         }
-    }
-    if (_direction == CW) {
-        CCLOG("%d , %f , %f , state : %d" , getTag() , getPositionX() , getPositionY() , _currentState->getName());
     }
 }
 
@@ -250,7 +241,6 @@ void BaseCar::reset()
 {
     setVelo(_originVelo , true);
     resetFSM();
-    _delayedStateName = CarState::Line;
     setPosition(_originPos);
     setTexture(_normalRes);
     _curRadius = R_OUTER;

@@ -60,7 +60,7 @@ public:
     inline void setVelo(float newVelo , bool isAlways){
         if (isAlways) {
             _normalVelo = newVelo;
-            _angVelo = newVelo / R_OUTER;
+            _angVelo = _normalVelo / R_OUTER;
         }
         _curVelo = newVelo;
     }
@@ -92,6 +92,7 @@ public:
     inline void resetFSM(){
         _currentState = nullptr;
         _previousState = nullptr;
+        _delayedStateName = CarState::Line;
     }
     
     inline bool isChangeToCircle(){

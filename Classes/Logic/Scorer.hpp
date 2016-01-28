@@ -15,11 +15,11 @@ class Car;
 class Enemy;
 class Group;
 
-enum EnemyState {
-    g3,
-    g12,
-    g111
-};
+//enum EnemyState {
+//    g3,
+//    g12,
+//    g111
+//};
 
 class Scorer : public cocos2d::Ref {
     

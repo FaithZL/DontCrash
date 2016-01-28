@@ -15,6 +15,7 @@
 USING_NS_CC;
 
 Group::Group():
+_timer(0),
 _scorer(nullptr),
 _randSwitch(RandSwitch::Off){
     
@@ -31,17 +32,17 @@ bool Group::init(){
 
 void Group::initFSM(){
     FSMState g3;
-    g3.setName(EnemyState::g3);
+    g3.setName(GroupState::g3);
     g3.enterCallback = CC_CALLBACK_0(Group::g3enter, this);
     g3.updateCallback = CC_CALLBACK_1(Group::g3update, this);
     
     FSMState g12;
-    g12.setName(EnemyState::g12);
+    g12.setName(GroupState::g12);
     g12.enterCallback = CC_CALLBACK_0(Group::g12enter, this);
     g12.updateCallback = CC_CALLBACK_1(Group::g12update, this);
     
     FSMState g111;
-    g111.setName(EnemyState::g111);
+    g111.setName(GroupState::g111);
     g111.enterCallback = CC_CALLBACK_0(Group::g111enter, this);
     g111.updateCallback = CC_CALLBACK_1(Group::g111update, this);
     
@@ -49,7 +50,7 @@ void Group::initFSM(){
     addState(g12);
     addState(g111);
     
-    setNextState(EnemyState::g3);
+    setNextState(GroupState::g3);
     
 }
 
@@ -225,7 +226,7 @@ void Group::g3update(float d){
 //            }
 //        }
 //        if (_enemies.at(1)->isChangeToCircle() && _enemies.at(0)->getAttempToChange() == AttempTochange::Disable) {
-//            _delayedStateName = EnemyState::g12;
+//            _delayedStateName = GroupState::g12;
 //        }
 //        
 //    }
@@ -274,7 +275,7 @@ void Group::update(float d){
 }
 
 void Group::reset(){
-    _delayedStateName = EnemyState::g3;
+    resetFSM();
     for(auto iter : _enemies){
         iter->reset();
     }

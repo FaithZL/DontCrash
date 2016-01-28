@@ -132,16 +132,16 @@ void Scorer::scoring(float d){
     
     
     switch (_group->getCurrentStateName()) {
-        case EnemyState::g3:
+        case GroupState::g3:
             checkMeet(_car , _enemies->at(0));
             break;
             
-        case EnemyState::g12:
+        case GroupState::g12:
             checkMeet(_car , _enemies->at(0));
             checkMeet(_car , _enemies->at(1));
             break;
             
-        case EnemyState::g111:
+        case GroupState::g111:
             for (auto i = 0; i < _enemies->size(); i ++) {
                 checkMeet(_car, _enemies->at(i));
             }

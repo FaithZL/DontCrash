@@ -12,6 +12,12 @@
 #include "cocos2d.h"
 #include "FSM.h"
 
+enum GroupState {
+    g3,
+    g12,
+    g111
+};
+
 class Enemy;
 class Scorer;
 
@@ -55,9 +61,17 @@ public:
     
     virtual void reset();
     
+    inline void resetFSM(){
+        _delayedStateName = GroupState::g3;
+        _currentState = nullptr;
+        _previousState = nullptr;
+    }
+
     cocos2d::Vector<Enemy *> * getEnemies();
     
 protected:
+    
+    float _timer;
     
     int _randSwitch;
     

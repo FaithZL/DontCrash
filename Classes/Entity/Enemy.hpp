@@ -57,14 +57,17 @@ public:
     
     inline void speedUp(){
         _curVelo = _normalVelo * 1.25;
+        _angVelo = _angVelo * 1.25;
     }
     
     inline void speedDown(){
         _curVelo = _normalVelo * 0.75;
+        _angVelo = _angVelo * 0.75;
     }
     
     inline void speedResume(){
         _curVelo = _normalVelo;
+        _angVelo = _normalVelo / R_OUTER;
     }
     
     static Enemy * create(std::string fileName , float originVelo , cocos2d::Vec2 originPos , int direction);
