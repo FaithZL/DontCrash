@@ -150,13 +150,15 @@ void Scorer::scoring(float d){
             break;
     }
 }
-
+ int test = 0;
 void Scorer::recordCircleCount(float d){
     
     float originX = _car->getOriginPos().x;
     
     if (originX < _car->getPrePos().x && originX >= _car->getPositionX()) {
         _circleCount ++;
+        test ++;
+        CCLOG(" %d  circle" , test);
     }
     
 }

@@ -14,7 +14,7 @@
 
 
 
-enum AttempTochange{
+enum AttempToChange{
     False,
     True,
     CanSet,
@@ -46,23 +46,23 @@ public:
     CC_SYNTHESIZE(EnemyGroup *, _group, Group);
     
     inline void setAttempToChange(int var){
-        if (var == AttempTochange::Disable || var == AttempTochange::CanSet) {
+        if (var == AttempToChange::Disable || var == AttempToChange::CanSet) {
             _attempToChange = var;
             return;
         }
-        if (_attempToChange == AttempTochange::CanSet) {
+        if (_attempToChange == AttempToChange::CanSet) {
             _attempToChange = var;
         }
     }
     
     inline void speedUp(){
         _curVelo = _normalVelo * 1.25;
-        _angVelo = _angVelo * 1.25;
+        _angVelo = _curVelo / R_OUTER;
     }
     
     inline void speedDown(){
         _curVelo = _normalVelo * 0.75;
-        _angVelo = _angVelo * 0.75;
+        _angVelo = _curVelo / R_OUTER;
     }
     
     inline void speedResume(){
@@ -81,6 +81,8 @@ public:
     virtual void reset();
     
     virtual void update(float d);
+    
+    virtual void enterLineCallBack();
     
 //    virtual void circleUpdate(float d);
     

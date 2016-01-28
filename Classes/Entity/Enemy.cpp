@@ -10,7 +10,7 @@
 #include "constant.h"
 
 Enemy::Enemy():
-_attempToChange(AttempTochange::CanSet)
+_attempToChange(AttempToChange::CanSet)
 {
     
 }
@@ -40,27 +40,28 @@ void Enemy::update(float d){
    
     updateRadius(d);
     BaseCar::update(d);
-    if (getTag() == 2) {
-        CCLOG("%d  : %f , %f  ,  %f , state : %d\n" , getTag() , getPositionX() , getPositionY() , d , getCurrentStateName());
-    }else{
-        CCLOG("%d  : %f , %f  ,state : %d" , getTag() , getPositionX() , getPositionY() , getCurrentStateName());
-    }
+  
 }
 
 void Enemy::enterCircleCallBack()
 {
     BaseCar::enterCircleCallBack();
-    if (_attempToChange == AttempTochange::True) {
+    if (_attempToChange == AttempToChange::True) {
         changeTrack();
-        _attempToChange = AttempTochange::CanSet;
-    }else if (_attempToChange == AttempTochange::False){
-        _attempToChange = AttempTochange::CanSet;
+//        _attempToChange = AttempToChange::CanSet;
+    }else if (_attempToChange == AttempToChange::False){
+//        _attempToChange = AttempToChange::CanSet;
     }
+}
+
+void Enemy::enterLineCallBack(){
+    BaseCar::enterLineCallBack();
+    _attempToChange = AttempToChange::CanSet;
 }
 
 void Enemy::reset(){
     BaseCar::reset();
-    _attempToChange = AttempTochange::CanSet;
+    _attempToChange = AttempToChange::CanSet;
     _trackState = TrackState::Normal;
 }
 
@@ -72,12 +73,14 @@ void Enemy::updateRadius(float d)
         if (_curRadius <= R_INNER) {
             _curRadius = R_INNER;
             _trackState = TrackState::Normal;
+            _attempToChange = AttempToChange::CanSet;
         }
     } else if(_trackState == TrackState::ToOuter){
         _curRadius = _curRadius + d * v;
         if (_curRadius >= R_OUTER) {
             _curRadius = R_OUTER;
             _trackState = TrackState::Normal;
+             _attempToChange = AttempToChange::CanSet;
         }
     }
 }

@@ -51,6 +51,10 @@ bool GameLayer::init()
         float X = winSize.width / 2 - 50;
         
         Vec2 pos = Vec2(X - d , POS_R.y + R_OUTER);
+        auto startLine = Sprite::create("img/start_line.png");
+        startLine->setPosition(X  , pos.y);
+        addChild(startLine , 50);
+        
         auto car = Car::create("img/car.png", 700, pos, Direction::CCW);
         car->setBlastRes("img/zha.png");
         addChild(car , 100);
@@ -58,7 +62,7 @@ bool GameLayer::init()
         
         for (int i = 0 ; i < 3; i++) {
             int l = 95;
-            auto enemy = Enemy::create("img/car2.png", 700, Vec2(POS_R.x - 50 - l * i, POS_R.y + R_OUTER), Direction::CW);
+            auto enemy = Enemy::create("img/car2.png", 700, Vec2(POS_R.x - 70 - l * i, POS_R.y + R_OUTER), Direction::CW);
             enemy->setTag(i);
             enemy->setBlastRes("img/zha2.png");
             Controller::getInstance()->getScorer()->getEnemyGroup()->addEnemy(enemy);

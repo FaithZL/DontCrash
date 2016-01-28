@@ -24,4 +24,6 @@
 
 #define ENEMY_R_CHANGE_FACTOR 0.2
 
+#define CHANGE_PROB 0.5
+
 #endif /* constant_h */

@@ -34,7 +34,7 @@ public:
     
     CC_SYNTHESIZE_READONLY(EnemyGroup * , _enemyGroup, EnemyGroup);
     
-    CC_SYNTHESIZE_READONLY(int , _circleCount, CircleCount);
+    CC_SYNTHESIZE(int , _circleCount, CircleCount);
     
     CREATE_FUNC(Scorer);
     
