@@ -60,6 +60,7 @@ public:
     inline void setVelo(float newVelo , bool isAlways){
         if (isAlways) {
             _normalVelo = newVelo;
+            _angVelo = newVelo / R_OUTER;
         }
         _curVelo = newVelo;
     }
@@ -115,9 +116,9 @@ public:
     
 protected:
     
-    float _factorForVR;
-    
     float _normalVelo;
+    //base of PI
+    float _angVelo;
     
     float _originVelo;
     

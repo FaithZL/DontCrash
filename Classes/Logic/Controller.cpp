@@ -82,11 +82,11 @@ void Controller::over(){
 
 void Controller::update(float d)
 {
-    if (_scorer->isCollision()) {
-        pause();
-        over();
-        return;
-    }
+//    if (_scorer->isCollision()) {
+//        pause();
+//        over();
+//        return;
+//    }
     _scorer->update(d);
 }
 

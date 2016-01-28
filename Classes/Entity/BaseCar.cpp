@@ -15,6 +15,7 @@ USING_NS_CC;
 
 BaseCar::BaseCar():
 _curVelo(0),
+_angVelo(0),
 _direction(-1),
 _trackState(TrackState::Normal),
 _curRadius(R_OUTER)
@@ -29,7 +30,6 @@ BaseCar::~BaseCar()
 bool BaseCar::init(std::string fileName , float originVelo, cocos2d::Vec2 originPos , int direction)
 {
     this->initWithFile(fileName);
-    _factorForVR = originVelo / R_OUTER;
     _normalRes = fileName;
     _originAngle = getRotation3D().z;
     _direction = direction;
@@ -100,7 +100,7 @@ void BaseCar::enterLineCallBack()
             setPositionY(POS_L.y - _curRadius);
             setRotation3D(Vec3(0 , 0 , - 180));
         }
-        deltaX = _curRadius * angle;
+        deltaX = R_OUTER * angle;
         setPositionX(POS_R.x - deltaX);
     }else{
         angle = getAngle(POS_L , pos);
@@ -113,7 +113,7 @@ void BaseCar::enterLineCallBack()
             setPositionY(POS_L.y - _curRadius);
             setRotation3D(Vec3(0 , 0 , - 180));
         }
-        deltaX = _curRadius * angle;
+        deltaX = R_OUTER * angle;
         setPositionX(POS_L.x + deltaX);
     }
 }
@@ -131,7 +131,7 @@ void BaseCar::enterCircleCallBack()
     
     if (pos.x > centerX) {
         deltaX = pos.x - POS_R.x;
-        angle = deltaX / _curRadius;
+        angle = deltaX / R_OUTER;
         if (pos.y > centerY) {
             angle = PI / 2 - angle;
         } else {
@@ -142,7 +142,7 @@ void BaseCar::enterCircleCallBack()
         setRotation3D(Vec3(0 , 0 , - convertTo180(angle - PI / 2)));
     }else{
         deltaX = POS_L.x - pos.x;
-        angle = deltaX / _curRadius;
+        angle = deltaX / R_OUTER;
         if (pos.y > centerY) {
             angle = PI / 2 + angle;
         } else {
@@ -158,7 +158,6 @@ void BaseCar::enterCircleCallBack()
 void BaseCar::lineUpdate(float d)
 {
     auto UDLR = getUDLR();
-//    auto posX = getPositionX();
     
     if (UDLR == right || UDLR == left) {
         _delayedStateName = CarState::Circle;
@@ -209,8 +208,6 @@ void BaseCar::circleUpdate(float d)
     auto centerPos = Vec2(winSize.width / 2 , winSize.height / 2);
     auto pos = getPosition();
     
-    //base of PI
-    auto angleVelo = _curVelo / _curRadius;
     //base of 180°
     auto rotateZ = getRotation3D().z;
 
@@ -220,7 +217,7 @@ void BaseCar::circleUpdate(float d)
     
     switch (_direction) {
         case Direction::CCW:
-            newAngle = curAngle + angleVelo * d;
+            newAngle = curAngle + _angVelo * d;
             if (pos.x < centerPos.x){
                 setPositionX(POS_L.x + cos(newAngle) * _curRadius);
                 setPositionY(POS_L.y + sin(newAngle) * _curRadius);
@@ -232,7 +229,7 @@ void BaseCar::circleUpdate(float d)
             break;
             
         case Direction::CW:
-            newAngle = curAngle - angleVelo * d;
+            newAngle = curAngle - _angVelo * d;
             if (pos.x < centerPos.x) {
                 setPositionX(POS_L.x + cos(newAngle) * _curRadius);
                 setPositionY(POS_L.y + sin(newAngle) * _curRadius);

@@ -209,26 +209,26 @@ void Group::g3update(float d){
         }
     }
     
-    if (_scorer->getCircleCount() >= 1) {
-        bool equal = true;
-        float r = _enemies.at(0)->getCurRadius();
-        for (int i = 1 ; i < _enemies.size() ; i ++) {
-            if (_enemies.at(i)->getCurRadius() != r) {
-                equal = false;
-                break;
-            }
-        }
-        //if enemies radius is all equal then can not change track in order to change team state
-        if (_enemies.at(0)->getAttempToChange() != AttempTochange::Disable && equal) {
-            for (auto iter : _enemies) {
-                iter->setAttempToChange(AttempTochange::Disable);
-            }
-        }
-        if (_enemies.at(1)->isChangeToCircle() && _enemies.at(0)->getAttempToChange() == AttempTochange::Disable) {
-            _delayedStateName = EnemyState::g12;
-        }
-        
-    }
+//    if (_scorer->getCircleCount() >= 1) {
+//        bool equal = true;
+//        float r = _enemies.at(0)->getCurRadius();
+//        for (int i = 1 ; i < _enemies.size() ; i ++) {
+//            if (_enemies.at(i)->getCurRadius() != r) {
+//                equal = false;
+//                break;
+//            }
+//        }
+//        //if enemies radius is all equal then can not change track in order to change team state
+//        if (_enemies.at(0)->getAttempToChange() != AttempTochange::Disable && equal) {
+//            for (auto iter : _enemies) {
+//                iter->setAttempToChange(AttempTochange::Disable);
+//            }
+//        }
+//        if (_enemies.at(1)->isChangeToCircle() && _enemies.at(0)->getAttempToChange() == AttempTochange::Disable) {
+//            _delayedStateName = EnemyState::g12;
+//        }
+//        
+//    }
 
 }
 
