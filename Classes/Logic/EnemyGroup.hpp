@@ -10,7 +10,7 @@
 #define Group_hpp
 
 #include "cocos2d.h"
-#include "FSM.h"
+#include "../utils/FSM/FSM.h"
 
 enum GroupState {
     g3,

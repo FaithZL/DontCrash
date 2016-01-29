@@ -8,9 +8,9 @@
 
 #include "EnemyGroup.hpp"
 #include "Scorer.hpp"
-#include "Enemy.hpp"
-#include "FSMState.h"
-#include "Z_Math.h"
+#include "../Entity/Enemy.hpp"
+#include "../utils/FSm/FSMState.h"
+#include "../utils/Z_Math.h"
 
 USING_NS_CC;
 

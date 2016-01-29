@@ -7,12 +7,12 @@
 //
 
 #include "Controller.hpp"
-#include "Car.hpp"
-#include "Enemy.hpp"
-#include "GameLayer.hpp"
-#include "UILayer.hpp"
+#include "../Entity/Car.hpp"
+#include "../Entity/Enemy.hpp"
+#include "../View/GameLayer.hpp"
+#include "../View/UILayer.hpp"
 #include "Scorer.hpp"
-#include "Signal.hpp"
+#include "../utils/Signal.hpp"
 #include "EnemyGroup.hpp"
 
 USING_NS_CC;

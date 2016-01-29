@@ -1,0 +1,180 @@
+Manifest-Version: 1.0
+Created-By: 1.0 (Android)
+
+Name: assets/img/logo.png
+SHA1-Digest: pwFctNnIFfklTXWgs8Rcf9hjmds=
+
+Name: assets/img/zha2.png
+SHA1-Digest: gqROCsMNU6zUFJQZsqxF5VJlX0Q=
+
+Name: assets/android_sound/crash.mp3
+SHA1-Digest: BdY5xpdeCYVzIm0yGDVD5+HI4uk=
+
+Name: assets/img/ad_close.png
+SHA1-Digest: N6Yk5GgLOY5vLU83Ak98g6rNCIk=
+
+Name: assets/img/paihang.png
+SHA1-Digest: RKPxPgWh3Q9FGMrt/iM5pQ+nMro=
+
+Name: assets/img/wechat_icon_ios.png
+SHA1-Digest: nud7+6JTEchYKlTXwuKQcLRgrGM=
+
+Name: assets/img/explode2.plist
+SHA1-Digest: iwvUtcZVnKoT2dhLGDE1aSe2LJY=
+
+Name: assets/img/chonglai.png
+SHA1-Digest: MUjx0W8WqSLDYAYvk5rhoo6S4Uk=
+
+Name: assets/img/particleTexture.png
+SHA1-Digest: 2RpHIiyrANCaxq4b7sA8xlkYb94=
+
+Name: assets/HelloWorld.png
+SHA1-Digest: tlCDturH7ovoyz2c7+EM3+0ot7A=
+
+Name: assets/img/explode.plist
+SHA1-Digest: 92Ekn9hTG6X8UmQWK1blMtadNIo=
+
+Name: res/drawable-hdpi-v4/icon.png
+SHA1-Digest: nFMzxotJRQ5x1a+HbINp/MxJsGA=
+
+Name: assets/img/track.png
+SHA1-Digest: SWjwXrwTo/uRBMv0GSrjwUAMKvo=
+
+Name: assets/img/p2.png
+SHA1-Digest: 2IUkOCp0hhU00Ij3r09hjbRW0ms=
+
+Name: assets/img/zha.png
+SHA1-Digest: /H91GQPGX6sdsZynzIpH4N7/n/A=
+
+Name: assets/img/bg2.png
+SHA1-Digest: JxEvoYQdIPSH6Nb3fahv2JkEIGQ=
+
+Name: assets/img/bg.png
+SHA1-Digest: uimmJZa8suZQfIMjsMgckNAsqCs=
+
+Name: assets/img/car2.png
+SHA1-Digest: eCQyDTXzmM+jrmi8RgCpw+QVvKw=
+
+Name: assets/android_sound/point02.mp3
+SHA1-Digest: c0lyqdIKPEA0EAx03kOdTarrAfg=
+
+Name: assets/android_sound/point03.mp3
+SHA1-Digest: wE9b2FUWZ7L/CMhpGgO5U4l8Ysw=
+
+Name: assets/img/title_cn.png
+SHA1-Digest: O0q2lSZiM9QzKje4g6mxJsCUs98=
+
+Name: assets/android_sound/cars_gather.mp3
+SHA1-Digest: Geje75xBHDx0ds+QTS+U9yKuhC4=
+
+Name: assets/img/white_circle.png
+SHA1-Digest: GKvwLnAeICvHWOD7Z8Q6i7wFOc4=
+
+Name: res/drawable-mdpi-v4/icon.png
+SHA1-Digest: u5cm0bYz9wbXlHD4n60oilbdZcU=
+
+Name: assets/android_sound/tap_2.mp3
+SHA1-Digest: PRysyoNWm0N2oUiKr9140ZGzTi0=
+
+Name: assets/android_sound/perfect.mp3
+SHA1-Digest: m1wSZGkK/zO5Q+Li5wMj4+7pPYc=
+
+Name: resources.arsc
+SHA1-Digest: PZIl8rJnQvpjhGosBiITe/3tvfM=
+
+Name: assets/img/gengduo1.png
+SHA1-Digest: xgwpKKuOVTQOkmG/5nx5SUAjpy4=
+
+Name: assets/android_sound/start.mp3
+SHA1-Digest: Gwr+fJ2icopwfA3FB9rLwOpIvEI=
+
+Name: assets/CloseNormal.png
+SHA1-Digest: /QGcO1MOwaLN1VS5dk86sEDqqKA=
+
+Name: assets/CloseSelected.png
+SHA1-Digest: jAGLZR1Zw3vujySy5fwK5FRJTgA=
+
+Name: assets/android_sound/tap_1.mp3
+SHA1-Digest: O2YYbWi1VrYSBZAXPBn6Rn8Ssh4=
+
+Name: AndroidManifest.xml
+SHA1-Digest: F7uXa0iES96El8VbyHLq2dXaQ/0=
+
+Name: assets/android_sound/point01.mp3
+SHA1-Digest: nny7+I5fRuA7NmJFa7UQ3ax5xaw=
+
+Name: assets/img/talk.png
+SHA1-Digest: UCNmmIwfbd9S9TmsGVyJjYk8oII=
+
+Name: assets/fonts/Marker Felt.ttf
+SHA1-Digest: Ul8qSkVFD87LPYpf1H07D0hPYps=
+
+Name: assets/img/car.png
+SHA1-Digest: ZEoZ6Anc2G3kmg6hkd5n0Nm2rFY=
+
+Name: assets/img/wechat_icon_ios@2x.png
+SHA1-Digest: fNKF6iLhT76uLfGJ7+IHi2h0Qq4=
+
+Name: assets/android_sound/cars_separate.mp3
+SHA1-Digest: x0s4pKjc9T/2nmhmgyv9l5ylRqw=
+
+Name: assets/img/Anton.ttf
+SHA1-Digest: ysvkZmoMz/+Frj9V/Bzt2hfGtBY=
+
+Name: lib/armeabi/gdbserver
+SHA1-Digest: hc99Po+p3TRImQcNuzcSNC7tpNw=
+
+Name: assets/android_sound/button.mp3
+SHA1-Digest: suEZXIAb+G8vnaLC3DDrwQMfBJI=
+
+Name: assets/img/p.png
+SHA1-Digest: hR1wnGLp+TRH2gcXEqq8xnARyUY=
+
+Name: assets/android_sound/NewHigh.mp3
+SHA1-Digest: wOx3xPBOtbu2mxh9cu4OrLek89I=
+
+Name: assets/img/fav.png
+SHA1-Digest: E7+eoRlwxwIFHtu2uDmX7CKU/5Q=
+
+Name: assets/img/loading_dot.png
+SHA1-Digest: Nw0KogmjLAvRgtRnDRwMITuFlb4=
+
+Name: assets/img/fenxiang.png
+SHA1-Digest: xwo4cR78kg0VDOvokm1I1mHqG/w=
+
+Name: classes.dex
+SHA1-Digest: sCVUg+6jbe2+NvAw3rZOX8EXwMs=
+
+Name: assets/img/start_line.png
+SHA1-Digest: I0LTHlsMImrAye1I0VWt8z9o4dY=
+
+Name: assets/img/text_newrecord.png
+SHA1-Digest: 19rkzvbtAjTtksgeTK3u2ioH1GE=
+
+Name: lib/armeabi/libcocos2dcpp.so
+SHA1-Digest: QhHoEWCDTtVKAMQOuN9csQUsMQ0=
+
+Name: assets/img/wechat_moment_ios.png
+SHA1-Digest: WIRsvxCoDlPNfXmLjU0yzZUWMlM=
+
+Name: assets/img/play.png
+SHA1-Digest: 5sD/plUXsgH3mNNmFBpk+tNH8Lk=
+
+Name: res/drawable-ldpi-v4/icon.png
+SHA1-Digest: cQ3w5oXjP5DpLByk5c8F/LUcex4=
+
+Name: assets/img/wechat_moment_ios@2x.png
+SHA1-Digest: KjO46vjnO4Z5CMQoWa52MhyyLb8=
+
+Name: assets/img/ad_validate.png
+SHA1-Digest: kHAecPT0yGImq/Uhk3doTDSh91A=
+
+Name: assets/android_sound/show_best.mp3
+SHA1-Digest: Sf7XeyipuPPSqdf2gP/nQUwpvfk=
+
+Name: assets/img/loading_cancel.png
+SHA1-Digest: 3vihvMSWM6m6mXgqQV9yKeIc0Ls=
+
+Name: assets/img/remind_cn.png
+SHA1-Digest: D6xB4CXq7nhqZgJKiiaygKez8fI=
+

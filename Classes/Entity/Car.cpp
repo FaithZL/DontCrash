@@ -7,7 +7,7 @@
 //
 
 #include "Car.hpp"
-#include "constant.h"
+#include "../constant.h"
 USING_NS_CC;
 
 Car::Car()

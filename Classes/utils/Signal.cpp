@@ -31,11 +31,16 @@ void Signal::registerEvent(std::string eventName , Sig_Target pTarget , Sig_SEL 
         _structMap.insert(std::make_pair(eventName, v_struct));
     }
     
-    Sig_struct sig_struct = {
-        .priority = priority,
-        .pTarget = pTarget,
-        .pSelector = pSelector
-    };
+//    Sig_struct sig_struct = {
+//        .priority = priority,
+//        .pTarget = pTarget,
+//        .pSelector = pSelector
+//    };
+    Sig_struct sig_struct;
+    
+    sig_struct.priority = priority;
+    sig_struct.pTarget = pTarget;
+    sig_struct.pSelector = pSelector;
     
     std::vector<Sig_struct> &v_struct = _structMap[eventName];
     std::vector<Sig_struct>::iterator iter_v = v_struct.begin();

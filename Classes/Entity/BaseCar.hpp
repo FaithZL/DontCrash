@@ -10,8 +10,8 @@
 #define BaseCar_hpp
 
 #include "cocos2d.h"
-#include "FSM.h"
-#include "constant.h"
+#include "../utils/FSM/FSM.h"
+#include "../constant.h"
 
 class FSM;
 

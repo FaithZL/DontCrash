@@ -8,12 +8,12 @@
 
 #include "Scorer.hpp"
 
-#include "Enemy.hpp"
+#include "../Entity/Enemy.hpp"
 #include "EnemyGroup.hpp"
-#include "Car.hpp"
-#include "constant.h"
+#include "../Entity/Car.hpp"
+#include "../constant.h"
 #include "Controller.hpp"
-#include "Signal.hpp"
+#include "../utils/Signal.hpp"
 
 USING_NS_CC;
 

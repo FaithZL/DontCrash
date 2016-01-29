@@ -1,5 +1,5 @@
 #include "AppDelegate.h"
-#include "Controller.hpp"
+#include "./Logic/Controller.hpp"
 
 USING_NS_CC;
 

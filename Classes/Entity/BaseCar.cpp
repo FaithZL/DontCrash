@@ -7,9 +7,10 @@
 //
 
 #include "BaseCar.hpp"
-#include "FSMState.h"
-#include "Z_Math.h"
-#include "constant.h"
+#include "../utils/FSM/FSMState.h"
+//#include "FSMState.h"
+#include "../utils/Z_Math.h"
+#include "../constant.h"
 
 USING_NS_CC;
 

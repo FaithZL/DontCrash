@@ -7,7 +7,7 @@
 //
 
 #include "Enemy.hpp"
-#include "constant.h"
+#include "../constant.h"
 
 Enemy::Enemy():
 _attempToChange(AttempToChange::CanSet)

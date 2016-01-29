@@ -10,8 +10,8 @@
 #define UILayer_hpp
 
 #include "cocos2d.h"
-#include "UIButton.h"
-#include "FSM.h"
+#include "ui/UIButton.h"
+#include "../utils/FSM/FSM.h"
 USING_NS_CC;
 
 class Controller;

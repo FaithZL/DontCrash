@@ -7,13 +7,13 @@
 //
 
 #include "UILayer.hpp"
-#include "Controller.hpp"
-#include "Car.hpp"
-#include "Enemy.hpp"
-#include "constant.h"
-#include "FSMState.h"
-#include "Signal.hpp"
-#include "Scorer.hpp"
+#include "../Logic/Controller.hpp"
+#include "../Entity/Car.hpp"
+#include "../Entity/Enemy.hpp"
+#include "../constant.h"
+#include "../utils/FSM/FSMState.h"
+#include "../utils/Signal.hpp"
+#include "../Logic/Scorer.hpp"
 USING_NS_CC;
 
 UILayer::UILayer():
