@@ -14,6 +14,7 @@
 #include "Scorer.hpp"
 #include "../utils/Signal.hpp"
 #include "EnemyGroup.hpp"
+#include "Commander.hpp"
 
 USING_NS_CC;
 
@@ -52,6 +53,8 @@ bool Controller::init()
     CC_SAFE_RETAIN(_scorer);
     _signal = Signal::create();
     CC_SAFE_RETAIN(_signal);
+    _commander = Commander::create();
+    CC_SAFE_RETAIN(_commander);
     return true;
 }
 
@@ -88,6 +91,7 @@ void Controller::update(float d)
 //        return;
 //    }
     _scorer->update(d);
+    _commander->update(d);
 }
 
 void Controller::scheduleUpdate()

@@ -34,6 +34,7 @@ enum AttempToChange{
 //};
 
 class EnemyGroup;
+class Commander;
 
 class Enemy : public BaseCar
 {
@@ -43,7 +44,9 @@ public:
     
     CC_SYNTHESIZE_READONLY(int , _attempToChange , AttempToChange);
     
-    CC_SYNTHESIZE(EnemyGroup *, _group, Group);
+    CC_SYNTHESIZE(EnemyGroup * , _group, Group);
+    
+    CC_SYNTHESIZE(Commander * , _commander, Commander);
     
     inline void setAttempToChange(int var){
         if (var == AttempToChange::Disable || var == AttempToChange::CanSet) {
@@ -70,9 +73,15 @@ public:
         _angVelo = _normalVelo / R_OUTER;
     }
     
+    Enemy * getPre();
+    
+    Enemy * getNext();
+    
     static Enemy * create(std::string fileName , float originVelo , cocos2d::Vec2 originPos , int direction);
     
     virtual void enterCircleCallBack();
+    
+    virtual void randChangeTrack();
     
     virtual void updateRadius(float d);
     

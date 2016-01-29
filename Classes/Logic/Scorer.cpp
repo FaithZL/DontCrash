@@ -121,7 +121,7 @@ void Scorer::update(float d){
     if (_car) {
         _car->update(d);
     }
-    _enemyGroup->update(d);
+//    _enemyGroup->update(d);
     scoring(d);
     recordCircleCount(d);
     checkSameTrack();

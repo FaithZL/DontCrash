@@ -13,6 +13,7 @@
 #include "../Entity/Enemy.hpp"
 #include "../Logic/Scorer.hpp"
 #include "../Logic/EnemyGroup.hpp"
+#include "../Logic/Commander.hpp"
 
 USING_NS_CC;
 
@@ -65,7 +66,8 @@ bool GameLayer::init()
             auto enemy = Enemy::create("img/car2.png", 700, Vec2(POS_R.x - 70 - l * i, POS_R.y + R_OUTER), Direction::CW);
             enemy->setTag(i);
             enemy->setBlastRes("img/zha2.png");
-            Controller::getInstance()->getScorer()->getEnemyGroup()->addEnemy(enemy);
+//            Controller::getInstance()->getScorer()->getEnemyGroup()->addEnemy(enemy);
+            Controller::getInstance()->getCommander()->addEnemy(enemy);
             addChild(enemy);
         }
         

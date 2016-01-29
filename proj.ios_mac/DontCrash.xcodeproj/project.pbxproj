@@ -71,6 +71,8 @@
 		F6AA42EE1C52480100553300 /* Scorer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F6AA42EB1C52480100553300 /* Scorer.cpp */; };
 		F6AA42F11C5248A100553300 /* Controller.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F6AA42EF1C5248A100553300 /* Controller.cpp */; };
 		F6AA42F21C5248A100553300 /* Controller.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F6AA42EF1C5248A100553300 /* Controller.cpp */; };
+		F6BA72761C5B2D9E00376B11 /* Commander.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F6BA72741C5B2D9E00376B11 /* Commander.cpp */; };
+		F6BA72771C5B2D9E00376B11 /* Commander.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F6BA72741C5B2D9E00376B11 /* Commander.cpp */; };
 		F6E04DFB1C4E001B00214F89 /* AppDelegate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F6E04DD81C4E001B00214F89 /* AppDelegate.cpp */; };
 		F6E04DFC1C4E001B00214F89 /* AppDelegate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F6E04DD81C4E001B00214F89 /* AppDelegate.cpp */; };
 		F6E04E051C4E001B00214F89 /* FSM.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F6E04DE51C4E001B00214F89 /* FSM.cpp */; };
@@ -195,6 +197,8 @@
 		F6AA42EC1C52480100553300 /* Scorer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Scorer.hpp; sourceTree = "<group>"; };
 		F6AA42EF1C5248A100553300 /* Controller.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Controller.cpp; sourceTree = "<group>"; };
 		F6AA42F01C5248A100553300 /* Controller.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Controller.hpp; sourceTree = "<group>"; };
+		F6BA72741C5B2D9E00376B11 /* Commander.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Commander.cpp; sourceTree = "<group>"; };
+		F6BA72751C5B2D9E00376B11 /* Commander.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Commander.hpp; sourceTree = "<group>"; };
 		F6CE4FB51C4E6E4C004CB6BC /* constant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = constant.h; sourceTree = "<group>"; };
 		F6E04DD81C4E001B00214F89 /* AppDelegate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AppDelegate.cpp; sourceTree = "<group>"; };
 		F6E04DD91C4E001B00214F89 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -400,6 +404,8 @@
 				F6AA42EC1C52480100553300 /* Scorer.hpp */,
 				F6E097F71C565B3700B179B0 /* EnemyGroup.cpp */,
 				F6E097F81C565B3700B179B0 /* EnemyGroup.hpp */,
+				F6BA72741C5B2D9E00376B11 /* Commander.cpp */,
+				F6BA72751C5B2D9E00376B11 /* Commander.hpp */,
 			);
 			path = Logic;
 			sourceTree = "<group>";
@@ -614,6 +620,7 @@
 				F6E04E071C4E001B00214F89 /* FSMState.cpp in Sources */,
 				F6E04E051C4E001B00214F89 /* FSM.cpp in Sources */,
 				F6AA42ED1C52480100553300 /* Scorer.cpp in Sources */,
+				F6BA72761C5B2D9E00376B11 /* Commander.cpp in Sources */,
 				F6E04DFB1C4E001B00214F89 /* AppDelegate.cpp in Sources */,
 				503AE10017EB989F00D1A890 /* AppController.mm in Sources */,
 				503AE10217EB989F00D1A890 /* RootViewController.mm in Sources */,
@@ -644,6 +651,7 @@
 				503AE10517EB98FF00D1A890 /* main.cpp in Sources */,
 				F6E04E061C4E001B00214F89 /* FSM.cpp in Sources */,
 				F6AA42F21C5248A100553300 /* Controller.cpp in Sources */,
+				F6BA72771C5B2D9E00376B11 /* Commander.cpp in Sources */,
 				F6E097FA1C565B3700B179B0 /* EnemyGroup.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

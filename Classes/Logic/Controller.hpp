@@ -17,6 +17,7 @@ class UILayer;
 class GameLayer;
 class Scorer;
 class Signal;
+class Commander;
 
 enum GameState
 {
@@ -35,6 +36,8 @@ public:
     virtual bool init();
     
     CC_SYNTHESIZE_READONLY(int , _GameState , CurGameState);
+    
+    CC_SYNTHESIZE_READONLY(Commander * , _commander , Commander);
     
     CC_SYNTHESIZE_READONLY(Signal * , _signal, Signal);
     

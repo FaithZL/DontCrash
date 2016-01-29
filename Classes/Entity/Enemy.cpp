@@ -8,6 +8,8 @@
 
 #include "Enemy.hpp"
 #include "../constant.h"
+#include "../Logic/Commander.hpp"
+
 
 Enemy::Enemy():
 _attempToChange(AttempToChange::CanSet)
@@ -46,23 +48,57 @@ void Enemy::update(float d){
 void Enemy::enterCircleCallBack()
 {
     BaseCar::enterCircleCallBack();
+    
     if (_attempToChange == AttempToChange::True) {
         changeTrack();
-//        _attempToChange = AttempToChange::CanSet;
+        setAttempToChange(CanSet);
     }else if (_attempToChange == AttempToChange::False){
-//        _attempToChange = AttempToChange::CanSet;
+        setAttempToChange(CanSet);
+    }
+}
+
+void Enemy::randChangeTrack(){
+    switch (_commander->getCurrentStateName()) {
+        case g3:
+            
+            break;
+        
+        case g12:
+            
+            break;
+            
+        case g111:
+            
+            break;
+            
+        default:
+            break;
     }
 }
 
 void Enemy::enterLineCallBack(){
     BaseCar::enterLineCallBack();
-    _attempToChange = AttempToChange::CanSet;
+//    _attempToChange = AttempToChange::CanSet;
 }
 
 void Enemy::reset(){
     BaseCar::reset();
     _attempToChange = AttempToChange::CanSet;
     _trackState = TrackState::Normal;
+}
+
+Enemy * Enemy::getPre(){
+    if (getTag() > 0) {
+        return _commander->getEnemies()->at(getTag() - 1);
+    }
+    return nullptr;
+}
+
+Enemy * Enemy::getNext(){
+    if (getTag() < _commander->getEnemies()->size() - 1) {
+        return _commander->getEnemies()->at(getTag() + 1);
+    }
+    return  nullptr;
 }
 
 void Enemy::updateRadius(float d)
@@ -73,14 +109,14 @@ void Enemy::updateRadius(float d)
         if (_curRadius <= R_INNER) {
             _curRadius = R_INNER;
             _trackState = TrackState::Normal;
-            _attempToChange = AttempToChange::CanSet;
+//            _attempToChange = AttempToChange::CanSet;
         }
     } else if(_trackState == TrackState::ToOuter){
         _curRadius = _curRadius + d * v;
         if (_curRadius >= R_OUTER) {
             _curRadius = R_OUTER;
             _trackState = TrackState::Normal;
-             _attempToChange = AttempToChange::CanSet;
+//             _attempToChange = AttempToChange::CanSet;
         }
     }
 }

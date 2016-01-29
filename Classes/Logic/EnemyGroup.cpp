@@ -108,7 +108,7 @@ void EnemyGroup::g3update(float d){
                 _enemies.at(i)->setAttempToChange(var);
             }
         }
-        if (_scorer->getCircleCount() >= 3) {
+        if (_scorer->getCircleCount() >= 5) {
             if (isAllTheSame(0 , 2 , "radius")) {
                 for (auto iter : _enemies) {
                     iter->setAttempToChange(AttempToChange::Disable);
@@ -150,7 +150,7 @@ void EnemyGroup::g12update(float d){
         }
         _enemies.at(0)->setAttempToChange(rand_0_1() < CHANGE_PROB ? AttempToChange::True:AttempToChange::False);
         
-        if (_scorer->getCircleCount() >= 5) {
+        if (_scorer->getCircleCount() >= 7) {
             if (_enemies.at(1)->getCurRadius() == _enemies.at(2)->getCurRadius()) {
                 _enemies.at(1)->setAttempToChange(AttempToChange::Disable);
                 _enemies.at(2)->setAttempToChange(AttempToChange::Disable);
@@ -183,7 +183,7 @@ void EnemyGroup::g111update(float d){
     
     if (_randSwitch == On) {
        
-        if (_scorer->getCircleCount() >= 7) {
+        if (_scorer->getCircleCount() >= 9) {
             //Unified track
             if (_enemies.at(0)->getTrackState() == TrackState::Normal) {
                 _enemies.at(0)->setAttempToChange(AttempToChange::Disable);
