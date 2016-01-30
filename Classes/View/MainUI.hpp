@@ -61,7 +61,7 @@ public:
     
 protected:
     
-    cocos2d::Layer * _layers[3];
+//    cocos2d::Layer * _layers[3];
     
     ui::Button * _startBtn;
     

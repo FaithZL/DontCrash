@@ -110,7 +110,7 @@ void MainUI::initOverLayer(){
     
     addChild(_over);
     
-    _layers[GameState::GOver] = _over;
+//    _layers[GameState::GOver] = _over;
 }
 
 
@@ -140,7 +140,6 @@ void MainUI::initNormalLayer(){
     _normal->setVisible(false);
     addChild(_normal);
     _startBtn = startBtn;
-    _layers[GameState::GNormal] = _normal;
 }
 
 void MainUI::initFSM(){
