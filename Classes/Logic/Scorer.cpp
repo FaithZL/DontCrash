@@ -154,6 +154,7 @@ void Scorer::scoring(float d){
             break;
     }
 }
+
  int test = 0;
 void Scorer::recordCircleCount(float d){
     
@@ -165,6 +166,20 @@ void Scorer::recordCircleCount(float d){
         CCLOG(" %d  circle" , test);
     }
     
+}
+
+void Scorer::difficultyUp(){
+    _car->difficultyUp();
+    for(auto iter : _enemies){
+        iter->difficultyUp();
+    }
+}
+
+void Scorer::relieve(){
+    _car->relieve();
+    for(auto iter : _enemies){
+        iter->relieve();
+    }
 }
 
 bool Scorer::isCollision(){

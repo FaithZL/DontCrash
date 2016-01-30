@@ -107,9 +107,9 @@ void Commander::g3enter(){
         _enemies->at(2)->speedUp();
         _randSwitch = false;
         _bFormated = false;
+        _scorer->setCircleCount(0);
     }
     _timer = 0;
-    _scorer->setCircleCount(0);
 }
 
 void Commander::g3update(float d){
@@ -124,6 +124,7 @@ void Commander::g3update(float d){
         _enemies->at(1)->speedResume();
         _enemies->at(2)->speedResume();
         _randSwitch = true;
+        _scorer->difficultyUp();
     }else if(_timer >= TIME_FACTOR / _enemies->at(0)->getVelo()){
         _enemies->at(1)->speedUp();
     }
@@ -157,24 +158,6 @@ void Commander::g111enter(){
     _timer = 0;
 }
 
-void Commander::formation(){
-    if (!_bFormated) {
-        if (isAllTheSame(0 , 2 , "UDLF" , UDLR::up)) {
-            _bFormated = true;
-            auto X = _enemies->at(2)->getPositionX();
-            for (int i = 1 ; i > -1; i --) {
-                _enemies->at(i)->setPositionX(X + 95 * (2 - i));
-            }
-        }else if (isAllTheSame(0 , 2 , "UDLF" , UDLR::up)){
-            _bFormated = true;
-            auto X = _enemies->at(2)->getPositionX();
-            for (int i = 1 ; i > -1 ; i --) {
-                _enemies->at(i)->setPositionX(X - 95 * (2 - i));
-            }
-        }
-    }
-}
-
 void Commander::g111update(float d){
     
     if (_randSwitch) {
@@ -196,12 +179,33 @@ void Commander::g111update(float d){
     
 }
 
+void Commander::formation(){
+    if (!_bFormated) {
+        auto centerX = Director::getInstance()->getWinSize().width / 2;
+        auto centerY = Director::getInstance()->getWinSize().height / 2;
+        if (_enemies->at(1)->isPassX(centerX)) {
+            _bFormated = true;
+            auto X = _enemies->at(1)->getPositionX();
+            auto Y = _enemies->at(1)->getPositionY();
+            if (Y > centerY) {
+                _enemies->at(0)->setPositionX(X + 95);
+                _enemies->at(2)->setPositionX(X - 95);
+            }else{
+                _enemies->at(0)->setPositionX(X - 95);
+                _enemies->at(2)->setPositionX(X + 95);
+            }
+        }
+    }
+}
+
 void Commander::update(float d){
     FSM::update(d);
 }
 
 void Commander::reset(){
     resetFSM();
+    _timer = 0;
+    _bFormated = true;
 }
 
 

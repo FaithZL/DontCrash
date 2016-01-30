@@ -33,7 +33,7 @@ void UILayer::createCB(){
     
     _callBack[CB::Start] = [this](Ref * ref){
         Controller::getInstance()->start();
-        (static_cast<ui::Button *>(ref)->setVisible(false));
+        static_cast<ui::Button *>(ref)->setVisible(false);
         CCLOG("start !");
         _score->setVisible(true);
     };

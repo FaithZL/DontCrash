@@ -12,7 +12,6 @@
 #include "../Logic/Controller.hpp"
 #include "../Entity/Enemy.hpp"
 #include "../Logic/Scorer.hpp"
-//#include "../Logic/EnemyGroup.hpp"
 #include "../Logic/Commander.hpp"
 
 USING_NS_CC;

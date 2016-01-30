@@ -16,8 +16,7 @@ Enemy::Enemy(){
     
 }
 
-Enemy::~Enemy()
-{
+Enemy::~Enemy(){
     
 }
 
@@ -89,10 +88,6 @@ void Enemy::followHead(){
             _bChangeTrack = !_bChangeTrack;
         }
     }
-}
-
-void Enemy::enterLineCallBack(){
-    BaseCar::enterLineCallBack();
 }
 
 void Enemy::reset(){

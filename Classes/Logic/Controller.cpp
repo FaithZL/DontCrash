@@ -61,11 +61,6 @@ bool Controller::init()
 
 void Controller::start()
 {
-//    auto group = _scorer->getEnemyGroup();
-//    auto _enemies = group->getEnemies();
-//    for(auto iter : * _enemies){
-//        CCLOG("%d , %f , %f" , iter->getTag() , iter->getPositionX() , iter->getPositionY());
-//    }
     scheduleUpdate();
 }
 
@@ -85,11 +80,11 @@ void Controller::over(){
 
 void Controller::update(float d)
 {
-//    if (_scorer->isCollision()) {
-//        pause();
-//        over();
-//        return;
-//    }
+    if (_scorer->isCollision()) {
+        pause();
+        over();
+        return;
+    }
     _scorer->update(d);
     _commander->update(d);
 }

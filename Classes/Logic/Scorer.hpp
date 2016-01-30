@@ -13,13 +13,6 @@
 
 class Car;
 class Enemy;
-class EnemyGroup;
-
-//enum EnemyState {
-//    g3,
-//    g12,
-//    g111
-//};
 
 class Scorer : public cocos2d::Ref {
     
@@ -62,6 +55,10 @@ public:
     virtual bool init();
     
     void recordCircleCount(float d);
+    
+    void difficultyUp();
+    
+    void relieve();
 
 protected:
     

@@ -238,6 +238,35 @@ void BaseCar::circleUpdate(float d)
     setRotation3D(Vec3(0 , 0 , - convertTo180(newAngle - PI / 2)));
 }
 
+bool BaseCar::isPassX(float x){
+    if (_prePos.x < x && getPositionX() >= x) {
+        return true;
+    }else if (_prePos.x > x && getPositionX() <= x) {
+        return true;
+    }else{
+        return false;
+    }
+}
+
+bool BaseCar::isPassY(float y){
+    if (_prePos.y < y && getPositionY() >= y) {
+        return true;
+    }else if (_prePos.y > y && getPositionY() <= y){
+        return true;
+    }else{
+        return false;
+    }
+}
+
+void BaseCar::relieve(){
+    _curVelo = _normalVelo * 0.9;
+    _angVelo = _curVelo / R_OUTER;
+}
+
+void BaseCar::difficultyUp(){
+    setVelo(_normalVelo + 50 , true);
+}
+
 void BaseCar::reset()
 {
     setVelo(_originVelo , true);

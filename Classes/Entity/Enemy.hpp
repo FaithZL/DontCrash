@@ -62,8 +62,6 @@ public:
     
     virtual void update(float d);
     
-    virtual void enterLineCallBack();
-    
     inline bool isChangeTrack(){
         return _bChangeTrack;
     }

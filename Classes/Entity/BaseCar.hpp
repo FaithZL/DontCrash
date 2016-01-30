@@ -89,6 +89,14 @@ public:
     
     virtual void blast();
     
+    virtual void relieve();
+    
+    virtual bool isPassX(float x);
+    
+    virtual bool isPassY(float y);
+    
+    virtual void difficultyUp();
+    
     inline void resetFSM(){
         _currentState = nullptr;
         _previousState = nullptr;
