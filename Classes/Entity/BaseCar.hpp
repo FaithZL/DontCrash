@@ -25,7 +25,6 @@ enum TrackState{
     ToOuter,
     ToInner,
     Normal
-    //    Disabled
 };
 
 enum Direction{

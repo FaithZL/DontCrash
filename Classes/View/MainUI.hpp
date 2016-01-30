@@ -1,13 +1,13 @@
 //
-//  UILayer.hpp
+//  MainUI.hpp
 //  DontCrash
 //
 //  Created by SATAN_Z on 16/1/19.
 //
 //
 
-#ifndef UILayer_hpp
-#define UILayer_hpp
+#ifndef MainUI_hpp
+#define MainUI_hpp
 
 #include "cocos2d.h"
 #include "ui/UIButton.h"
@@ -16,7 +16,7 @@ USING_NS_CC;
 
 class Controller;
 
-class UILayer : public cocos2d::Layer , public FSM
+class MainUI : public cocos2d::Layer , public FSM
 {
 public:
     
@@ -31,9 +31,9 @@ public:
         length
     };
     
-    UILayer();
-    ~UILayer();
-    CREATE_FUNC(UILayer);
+    MainUI();
+    ~MainUI();
+    CREATE_FUNC(MainUI);
     
     virtual bool onTouchBegan(Touch *touch, Event *unused_event);
     
@@ -53,13 +53,15 @@ public:
 
     virtual bool init();
     
+    void overLayerPop();
+    
     void reset();
     
     bool refreshScore(va_list args);
     
 protected:
     
-    cocos2d::Layer * _layers[2];
+    cocos2d::Layer * _layers[3];
     
     ui::Button * _startBtn;
     
@@ -74,4 +76,4 @@ protected:
     int _preState;
 };
 
-#endif /* UILayer_hpp */
+#endif /* MainUI_hpp */

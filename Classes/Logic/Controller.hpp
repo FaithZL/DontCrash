@@ -13,7 +13,7 @@
 
 class Car;
 class Enemy;
-class UILayer;
+class MainUI;
 class GameLayer;
 class Scorer;
 class Signal;
@@ -22,6 +22,7 @@ class Commander;
 enum GameState
 {
     GNormal,
+    GRunning,
     GOver,
     length
 };
@@ -66,7 +67,7 @@ protected:
     
     static Controller * s_pController;
     
-    UILayer * _uiLayer;
+    MainUI * _mainUI;
     
     GameLayer * _gameLayer;
     

@@ -140,7 +140,7 @@ void Commander::g12enter(){
 void Commander::g12update(float d){
     
     if (_randSwitch) {
-        if (_scorer->getCircleCount() >= 5) {
+        if (_scorer->getCircleCount() >= 10) {
             _delayedStateName = g111;
         }
         return;
@@ -161,7 +161,7 @@ void Commander::g111enter(){
 void Commander::g111update(float d){
     
     if (_randSwitch) {
-        if (_scorer->getCircleCount() >= 7) {
+        if (_scorer->getCircleCount() >= 20) {
             _randSwitch = false;
             _enemies->at(1)->followHead();
             _enemies->at(2)->followHead();

@@ -10,7 +10,7 @@
 #include "../Entity/Car.hpp"
 #include "../Entity/Enemy.hpp"
 #include "../View/GameLayer.hpp"
-#include "../View/UILayer.hpp"
+#include "../View/MainUI.hpp"
 #include "Scorer.hpp"
 #include "../utils/Signal.hpp"
 #include "Commander.hpp"
@@ -21,7 +21,7 @@ Controller * Controller::s_pController = nullptr;
 
 Controller::Controller():
 _scheduler(nullptr),
-_uiLayer(nullptr),
+_mainUI(nullptr),
 _gameLayer(nullptr),
 _scorer(nullptr),
 _signal(nullptr)
@@ -32,7 +32,7 @@ _signal(nullptr)
 Controller::~Controller()
 {
     CC_SAFE_DELETE(_gameLayer);
-    CC_SAFE_DELETE(_uiLayer);
+    CC_SAFE_DELETE(_mainUI);
     CC_SAFE_DELETE(_scorer);
 }
 
@@ -62,20 +62,22 @@ bool Controller::init()
 void Controller::start()
 {
     scheduleUpdate();
+    _GameState = GRunning;
 }
 
 cocos2d::Scene * Controller::createScene()
 {
     Scene * ret = Scene::create();
     _gameLayer = GameLayer::create();
-    _uiLayer = UILayer::create();
+    _mainUI = MainUI::create();
     ret->addChild(_gameLayer);
-    ret->addChild(_uiLayer);
+    ret->addChild(_mainUI);
     return ret;
 }
 
 void Controller::over(){
-    _uiLayer->translateToState(GameState::GOver);
+    _GameState = GameState::GOver;
+    _mainUI->translateToState(GameState::GOver);
 }
 
 void Controller::update(float d)
@@ -102,7 +104,7 @@ void Controller::unscheduleUpdate()
 void Controller::reset()
 {
     _scorer->reset();
-    _uiLayer->reset();
+    _mainUI->reset();
     _commander->reset();
 }
 

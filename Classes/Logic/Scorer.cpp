@@ -184,7 +184,7 @@ void Scorer::relieve(){
 
 bool Scorer::isCollision(){
     for(auto &it : _enemies){
-        if (it->getCurRadius() == _car->getCurRadius() || it->getTrackState() == TrackState::ToInner || it->getTrackState() == TrackState::ToOuter) {
+        if (it->getCurRadius() == _car->getCurRadius() || it->getTrackState() != TrackState::Normal || _car->getTrackState() != TrackState::Normal) {
             if (isIntersect(_car, it)) {
                 _car->blast();
                 it->blast();

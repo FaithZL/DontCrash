@@ -63,10 +63,12 @@
 		F600ADF51C57314400106B9D /* Enemy.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F600ADEE1C57314400106B9D /* Enemy.cpp */; };
 		F600AE021C573E8500106B9D /* GameLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F600ADFE1C573E8500106B9D /* GameLayer.cpp */; };
 		F600AE031C573E8500106B9D /* GameLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F600ADFE1C573E8500106B9D /* GameLayer.cpp */; };
-		F600AE041C573E8500106B9D /* UILayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F600AE001C573E8500106B9D /* UILayer.cpp */; };
-		F600AE051C573E8500106B9D /* UILayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F600AE001C573E8500106B9D /* UILayer.cpp */; };
+		F600AE041C573E8500106B9D /* MainUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F600AE001C573E8500106B9D /* MainUI.cpp */; };
+		F600AE051C573E8500106B9D /* MainUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F600AE001C573E8500106B9D /* MainUI.cpp */; };
 		F600AE081C57528700106B9D /* Signal.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F600AE061C57528700106B9D /* Signal.cpp */; };
 		F600AE091C57528700106B9D /* Signal.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F600AE061C57528700106B9D /* Signal.cpp */; };
+		F658B4C31C5CD02F009859EE /* OverLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F658B4C11C5CD02F009859EE /* OverLayer.cpp */; };
+		F658B4C41C5CD02F009859EE /* OverLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F658B4C11C5CD02F009859EE /* OverLayer.cpp */; };
 		F6AA42ED1C52480100553300 /* Scorer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F6AA42EB1C52480100553300 /* Scorer.cpp */; };
 		F6AA42EE1C52480100553300 /* Scorer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F6AA42EB1C52480100553300 /* Scorer.cpp */; };
 		F6AA42F11C5248A100553300 /* Controller.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F6AA42EF1C5248A100553300 /* Controller.cpp */; };
@@ -186,11 +188,13 @@
 		F600ADEF1C57314400106B9D /* Enemy.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Enemy.hpp; sourceTree = "<group>"; };
 		F600ADFE1C573E8500106B9D /* GameLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameLayer.cpp; sourceTree = "<group>"; };
 		F600ADFF1C573E8500106B9D /* GameLayer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = GameLayer.hpp; sourceTree = "<group>"; };
-		F600AE001C573E8500106B9D /* UILayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UILayer.cpp; sourceTree = "<group>"; };
-		F600AE011C573E8500106B9D /* UILayer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = UILayer.hpp; sourceTree = "<group>"; };
+		F600AE001C573E8500106B9D /* MainUI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MainUI.cpp; sourceTree = "<group>"; };
+		F600AE011C573E8500106B9D /* MainUI.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = MainUI.hpp; sourceTree = "<group>"; };
 		F600AE061C57528700106B9D /* Signal.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Signal.cpp; sourceTree = "<group>"; };
 		F600AE071C57528700106B9D /* Signal.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Signal.hpp; sourceTree = "<group>"; };
 		F6153B9D1C4FC00200CE9BF3 /* Z_Math.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Z_Math.h; sourceTree = "<group>"; };
+		F658B4C11C5CD02F009859EE /* OverLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OverLayer.cpp; sourceTree = "<group>"; };
+		F658B4C21C5CD02F009859EE /* OverLayer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = OverLayer.hpp; sourceTree = "<group>"; };
 		F6AA42EB1C52480100553300 /* Scorer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Scorer.cpp; sourceTree = "<group>"; };
 		F6AA42EC1C52480100553300 /* Scorer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Scorer.hpp; sourceTree = "<group>"; };
 		F6AA42EF1C5248A100553300 /* Controller.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Controller.cpp; sourceTree = "<group>"; };
@@ -424,8 +428,10 @@
 			children = (
 				F600ADFE1C573E8500106B9D /* GameLayer.cpp */,
 				F600ADFF1C573E8500106B9D /* GameLayer.hpp */,
-				F600AE001C573E8500106B9D /* UILayer.cpp */,
-				F600AE011C573E8500106B9D /* UILayer.hpp */,
+				F600AE001C573E8500106B9D /* MainUI.cpp */,
+				F600AE011C573E8500106B9D /* MainUI.hpp */,
+				F658B4C11C5CD02F009859EE /* OverLayer.cpp */,
+				F658B4C21C5CD02F009859EE /* OverLayer.hpp */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -617,9 +623,10 @@
 				F6BA72761C5B2D9E00376B11 /* Commander.cpp in Sources */,
 				F6E04DFB1C4E001B00214F89 /* AppDelegate.cpp in Sources */,
 				503AE10017EB989F00D1A890 /* AppController.mm in Sources */,
+				F658B4C31C5CD02F009859EE /* OverLayer.cpp in Sources */,
 				503AE10217EB989F00D1A890 /* RootViewController.mm in Sources */,
 				F600AE081C57528700106B9D /* Signal.cpp in Sources */,
-				F600AE041C573E8500106B9D /* UILayer.cpp in Sources */,
+				F600AE041C573E8500106B9D /* MainUI.cpp in Sources */,
 				F600AE021C573E8500106B9D /* GameLayer.cpp in Sources */,
 				F600ADF21C57314400106B9D /* Car.cpp in Sources */,
 				503AE10117EB989F00D1A890 /* main.m in Sources */,
@@ -633,7 +640,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F600ADF11C57314400106B9D /* BaseCar.cpp in Sources */,
-				F600AE051C573E8500106B9D /* UILayer.cpp in Sources */,
+				F600AE051C573E8500106B9D /* MainUI.cpp in Sources */,
 				F6E04DFC1C4E001B00214F89 /* AppDelegate.cpp in Sources */,
 				F6AA42EE1C52480100553300 /* Scorer.cpp in Sources */,
 				F6E04E081C4E001B00214F89 /* FSMState.cpp in Sources */,
@@ -641,6 +648,7 @@
 				F600ADF31C57314400106B9D /* Car.cpp in Sources */,
 				F600ADF51C57314400106B9D /* Enemy.cpp in Sources */,
 				F600AE091C57528700106B9D /* Signal.cpp in Sources */,
+				F658B4C41C5CD02F009859EE /* OverLayer.cpp in Sources */,
 				503AE10517EB98FF00D1A890 /* main.cpp in Sources */,
 				F6E04E061C4E001B00214F89 /* FSM.cpp in Sources */,
 				F6AA42F21C5248A100553300 /* Controller.cpp in Sources */,

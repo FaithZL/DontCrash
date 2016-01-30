@@ -8,7 +8,6 @@
 
 #include "BaseCar.hpp"
 #include "../utils/FSM/FSMState.h"
-//#include "FSMState.h"
 #include "../utils/Z_Math.h"
 #include "../constant.h"
 
@@ -274,6 +273,7 @@ void BaseCar::reset()
     setPosition(_originPos);
     setTexture(_normalRes);
     _curRadius = R_OUTER;
+    _trackState = TrackState::Normal;
     setRotation3D(Vec3(0 , 0 , _originAngle));
 }
 

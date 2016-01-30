@@ -1,12 +1,12 @@
 //
-//  UILayer.cpp
+//  MainUI.cpp
 //  DontCrash
 //
 //  Created by SATAN_Z on 16/1/19.
 //
 //
 
-#include "UILayer.hpp"
+#include "MainUI.hpp"
 #include "../Logic/Controller.hpp"
 #include "../Entity/Car.hpp"
 #include "../Entity/Enemy.hpp"
@@ -16,7 +16,7 @@
 #include "../Logic/Scorer.hpp"
 USING_NS_CC;
 
-UILayer::UILayer():
+MainUI::MainUI():
 _over(nullptr),
 _normal(nullptr),
 _score(nullptr),
@@ -24,12 +24,12 @@ _preState(-1)
 {
 }
 
-UILayer::~UILayer()
+MainUI::~MainUI()
 {
     
 }
 
-void UILayer::createCB(){
+void MainUI::createCB(){
     
     _callBack[CB::Start] = [this](Ref * ref){
         Controller::getInstance()->start();
@@ -57,18 +57,18 @@ void UILayer::createCB(){
     _callBack[CB::Rank] = [](Ref * ref){
         CCLOG("rank");
     };
-
-    _onStateEnter[GameState::GNormal] = [this](){
-        _startBtn->setVisible(true);
-    };
+//
+//    _onStateEnter[GameState::GNormal] = [this](){
+//        _startBtn->setVisible(true);
+//    };
     
-    Controller::getInstance()->getSignal()->registerEvent("onScoreChange", this, TO_SIG_SEL(UILayer::refreshScore) , 0);
+    Controller::getInstance()->getSignal()->registerEvent("onScoreChange", this, TO_SIG_SEL(MainUI::refreshScore) , 0);
     
 }
 
-bool UILayer::onTouchBegan(cocos2d::Touch *touch, cocos2d::Event * unused_event)
+bool MainUI::onTouchBegan(cocos2d::Touch *touch, cocos2d::Event * unused_event)
 {
-    if (getCurrentStateName() != GameState::GNormal) {
+    if (Controller::getInstance()->getCurGameState() != GameState::GRunning) {
         return false;
     }
     Controller::getInstance()->getScorer()->getUserCar()->changeTrack();
@@ -76,7 +76,7 @@ bool UILayer::onTouchBegan(cocos2d::Touch *touch, cocos2d::Event * unused_event)
     return true;
 }
 
-void UILayer::initOverLayer(){
+void MainUI::initOverLayer(){
     _over = Layer::create();
     
     auto r = 75;
@@ -114,7 +114,7 @@ void UILayer::initOverLayer(){
 }
 
 
-void UILayer::initNormalLayer(){
+void MainUI::initNormalLayer(){
     _normal = Layer::create();
     auto startBtn = ui::Button::create("img/play.png");
     auto winSize = Director::getInstance()->getWinSize();
@@ -143,7 +143,7 @@ void UILayer::initNormalLayer(){
     _layers[GameState::GNormal] = _normal;
 }
 
-void UILayer::initFSM(){
+void MainUI::initFSM(){
     FSMState normal;
     
     normal.setName(GameState::GNormal);
@@ -172,18 +172,22 @@ void UILayer::initFSM(){
     FSM::update(0);
 }
 
-void UILayer::initScore(){
+void MainUI::overLayerPop(){
+    
+}
+
+void MainUI::initScore(){
     _score = Label::createWithTTF("0" , "fonts/Marker Felt.ttf" , 150);
     auto winSize = Director::getInstance()->getWinSize();
     _score->setPosition(Vec2(winSize.width / 2 , winSize.height / 2));
     addChild(_score);
 }
 
-void UILayer::reset(){
+void MainUI::reset(){
     translateToState(GameState::GNormal);
 }
 
-bool UILayer::refreshScore(va_list args){
+bool MainUI::refreshScore(va_list args){
    
     int score = va_arg(args,int);
     
@@ -195,7 +199,7 @@ bool UILayer::refreshScore(va_list args){
     return true;
 }
 
-bool UILayer::init(){
+bool MainUI::init(){
     if (Layer::init()) {
         createCB();
         initOverLayer();
@@ -203,13 +207,11 @@ bool UILayer::init(){
         
         initScore();
         
-        
-        
         initFSM();
         
         auto touchListener = EventListenerTouchOneByOne::create();
         touchListener->setSwallowTouches(true);
-        touchListener->onTouchBegan = CC_CALLBACK_2(UILayer::onTouchBegan,this);
+        touchListener->onTouchBegan = CC_CALLBACK_2(MainUI::onTouchBegan,this);
         _eventDispatcher->addEventListenerWithSceneGraphPriority(touchListener, this);
         return true;
     }
