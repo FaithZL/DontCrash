@@ -10,7 +10,8 @@
 #define NormalLayer_hpp
 
 #include "cocos2d.h"
-
+#include "ui/UIButton.h"
+USING_NS_CC;
 class NormalLayer : public cocos2d::Layer {
     
 public:
@@ -23,20 +24,33 @@ public:
         start,
         length
     };
-    
+	
     virtual bool init();
     
     CREATE_FUNC(NormalLayer);
     
     void createCallback();
     
-    void createButtons();
+    void createWidget();
     
     void bindEvent();
     
     void pop();
     
     void pickUp();
+    
+    bool refreshScore(va_list args);
+    
+protected:
+    
+    std::function<void(Ref *)> _callBack[CB::length];
+    
+    ui::Button * _btnStart;
+    
+    ui::Button * _btnPause;
+    
+    cocos2d::Label * _lblScore;
+    
     
 };
 

@@ -26,4 +26,6 @@
 
 #define CHANGE_PROB 0.5
 
+#define ON_SCORE_CHANGE "onScoreChange"
+
 #endif /* constant_h */

@@ -51,7 +51,7 @@ void OverLayer::createCallback(){
 bool OverLayer::init(){
     if (Layer::init()) {
         createCallback();
-        createButtons();
+        createWidget();
         bindEvent();
         setVisible(false);
         return true;
@@ -59,7 +59,7 @@ bool OverLayer::init(){
     return false;
 }
 
-void OverLayer::createButtons(){
+void OverLayer::createWidget(){
     auto r = 75;
     
     _btnReset = ui::Button::create("img/chonglai.png");
@@ -71,7 +71,6 @@ void OverLayer::createButtons(){
     addChild(_btnShare);
     
     _btnFav = ui::Button::create("img/fav.png");
-    _btnFav->addClickEventListener(_callBack[CB::Fav]);
     _btnFav->setPosition(Vec2(POS_L.x , POS_L.y - r));
     addChild(_btnFav);
     

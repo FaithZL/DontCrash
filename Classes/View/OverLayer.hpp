@@ -38,7 +38,7 @@ public:
     
     void pickUp();
     
-    void createButtons();
+    void createWidget();
     
     void bindEvent();
     
@@ -55,6 +55,10 @@ protected:
     ui::Button * _btnFav;
     
     ui::Button * _btnShare;
+    
+    cocos2d::Label * _lblScore;
+
+    cocos2d::Label * _lblBestScore;
     
 };
 

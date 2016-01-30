@@ -77,7 +77,7 @@ cocos2d::Scene * Controller::createScene()
 
 void Controller::over(){
     _GameState = GameState::GOver;
-    _mainUI->translateToState(GameState::GOver);
+//    _mainUI->translateToState(GameState::GOver);
 }
 
 void Controller::update(float d)
