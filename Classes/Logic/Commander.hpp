@@ -12,9 +12,14 @@
 #include "cocos2d.h"
 #include "../utils/FSM/FSM.h"
 #include "Scorer.hpp"
-#include "EnemyGroup.hpp"
 
 class Enemy;
+
+enum GroupState {
+    g3,
+    g12,
+    g111
+};
 
 class Commander : public FSM , public cocos2d::Ref{
 
@@ -28,12 +33,6 @@ public:
     
     virtual void initFSM();
     
-    enum RandSwitch{
-        Off,
-        On
-    };
-    
-    
     void g3enter();
     
     void g3update(float d);
@@ -46,10 +45,7 @@ public:
     
     void g111update(float d);
     
-    void addEnemy(Enemy * enemy);
-    
     bool isAllTheSame(int from , int to , std::string fieldName...);
-    
     
     virtual void update(float d);
     
@@ -61,17 +57,32 @@ public:
         _previousState = nullptr;
     }
     
-    cocos2d::Vector<Enemy *> * getEnemies();
+    inline void setScorer(Scorer * scorer){
+        _scorer = scorer;
+        _enemies = _scorer->getEnemies();
+    }
+    
+    inline cocos2d::Vector<Enemy *> * getEnemies(){
+        return _enemies;
+    }
+    
+    inline bool isRandSwitchOn(){
+        return _randSwitch;
+    }
+    
+    void formation();
     
 protected:
     
     float _timer;
     
-    int _randSwitch;
+    bool _bFormated;
+    
+    bool _randSwitch;
     
     Scorer * _scorer;
     
-    cocos2d::Vector<Enemy *> _enemies;
+    cocos2d::Vector<Enemy *> * _enemies;
     
 };
 

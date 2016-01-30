@@ -13,7 +13,6 @@
 #include "../View/UILayer.hpp"
 #include "Scorer.hpp"
 #include "../utils/Signal.hpp"
-#include "EnemyGroup.hpp"
 #include "Commander.hpp"
 
 USING_NS_CC;
@@ -55,6 +54,7 @@ bool Controller::init()
     CC_SAFE_RETAIN(_signal);
     _commander = Commander::create();
     CC_SAFE_RETAIN(_commander);
+    _commander->setScorer(_scorer);
     return true;
 }
 
@@ -108,6 +108,7 @@ void Controller::reset()
 {
     _scorer->reset();
     _uiLayer->reset();
+    _commander->reset();
 }
 
 void Controller::pause()

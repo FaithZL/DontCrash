@@ -12,11 +12,6 @@
 #include "cocos2d.h"
 #include "../utils/FSM/FSM.h"
 
-enum GroupState {
-    g3,
-    g12,
-    g111
-};
 
 class Enemy;
 class Scorer;

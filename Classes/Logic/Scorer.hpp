@@ -32,8 +32,6 @@ public:
     
     CC_SYNTHESIZE(Car * , _car , UserCar);
     
-    CC_SYNTHESIZE_READONLY(EnemyGroup * , _enemyGroup, EnemyGroup);
-    
     CC_SYNTHESIZE(int , _circleCount, CircleCount);
     
     CREATE_FUNC(Scorer);
@@ -47,6 +45,10 @@ public:
     void scoring(float d);
     
     void update(float d);
+    
+    void addEnemy(Enemy * enemy);
+    
+    cocos2d::Vector<Enemy *> * getEnemies();
     
     //if the same track then add a extra score buff
     void checkSameTrack();
@@ -63,7 +65,7 @@ public:
 
 protected:
     
-    cocos2d::Vector<Enemy *>  * _enemies;
+    cocos2d::Vector<Enemy *> _enemies;
 };
 
 #endif /* Scorer_hpp */

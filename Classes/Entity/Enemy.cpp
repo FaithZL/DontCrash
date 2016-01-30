@@ -10,10 +10,9 @@
 #include "../constant.h"
 #include "../Logic/Commander.hpp"
 
+USING_NS_CC;
 
-Enemy::Enemy():
-_attempToChange(AttempToChange::CanSet)
-{
+Enemy::Enemy(){
     
 }
 
@@ -22,8 +21,7 @@ Enemy::~Enemy()
     
 }
 
-Enemy * Enemy::create(std::string fileName, float originVelo, cocos2d::Vec2 originPos, int direction)
-{
+Enemy * Enemy::create(std::string fileName, float originVelo, cocos2d::Vec2 originPos, int direction){
     auto ret = new (std::nothrow) Enemy();
     if (ret) {
         ret->init(fileName , originVelo, originPos, direction);
@@ -31,12 +29,6 @@ Enemy * Enemy::create(std::string fileName, float originVelo, cocos2d::Vec2 orig
     }
     return nullptr;
 }
-
-//void Enemy::circleUpdate(float d)
-//{
-//    updateRadius(d);
-//    BaseCar::circleUpdate(d);
-//}
 
 void Enemy::update(float d){
    
@@ -47,43 +39,64 @@ void Enemy::update(float d){
 
 void Enemy::enterCircleCallBack()
 {
-    BaseCar::enterCircleCallBack();
-    
-    if (_attempToChange == AttempToChange::True) {
-        changeTrack();
-        setAttempToChange(CanSet);
-    }else if (_attempToChange == AttempToChange::False){
-        setAttempToChange(CanSet);
+    randChangeTrack();
+    if (_bChangeTrack) {
+        startChangeTrack();
     }
+    BaseCar::enterCircleCallBack();
 }
 
 void Enemy::randChangeTrack(){
-    switch (_commander->getCurrentStateName()) {
-        case g3:
-            
-            break;
+    
+    if (_commander->isRandSwitchOn()) {
+        if (getTag() == 0) {
+            _bChangeTrack = rand_0_1() < CHANGE_PROB ? true : false;
+            return ;
+        }
         
-        case g12:
-            
-            break;
-            
-        case g111:
-            
-            break;
-            
-        default:
-            break;
+        switch (_commander->getCurrentStateName()) {
+            case g3:
+                _bChangeTrack = getPre()->getisChangeTrack();
+                break;
+                
+            case g12:
+                if (getTag() == 1) {
+                    _bChangeTrack = rand_0_1() < CHANGE_PROB ? true : false;
+                }else{
+                    _bChangeTrack = getPre()->getisChangeTrack();
+                }
+                break;
+                
+            case g111:
+                _bChangeTrack = rand_0_1() < CHANGE_PROB ? true : false;
+                break;
+                
+            default:
+                break;
+        }
+
+    }
+    
+}
+
+void Enemy::followHead(){
+    if (getTag() == 0) {
+        return;
+    }
+    auto head = _commander->getEnemies()->at(0);
+    if (head->getTrackState() == TrackState::Normal) {
+        if (_curRadius != head->getCurRadius() && _trackState == TrackState::Normal) {
+            _bChangeTrack = !_bChangeTrack;
+        }
     }
 }
 
 void Enemy::enterLineCallBack(){
     BaseCar::enterLineCallBack();
-//    _attempToChange = AttempToChange::CanSet;
 }
 
 void Enemy::reset(){
     BaseCar::reset();
-    _attempToChange = AttempToChange::CanSet;
     _trackState = TrackState::Normal;
 }
 
@@ -109,19 +122,17 @@ void Enemy::updateRadius(float d)
         if (_curRadius <= R_INNER) {
             _curRadius = R_INNER;
             _trackState = TrackState::Normal;
-//            _attempToChange = AttempToChange::CanSet;
         }
     } else if(_trackState == TrackState::ToOuter){
         _curRadius = _curRadius + d * v;
         if (_curRadius >= R_OUTER) {
             _curRadius = R_OUTER;
             _trackState = TrackState::Normal;
-//             _attempToChange = AttempToChange::CanSet;
         }
     }
 }
 
-void Enemy::changeTrack()
+void Enemy::startChangeTrack()
 {
     if (_curRadius == R_OUTER) {
         _trackState = TrackState::ToInner;

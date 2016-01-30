@@ -22,7 +22,9 @@ Commander::~Commander(){
 Commander::Commander():
 _timer(0),
 _scorer(nullptr),
-_randSwitch(RandSwitch::On){
+_randSwitch(true),
+_enemies(nullptr),
+_bFormated(true){
     
 }
 
@@ -65,86 +67,143 @@ bool Commander::isAllTheSame(int from , int to , std::string fieldName ...){
     
     if (fieldName == "radius") {
         
-        float r = _enemies.at(from)->getCurRadius();
+        float r = _enemies->at(from)->getCurRadius();
         for (int i = from ; i <= to ; i ++) {
-            if (_enemies.at(i)->getCurRadius() != r) {
+            if (_enemies->at(i)->getCurRadius() != r) {
                 ret = false;
                 break;
             }
         }
-    }else if (fieldName == "AttempToChange"){
+    }else if (fieldName == "TrackState"){
         
         int tmp = va_arg(args , int) ;
         
-        int AttempToChange = tmp == -1 ? _enemies.at(from)->getAttempToChange() : tmp;
-        for (int i = from + 1 ; i <= to ; i ++) {
-            if (_enemies.at(i)->getAttempToChange() != AttempToChange) {
+        int trackState = tmp == -1 ? _enemies->at(from)->getTrackState() : tmp;
+        for (int i = from ; i <= to ; i ++) {
+            if (_enemies->at(i)->getTrackState() != trackState) {
+                ret = false;
+                break;
+            }
+        }
+    }else if (fieldName == "UDLR"){
+        
+        int tmp = va_arg(args , int);
+        
+        int UDLR = tmp == -1 ? _enemies->at(from)->getUDLR() : tmp;
+        for (int i = from ; i <= to ; i ++) {
+            if (_enemies->at(i)->getUDLR() != UDLR) {
                 ret = false;
                 break;
             }
         }
     }
+    
     va_end(args);
     return ret;
 }
 
 void Commander::g3enter(){
     if (getPreviousStateName() != -1) {
-        _enemies.at(2)->speedUp();
-        _randSwitch = Off;
+        _enemies->at(2)->speedUp();
+        _randSwitch = false;
+        _bFormated = false;
     }
+    _timer = 0;
+    _scorer->setCircleCount(0);
 }
 
 void Commander::g3update(float d){
+    _timer += d;
     
+    if (_randSwitch) {
+        formation();
+        if (_scorer->getCircleCount() >= 3) {
+            _delayedStateName = g12;
+        }
+    }else if (_timer >= 2 * TIME_FACTOR / _enemies->at(0)->getVelo()){
+        _enemies->at(1)->speedResume();
+        _enemies->at(2)->speedResume();
+        _randSwitch = true;
+    }else if(_timer >= TIME_FACTOR / _enemies->at(0)->getVelo()){
+        _enemies->at(1)->speedUp();
+    }
 }
 
 void Commander::g12enter(){
-   
+    _randSwitch = false;
+    _enemies->at(1)->speedDown();
+    _enemies->at(2)->speedDown();
+    _timer = 0;
 }
 
 void Commander::g12update(float d){
     
+    if (_randSwitch) {
+        if (_scorer->getCircleCount() >= 5) {
+            _delayedStateName = g111;
+        }
+        return;
+    }else if ((_timer += d) >= TIME_FACTOR / _enemies->at(0)->getVelo()){
+        _enemies->at(1)->speedResume();
+        _enemies->at(2)->speedResume();
+        _randSwitch = true;
+    }
     
 }
 
 void Commander::g111enter(){
-    _randSwitch = Off;
-    _enemies.at(2)->speedDown();
-    for(auto iter : _enemies){
-        iter->setAttempToChange(AttempToChange::CanSet);
-    }
+    _randSwitch = false;
+    _enemies->at(2)->speedDown();
     _timer = 0;
+}
+
+void Commander::formation(){
+    if (!_bFormated) {
+        if (isAllTheSame(0 , 2 , "UDLF" , UDLR::up)) {
+            _bFormated = true;
+            auto X = _enemies->at(2)->getPositionX();
+            for (int i = 1 ; i > -1; i --) {
+                _enemies->at(i)->setPositionX(X + 95 * (2 - i));
+            }
+        }else if (isAllTheSame(0 , 2 , "UDLF" , UDLR::up)){
+            _bFormated = true;
+            auto X = _enemies->at(2)->getPositionX();
+            for (int i = 1 ; i > -1 ; i --) {
+                _enemies->at(i)->setPositionX(X - 95 * (2 - i));
+            }
+        }
+    }
 }
 
 void Commander::g111update(float d){
     
+    if (_randSwitch) {
+        if (_scorer->getCircleCount() >= 7) {
+            _randSwitch = false;
+            _enemies->at(1)->followHead();
+            _enemies->at(2)->followHead();
+            if (isAllTheSame(0 , 2, "radius") && isAllTheSame(0 , 1, "TrackState" , TrackState::Normal)) {
+                _delayedStateName = g3;
+                for(auto iter : * _enemies){
+                    iter->setisChangeTrack(false);
+                }
+            }
+        }
+    }else if ((_timer += d) >= TIME_FACTOR / _enemies->at(0)->getVelo()){
+        _enemies->at(2)->speedResume();
+        _randSwitch = true;
+    }
     
-}
-
-cocos2d::Vector<Enemy *> * Commander::getEnemies(){
-    return &_enemies;
 }
 
 void Commander::update(float d){
     FSM::update(d);
-    for (auto iter : _enemies) {
-        iter->update(d);
-    }
 }
 
 void Commander::reset(){
     resetFSM();
-    for(auto iter : _enemies){
-        iter->reset();
-    }
 }
 
-void Commander::addEnemy(Enemy *enemy){
-//    enemy->setGroup(this);
-    enemy->setCommander(this);
-    _enemies.pushBack(enemy);
-}
 
 
 

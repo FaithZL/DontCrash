@@ -93,8 +93,6 @@
 		F6E04F721C4E172300214F89 /* img in Resources */ = {isa = PBXBuildFile; fileRef = F6E04F651C4E172300214F89 /* img */; };
 		F6E04F731C4E172300214F89 /* res in Resources */ = {isa = PBXBuildFile; fileRef = F6E04F661C4E172300214F89 /* res */; };
 		F6E04F741C4E172300214F89 /* res in Resources */ = {isa = PBXBuildFile; fileRef = F6E04F661C4E172300214F89 /* res */; };
-		F6E097F91C565B3700B179B0 /* EnemyGroup.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F6E097F71C565B3700B179B0 /* EnemyGroup.cpp */; };
-		F6E097FA1C565B3700B179B0 /* EnemyGroup.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F6E097F71C565B3700B179B0 /* EnemyGroup.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -213,8 +211,6 @@
 		F6E04F641C4E172300214F89 /* HelloWorld.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HelloWorld.png; sourceTree = "<group>"; };
 		F6E04F651C4E172300214F89 /* img */ = {isa = PBXFileReference; lastKnownFileType = folder; path = img; sourceTree = "<group>"; };
 		F6E04F661C4E172300214F89 /* res */ = {isa = PBXFileReference; lastKnownFileType = folder; path = res; sourceTree = "<group>"; };
-		F6E097F71C565B3700B179B0 /* EnemyGroup.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EnemyGroup.cpp; sourceTree = "<group>"; };
-		F6E097F81C565B3700B179B0 /* EnemyGroup.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = EnemyGroup.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -402,8 +398,6 @@
 				F6AA42F01C5248A100553300 /* Controller.hpp */,
 				F6AA42EB1C52480100553300 /* Scorer.cpp */,
 				F6AA42EC1C52480100553300 /* Scorer.hpp */,
-				F6E097F71C565B3700B179B0 /* EnemyGroup.cpp */,
-				F6E097F81C565B3700B179B0 /* EnemyGroup.hpp */,
 				F6BA72741C5B2D9E00376B11 /* Commander.cpp */,
 				F6BA72751C5B2D9E00376B11 /* Commander.hpp */,
 			);
@@ -630,7 +624,6 @@
 				F600ADF21C57314400106B9D /* Car.cpp in Sources */,
 				503AE10117EB989F00D1A890 /* main.m in Sources */,
 				F600ADF41C57314400106B9D /* Enemy.cpp in Sources */,
-				F6E097F91C565B3700B179B0 /* EnemyGroup.cpp in Sources */,
 				F6AA42F11C5248A100553300 /* Controller.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -652,7 +645,6 @@
 				F6E04E061C4E001B00214F89 /* FSM.cpp in Sources */,
 				F6AA42F21C5248A100553300 /* Controller.cpp in Sources */,
 				F6BA72771C5B2D9E00376B11 /* Commander.cpp in Sources */,
-				F6E097FA1C565B3700B179B0 /* EnemyGroup.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

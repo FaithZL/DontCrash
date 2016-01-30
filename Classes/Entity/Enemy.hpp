@@ -12,27 +12,6 @@
 #include "cocos2d.h"
 #include "BaseCar.hpp"
 
-
-
-enum AttempToChange{
-    False,
-    True,
-    CanSet,
-    Disable
-};
-
-//enum VeloState{
-//    vCut = -1,
-//    vNormal,
-//    vAdd
-//};
-
-//enum AttempVeloState{
-//    aCut = -1,
-//    aNormal,
-//    aAdd
-//};
-
 class EnemyGroup;
 class Commander;
 
@@ -42,21 +21,11 @@ public:
     Enemy();
     ~Enemy();
     
-    CC_SYNTHESIZE_READONLY(int , _attempToChange , AttempToChange);
-    
     CC_SYNTHESIZE(EnemyGroup * , _group, Group);
     
     CC_SYNTHESIZE(Commander * , _commander, Commander);
-    
-    inline void setAttempToChange(int var){
-        if (var == AttempToChange::Disable || var == AttempToChange::CanSet) {
-            _attempToChange = var;
-            return;
-        }
-        if (_attempToChange == AttempToChange::CanSet) {
-            _attempToChange = var;
-        }
-    }
+
+    CC_SYNTHESIZE(bool , _bChangeTrack , isChangeTrack);
     
     inline void speedUp(){
         _curVelo = _normalVelo * 1.25;
@@ -75,6 +44,8 @@ public:
     
     Enemy * getPre();
     
+    void followHead();
+    
     Enemy * getNext();
     
     static Enemy * create(std::string fileName , float originVelo , cocos2d::Vec2 originPos , int direction);
@@ -85,7 +56,7 @@ public:
     
     virtual void updateRadius(float d);
     
-    virtual void changeTrack();
+    virtual void startChangeTrack();
     
     virtual void reset();
     
@@ -93,8 +64,9 @@ public:
     
     virtual void enterLineCallBack();
     
-//    virtual void circleUpdate(float d);
-    
+    inline bool isChangeTrack(){
+        return _bChangeTrack;
+    }
 };
 
 
