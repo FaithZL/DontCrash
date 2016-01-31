@@ -11,7 +11,7 @@
 
 #include "cocos2d.h"
 #include "ui/UIButton.h"
-#include "../utils/FSM/FSM.h"
+//#include "../utils/FSM/FSM.h"
 USING_NS_CC;
 
 class Controller;
@@ -35,6 +35,8 @@ public:
     virtual bool init();
     
     void reset();
+    
+    void over();
     
     bool refreshScore(va_list args);
     

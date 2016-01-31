@@ -9,11 +9,11 @@
 #include "MainUI.hpp"
 #include "../Logic/Controller.hpp"
 #include "../Entity/Car.hpp"
-#include "../Entity/Enemy.hpp"
 #include "../constant.h"
-#include "../utils/FSM/FSMState.h"
 #include "../utils/Signal.hpp"
 #include "../Logic/Scorer.hpp"
+#include "OverLayer.hpp"
+#include "NormalLayer.hpp"
 USING_NS_CC;
 
 MainUI::MainUI():
@@ -29,24 +29,32 @@ MainUI::~MainUI()
 bool MainUI::onTouchBegan(cocos2d::Touch *touch, cocos2d::Event * unused_event)
 {
     if (Controller::getInstance()->getCurGameState() != GameState::GRunning) {
-        return false;
+        return true;
     }
     Controller::getInstance()->getScorer()->getUserCar()->changeTrack();
     
     return true;
 }
 
-
-
-
 void MainUI::reset(){
-    
+    _over->pickUp();
+    _normal->pop();
 }
 
+void MainUI::over(){
+    _normal->pickUp();
+    _over->pop();
+}
 
 bool MainUI::init(){
     if (Layer::init()) {
         
+        _normal = NormalLayer::create();
+        addChild(_normal);
+        _over = OverLayer::create();
+        addChild(_over);
+        
+        _normal->pop();
         
         auto touchListener = EventListenerTouchOneByOne::create();
         touchListener->setSwallowTouches(true);

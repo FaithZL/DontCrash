@@ -36,7 +36,7 @@ public:
     
     virtual bool init();
     
-    CC_SYNTHESIZE_READONLY(int , _GameState , CurGameState);
+    CC_SYNTHESIZE_READONLY(int , _gameState , CurGameState);
     
     CC_SYNTHESIZE_READONLY(Commander * , _commander , Commander);
     
@@ -53,6 +53,8 @@ public:
     void update(float d);
     
     void scheduleUpdate();
+    
+    void scheduleOnce(std::function<void(float)> &callback, float delay , std::string key);
     
     void unscheduleUpdate();
     

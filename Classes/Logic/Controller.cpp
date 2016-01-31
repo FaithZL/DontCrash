@@ -61,8 +61,19 @@ bool Controller::init()
 
 void Controller::start()
 {
-    scheduleUpdate();
-    _GameState = GRunning;
+    
+    std::function<void(float)> callback = [this](float d){
+        scheduleUpdate();
+        _gameState = GRunning;
+    };
+    
+    scheduleOnce(callback, 0.3f , "start");
+}
+
+void Controller::scheduleOnce(std::function<void(float)> &callback, float delay , std::string key){
+    
+    _scheduler->schedule(callback , this, 0 , 0 , delay , false , key);
+    
 }
 
 cocos2d::Scene * Controller::createScene()
@@ -71,13 +82,13 @@ cocos2d::Scene * Controller::createScene()
     _gameLayer = GameLayer::create();
     _mainUI = MainUI::create();
     ret->addChild(_gameLayer);
-    ret->addChild(_mainUI);
+    ret->addChild(_mainUI , 100);
     return ret;
 }
 
 void Controller::over(){
-    _GameState = GameState::GOver;
-//    _mainUI->translateToState(GameState::GOver);
+    _gameState = GameState::GOver;
+    _mainUI->over();
 }
 
 void Controller::update(float d)

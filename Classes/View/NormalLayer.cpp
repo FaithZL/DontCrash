@@ -59,15 +59,17 @@ void NormalLayer::createWidget(){
     
     _lblScore = Label::createWithTTF("0" , "fonts/Marker Felt.ttf" , 150);
     _lblScore->setPosition(centerPos);
+    addChild(_lblScore);
     _lblScore->setVisible(false);
     
     _btnPause = ui::Button::create("CloseNormal.png");
     _btnPause->setPosition(Vec2(winSize.width * 0.92 , winSize.height * 0.92));
     _btnPause->setScale(2.5);
+    addChild(_btnPause);
     
     _btnStart = ui::Button::create("img/play.png");
     _btnStart->setPosition(centerPos);
-    _btnStart->setVisible(false);
+    addChild(_btnStart);
     
 }
 
