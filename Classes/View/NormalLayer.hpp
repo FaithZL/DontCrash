@@ -40,6 +40,8 @@ public:
     void pickUp();
     
     bool refreshScore(va_list args);
+	
+	void playRewardEff();
     
 protected:
     

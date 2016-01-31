@@ -82,6 +82,23 @@ void NormalLayer::bindEvent(){
     Controller::getInstance()->getSignal()->registerEvent(ON_SCORE_CHANGE, this, TO_SIG_SEL(NormalLayer::refreshScore), 0);
 }
 
+void NormalLayer::playRewardEff(){
+    if (isVisible()) {
+        GET_CENTER_WINSIZE;
+        auto good = Label::createWithTTF("Good" , "fonts/Marker Felt.ttf" , 80);
+        addChild(good , 100);
+        good->setPosition(centerPos);
+        auto moveBy = MoveBy::create(0.6 , Vec2(0 , 200));
+        auto fadeOut = FadeOut::create(0.6);
+        auto spawn = Spawn::create(moveBy , fadeOut , nullptr);
+        auto easeIn = EaseIn::create(spawn , 0.5);
+        auto callFunc = CallFuncN::create([](Node * node){
+            node->removeFromParent();
+        });
+        good->runAction(Sequence::create(easeIn , callFunc , NULL));
+    }
+}
+
 void NormalLayer::pop(){
     setVisible(true);
 }

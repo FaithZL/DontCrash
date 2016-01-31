@@ -36,6 +36,10 @@ bool MainUI::onTouchBegan(cocos2d::Touch *touch, cocos2d::Event * unused_event)
     return true;
 }
 
+void MainUI::playRewardEff(){
+    _normal->playRewardEff();
+}
+
 void MainUI::reset(){
     _over->pickUp();
     _normal->pop();

@@ -41,6 +41,8 @@ public:
     
     CC_SYNTHESIZE_READONLY(UserData * , _userDate , UserData);
     
+    CC_SYNTHESIZE_READONLY(MainUI * , _mainUI , MainUI);
+    
     CC_SYNTHESIZE_READONLY(Commander * , _commander , Commander);
     
     CC_SYNTHESIZE_READONLY(Signal * , _signal, Signal);
@@ -73,7 +75,7 @@ protected:
     
     static Controller * s_pController;
     
-    MainUI * _mainUI;
+//    MainUI * _mainUI;
     
     GameLayer * _gameLayer;
     

@@ -31,6 +31,8 @@ public:
     CC_SYNTHESIZE_READONLY(NormalLayer * , _normal , NormalLayer);
     
     CC_SYNTHESIZE_READONLY(OverLayer * , _over , OverLayer);
+    
+    void playRewardEff();
 
     virtual bool init();
     

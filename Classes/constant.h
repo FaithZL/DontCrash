@@ -20,6 +20,10 @@
 #define POS_L cocos2d::Vec2(380 , 365)
 #define POS_R cocos2d::Vec2(900 , 365)
 
+#define GET_CENTER_WINSIZE \
+auto winSize = Director::getInstance()->getWinSize(); \
+auto centerPos = Vec2(winSize.width / 2 , winSize.height / 2);
+
 //enemy combine and separate time factor
 #define TIME_FACTOR 1000
 

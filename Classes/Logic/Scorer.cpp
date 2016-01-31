@@ -16,6 +16,7 @@
 #include "Commander.hpp"
 #include "../Data/UserData.hpp"
 #include "SimpleAudioEngine.h"
+#include "../View/MainUI.hpp"
 
 USING_NS_CC;
 
@@ -37,7 +38,7 @@ bool Scorer::init(){
 
 void Scorer::playRewardEff(){
     CocosDenshion::SimpleAudioEngine::getInstance()->playEffect("sound/perfect.mp3");
-
+    Controller::getInstance()->getMainUI()->playRewardEff();
 }
 
 void Scorer::reset(){
