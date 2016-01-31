@@ -68,6 +68,9 @@ void MainUI::onCloseClick(){
     if (_bCanClose) {
         Director::getInstance()->end();
         CocosDenshion::SimpleAudioEngine::getInstance()->end();
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
+        exit(0);
+#endif
     }
     _bCanClose = true;
 }

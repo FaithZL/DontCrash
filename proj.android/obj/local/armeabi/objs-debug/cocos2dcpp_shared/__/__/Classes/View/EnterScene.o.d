@@ -351,7 +351,8 @@ obj/local/armeabi/objs-debug/cocos2dcpp_shared/__/__/Classes/View/EnterScene.o: 
  jni/../../Classes/View/../constant.h \
  /Users/satan_z/work/cocosProject/DontCrash/proj.android/../cocos2d/cocos/audio/android/../include/SimpleAudioEngine.h \
  /Users/satan_z/work/cocosProject/DontCrash/proj.android/../cocos2d/cocos/audio/android/../include/Export.h \
- jni/../../Classes/View/../Logic/Controller.hpp
+ jni/../../Classes/View/../Logic/Controller.hpp \
+ jni/../../Classes/View/../Logic/Scorer.hpp
 
 jni/../../Classes/View/EnterScene.hpp:
 
@@ -1056,3 +1057,5 @@ jni/../../Classes/View/../constant.h:
 /Users/satan_z/work/cocosProject/DontCrash/proj.android/../cocos2d/cocos/audio/android/../include/Export.h:
 
 jni/../../Classes/View/../Logic/Controller.hpp:
+
+jni/../../Classes/View/../Logic/Scorer.hpp:
