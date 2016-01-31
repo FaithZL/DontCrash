@@ -15,6 +15,7 @@
 #include "../utils/Signal.hpp"
 #include "Commander.hpp"
 #include "UserData.hpp"
+#include "SimpleAudioEngine.h"
 
 USING_NS_CC;
 
@@ -62,7 +63,7 @@ bool Controller::init()
 
 void Controller::start()
 {
-    
+    CocosDenshion::SimpleAudioEngine::getInstance()->playEffect("sound/start.mp3");
     std::function<void(float)> callback = [this](float d){
         scheduleUpdate();
         _gameState = GRunning;
@@ -95,6 +96,7 @@ void Controller::over(){
 void Controller::update(float d)
 {
     if (_scorer->isCollision()) {
+        CocosDenshion::SimpleAudioEngine::getInstance()->playEffect("sound/crash.mp3");
         pause();
         over();
         return;

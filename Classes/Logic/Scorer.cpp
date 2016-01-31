@@ -15,6 +15,7 @@
 #include "../utils/Signal.hpp"
 #include "Commander.hpp"
 #include "../Data/UserData.hpp"
+#include "SimpleAudioEngine.h"
 
 USING_NS_CC;
 
@@ -35,7 +36,8 @@ bool Scorer::init(){
 
 
 void Scorer::playRewardEff(){
-    
+    CocosDenshion::SimpleAudioEngine::getInstance()->playEffect("sound/perfect.mp3");
+
 }
 
 void Scorer::reset(){
@@ -54,7 +56,7 @@ void Scorer::isSupassBest(){
     auto userData = Controller::getInstance()->getUserData();
     if (_score > userData->getBestScore()) {
         userData->setBestScore(_score);
-        userData->saveData();
+        CocosDenshion::SimpleAudioEngine::getInstance()->playEffect("sound/NewHigh.mp3");
     }
 }
 
@@ -63,16 +65,17 @@ void Scorer::checkMeet(Car *car, Enemy *enemy){
     if (isMeet(car , enemy)) {
         switch (enemy->getTag()) {
             case 0:
-                
+                CocosDenshion::SimpleAudioEngine::getInstance()->playEffect("sound/point01.mp3");
                 break;
                 
             case 1:
-                
+                CocosDenshion::SimpleAudioEngine::getInstance()->playEffect("sound/point02.mp3");
                 break;
                 
             case 2:
-                
+                CocosDenshion::SimpleAudioEngine::getInstance()->playEffect("sound/point03.mp3");
                 break;
+                
             default:
                 break;
         }

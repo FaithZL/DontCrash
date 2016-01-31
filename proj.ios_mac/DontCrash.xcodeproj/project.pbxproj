@@ -101,8 +101,8 @@
 		F6E04E061C4E001B00214F89 /* FSM.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F6E04DE51C4E001B00214F89 /* FSM.cpp */; };
 		F6E04E071C4E001B00214F89 /* FSMState.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F6E04DE71C4E001B00214F89 /* FSMState.cpp */; };
 		F6E04E081C4E001B00214F89 /* FSMState.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F6E04DE71C4E001B00214F89 /* FSMState.cpp */; };
-		F6E04F671C4E172300214F89 /* android_sound in Resources */ = {isa = PBXBuildFile; fileRef = F6E04F601C4E172300214F89 /* android_sound */; };
-		F6E04F681C4E172300214F89 /* android_sound in Resources */ = {isa = PBXBuildFile; fileRef = F6E04F601C4E172300214F89 /* android_sound */; };
+		F6E04F671C4E172300214F89 /* sound in Resources */ = {isa = PBXBuildFile; fileRef = F6E04F601C4E172300214F89 /* sound */; };
+		F6E04F681C4E172300214F89 /* sound in Resources */ = {isa = PBXBuildFile; fileRef = F6E04F601C4E172300214F89 /* sound */; };
 		F6E04F691C4E172300214F89 /* CloseNormal.png in Resources */ = {isa = PBXBuildFile; fileRef = F6E04F611C4E172300214F89 /* CloseNormal.png */; };
 		F6E04F6A1C4E172300214F89 /* CloseNormal.png in Resources */ = {isa = PBXBuildFile; fileRef = F6E04F611C4E172300214F89 /* CloseNormal.png */; };
 		F6E04F6B1C4E172300214F89 /* CloseSelected.png in Resources */ = {isa = PBXBuildFile; fileRef = F6E04F621C4E172300214F89 /* CloseSelected.png */; };
@@ -250,7 +250,7 @@
 		F6E04DE61C4E001B00214F89 /* FSM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSM.h; sourceTree = "<group>"; };
 		F6E04DE71C4E001B00214F89 /* FSMState.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FSMState.cpp; sourceTree = "<group>"; };
 		F6E04DE81C4E001B00214F89 /* FSMState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSMState.h; sourceTree = "<group>"; };
-		F6E04F601C4E172300214F89 /* android_sound */ = {isa = PBXFileReference; lastKnownFileType = folder; path = android_sound; sourceTree = "<group>"; };
+		F6E04F601C4E172300214F89 /* sound */ = {isa = PBXFileReference; lastKnownFileType = folder; path = sound; sourceTree = "<group>"; };
 		F6E04F611C4E172300214F89 /* CloseNormal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CloseNormal.png; sourceTree = "<group>"; };
 		F6E04F621C4E172300214F89 /* CloseSelected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CloseSelected.png; sourceTree = "<group>"; };
 		F6E04F631C4E172300214F89 /* fonts */ = {isa = PBXFileReference; lastKnownFileType = folder; path = fonts; sourceTree = "<group>"; };
@@ -378,7 +378,7 @@
 		46880B7519C43A67006E1F66 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				F6E04F601C4E172300214F89 /* android_sound */,
+				F6E04F601C4E172300214F89 /* sound */,
 				F6E04F611C4E172300214F89 /* CloseNormal.png */,
 				F6E04F621C4E172300214F89 /* CloseSelected.png */,
 				F6E04F631C4E172300214F89 /* fonts */,
@@ -674,7 +674,7 @@
 				50EF62A217ECD613001EB2F8 /* Icon-29.png in Resources */,
 				F642D5E11C5DDB63008D76AB /* json_internalarray.inl in Resources */,
 				50EF629617ECD46A001EB2F8 /* Icon-40.png in Resources */,
-				F6E04F671C4E172300214F89 /* android_sound in Resources */,
+				F6E04F671C4E172300214F89 /* sound in Resources */,
 				F642D5E31C5DDB63008D76AB /* json_internalmap.inl in Resources */,
 				5087E78217EB970100C73F5D /* Icon-144.png in Resources */,
 				F6E04F731C4E172300214F89 /* res in Resources */,
@@ -690,7 +690,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F6E04F681C4E172300214F89 /* android_sound in Resources */,
+				F6E04F681C4E172300214F89 /* sound in Resources */,
 				F642D5E21C5DDB63008D76AB /* json_internalarray.inl in Resources */,
 				F6E04F6C1C4E172300214F89 /* CloseSelected.png in Resources */,
 				F6E04F6A1C4E172300214F89 /* CloseNormal.png in Resources */,
