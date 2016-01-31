@@ -25,13 +25,11 @@ _scheduler(nullptr),
 _mainUI(nullptr),
 _gameLayer(nullptr),
 _scorer(nullptr),
-_signal(nullptr)
-{
+_signal(nullptr){
     
 }
 
-Controller::~Controller()
-{
+Controller::~Controller(){
     CC_SAFE_DELETE(_gameLayer);
     CC_SAFE_DELETE(_mainUI);
     CC_SAFE_DELETE(_scorer);
@@ -56,7 +54,8 @@ bool Controller::init()
     _commander = Commander::create();
     CC_SAFE_RETAIN(_commander);
     _commander->setScorer(_scorer);
-    UserData::create();
+    _userDate = UserData::create();
+    CC_SAFE_RETAIN(_userDate);
     return true;
 }
 

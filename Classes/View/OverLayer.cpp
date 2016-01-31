@@ -9,6 +9,8 @@
 #include "OverLayer.hpp"
 #include "constant.h"
 #include "../Logic/Controller.hpp"
+#include "../Data/UserData.hpp"
+#include "../Logic/Scorer.hpp"
 
 USING_NS_CC;
 
@@ -72,7 +74,7 @@ void OverLayer::createWidget(){
     _lblScore->setPosition(centerPos);
     addChild(_lblScore);
     
-    _lblBestScore = Label::createWithTTF("best : 511" , "fonts/Marker Felt.ttf" , 60);
+    _lblBestScore = Label::createWithTTF("best : 0" , "fonts/Marker Felt.ttf" , 60);
     _lblBestScore->setPosition(centerPos.x , centerPos.y - 100);
     addChild(_lblBestScore);
     
@@ -99,6 +101,22 @@ void OverLayer::createWidget(){
     
 }
 
+void OverLayer::setLabel(){
+    int score = Controller::getInstance()->getUserData()->getBestScore();
+    
+    char str[10];
+    
+    sprintf(str , "best : %d" , score);
+    
+    _lblBestScore->setString(str);
+    
+    score = Controller::getInstance()->getScorer()->getScore();
+    
+    sprintf(str , "%d" , score);
+    
+    _lblScore->setString(str);
+}
+
 void OverLayer::bindEvent(){
     _btnReset->addClickEventListener(_callBack[CB::Reset]);
     _btnShare->addClickEventListener(_callBack[CB::Share]);
@@ -113,4 +131,11 @@ void OverLayer::pickUp(){
 
 void OverLayer::pop(){
     setVisible(true);
+    setLabel();
 }
+
+
+
+
+
+

@@ -39,6 +39,8 @@ public:
     
     CC_SYNTHESIZE_READONLY(int , _gameState , CurGameState);
     
+    CC_SYNTHESIZE_READONLY(UserData * , _userDate , UserData);
+    
     CC_SYNTHESIZE_READONLY(Commander * , _commander , Commander);
     
     CC_SYNTHESIZE_READONLY(Signal * , _signal, Signal);
@@ -66,6 +68,7 @@ public:
     void reset();
     
 protected:
+    
     Controller();
     
     static Controller * s_pController;
@@ -73,8 +76,6 @@ protected:
     MainUI * _mainUI;
     
     GameLayer * _gameLayer;
-    
-    
     
     cocos2d::Scheduler * _scheduler;
     

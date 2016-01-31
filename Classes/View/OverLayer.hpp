@@ -34,6 +34,8 @@ public:
     
     virtual bool init();
     
+    void setLabel();
+    
     void pop();
     
     void pickUp();

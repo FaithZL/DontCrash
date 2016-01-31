@@ -59,6 +59,8 @@ public:
     void difficultyUp();
     
     void relieve();
+    
+    void isSupassBest();
 
 protected:
     

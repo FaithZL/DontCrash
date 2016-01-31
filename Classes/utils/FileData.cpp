@@ -20,8 +20,7 @@ FileData::~FileData(){
 }
 
 
-bool FileData::parseFile()
-{
+bool FileData::parseFile(){
     if (_fileName == "") {
         return false;
     }
@@ -33,8 +32,7 @@ bool FileData::parseFile()
     return true;
 }
 
-void FileData::saveData()
-{
+void FileData::saveData(){
     std::ofstream fout;
     fout.open(_fileName);
     Json::StyledWriter writer;
@@ -42,8 +40,7 @@ void FileData::saveData()
     fout.close();
 }
 
-Json::Value FileData::getData()
-{
+Json::Value FileData::getData(){
     return _value;
 }
 

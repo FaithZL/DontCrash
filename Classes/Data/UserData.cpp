@@ -23,6 +23,22 @@ bool UserData::init(){
     return true;
 }
 
+int UserData::getBestScore(){
+	return _value["bestScore"].asInt();
+}
+
+void UserData::setBestScore(int score){
+	if (score > _value["bestScore"].asInt()) {
+		_value["bestScore"] = score;
+	}
+}
+
+void UserData::initUserData(){
+	parseFile();
+	setBestScore(0);
+	saveData();
+}
+
 bool UserData::createFile(){
 	_filePath = cocos2d::FileUtils::getInstance()->getWritablePath() + GAME_DIR;
 	
@@ -33,7 +49,9 @@ bool UserData::createFile(){
 	setFileName(_filePath + USER_DATA_FILE);
 	
 	if (!cocos2d::FileUtils::getInstance()->isFileExist(_fileName)) {
-		fopen(_fileName.c_str() , "w+");
+		FILE * pf = fopen(_fileName.c_str() , "w+");
+		fclose(pf);
+		initUserData();
 	}
 	
 	CCLOG("full path: %s" , _fileName.c_str());

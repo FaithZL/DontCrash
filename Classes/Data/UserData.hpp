@@ -21,11 +21,18 @@ public:
     
     virtual bool init();
     
+    void initUserData();
+    
     bool createFile();
+    
+    int getBestScore();
+    
+    void setBestScore(int score);
     
 protected:
     
     std::string _filePath;
+    
     
 };
 

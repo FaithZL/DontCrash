@@ -99,6 +99,7 @@ bool NormalLayer::refreshScore(va_list args){
     sprintf(str, "%d" , score);
     
     _lblScore->setString(str);
+    
     return true;
 }
 

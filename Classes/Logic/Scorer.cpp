@@ -14,6 +14,7 @@
 #include "Controller.hpp"
 #include "../utils/Signal.hpp"
 #include "Commander.hpp"
+#include "../Data/UserData.hpp"
 
 USING_NS_CC;
 
@@ -46,9 +47,16 @@ void Scorer::reset(){
     }
     _score = 0;
     _circleCount = 0;
-    Controller::getInstance()->getSignal()->dispatchEvent("onScoreChange" , _score);
+    Controller::getInstance()->getSignal()->dispatchEvent(ON_SCORE_CHANGE , _score);
 }
 
+void Scorer::isSupassBest(){
+    auto userData = Controller::getInstance()->getUserData();
+    if (_score > userData->getBestScore()) {
+        userData->setBestScore(_score);
+        userData->saveData();
+    }
+}
 
 void Scorer::checkMeet(Car *car, Enemy *enemy){
     
@@ -68,7 +76,6 @@ void Scorer::checkMeet(Car *car, Enemy *enemy){
             default:
                 break;
         }
-//        CCLOG("%d" , enemy->getTag());
         _score ++;
     }else{
         return;
@@ -77,7 +84,8 @@ void Scorer::checkMeet(Car *car, Enemy *enemy){
         _score ++;
         playRewardEff();
     }
-    Controller::getInstance()->getSignal()->dispatchEvent("onScoreChange" , _score);
+    isSupassBest();
+    Controller::getInstance()->getSignal()->dispatchEvent(ON_SCORE_CHANGE , _score);
 }
 
 void Scorer::checkSameTrack(){
