@@ -53,13 +53,7 @@ void Scorer::reset(){
     Controller::getInstance()->getSignal()->dispatchEvent(ON_SCORE_CHANGE , _score);
 }
 
-void Scorer::isSupassBest(){
-    auto userData = Controller::getInstance()->getUserData();
-    if (_score > userData->getBestScore()) {
-        userData->setBestScore(_score);
-        CocosDenshion::SimpleAudioEngine::getInstance()->playEffect("sound/NewHigh.mp3");
-    }
-}
+
 
 void Scorer::checkMeet(Car *car, Enemy *enemy){
     
@@ -88,7 +82,6 @@ void Scorer::checkMeet(Car *car, Enemy *enemy){
         _score ++;
         playRewardEff();
     }
-    isSupassBest();
     Controller::getInstance()->getSignal()->dispatchEvent(ON_SCORE_CHANGE , _score);
 }
 
@@ -142,6 +135,30 @@ void Scorer::update(float d){
     recordCircleCount(d);
     checkSameTrack();
     
+}
+
+bool testNear(Node * node1 , Node * node2){
+    auto size1 = node1->getContentSize() * 2;
+    auto pos1 = node1->getPosition();
+    auto rect1 = Rect(pos1.x - size1.width / 2 , pos1.y - size1.height / 2 , size1.width, size1.height);
+    auto size2 = node2->getContentSize() * 2;
+    auto pos2 = node2->getPosition();
+    auto rect2 = Rect(pos2.x - size2.width / 2 , pos2.y - size2.height / 2 , size2.width, size2.height);
+    
+    if (rect2.intersectsRect(rect1)) {
+        return true;
+    }
+    return false;
+}
+
+void Scorer::testAuto(){
+    for(auto &it : _enemies){
+        if (it->getCurRadius() == _car->getCurRadius() || it->getTrackState() != TrackState::Normal || _car->getTrackState() != TrackState::Normal) {
+            if (testNear(_car, it)) {
+                _car->changeTrack();
+            }
+        }
+    }
 }
 
 void Scorer::scoring(float d){

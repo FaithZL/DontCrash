@@ -11,6 +11,7 @@
 
 #include "cocos2d.h"
 #include "BaseCar.hpp"
+#include "SimpleAudioEngine.h"
 
 class EnemyGroup;
 class Commander;
@@ -28,11 +29,19 @@ public:
     CC_SYNTHESIZE(bool , _bChangeTrack , isChangeTrack);
     
     inline void speedUp(){
+        if (_curVelo == _normalVelo * 1.25) {
+            return;
+        }
+        CocosDenshion::SimpleAudioEngine::getInstance()->playEffect("sound/cars_gather.mp3");
         _curVelo = _normalVelo * 1.25;
         _angVelo = _curVelo / R_OUTER;
     }
     
     inline void speedDown(){
+        if (_curVelo == _normalVelo * 0.75) {
+            return;
+        }
+        CocosDenshion::SimpleAudioEngine::getInstance()->playEffect("sound/cars_separate.mp3");
         _curVelo = _normalVelo * 0.75;
         _angVelo = _curVelo / R_OUTER;
     }

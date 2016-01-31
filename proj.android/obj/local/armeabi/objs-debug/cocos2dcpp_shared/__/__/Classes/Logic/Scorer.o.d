@@ -351,12 +351,33 @@ obj/local/armeabi/objs-debug/cocos2dcpp_shared/__/__/Classes/Logic/Scorer.o: \
  jni/../../Classes/Logic/../Entity/BaseCar.hpp \
  jni/../../Classes/Logic/../Entity/../utils/FSM/FSM.h \
  jni/../../Classes/Logic/../Entity/../constant.h \
- jni/../../Classes/Logic/EnemyGroup.hpp \
- jni/../../Classes/Logic/../utils/FSM/FSM.h \
  jni/../../Classes/Logic/../Entity/Car.hpp \
  jni/../../Classes/Logic/../constant.h \
  jni/../../Classes/Logic/Controller.hpp \
- jni/../../Classes/Logic/../utils/Signal.hpp
+ jni/../../Classes/Logic/../utils/Signal.hpp \
+ jni/../../Classes/Logic/Commander.hpp \
+ jni/../../Classes/Logic/../utils/FSM/FSM.h \
+ jni/../../Classes/Logic/../Data/UserData.hpp \
+ jni/../../Classes/Logic/../Data/../utils/FileData.hpp \
+ jni/../../Classes/Logic/../Data/../utils/json/json.h \
+ jni/../../Classes/Logic/../Data/../utils/json/autolink.h \
+ jni/../../Classes/Logic/../Data/../utils/json/config.h \
+ jni/../../Classes/Logic/../Data/../utils/json/value.h \
+ jni/../../Classes/Logic/../Data/../utils/json/forwards.h \
+ jni/../../Classes/Logic/../Data/../utils/json/reader.h \
+ jni/../../Classes/Logic/../Data/../utils/json/features.h \
+ /Users/satan_z/work/ndk_sdk_ant/android-ndk-r9d/sources/cxx-stl/gnu-libstdc++/4.8/include/iostream \
+ jni/../../Classes/Logic/../Data/../utils/json/writer.h \
+ /Users/satan_z/work/cocosProject/DontCrash/proj.android/../cocos2d/cocos/audio/android/../include/SimpleAudioEngine.h \
+ /Users/satan_z/work/cocosProject/DontCrash/proj.android/../cocos2d/cocos/audio/android/../include/Export.h \
+ jni/../../Classes/Logic/../View/MainUI.hpp \
+ /Users/satan_z/work/cocosProject/DontCrash/proj.android/../cocos2d/cocos/3d/../ui/UIButton.h \
+ /Users/satan_z/work/cocosProject/DontCrash/proj.android/../cocos2d/cocos/3d/../ui/UIWidget.h \
+ /Users/satan_z/work/cocosProject/DontCrash/proj.android/../cocos2d/cocos/3d/../2d/CCProtectedNode.h \
+ /Users/satan_z/work/cocosProject/DontCrash/proj.android/../cocos2d/cocos/3d/../ui/UILayoutParameter.h \
+ /Users/satan_z/work/cocosProject/DontCrash/proj.android/../cocos2d/cocos/3d/../ui/GUIExport.h \
+ /Users/satan_z/work/cocosProject/DontCrash/proj.android/../cocos2d/cocos/3d/../ui/GUIDefine.h \
+ /Users/satan_z/work/cocosProject/DontCrash/proj.android/../cocos2d/cocos/3d/../base/ObjectFactory.h
 
 jni/../../Classes/Logic/Scorer.hpp:
 
@@ -1062,10 +1083,6 @@ jni/../../Classes/Logic/../Entity/../utils/FSM/FSM.h:
 
 jni/../../Classes/Logic/../Entity/../constant.h:
 
-jni/../../Classes/Logic/EnemyGroup.hpp:
-
-jni/../../Classes/Logic/../utils/FSM/FSM.h:
-
 jni/../../Classes/Logic/../Entity/Car.hpp:
 
 jni/../../Classes/Logic/../constant.h:
@@ -1073,3 +1090,49 @@ jni/../../Classes/Logic/../constant.h:
 jni/../../Classes/Logic/Controller.hpp:
 
 jni/../../Classes/Logic/../utils/Signal.hpp:
+
+jni/../../Classes/Logic/Commander.hpp:
+
+jni/../../Classes/Logic/../utils/FSM/FSM.h:
+
+jni/../../Classes/Logic/../Data/UserData.hpp:
+
+jni/../../Classes/Logic/../Data/../utils/FileData.hpp:
+
+jni/../../Classes/Logic/../Data/../utils/json/json.h:
+
+jni/../../Classes/Logic/../Data/../utils/json/autolink.h:
+
+jni/../../Classes/Logic/../Data/../utils/json/config.h:
+
+jni/../../Classes/Logic/../Data/../utils/json/value.h:
+
+jni/../../Classes/Logic/../Data/../utils/json/forwards.h:
+
+jni/../../Classes/Logic/../Data/../utils/json/reader.h:
+
+jni/../../Classes/Logic/../Data/../utils/json/features.h:
+
+/Users/satan_z/work/ndk_sdk_ant/android-ndk-r9d/sources/cxx-stl/gnu-libstdc++/4.8/include/iostream:
+
+jni/../../Classes/Logic/../Data/../utils/json/writer.h:
+
+/Users/satan_z/work/cocosProject/DontCrash/proj.android/../cocos2d/cocos/audio/android/../include/SimpleAudioEngine.h:
+
+/Users/satan_z/work/cocosProject/DontCrash/proj.android/../cocos2d/cocos/audio/android/../include/Export.h:
+
+jni/../../Classes/Logic/../View/MainUI.hpp:
+
+/Users/satan_z/work/cocosProject/DontCrash/proj.android/../cocos2d/cocos/3d/../ui/UIButton.h:
+
+/Users/satan_z/work/cocosProject/DontCrash/proj.android/../cocos2d/cocos/3d/../ui/UIWidget.h:
+
+/Users/satan_z/work/cocosProject/DontCrash/proj.android/../cocos2d/cocos/3d/../2d/CCProtectedNode.h:
+
+/Users/satan_z/work/cocosProject/DontCrash/proj.android/../cocos2d/cocos/3d/../ui/UILayoutParameter.h:
+
+/Users/satan_z/work/cocosProject/DontCrash/proj.android/../cocos2d/cocos/3d/../ui/GUIExport.h:
+
+/Users/satan_z/work/cocosProject/DontCrash/proj.android/../cocos2d/cocos/3d/../ui/GUIDefine.h:
+
+/Users/satan_z/work/cocosProject/DontCrash/proj.android/../cocos2d/cocos/3d/../base/ObjectFactory.h:

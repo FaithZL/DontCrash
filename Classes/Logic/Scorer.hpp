@@ -46,6 +46,8 @@ public:
     //if the same track then add a extra score buff
     void checkSameTrack();
     
+    void testAuto();
+    
     void checkMeet(Car * car , Enemy * enemy);
     
     bool isMeet(Car * car , Enemy * enemy);
@@ -58,9 +60,7 @@ public:
     
     void difficultyUp();
     
-    void relieve();
-    
-    void isSupassBest();
+    void relieve();    
 
 protected:
     

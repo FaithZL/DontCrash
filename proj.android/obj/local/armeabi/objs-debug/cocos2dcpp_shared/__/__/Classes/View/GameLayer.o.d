@@ -356,8 +356,9 @@ obj/local/armeabi/objs-debug/cocos2dcpp_shared/__/__/Classes/View/GameLayer.o: \
  jni/../../Classes/View/../Logic/Controller.hpp \
  jni/../../Classes/View/../Entity/Enemy.hpp \
  jni/../../Classes/View/../Logic/Scorer.hpp \
- jni/../../Classes/View/../Logic/EnemyGroup.hpp \
- jni/../../Classes/View/../Logic/../utils/FSM/FSM.h
+ jni/../../Classes/View/../Logic/Commander.hpp \
+ jni/../../Classes/View/../Logic/../utils/FSM/FSM.h \
+ jni/../../Classes/View/../Logic/Scorer.hpp
 
 jni/../../Classes/View/GameLayer.hpp:
 
@@ -1071,6 +1072,8 @@ jni/../../Classes/View/../Entity/Enemy.hpp:
 
 jni/../../Classes/View/../Logic/Scorer.hpp:
 
-jni/../../Classes/View/../Logic/EnemyGroup.hpp:
+jni/../../Classes/View/../Logic/Commander.hpp:
 
 jni/../../Classes/View/../Logic/../utils/FSM/FSM.h:
+
+jni/../../Classes/View/../Logic/Scorer.hpp:

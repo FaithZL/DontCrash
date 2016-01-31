@@ -55,7 +55,7 @@ bool GameLayer::init()
         startLine->setPosition(X  , pos.y);
         addChild(startLine , 50);
         
-        auto car = Car::create("img/car.png", 700, pos, Direction::CCW);
+        auto car = Car::create("img/car.png", 800, pos, Direction::CCW);
         car->setBlastRes("img/zha.png");
         addChild(car , 100);
         
@@ -63,7 +63,7 @@ bool GameLayer::init()
         
         for (int i = 0 ; i < 3; i++) {
             int l = 95;
-            auto enemy = Enemy::create("img/car2.png", 700, Vec2(POS_R.x - 70 - l * i, POS_R.y + R_OUTER), Direction::CW);
+            auto enemy = Enemy::create("img/car2.png", 800, Vec2(POS_R.x - 70 - l * i, POS_R.y + R_OUTER), Direction::CW);
             enemy->setTag(i);
             enemy->setBlastRes("img/zha2.png");
             enemy->setCommander(Controller::getInstance()->getCommander());

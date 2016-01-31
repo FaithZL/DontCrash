@@ -12,6 +12,7 @@
 #include "../Entity/Enemy.hpp"
 #include "../utils/FSm/FSMState.h"
 #include "../utils/Z_Math.h"
+#include "SimpleAudioEngine.h"
 
 USING_NS_CC;
 
@@ -124,7 +125,7 @@ void Commander::g3update(float d){
         _enemies->at(1)->speedResume();
         _enemies->at(2)->speedResume();
         _randSwitch = true;
-        _scorer->difficultyUp();
+//        _scorer->difficultyUp();
     }else if(_timer >= TIME_FACTOR / _enemies->at(0)->getVelo()){
         _enemies->at(1)->speedUp();
     }

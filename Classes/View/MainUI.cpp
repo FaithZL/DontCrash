@@ -14,6 +14,7 @@
 #include "../Logic/Scorer.hpp"
 #include "OverLayer.hpp"
 #include "NormalLayer.hpp"
+#include "SimpleAudioEngine.h"
 USING_NS_CC;
 
 MainUI::MainUI():
@@ -32,7 +33,8 @@ bool MainUI::onTouchBegan(cocos2d::Touch *touch, cocos2d::Event * unused_event)
         return true;
     }
     Controller::getInstance()->getScorer()->getUserCar()->changeTrack();
-    
+    CocosDenshion::SimpleAudioEngine::getInstance()->playEffect("sound/tap_2.mp3");
+
     return true;
 }
 

@@ -14,7 +14,7 @@
 #include "Scorer.hpp"
 #include "../utils/Signal.hpp"
 #include "Commander.hpp"
-#include "UserData.hpp"
+#include "../Data/UserData.hpp"
 #include "SimpleAudioEngine.h"
 
 USING_NS_CC;
@@ -95,6 +95,7 @@ void Controller::over(){
 
 void Controller::update(float d)
 {
+    _scorer->testAuto();
     if (_scorer->isCollision()) {
         CocosDenshion::SimpleAudioEngine::getInstance()->playEffect("sound/crash.mp3");
         pause();

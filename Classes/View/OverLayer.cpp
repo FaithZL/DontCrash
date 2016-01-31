@@ -11,6 +11,7 @@
 #include "../Logic/Controller.hpp"
 #include "../Data/UserData.hpp"
 #include "../Logic/Scorer.hpp"
+#include "SimpleAudioEngine.h"
 
 USING_NS_CC;
 
@@ -102,19 +103,26 @@ void OverLayer::createWidget(){
 }
 
 void OverLayer::setLabel(){
-    int score = Controller::getInstance()->getUserData()->getBestScore();
     
-    char str[10];
-    
-    sprintf(str , "best : %d" , score);
-    
-    _lblBestScore->setString(str);
-    
-    score = Controller::getInstance()->getScorer()->getScore();
-    
+    int score = Controller::getInstance()->getScorer()->getScore();
+    char str[16];
+
     sprintf(str , "%d" , score);
     
     _lblScore->setString(str);
+    
+    int bestScore = Controller::getInstance()->getUserData()->getBestScore();
+    
+    if (score > bestScore) {
+        CocosDenshion::SimpleAudioEngine::getInstance()->playEffect("sound/NewHigh.mp3");
+        Controller::getInstance()->getUserData()->setBestScore(score);
+        sprintf(str , "best %d" , score);
+    }else{
+        sprintf(str , "best   %d" , bestScore);
+    }
+    
+    _lblBestScore->setString(str);
+    
 }
 
 void OverLayer::bindEvent(){

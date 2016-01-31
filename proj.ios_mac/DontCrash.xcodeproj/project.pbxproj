@@ -85,6 +85,8 @@
 		F642D5EE1C5DDB63008D76AB /* sconscript in Resources */ = {isa = PBXBuildFile; fileRef = F642D5DD1C5DDB63008D76AB /* sconscript */; };
 		F642D5F61C5DE0AC008D76AB /* FileData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F642D5F41C5DE0AC008D76AB /* FileData.cpp */; };
 		F642D5F71C5DE0AC008D76AB /* FileData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F642D5F41C5DE0AC008D76AB /* FileData.cpp */; };
+		F642D5FB1C5E1CBB008D76AB /* EnterScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F642D5F91C5E1CBB008D76AB /* EnterScene.cpp */; };
+		F642D5FC1C5E1CBB008D76AB /* EnterScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F642D5F91C5E1CBB008D76AB /* EnterScene.cpp */; };
 		F658B4C31C5CD02F009859EE /* OverLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F658B4C11C5CD02F009859EE /* OverLayer.cpp */; };
 		F658B4C41C5CD02F009859EE /* OverLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F658B4C11C5CD02F009859EE /* OverLayer.cpp */; };
 		F658B4C71C5D02DC009859EE /* NormalLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F658B4C51C5D02DC009859EE /* NormalLayer.cpp */; };
@@ -233,6 +235,8 @@
 		F642D5E01C5DDB63008D76AB /* writer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = writer.h; sourceTree = "<group>"; };
 		F642D5F41C5DE0AC008D76AB /* FileData.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FileData.cpp; sourceTree = "<group>"; };
 		F642D5F51C5DE0AC008D76AB /* FileData.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = FileData.hpp; sourceTree = "<group>"; };
+		F642D5F91C5E1CBB008D76AB /* EnterScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EnterScene.cpp; sourceTree = "<group>"; };
+		F642D5FA1C5E1CBB008D76AB /* EnterScene.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = EnterScene.hpp; sourceTree = "<group>"; };
 		F658B4C11C5CD02F009859EE /* OverLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OverLayer.cpp; sourceTree = "<group>"; };
 		F658B4C21C5CD02F009859EE /* OverLayer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = OverLayer.hpp; sourceTree = "<group>"; };
 		F658B4C51C5D02DC009859EE /* NormalLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NormalLayer.cpp; sourceTree = "<group>"; };
@@ -517,6 +521,8 @@
 				F658B4C21C5CD02F009859EE /* OverLayer.hpp */,
 				F658B4C51C5D02DC009859EE /* NormalLayer.cpp */,
 				F658B4C61C5D02DC009859EE /* NormalLayer.hpp */,
+				F642D5F91C5E1CBB008D76AB /* EnterScene.cpp */,
+				F642D5FA1C5E1CBB008D76AB /* EnterScene.hpp */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -727,6 +733,7 @@
 				F600AE041C573E8500106B9D /* MainUI.cpp in Sources */,
 				F642D5EB1C5DDB63008D76AB /* json_writer.cpp in Sources */,
 				F600AE021C573E8500106B9D /* GameLayer.cpp in Sources */,
+				F642D5FB1C5E1CBB008D76AB /* EnterScene.cpp in Sources */,
 				F600ADF21C57314400106B9D /* Car.cpp in Sources */,
 				503AE10117EB989F00D1A890 /* main.m in Sources */,
 				F600ADF41C57314400106B9D /* Enemy.cpp in Sources */,
@@ -748,6 +755,7 @@
 				F658B4C81C5D02DC009859EE /* NormalLayer.cpp in Sources */,
 				F6AA42EE1C52480100553300 /* Scorer.cpp in Sources */,
 				F6E04E081C4E001B00214F89 /* FSMState.cpp in Sources */,
+				F642D5FC1C5E1CBB008D76AB /* EnterScene.cpp in Sources */,
 				F642D5CC1C5DB853008D76AB /* UserData.cpp in Sources */,
 				F600AE031C573E8500106B9D /* GameLayer.cpp in Sources */,
 				F600ADF31C57314400106B9D /* Car.cpp in Sources */,

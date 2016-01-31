@@ -349,7 +349,10 @@ obj/local/armeabi/objs-debug/cocos2dcpp_shared/__/__/Classes/Entity/Enemy.o: \
  /Users/satan_z/work/cocosProject/DontCrash/proj.android/../cocos2d/cocos/3d/../deprecated/CCDeprecated.h \
  jni/../../Classes/Entity/BaseCar.hpp \
  jni/../../Classes/Entity/../utils/FSM/FSM.h \
- jni/../../Classes/Entity/../constant.h
+ jni/../../Classes/Entity/../constant.h \
+ jni/../../Classes/Entity/../Logic/Commander.hpp \
+ jni/../../Classes/Entity/../Logic/../utils/FSM/FSM.h \
+ jni/../../Classes/Entity/../Logic/Scorer.hpp
 
 jni/../../Classes/Entity/Enemy.hpp:
 
@@ -1052,3 +1055,9 @@ jni/../../Classes/Entity/BaseCar.hpp:
 jni/../../Classes/Entity/../utils/FSM/FSM.h:
 
 jni/../../Classes/Entity/../constant.h:
+
+jni/../../Classes/Entity/../Logic/Commander.hpp:
+
+jni/../../Classes/Entity/../Logic/../utils/FSM/FSM.h:
+
+jni/../../Classes/Entity/../Logic/Scorer.hpp:
