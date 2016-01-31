@@ -1,5 +1,6 @@
 #include "AppDelegate.h"
 #include "./Logic/Controller.hpp"
+#include "View/EnterScene.hpp"
 
 USING_NS_CC;
 
@@ -63,7 +64,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
 
     // create a scene. it's an autorelease object
     auto scene = Controller::getInstance()->createScene();
-
+//    auto scene = EnterScene::create();
     // run
     director->runWithScene(scene);
 

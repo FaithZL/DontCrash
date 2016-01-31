@@ -351,6 +351,8 @@ obj/local/armeabi/objs-debug/cocos2dcpp_shared/__/__/Classes/Logic/Scorer.o: \
  jni/../../Classes/Logic/../Entity/BaseCar.hpp \
  jni/../../Classes/Logic/../Entity/../utils/FSM/FSM.h \
  jni/../../Classes/Logic/../Entity/../constant.h \
+ /Users/satan_z/work/cocosProject/DontCrash/proj.android/../cocos2d/cocos/audio/android/../include/SimpleAudioEngine.h \
+ /Users/satan_z/work/cocosProject/DontCrash/proj.android/../cocos2d/cocos/audio/android/../include/Export.h \
  jni/../../Classes/Logic/../Entity/Car.hpp \
  jni/../../Classes/Logic/../constant.h \
  jni/../../Classes/Logic/Controller.hpp \
@@ -368,8 +370,6 @@ obj/local/armeabi/objs-debug/cocos2dcpp_shared/__/__/Classes/Logic/Scorer.o: \
  jni/../../Classes/Logic/../Data/../utils/json/features.h \
  /Users/satan_z/work/ndk_sdk_ant/android-ndk-r9d/sources/cxx-stl/gnu-libstdc++/4.8/include/iostream \
  jni/../../Classes/Logic/../Data/../utils/json/writer.h \
- /Users/satan_z/work/cocosProject/DontCrash/proj.android/../cocos2d/cocos/audio/android/../include/SimpleAudioEngine.h \
- /Users/satan_z/work/cocosProject/DontCrash/proj.android/../cocos2d/cocos/audio/android/../include/Export.h \
  jni/../../Classes/Logic/../View/MainUI.hpp \
  /Users/satan_z/work/cocosProject/DontCrash/proj.android/../cocos2d/cocos/3d/../ui/UIButton.h \
  /Users/satan_z/work/cocosProject/DontCrash/proj.android/../cocos2d/cocos/3d/../ui/UIWidget.h \
@@ -1083,6 +1083,10 @@ jni/../../Classes/Logic/../Entity/../utils/FSM/FSM.h:
 
 jni/../../Classes/Logic/../Entity/../constant.h:
 
+/Users/satan_z/work/cocosProject/DontCrash/proj.android/../cocos2d/cocos/audio/android/../include/SimpleAudioEngine.h:
+
+/Users/satan_z/work/cocosProject/DontCrash/proj.android/../cocos2d/cocos/audio/android/../include/Export.h:
+
 jni/../../Classes/Logic/../Entity/Car.hpp:
 
 jni/../../Classes/Logic/../constant.h:
@@ -1116,10 +1120,6 @@ jni/../../Classes/Logic/../Data/../utils/json/features.h:
 /Users/satan_z/work/ndk_sdk_ant/android-ndk-r9d/sources/cxx-stl/gnu-libstdc++/4.8/include/iostream:
 
 jni/../../Classes/Logic/../Data/../utils/json/writer.h:
-
-/Users/satan_z/work/cocosProject/DontCrash/proj.android/../cocos2d/cocos/audio/android/../include/SimpleAudioEngine.h:
-
-/Users/satan_z/work/cocosProject/DontCrash/proj.android/../cocos2d/cocos/audio/android/../include/Export.h:
 
 jni/../../Classes/Logic/../View/MainUI.hpp:
 

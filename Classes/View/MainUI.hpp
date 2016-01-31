@@ -11,7 +11,6 @@
 
 #include "cocos2d.h"
 #include "ui/UIButton.h"
-//#include "../utils/FSM/FSM.h"
 USING_NS_CC;
 
 class Controller;
@@ -40,11 +39,17 @@ public:
     
     void over();
     
+    void initCloseButton();
+    
+    void onCloseClick();
+    
     bool refreshScore(va_list args);
     
 protected:
     
+    ui::Button * _btnClose;
     
+    bool _bCanClose;
     
 };
 

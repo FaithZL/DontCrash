@@ -355,6 +355,8 @@ obj/local/armeabi/objs-debug/cocos2dcpp_shared/__/__/Classes/Logic/Commander.o: 
  jni/../../Classes/Logic/../Entity/BaseCar.hpp \
  jni/../../Classes/Logic/../Entity/../utils/FSM/FSM.h \
  jni/../../Classes/Logic/../Entity/../constant.h \
+ /Users/satan_z/work/cocosProject/DontCrash/proj.android/../cocos2d/cocos/audio/android/../include/SimpleAudioEngine.h \
+ /Users/satan_z/work/cocosProject/DontCrash/proj.android/../cocos2d/cocos/audio/android/../include/Export.h \
  jni/../../Classes/Logic/../utils/FSm/FSMState.h \
  jni/../../Classes/Logic/../utils/Z_Math.h jni/../../Classes/constant.h
 
@@ -1067,6 +1069,10 @@ jni/../../Classes/Logic/../Entity/BaseCar.hpp:
 jni/../../Classes/Logic/../Entity/../utils/FSM/FSM.h:
 
 jni/../../Classes/Logic/../Entity/../constant.h:
+
+/Users/satan_z/work/cocosProject/DontCrash/proj.android/../cocos2d/cocos/audio/android/../include/SimpleAudioEngine.h:
+
+/Users/satan_z/work/cocosProject/DontCrash/proj.android/../cocos2d/cocos/audio/android/../include/Export.h:
 
 jni/../../Classes/Logic/../utils/FSm/FSMState.h:
 

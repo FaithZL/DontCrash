@@ -347,7 +347,8 @@ obj/local/armeabi/objs-debug/cocos2dcpp_shared/__/__/Classes/AppDelegate.o: \
  /Users/satan_z/work/cocosProject/DontCrash/proj.android/../cocos2d/cocos/3d/../deprecated/CCSet.h \
  /Users/satan_z/work/cocosProject/DontCrash/proj.android/../cocos2d/cocos/3d/../deprecated/CCString.h \
  /Users/satan_z/work/cocosProject/DontCrash/proj.android/../cocos2d/cocos/3d/../deprecated/CCDeprecated.h \
- jni/../../Classes/./Logic/Controller.hpp
+ jni/../../Classes/./Logic/Controller.hpp \
+ jni/../../Classes/View/EnterScene.hpp
 
 jni/../../Classes/AppDelegate.h:
 
@@ -1046,3 +1047,5 @@ jni/../../Classes/AppDelegate.h:
 /Users/satan_z/work/cocosProject/DontCrash/proj.android/../cocos2d/cocos/3d/../deprecated/CCDeprecated.h:
 
 jni/../../Classes/./Logic/Controller.hpp:
+
+jni/../../Classes/View/EnterScene.hpp:

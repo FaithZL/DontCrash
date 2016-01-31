@@ -29,7 +29,6 @@ int UserData::getBestScore(){
 }
 
 void UserData::setBestScore(int score){
-	int s = _value["bestScore"].asInt();
 	if (score > _value["bestScore"].asInt()) {
 		_value["bestScore"] = score;
 		saveData();

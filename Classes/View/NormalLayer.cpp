@@ -37,15 +37,30 @@ bool NormalLayer::init(){
 
 void NormalLayer::createCallback(){
     
-    _callBack[CB::pause] = [](Ref *){
-        if (Director::getInstance()->isPaused()) {
-            Director::getInstance()->resume();
-        }else{
-            Director::getInstance()->pause();
+    _callBack[CB::pause] = [this](Ref *){
+//        if (Director::getInstance()->isPaused()) {
+//            Director::getInstance()->resume();
+//            _btnPause->setScale(1);
+//            _btnPause->loadTextureNormal("img/05.png");
+//        }else{
+//            _btnPause->loadTextureNormal("img/play.png");
+//            _btnPause->setScale(0.4);
+//            Director::getInstance()->pause();
+//        }
+        if (Controller::getInstance()->getCurGameState() == GRunning) {
+            Controller::getInstance()->pause();
+            _btnPause->loadTextureNormal("img/play.png");
+            _btnPause->setScale(0.4);
+
+        }else if (Controller::getInstance()->getCurGameState() == GPause) {
+            Controller::getInstance()->resume();
+            _btnPause->setScale(1);
+            _btnPause->loadTextureNormal("img/05.png");
         }
     };
     
     _callBack[CB::start] = [this](Ref *){
+        _btnPause->setVisible(true);
         _btnStart->setVisible(false);
         _lblScore->setVisible(true);
         Controller::getInstance()->start();
@@ -62,9 +77,9 @@ void NormalLayer::createWidget(){
     addChild(_lblScore);
     _lblScore->setVisible(false);
     
-    _btnPause = ui::Button::create("CloseNormal.png");
+    _btnPause = ui::Button::create("img/05.png");
+    _btnPause->setVisible(false);
     _btnPause->setPosition(Vec2(winSize.width * 0.92 , winSize.height * 0.92));
-    _btnPause->setScale(2.5);
     addChild(_btnPause);
     
     _btnStart = ui::Button::create("img/play.png");

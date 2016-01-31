@@ -30,6 +30,7 @@
 /Users/satan_z/work/cocosProject/DontCrash/proj.android/assets/img/loading_cancel.png \
 /Users/satan_z/work/cocosProject/DontCrash/proj.android/assets/img/loading_dot.png \
 /Users/satan_z/work/cocosProject/DontCrash/proj.android/assets/img/logo.png \
+/Users/satan_z/work/cocosProject/DontCrash/proj.android/assets/img/logo2.png \
 /Users/satan_z/work/cocosProject/DontCrash/proj.android/assets/img/p.png \
 /Users/satan_z/work/cocosProject/DontCrash/proj.android/assets/img/p2.png \
 /Users/satan_z/work/cocosProject/DontCrash/proj.android/assets/img/paihang.png \

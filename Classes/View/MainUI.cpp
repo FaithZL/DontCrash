@@ -19,11 +19,12 @@ USING_NS_CC;
 
 MainUI::MainUI():
 _over(nullptr),
-_normal(nullptr){
+_normal(nullptr),
+_btnClose(nullptr),
+_bCanClose(nullptr){
 }
 
-MainUI::~MainUI()
-{
+MainUI::~MainUI(){
     
 }
 
@@ -40,6 +41,22 @@ bool MainUI::onTouchBegan(cocos2d::Touch *touch, cocos2d::Event * unused_event)
 
 void MainUI::playRewardEff(){
     _normal->playRewardEff();
+}
+
+void MainUI::initCloseButton(){
+    GET_CENTER_WINSIZE
+    _btnClose = ui::Button::create("img/03.png");
+    _btnClose->setPosition(Vec2(winSize.width * 0.05, winSize.height * 0.93));
+    addChild(_btnClose);
+    _btnClose->addClickEventListener(CC_CALLBACK_0(MainUI::onCloseClick, this));
+    
+}
+
+void MainUI::onCloseClick(){
+    Director::getInstance()->end();
+    CocosDenshion::SimpleAudioEngine::getInstance()->end();
+    auto confirm = Label::createWithTTF("" , "fonts/Marker Felt.ttf" , 60);
+//    Controller::destroyInstance();
 }
 
 void MainUI::reset(){
@@ -59,6 +76,8 @@ bool MainUI::init(){
         addChild(_normal);
         _over = OverLayer::create();
         addChild(_over);
+        
+        initCloseButton();
         
         _normal->pop();
         

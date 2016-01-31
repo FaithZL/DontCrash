@@ -26,14 +26,17 @@ _scheduler(nullptr),
 _mainUI(nullptr),
 _gameLayer(nullptr),
 _scorer(nullptr),
-_signal(nullptr){
+_signal(nullptr),
+_userData(nullptr){
     
 }
 
 Controller::~Controller(){
-    CC_SAFE_DELETE(_gameLayer);
-    CC_SAFE_DELETE(_mainUI);
-    CC_SAFE_DELETE(_scorer);
+//    CC_SAFE_DELETE(_gameLayer);
+//    CC_SAFE_DELETE(_mainUI);
+    CC_SAFE_RELEASE(_scorer);
+    CC_SAFE_RELEASE(_signal);
+    CC_SAFE_RELEASE(_userData);
 }
 
 Controller * Controller::getInstance()
@@ -43,6 +46,11 @@ Controller * Controller::getInstance()
         s_pController->init();
     }
     return s_pController;
+}
+
+void Controller::destroyInstance(){
+    s_pController->release();
+    s_pController = nullptr;
 }
 
 bool Controller::init()
@@ -55,8 +63,10 @@ bool Controller::init()
     _commander = Commander::create();
     CC_SAFE_RETAIN(_commander);
     _commander->setScorer(_scorer);
-    _userDate = UserData::create();
-    CC_SAFE_RETAIN(_userDate);
+    _userData = UserData::create();
+    CC_SAFE_RETAIN(_userData);
+    autorelease();
+    retain();
     return true;
 }
 
@@ -88,44 +98,45 @@ cocos2d::Scene * Controller::createScene()
     return ret;
 }
 
-void Controller::over(){
-    _gameState = GameState::GOver;
-    _mainUI->over();
-}
-
-void Controller::update(float d)
-{
+void Controller::update(float d){
     _scorer->testAuto();
     if (_scorer->isCollision()) {
         CocosDenshion::SimpleAudioEngine::getInstance()->playEffect("sound/crash.mp3");
-        pause();
-        over();
+        stop();
         return;
     }
     _scorer->update(d);
     _commander->update(d);
 }
 
-void Controller::scheduleUpdate()
-{
+void Controller::scheduleUpdate(){
     _scheduler->scheduleUpdate(this, 0, false);
 }
 
-void Controller::unscheduleUpdate()
-{
+void Controller::unscheduleUpdate(){
     _scheduler->unscheduleUpdate(this);
 }
 
-void Controller::reset()
-{
+void Controller::reset(){
     _scorer->reset();
     _mainUI->reset();
     _commander->reset();
 }
 
-void Controller::pause()
-{
+void Controller::pause(){
     unscheduleUpdate();
+    _gameState = GPause;
+}
+
+void Controller::resume(){
+    scheduleUpdate();
+    _gameState = GRunning;
+}
+
+void Controller::stop(){
+    unscheduleUpdate();
+    _mainUI->over();
+    _gameState = GOver;
 }
 
 

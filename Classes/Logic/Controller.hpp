@@ -22,7 +22,8 @@ class UserData;
 
 enum GameState
 {
-    GNormal,
+    GReady,
+    GPause,
     GRunning,
     GOver,
     length
@@ -35,11 +36,13 @@ public:
     
     static Controller * getInstance();
     
+    static void destroyInstance();
+    
     virtual bool init();
     
     CC_SYNTHESIZE_READONLY(int , _gameState , CurGameState);
     
-    CC_SYNTHESIZE_READONLY(UserData * , _userDate , UserData);
+    CC_SYNTHESIZE_READONLY(UserData * , _userData , UserData);
     
     CC_SYNTHESIZE_READONLY(MainUI * , _mainUI , MainUI);
     
@@ -65,7 +68,9 @@ public:
     
     void pause();
     
-    void over();
+    void stop();
+    
+    void resume();
     
     void reset();
     
@@ -74,8 +79,6 @@ protected:
     Controller();
     
     static Controller * s_pController;
-    
-//    MainUI * _mainUI;
     
     GameLayer * _gameLayer;
     
