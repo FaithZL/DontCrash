@@ -14,6 +14,7 @@
 #include "Scorer.hpp"
 #include "../utils/Signal.hpp"
 #include "Commander.hpp"
+#include "UserData.hpp"
 
 USING_NS_CC;
 
@@ -55,6 +56,7 @@ bool Controller::init()
     _commander = Commander::create();
     CC_SAFE_RETAIN(_commander);
     _commander->setScorer(_scorer);
+    UserData::create();
     return true;
 }
 

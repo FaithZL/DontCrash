@@ -18,6 +18,7 @@ class GameLayer;
 class Scorer;
 class Signal;
 class Commander;
+class UserData;
 
 enum GameState
 {
@@ -72,6 +73,8 @@ protected:
     MainUI * _mainUI;
     
     GameLayer * _gameLayer;
+    
+    
     
     cocos2d::Scheduler * _scheduler;
     

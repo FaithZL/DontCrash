@@ -9,6 +9,9 @@
 #ifndef constant_h
 #define constant_h
 
+#define USER_DATA_FILE "UserData.json"
+#define GAME_DIR "DontCrash/"
+
 #define R_INNER 178
 #define R_OUTER 230
 
