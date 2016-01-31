@@ -102,6 +102,7 @@ void NormalLayer::playRewardEff(){
         GET_CENTER_WINSIZE;
         auto good = Label::createWithTTF("Good" , "fonts/Marker Felt.ttf" , 80);
         addChild(good , 100);
+        good->setColor(Color3B(223, 32, 188));
         good->setPosition(centerPos);
         auto moveBy = MoveBy::create(0.6 , Vec2(0 , 200));
         auto fadeOut = FadeOut::create(0.6);

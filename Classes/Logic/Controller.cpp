@@ -27,7 +27,8 @@ _mainUI(nullptr),
 _gameLayer(nullptr),
 _scorer(nullptr),
 _signal(nullptr),
-_userData(nullptr){
+_userData(nullptr),
+_bAuto(false){
     
 }
 
@@ -99,7 +100,9 @@ cocos2d::Scene * Controller::createScene()
 }
 
 void Controller::update(float d){
-    _scorer->testAuto();
+    if (_bAuto) {
+        _scorer->testAuto();
+    }
     if (_scorer->isCollision()) {
         CocosDenshion::SimpleAudioEngine::getInstance()->playEffect("sound/crash.mp3");
         stop();

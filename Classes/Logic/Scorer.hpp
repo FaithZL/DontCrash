@@ -27,6 +27,8 @@ public:
     
     CC_SYNTHESIZE(int , _circleCount, CircleCount);
     
+    CC_SYNTHESIZE(bool , _bHarder, Harder);
+    
     CREATE_FUNC(Scorer);
     
     void reset();
@@ -51,8 +53,6 @@ public:
     void checkMeet(Car * car , Enemy * enemy);
     
     bool isMeet(Car * car , Enemy * enemy);
-    
-    bool isIntersect(cocos2d::Node * node1 , cocos2d::Node * node2);
     
     virtual bool init();
     

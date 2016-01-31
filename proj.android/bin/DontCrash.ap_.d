@@ -14,6 +14,9 @@
 /Users/satan_z/work/cocosProject/DontCrash/proj.android/assets/res \
 /Users/satan_z/work/cocosProject/DontCrash/proj.android/assets/sound \
 /Users/satan_z/work/cocosProject/DontCrash/proj.android/assets/fonts/Marker Felt.ttf \
+/Users/satan_z/work/cocosProject/DontCrash/proj.android/assets/img/03.png \
+/Users/satan_z/work/cocosProject/DontCrash/proj.android/assets/img/05.png \
+/Users/satan_z/work/cocosProject/DontCrash/proj.android/assets/img/50.png \
 /Users/satan_z/work/cocosProject/DontCrash/proj.android/assets/img/ad_close.png \
 /Users/satan_z/work/cocosProject/DontCrash/proj.android/assets/img/ad_validate.png \
 /Users/satan_z/work/cocosProject/DontCrash/proj.android/assets/img/Anton.ttf \

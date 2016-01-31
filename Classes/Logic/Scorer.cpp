@@ -23,7 +23,8 @@ USING_NS_CC;
 Scorer::Scorer():
 _car(nullptr),
 _score(0),
-_circleCount(0){
+_circleCount(0),
+_bHarder(false){
     
 }
 
@@ -198,9 +199,11 @@ void Scorer::recordCircleCount(float d){
 }
 
 void Scorer::difficultyUp(){
-    _car->difficultyUp();
-    for(auto iter : _enemies){
-        iter->difficultyUp();
+    if (_bHarder) {
+        _car->difficultyUp();
+        for(auto iter : _enemies){
+            iter->difficultyUp();
+        }
     }
 }
 
@@ -214,7 +217,9 @@ void Scorer::relieve(){
 bool Scorer::isCollision(){
     for(auto &it : _enemies){
         if (it->getCurRadius() == _car->getCurRadius() || it->getTrackState() != TrackState::Normal || _car->getTrackState() != TrackState::Normal) {
-            if (isIntersect(_car, it)) {
+            auto rectCar = _car->getBoundingBox();
+            auto rectEnemy = it->getBoundingBox();
+            if (rectCar.intersectsRect(rectEnemy)) {
                 _car->blast();
                 it->blast();
                 return true;
@@ -224,18 +229,5 @@ bool Scorer::isCollision(){
     return false;
 }
 
-bool Scorer::isIntersect(cocos2d::Node * node1, cocos2d::Node * node2){
-    auto size1 = node1->getContentSize();
-    auto pos1 = node1->getPosition();
-    auto rect1 = Rect(pos1.x - size1.width / 2 , pos1.y - size1.height / 2 , size1.width, size1.height);
-    auto size2 = node2->getContentSize();
-    auto pos2 = node2->getPosition();
-    auto rect2 = Rect(pos2.x - size2.width / 2 , pos2.y - size2.height / 2 , size2.width, size2.height);
-    
-    if (rect2.intersectsRect(rect1)) {
-        return true;
-    }
-    return false;
-}
 
 

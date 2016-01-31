@@ -41,6 +41,8 @@ protected:
     
     cocos2d::Label * _imitatedBy;
     
+    cocos2d::Label * _enter;
+    
     bool _bCanTouch;
 };
 

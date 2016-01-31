@@ -46,6 +46,8 @@ public:
     
     CC_SYNTHESIZE_READONLY(MainUI * , _mainUI , MainUI);
     
+    CC_SYNTHESIZE(bool , _bAuto , Auto);
+    
     CC_SYNTHESIZE_READONLY(Commander * , _commander , Commander);
     
     CC_SYNTHESIZE_READONLY(Signal * , _signal, Signal);

@@ -10,6 +10,7 @@
 #include "../constant.h"
 #include "SimpleAudioEngine.h"
 #include "../Logic/Controller.hpp"
+#include "../Logic/Scorer.hpp"
 
 
 USING_NS_CC;
@@ -20,7 +21,8 @@ _LL(nullptr),
 _ThanksTo(nullptr),
 _umoni(nullptr),
 _Z(nullptr),
-_bCanTouch(false){
+_bCanTouch(false),
+_enter(nullptr){
     
 }
 
@@ -43,7 +45,16 @@ void EnterScene::preLoad(){
 bool EnterScene::onTouchBegan(cocos2d::Touch *touch, cocos2d::Event *unused_event){
     
     if (_bCanTouch) {
-        Director::getInstance()->replaceScene(Controller::getInstance()->createScene());
+        auto touchPos = touch->getLocation();
+        if (_enter->getBoundingBox().containsPoint(touchPos)) {
+            Director::getInstance()->replaceScene(Controller::getInstance()->createScene());
+        }else if (_LL->getBoundingBox().containsPoint(touchPos) || _Z->getBoundingBox().containsPoint(touchPos)) {
+            Director::getInstance()->replaceScene(Controller::getInstance()->createScene());
+            Controller::getInstance()->setAuto(true);
+        }else if (_spumoni->getBoundingBox().containsPoint(touchPos)){
+            Controller::getInstance()->getScorer()->setHarder(true);
+            Director::getInstance()->replaceScene(Controller::getInstance()->createScene());
+        }
     }
     
     return true;
@@ -114,12 +125,12 @@ void EnterScene::start(){
     scheduleOnce([this , centerPos](float d){
         _bCanTouch = true;
         
-        auto text = Label::createWithTTF("touch for continue", "fonts/Marker Felt.ttf" , 40);
-        text->setPosition(centerPos);
+        _enter = Label::createWithTTF("press me for continue", "fonts/Marker Felt.ttf" , 40);
+        _enter->setPosition(centerPos);
         auto rep = RepeatForever::create(Sequence::create(FadeOut::create(0.7), FadeIn::create(0.7),nullptr));
-        text->runAction(rep);
+        _enter->runAction(rep);
         
-        this->addChild(text);
+        this->addChild(_enter);
         
     }, 2.5f , "3");
     

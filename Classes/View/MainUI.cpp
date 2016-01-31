@@ -21,7 +21,7 @@ MainUI::MainUI():
 _over(nullptr),
 _normal(nullptr),
 _btnClose(nullptr),
-_bCanClose(nullptr){
+_bCanClose(false){
 }
 
 MainUI::~MainUI(){
@@ -53,10 +53,23 @@ void MainUI::initCloseButton(){
 }
 
 void MainUI::onCloseClick(){
-    Director::getInstance()->end();
-    CocosDenshion::SimpleAudioEngine::getInstance()->end();
-    auto confirm = Label::createWithTTF("" , "fonts/Marker Felt.ttf" , 60);
-//    Controller::destroyInstance();
+    auto confirm = Label::createWithTTF("press again for exit" , "fonts/Marker Felt.ttf" , 60);
+    auto ease = EaseIn::create(FadeOut::create(2.0f), 0.7);
+    auto callFunc = CallFunc::create([this , confirm](){
+        _bCanClose = false;
+        confirm->removeFromParent();
+    });
+    GET_CENTER_WINSIZE
+    confirm->runAction(Sequence::create(ease,callFunc , nullptr));
+    confirm->setPosition(centerPos.x ,centerPos.y * 1.85);
+    confirm->setColor(Color3B(223, 92, 32));
+    addChild(confirm);
+    
+    if (_bCanClose) {
+        Director::getInstance()->end();
+        CocosDenshion::SimpleAudioEngine::getInstance()->end();
+    }
+    _bCanClose = true;
 }
 
 void MainUI::reset(){

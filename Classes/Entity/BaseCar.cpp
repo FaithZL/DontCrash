@@ -263,7 +263,7 @@ void BaseCar::relieve(){
 }
 
 void BaseCar::difficultyUp(){
-    setVelo(_normalVelo + 50 , true);
+    setVelo(_normalVelo + 20 , true);
 }
 
 void BaseCar::reset()
