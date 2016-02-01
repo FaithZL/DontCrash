@@ -1,0 +1,275 @@
+obj/local/armeabi/objs-debug/cocos_extension_static/Particle3D/PU/CCPUObserverTranslator.o: \
+ /Users/satan_z/work/cocosProject/DontCrash/proj.android/../cocos2d/extensions/Particle3D/PU/CCPUObserverTranslator.cpp \
+ /Users/satan_z/work/cocosProject/DontCrash/proj.android/../cocos2d/extensions/Particle3D/PU/CCPUObserverTranslator.h \
+ /Users/satan_z/work/cocosProject/DontCrash/proj.android/../cocos2d/cocos/./../extensions/Particle3D/PU/CCPUScriptTranslator.h \
+ /Users/satan_z/work/ndk_sdk_ant/android-ndk-r9d/sources/cxx-stl/gnu-libstdc++/4.8/include/iostream \
+ /Users/satan_z/work/cocosProject/DontCrash/proj.android/../cocos2d/cocos/./base/CCRef.h \
+ /Users/satan_z/work/cocosProject/DontCrash/proj.android/../cocos2d/cocos/./platform/CCPlatformMacros.h \
+ /Users/satan_z/work/cocosProject/DontCrash/proj.android/../cocos2d/cocos/./base/ccConfig.h \
+ /Users/satan_z/work/cocosProject/DontCrash/proj.android/../cocos2d/cocos/./platform/CCPlatformConfig.h \
+ /Users/satan_z/work/cocosProject/DontCrash/proj.android/../cocos2d/cocos/./platform/CCPlatformDefine.h \
+ /Users/satan_z/work/cocosProject/DontCrash/proj.android/../cocos2d/cocos/./platform/android/CCPlatformDefine-android.h \
+ /Users/satan_z/work/ndk_sdk_ant/android-ndk-r9d/platforms/android-16/arch-arm/usr/include/android/log.h \
+ /Users/satan_z/work/cocosProject/DontCrash/proj.android/../cocos2d/cocos/./math/CCMath.h \
+ /Users/satan_z/work/cocosProject/DontCrash/proj.android/../cocos2d/cocos/./math/Vec2.h \
+ /Users/satan_z/work/ndk_sdk_ant/android-ndk-r9d/sources/cxx-stl/gnu-libstdc++/4.8/include/algorithm \
+ /Users/satan_z/work/cocosProject/DontCrash/proj.android/../cocos2d/cocos/./math/CCMathBase.h \
+ /Users/satan_z/work/ndk_sdk_ant/android-ndk-r9d/sources/cxx-stl/gnu-libstdc++/4.8/include/memory \
+ /Users/satan_z/work/cocosProject/DontCrash/proj.android/../cocos2d/cocos/./math/Vec2.inl \
+ /Users/satan_z/work/cocosProject/DontCrash/proj.android/../cocos2d/cocos/./math/Vec2.h \
+ /Users/satan_z/work/cocosProject/DontCrash/proj.android/../cocos2d/cocos/./math/Vec3.h \
+ /Users/satan_z/work/cocosProject/DontCrash/proj.android/../cocos2d/cocos/./math/Vec3.inl \
+ /Users/satan_z/work/cocosProject/DontCrash/proj.android/../cocos2d/cocos/./math/Vec3.h \
+ /Users/satan_z/work/cocosProject/DontCrash/proj.android/../cocos2d/cocos/./math/Mat4.h \
+ /Users/satan_z/work/cocosProject/DontCrash/proj.android/../cocos2d/cocos/./base/ccMacros.h \
+ /Users/satan_z/work/cocosProject/DontCrash/proj.android/../cocos2d/cocos/./base/CCConsole.h \
+ /Users/satan_z/work/ndk_sdk_ant/android-ndk-r9d/platforms/android-16/arch-arm/usr/include/sys/select.h \
+ /Users/satan_z/work/ndk_sdk_ant/android-ndk-r9d/sources/cxx-stl/gnu-libstdc++/4.8/include/thread \
+ /Users/satan_z/work/ndk_sdk_ant/android-ndk-r9d/sources/cxx-stl/gnu-libstdc++/4.8/include/map \
+ /Users/satan_z/work/ndk_sdk_ant/android-ndk-r9d/sources/cxx-stl/gnu-libstdc++/4.8/include/mutex \
+ /Users/satan_z/work/cocosProject/DontCrash/proj.android/../cocos2d/cocos/./platform/CCStdC.h \
+ /Users/satan_z/work/cocosProject/DontCrash/proj.android/../cocos2d/cocos/./platform/android/CCStdC-android.h \
+ /Users/satan_z/work/ndk_sdk_ant/android-ndk-r9d/sources/cxx-stl/gnu-libstdc++/4.8/include/cassert \
+ /Users/satan_z/work/cocosProject/DontCrash/proj.android/../cocos2d/cocos/./base/ccRandom.h \
+ /Users/satan_z/work/cocosProject/DontCrash/proj.android/../cocos2d/cocos/./math/Vec4.h \
+ /Users/satan_z/work/cocosProject/DontCrash/proj.android/../cocos2d/cocos/./math/Vec4.inl \
+ /Users/satan_z/work/cocosProject/DontCrash/proj.android/../cocos2d/cocos/./math/Mat4.inl \
+ /Users/satan_z/work/cocosProject/DontCrash/proj.android/../cocos2d/cocos/./math/Vec4.h \
+ /Users/satan_z/work/cocosProject/DontCrash/proj.android/../cocos2d/cocos/./math/Mat4.h \
+ /Users/satan_z/work/cocosProject/DontCrash/proj.android/../cocos2d/cocos/./math/Quaternion.h \
+ /Users/satan_z/work/cocosProject/DontCrash/proj.android/../cocos2d/cocos/./math/Quaternion.inl \
+ /Users/satan_z/work/cocosProject/DontCrash/proj.android/../cocos2d/cocos/./../extensions/Particle3D/PU/CCPUScriptCompiler.h \
+ /Users/satan_z/work/cocosProject/DontCrash/proj.android/../cocos2d/cocos/./../extensions/Particle3D/PU/CCPUScriptParser.h \
+ /Users/satan_z/work/ndk_sdk_ant/android-ndk-r9d/sources/cxx-stl/gnu-libstdc++/4.8/include/list \
+ /Users/satan_z/work/cocosProject/DontCrash/proj.android/../cocos2d/cocos/./../extensions/Particle3D/PU/CCPUScriptLexer.h \
+ /Users/satan_z/work/cocosProject/DontCrash/proj.android/../cocos2d/cocos/./../extensions/Particle3D/PU/CCPUObserver.h \
+ /Users/satan_z/work/cocosProject/DontCrash/proj.android/../cocos2d/cocos/./../extensions/Particle3D/PU/CCPUParticleSystem3D.h \
+ /Users/satan_z/work/cocosProject/DontCrash/proj.android/../cocos2d/cocos/./2d/CCNode.h \
+ /Users/satan_z/work/cocosProject/DontCrash/proj.android/../cocos2d/cocos/./base/CCVector.h \
+ /Users/satan_z/work/cocosProject/DontCrash/proj.android/../cocos2d/cocos/./base/CCProtocols.h \
+ /Users/satan_z/work/cocosProject/DontCrash/proj.android/../cocos2d/cocos/./base/ccTypes.h \
+ /Users/satan_z/work/cocosProject/DontCrash/proj.android/../cocos2d/cocos/./math/CCGeometry.h \
+ /Users/satan_z/work/cocosProject/DontCrash/proj.android/../cocos2d/cocos/./platform/CCGL.h \
+ /Users/satan_z/work/cocosProject/DontCrash/proj.android/../cocos2d/cocos/./platform/android/CCGL-android.h \
+ /Users/satan_z/work/ndk_sdk_ant/android-ndk-r9d/platforms/android-16/arch-arm/usr/include/GLES2/gl2platform.h \
+ /Users/satan_z/work/ndk_sdk_ant/android-ndk-r9d/platforms/android-16/arch-arm/usr/include/KHR/khrplatform.h \
+ /Users/satan_z/work/ndk_sdk_ant/android-ndk-r9d/platforms/android-16/arch-arm/usr/include/GLES2/gl2.h \
+ /Users/satan_z/work/ndk_sdk_ant/android-ndk-r9d/platforms/android-16/arch-arm/usr/include/GLES2/gl2ext.h \
+ /Users/satan_z/work/cocosProject/DontCrash/proj.android/../cocos2d/cocos/./renderer/CCTexture2D.h \
+ /Users/satan_z/work/ndk_sdk_ant/android-ndk-r9d/sources/cxx-stl/gnu-libstdc++/4.8/include/unordered_map \
+ /Users/satan_z/work/cocosProject/DontCrash/proj.android/../cocos2d/cocos/./base/CCScriptSupport.h \
+ /Users/satan_z/work/cocosProject/DontCrash/proj.android/../cocos2d/cocos/./platform/CCCommon.h \
+ /Users/satan_z/work/cocosProject/DontCrash/proj.android/../cocos2d/cocos/./base/CCTouch.h \
+ /Users/satan_z/work/cocosProject/DontCrash/proj.android/../cocos2d/cocos/./base/CCEventTouch.h \
+ /Users/satan_z/work/cocosProject/DontCrash/proj.android/../cocos2d/cocos/./base/CCEvent.h \
+ /Users/satan_z/work/cocosProject/DontCrash/proj.android/../cocos2d/cocos/./base/CCEventKeyboard.h \
+ /Users/satan_z/work/cocosProject/DontCrash/proj.android/../cocos2d/cocos/./math/CCAffineTransform.h \
+ /Users/satan_z/work/cocosProject/DontCrash/proj.android/../cocos2d/cocos/./2d/CCComponentContainer.h \
+ /Users/satan_z/work/cocosProject/DontCrash/proj.android/../cocos2d/cocos/./base/CCMap.h \
+ /Users/satan_z/work/cocosProject/DontCrash/proj.android/../cocos2d/cocos/./2d/CCComponent.h \
+ /Users/satan_z/work/cocosProject/DontCrash/proj.android/../cocos2d/cocos/./../extensions/Particle3D/CCParticleSystem3D.h \
+ /Users/satan_z/work/cocosProject/DontCrash/proj.android/../cocos2d/cocos/./../extensions/Particle3D/PU/CCPUObserverManager.h \
+ /Users/satan_z/work/cocosProject/DontCrash/proj.android/../cocos2d/cocos/./../extensions/Particle3D/PU/CCPUOnClearObserverTranslator.h \
+ /Users/satan_z/work/cocosProject/DontCrash/proj.android/../cocos2d/cocos/./../extensions/Particle3D/PU/CCPUOnClearObserver.h \
+ /Users/satan_z/work/cocosProject/DontCrash/proj.android/../cocos2d/cocos/./../extensions/Particle3D/PU/CCPUOnCollisionObserverTranslator.h \
+ /Users/satan_z/work/cocosProject/DontCrash/proj.android/../cocos2d/cocos/./../extensions/Particle3D/PU/CCPUOnCollisionObserver.h \
+ /Users/satan_z/work/cocosProject/DontCrash/proj.android/../cocos2d/cocos/./../extensions/Particle3D/PU/CCPUOnCountObserverTranslator.h \
+ /Users/satan_z/work/cocosProject/DontCrash/proj.android/../cocos2d/cocos/./../extensions/Particle3D/PU/CCPUOnCountObserver.h \
+ /Users/satan_z/work/cocosProject/DontCrash/proj.android/../cocos2d/cocos/./../extensions/Particle3D/PU/CCPUOnEmissionObserverTranslator.h \
+ /Users/satan_z/work/cocosProject/DontCrash/proj.android/../cocos2d/cocos/./../extensions/Particle3D/PU/CCPUOnEmissionObserver.h \
+ /Users/satan_z/work/cocosProject/DontCrash/proj.android/../cocos2d/cocos/./../extensions/Particle3D/PU/CCPUOnEventFlagObserverTranslator.h \
+ /Users/satan_z/work/cocosProject/DontCrash/proj.android/../cocos2d/cocos/./../extensions/Particle3D/PU/CCPUOnEventFlagObserver.h \
+ /Users/satan_z/work/cocosProject/DontCrash/proj.android/../cocos2d/cocos/./../extensions/Particle3D/PU/CCPUOnExpireObserverTranslator.h \
+ /Users/satan_z/work/cocosProject/DontCrash/proj.android/../cocos2d/cocos/./../extensions/Particle3D/PU/CCPUOnExpireObserver.h \
+ /Users/satan_z/work/cocosProject/DontCrash/proj.android/../cocos2d/cocos/./../extensions/Particle3D/PU/CCPUOnPositionObserverTranslator.h \
+ /Users/satan_z/work/cocosProject/DontCrash/proj.android/../cocos2d/cocos/./../extensions/Particle3D/PU/CCPUOnPositionObserver.h \
+ /Users/satan_z/work/cocosProject/DontCrash/proj.android/../cocos2d/cocos/./../extensions/Particle3D/PU/CCPUOnQuotaObserverTranslator.h \
+ /Users/satan_z/work/cocosProject/DontCrash/proj.android/../cocos2d/cocos/./../extensions/Particle3D/PU/CCPUOnQuotaObserver.h \
+ /Users/satan_z/work/cocosProject/DontCrash/proj.android/../cocos2d/cocos/./../extensions/Particle3D/PU/CCPUOnRandomObserverTranslator.h \
+ /Users/satan_z/work/cocosProject/DontCrash/proj.android/../cocos2d/cocos/./../extensions/Particle3D/PU/CCPUOnRandomObserver.h \
+ /Users/satan_z/work/cocosProject/DontCrash/proj.android/../cocos2d/cocos/./../extensions/Particle3D/PU/CCPUOnTimeObserverTranslator.h \
+ /Users/satan_z/work/cocosProject/DontCrash/proj.android/../cocos2d/cocos/./../extensions/Particle3D/PU/CCPUOnTimeObserver.h \
+ /Users/satan_z/work/cocosProject/DontCrash/proj.android/../cocos2d/cocos/./../extensions/Particle3D/PU/CCPUOnVelocityObserverTranslator.h \
+ /Users/satan_z/work/cocosProject/DontCrash/proj.android/../cocos2d/cocos/./../extensions/Particle3D/PU/CCPUOnVelocityObserver.h
+
+/Users/satan_z/work/cocosProject/DontCrash/proj.android/../cocos2d/extensions/Particle3D/PU/CCPUObserverTranslator.h:
+
+/Users/satan_z/work/cocosProject/DontCrash/proj.android/../cocos2d/cocos/./../extensions/Particle3D/PU/CCPUScriptTranslator.h:
+
+/Users/satan_z/work/ndk_sdk_ant/android-ndk-r9d/sources/cxx-stl/gnu-libstdc++/4.8/include/iostream:
+
+/Users/satan_z/work/cocosProject/DontCrash/proj.android/../cocos2d/cocos/./base/CCRef.h:
+
+/Users/satan_z/work/cocosProject/DontCrash/proj.android/../cocos2d/cocos/./platform/CCPlatformMacros.h:
+
+/Users/satan_z/work/cocosProject/DontCrash/proj.android/../cocos2d/cocos/./base/ccConfig.h:
+
+/Users/satan_z/work/cocosProject/DontCrash/proj.android/../cocos2d/cocos/./platform/CCPlatformConfig.h:
+
+/Users/satan_z/work/cocosProject/DontCrash/proj.android/../cocos2d/cocos/./platform/CCPlatformDefine.h:
+
+/Users/satan_z/work/cocosProject/DontCrash/proj.android/../cocos2d/cocos/./platform/android/CCPlatformDefine-android.h:
+
+/Users/satan_z/work/ndk_sdk_ant/android-ndk-r9d/platforms/android-16/arch-arm/usr/include/android/log.h:
+
+/Users/satan_z/work/cocosProject/DontCrash/proj.android/../cocos2d/cocos/./math/CCMath.h:
+
+/Users/satan_z/work/cocosProject/DontCrash/proj.android/../cocos2d/cocos/./math/Vec2.h:
+
+/Users/satan_z/work/ndk_sdk_ant/android-ndk-r9d/sources/cxx-stl/gnu-libstdc++/4.8/include/algorithm:
+
+/Users/satan_z/work/cocosProject/DontCrash/proj.android/../cocos2d/cocos/./math/CCMathBase.h:
+
+/Users/satan_z/work/ndk_sdk_ant/android-ndk-r9d/sources/cxx-stl/gnu-libstdc++/4.8/include/memory:
+
+/Users/satan_z/work/cocosProject/DontCrash/proj.android/../cocos2d/cocos/./math/Vec2.inl:
+
+/Users/satan_z/work/cocosProject/DontCrash/proj.android/../cocos2d/cocos/./math/Vec2.h:
+
+/Users/satan_z/work/cocosProject/DontCrash/proj.android/../cocos2d/cocos/./math/Vec3.h:
+
+/Users/satan_z/work/cocosProject/DontCrash/proj.android/../cocos2d/cocos/./math/Vec3.inl:
+
+/Users/satan_z/work/cocosProject/DontCrash/proj.android/../cocos2d/cocos/./math/Vec3.h:
+
+/Users/satan_z/work/cocosProject/DontCrash/proj.android/../cocos2d/cocos/./math/Mat4.h:
+
+/Users/satan_z/work/cocosProject/DontCrash/proj.android/../cocos2d/cocos/./base/ccMacros.h:
+
+/Users/satan_z/work/cocosProject/DontCrash/proj.android/../cocos2d/cocos/./base/CCConsole.h:
+
+/Users/satan_z/work/ndk_sdk_ant/android-ndk-r9d/platforms/android-16/arch-arm/usr/include/sys/select.h:
+
+/Users/satan_z/work/ndk_sdk_ant/android-ndk-r9d/sources/cxx-stl/gnu-libstdc++/4.8/include/thread:
+
+/Users/satan_z/work/ndk_sdk_ant/android-ndk-r9d/sources/cxx-stl/gnu-libstdc++/4.8/include/map:
+
+/Users/satan_z/work/ndk_sdk_ant/android-ndk-r9d/sources/cxx-stl/gnu-libstdc++/4.8/include/mutex:
+
+/Users/satan_z/work/cocosProject/DontCrash/proj.android/../cocos2d/cocos/./platform/CCStdC.h:
+
+/Users/satan_z/work/cocosProject/DontCrash/proj.android/../cocos2d/cocos/./platform/android/CCStdC-android.h:
+
+/Users/satan_z/work/ndk_sdk_ant/android-ndk-r9d/sources/cxx-stl/gnu-libstdc++/4.8/include/cassert:
+
+/Users/satan_z/work/cocosProject/DontCrash/proj.android/../cocos2d/cocos/./base/ccRandom.h:
+
+/Users/satan_z/work/cocosProject/DontCrash/proj.android/../cocos2d/cocos/./math/Vec4.h:
+
+/Users/satan_z/work/cocosProject/DontCrash/proj.android/../cocos2d/cocos/./math/Vec4.inl:
+
+/Users/satan_z/work/cocosProject/DontCrash/proj.android/../cocos2d/cocos/./math/Mat4.inl:
+
+/Users/satan_z/work/cocosProject/DontCrash/proj.android/../cocos2d/cocos/./math/Vec4.h:
+
+/Users/satan_z/work/cocosProject/DontCrash/proj.android/../cocos2d/cocos/./math/Mat4.h:
+
+/Users/satan_z/work/cocosProject/DontCrash/proj.android/../cocos2d/cocos/./math/Quaternion.h:
+
+/Users/satan_z/work/cocosProject/DontCrash/proj.android/../cocos2d/cocos/./math/Quaternion.inl:
+
+/Users/satan_z/work/cocosProject/DontCrash/proj.android/../cocos2d/cocos/./../extensions/Particle3D/PU/CCPUScriptCompiler.h:
+
+/Users/satan_z/work/cocosProject/DontCrash/proj.android/../cocos2d/cocos/./../extensions/Particle3D/PU/CCPUScriptParser.h:
+
+/Users/satan_z/work/ndk_sdk_ant/android-ndk-r9d/sources/cxx-stl/gnu-libstdc++/4.8/include/list:
+
+/Users/satan_z/work/cocosProject/DontCrash/proj.android/../cocos2d/cocos/./../extensions/Particle3D/PU/CCPUScriptLexer.h:
+
+/Users/satan_z/work/cocosProject/DontCrash/proj.android/../cocos2d/cocos/./../extensions/Particle3D/PU/CCPUObserver.h:
+
+/Users/satan_z/work/cocosProject/DontCrash/proj.android/../cocos2d/cocos/./../extensions/Particle3D/PU/CCPUParticleSystem3D.h:
+
+/Users/satan_z/work/cocosProject/DontCrash/proj.android/../cocos2d/cocos/./2d/CCNode.h:
+
+/Users/satan_z/work/cocosProject/DontCrash/proj.android/../cocos2d/cocos/./base/CCVector.h:
+
+/Users/satan_z/work/cocosProject/DontCrash/proj.android/../cocos2d/cocos/./base/CCProtocols.h:
+
+/Users/satan_z/work/cocosProject/DontCrash/proj.android/../cocos2d/cocos/./base/ccTypes.h:
+
+/Users/satan_z/work/cocosProject/DontCrash/proj.android/../cocos2d/cocos/./math/CCGeometry.h:
+
+/Users/satan_z/work/cocosProject/DontCrash/proj.android/../cocos2d/cocos/./platform/CCGL.h:
+
+/Users/satan_z/work/cocosProject/DontCrash/proj.android/../cocos2d/cocos/./platform/android/CCGL-android.h:
+
+/Users/satan_z/work/ndk_sdk_ant/android-ndk-r9d/platforms/android-16/arch-arm/usr/include/GLES2/gl2platform.h:
+
+/Users/satan_z/work/ndk_sdk_ant/android-ndk-r9d/platforms/android-16/arch-arm/usr/include/KHR/khrplatform.h:
+
+/Users/satan_z/work/ndk_sdk_ant/android-ndk-r9d/platforms/android-16/arch-arm/usr/include/GLES2/gl2.h:
+
+/Users/satan_z/work/ndk_sdk_ant/android-ndk-r9d/platforms/android-16/arch-arm/usr/include/GLES2/gl2ext.h:
+
+/Users/satan_z/work/cocosProject/DontCrash/proj.android/../cocos2d/cocos/./renderer/CCTexture2D.h:
+
+/Users/satan_z/work/ndk_sdk_ant/android-ndk-r9d/sources/cxx-stl/gnu-libstdc++/4.8/include/unordered_map:
+
+/Users/satan_z/work/cocosProject/DontCrash/proj.android/../cocos2d/cocos/./base/CCScriptSupport.h:
+
+/Users/satan_z/work/cocosProject/DontCrash/proj.android/../cocos2d/cocos/./platform/CCCommon.h:
+
+/Users/satan_z/work/cocosProject/DontCrash/proj.android/../cocos2d/cocos/./base/CCTouch.h:
+
+/Users/satan_z/work/cocosProject/DontCrash/proj.android/../cocos2d/cocos/./base/CCEventTouch.h:
+
+/Users/satan_z/work/cocosProject/DontCrash/proj.android/../cocos2d/cocos/./base/CCEvent.h:
+
+/Users/satan_z/work/cocosProject/DontCrash/proj.android/../cocos2d/cocos/./base/CCEventKeyboard.h:
+
+/Users/satan_z/work/cocosProject/DontCrash/proj.android/../cocos2d/cocos/./math/CCAffineTransform.h:
+
+/Users/satan_z/work/cocosProject/DontCrash/proj.android/../cocos2d/cocos/./2d/CCComponentContainer.h:
+
+/Users/satan_z/work/cocosProject/DontCrash/proj.android/../cocos2d/cocos/./base/CCMap.h:
+
+/Users/satan_z/work/cocosProject/DontCrash/proj.android/../cocos2d/cocos/./2d/CCComponent.h:
+
+/Users/satan_z/work/cocosProject/DontCrash/proj.android/../cocos2d/cocos/./../extensions/Particle3D/CCParticleSystem3D.h:
+
+/Users/satan_z/work/cocosProject/DontCrash/proj.android/../cocos2d/cocos/./../extensions/Particle3D/PU/CCPUObserverManager.h:
+
+/Users/satan_z/work/cocosProject/DontCrash/proj.android/../cocos2d/cocos/./../extensions/Particle3D/PU/CCPUOnClearObserverTranslator.h:
+
+/Users/satan_z/work/cocosProject/DontCrash/proj.android/../cocos2d/cocos/./../extensions/Particle3D/PU/CCPUOnClearObserver.h:
+
+/Users/satan_z/work/cocosProject/DontCrash/proj.android/../cocos2d/cocos/./../extensions/Particle3D/PU/CCPUOnCollisionObserverTranslator.h:
+
+/Users/satan_z/work/cocosProject/DontCrash/proj.android/../cocos2d/cocos/./../extensions/Particle3D/PU/CCPUOnCollisionObserver.h:
+
+/Users/satan_z/work/cocosProject/DontCrash/proj.android/../cocos2d/cocos/./../extensions/Particle3D/PU/CCPUOnCountObserverTranslator.h:
+
+/Users/satan_z/work/cocosProject/DontCrash/proj.android/../cocos2d/cocos/./../extensions/Particle3D/PU/CCPUOnCountObserver.h:
+
+/Users/satan_z/work/cocosProject/DontCrash/proj.android/../cocos2d/cocos/./../extensions/Particle3D/PU/CCPUOnEmissionObserverTranslator.h:
+
+/Users/satan_z/work/cocosProject/DontCrash/proj.android/../cocos2d/cocos/./../extensions/Particle3D/PU/CCPUOnEmissionObserver.h:
+
+/Users/satan_z/work/cocosProject/DontCrash/proj.android/../cocos2d/cocos/./../extensions/Particle3D/PU/CCPUOnEventFlagObserverTranslator.h:
+
+/Users/satan_z/work/cocosProject/DontCrash/proj.android/../cocos2d/cocos/./../extensions/Particle3D/PU/CCPUOnEventFlagObserver.h:
+
+/Users/satan_z/work/cocosProject/DontCrash/proj.android/../cocos2d/cocos/./../extensions/Particle3D/PU/CCPUOnExpireObserverTranslator.h:
+
+/Users/satan_z/work/cocosProject/DontCrash/proj.android/../cocos2d/cocos/./../extensions/Particle3D/PU/CCPUOnExpireObserver.h:
+
+/Users/satan_z/work/cocosProject/DontCrash/proj.android/../cocos2d/cocos/./../extensions/Particle3D/PU/CCPUOnPositionObserverTranslator.h:
+
+/Users/satan_z/work/cocosProject/DontCrash/proj.android/../cocos2d/cocos/./../extensions/Particle3D/PU/CCPUOnPositionObserver.h:
+
+/Users/satan_z/work/cocosProject/DontCrash/proj.android/../cocos2d/cocos/./../extensions/Particle3D/PU/CCPUOnQuotaObserverTranslator.h:
+
+/Users/satan_z/work/cocosProject/DontCrash/proj.android/../cocos2d/cocos/./../extensions/Particle3D/PU/CCPUOnQuotaObserver.h:
+
+/Users/satan_z/work/cocosProject/DontCrash/proj.android/../cocos2d/cocos/./../extensions/Particle3D/PU/CCPUOnRandomObserverTranslator.h:
+
+/Users/satan_z/work/cocosProject/DontCrash/proj.android/../cocos2d/cocos/./../extensions/Particle3D/PU/CCPUOnRandomObserver.h:
+
+/Users/satan_z/work/cocosProject/DontCrash/proj.android/../cocos2d/cocos/./../extensions/Particle3D/PU/CCPUOnTimeObserverTranslator.h:
+
+/Users/satan_z/work/cocosProject/DontCrash/proj.android/../cocos2d/cocos/./../extensions/Particle3D/PU/CCPUOnTimeObserver.h:
+
+/Users/satan_z/work/cocosProject/DontCrash/proj.android/../cocos2d/cocos/./../extensions/Particle3D/PU/CCPUOnVelocityObserverTranslator.h:
+
+/Users/satan_z/work/cocosProject/DontCrash/proj.android/../cocos2d/cocos/./../extensions/Particle3D/PU/CCPUOnVelocityObserver.h:

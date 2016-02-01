@@ -17,7 +17,7 @@ FSM::FSM()
 	_delayedStateName = -1;
 }
 
-FSMState& FSM::addState(FSMState state)
+FSMState FSM::addState(FSMState state)
 {
 	if (_currentState != NULL
 		&& _currentState->getName() == state.getName()
@@ -34,12 +34,12 @@ void FSM::setNextState(int state)
 	_delayedStateName = state;
 }
 
-FSMState& FSM::addState(int stateName)
+FSMState FSM::addState(int stateName)
 {
 	return this->addState(FSMState(stateName, nullptr, nullptr, nullptr));
 }
 
-FSMState& FSM::addState(
+FSMState FSM::addState(
 	int stateName,
 	const std::function<void()>& enterFunc,
 	const std::function<void(float)>& updateFunc,

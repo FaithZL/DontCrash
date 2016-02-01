@@ -9,14 +9,30 @@
 #ifndef constant_h
 #define constant_h
 
+#define USER_DATA_FILE "UserData.json"
+#define GAME_DIR "DontCrash/"
+
 #define R_INNER 178
 #define R_OUTER 230
 
 #define PI 3.141592653
 
-#define POS_L Vec2(380 , 365)
-#define POS_R Vec2(900 , 365)
+#define POS_L cocos2d::Vec2(380 , 365)
+#define POS_R cocos2d::Vec2(900 , 365)
 
+#define GET_CENTER_WINSIZE \
+auto winSize = Director::getInstance()->getWinSize(); \
+auto centerPos = Vec2(winSize.width / 2 , winSize.height / 2);
 
+//enemy combine and separate time factor
+#define TIME_FACTOR 1000
+
+#define CAR_R_CHANGE_FACTOR 2
+
+#define ENEMY_R_CHANGE_FACTOR 0.2
+
+#define CHANGE_PROB 0.5
+
+#define ON_SCORE_CHANGE "onScoreChange"
 
 #endif /* constant_h */

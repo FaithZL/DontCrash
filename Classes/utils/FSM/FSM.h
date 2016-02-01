@@ -13,9 +13,9 @@ public:
 	~FSM();
 
 	// add FSM states
-	FSMState& addState(FSMState state);
-	FSMState& addState(int stateName);
-	FSMState& addState(
+	FSMState addState(FSMState state);
+	FSMState addState(int stateName);
+	FSMState addState(
 		int stateName,
 		const std::function<void()>& enterFunc,
 		const std::function<void(float)>& updateFunc = nullptr,
@@ -43,11 +43,15 @@ public:
 	void update(float dt);
 
 protected:
-	FSMState* _currentState;
-	FSMState* _previousState;
-	float _stateLastTime;
-	int _delayedStateName;
-	std::map<int, FSMState> _states;
+	FSMState * _currentState;
+	
+    FSMState * _previousState;
+	
+    float _stateLastTime;
+	
+    int _delayedStateName;
+	
+    std::map<int, FSMState> _states;
 
 };
 
