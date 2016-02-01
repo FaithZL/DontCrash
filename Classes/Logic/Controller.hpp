@@ -10,6 +10,7 @@
 #define Controller_hpp
 
 #include "cocos2d.h"
+#include "FSM.h"
 
 class Car;
 class Enemy;
@@ -29,7 +30,7 @@ enum GameState
     length
 };
 
-class Controller : public cocos2d::Ref
+class Controller : public cocos2d::Ref , public FSM
 {
 public:
     ~Controller();
@@ -41,6 +42,8 @@ public:
     virtual bool init();
     
     CC_SYNTHESIZE_READONLY(int , _gameState , CurGameState);
+    
+    bool initFSM();
     
     CC_SYNTHESIZE_READONLY(UserData * , _userData , UserData);
     
@@ -67,6 +70,8 @@ public:
     void scheduleOnce(std::function<void(float)> &callback, float delay , std::string key);
     
     void unscheduleUpdate();
+    
+    void ready();
     
     void pause();
     
