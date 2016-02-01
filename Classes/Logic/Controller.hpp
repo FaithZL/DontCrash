@@ -10,7 +10,7 @@
 #define Controller_hpp
 
 #include "cocos2d.h"
-#include "FSM.h"
+//#include "FSM.h"
 
 class Car;
 class Enemy;
@@ -30,7 +30,7 @@ enum GameState
     length
 };
 
-class Controller : public cocos2d::Ref , public FSM
+class Controller : public cocos2d::Ref 
 {
 public:
     ~Controller();
