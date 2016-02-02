@@ -32,7 +32,7 @@ public:
     }
     
     inline void setExtraScoreByTag(int enemyTag){
-        _extraScore[enemyTag] = 8;
+        _extraScore[enemyTag] = 10;
     }
     
     inline float getExtraScoreByTag(int enemyTag){

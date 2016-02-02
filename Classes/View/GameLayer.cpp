@@ -57,7 +57,7 @@ bool GameLayer::init()
         
         int velo = 800;
         if (Controller::getInstance()->getScorer()->getHarder()) {
-            velo = 700;
+            velo = 800;
         }
         
         auto car = Car::create("img/car.png", velo, pos, Direction::CCW);
