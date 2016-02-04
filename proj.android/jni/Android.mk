@@ -15,7 +15,7 @@ define walk
 endef  
   
 # 遍历Classes目录  
-ALLFILES = $(call walk, $(LOCAL_PATH)/../../../Classes)  
+ALLFILES = $(call walk, $(LOCAL_PATH)/../../Classes)  
                      
 FILE_LIST := hellocpp/main.cpp  
 # 从所有文件中提取出所有.cpp文件  
